@@ -1,0 +1,313 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "resuscitation-algorithm-schema-v3",
+  "title": "Resuscitation Algorithm Schema",
+  "version": "3.0.0",
+  "description": "Universal schema for resuscitation flowchart algorithms - Ship's Helm model",
+
+  "_changelog_v3": {
+    "removed": [
+      "wheel_config.position_degrees - Ship's Helm model means user controls wheel position"
+    ],
+    "added": [
+      "algorithm_meta.sidebar_reminders - Persistent reminders shown throughout",
+      "algorithm_meta.time_targets - Time-critical sequence markers",
+      "algorithm_meta.conditional_modifiers - Global toggles that affect multiple cards",
+      "algorithm_meta.header_reference - ABCDE-style reference bar",
+      "card.conditional_content - Content that changes based on modifier state",
+      "card.visual_aids - Inline images, diagrams, icon rows",
+      "toolbox.reference_table - Data tables (SpO2 targets, dosing)",
+      "toolbox.dosing_calculator - Age/weight based calculations",
+      "checklist.info_panel - Collapsible reference information",
+      "checklist.counter - Numeric tracking (doses given, cycles completed)"
+    ]
+  },
+
+  "_html_zone_mapping": {
+    "header": {
+      "left": "Algorithm title",
+      "center": "header_reference (ABCDE bar) if defined",
+      "right": "Search, settings icons"
+    },
+    "sidebar_left": {
+      "content": "sidebar_reminders (persistent)",
+      "visibility": "Always visible, can minimize"
+    },
+    "zone_top": "Preview stack OR decision carousel",
+    "zone_middle": "Active card with visual_aids",
+    "zone_bottom": "History stack",
+    "footer": {
+      "main": "Dynamic checklist",
+      "persistent": "time_targets countdown if active",
+      "corner": "Global timer"
+    }
+  },
+
+  "algorithm_meta": {
+    "id": "string - unique identifier",
+    "title": "string",
+    "subtitle": "string",
+    "source": "string - e.g., Resuscitation Council UK (2021)",
+    "context": "out-of-hospital | in-hospital | delivery-suite | universal",
+    "version": "string - semver",
+    "page_ref": "string - Page X of Handbook",
+    
+    "color_theme": {
+      "primary": "hex",
+      "decision": "hex",
+      "action": "hex", 
+      "terminal": "hex",
+      "warning": "hex"
+    },
+
+    "global_timer": {
+      "enabled": "boolean",
+      "label": "string",
+      "type": "count_up | count_down",
+      "auto_start_on_card": "card_id"
+    },
+
+    "time_targets": {
+      "_description": "Time-critical sequences (e.g., 60 seconds for newborn initial steps)",
+      "sequences": [
+        {
+          "id": "string",
+          "label": "string - e.g., Complete initial assessment",
+          "duration_seconds": "number",
+          "start_card": "card_id",
+          "end_card": "card_id",
+          "alert_type": "visual | audio | both"
+        }
+      ]
+    },
+
+    "sidebar_reminders": {
+      "_description": "Persistent reminders shown throughout algorithm",
+      "items": [
+        {
+          "id": "string",
+          "label": "string - e.g., MAINTAIN TEMPERATURE",
+          "icon": "thermometer | help-circle | alert | clock",
+          "severity": "info | warning | critical",
+          "persistent": "boolean - always show vs show on relevant cards"
+        }
+      ]
+    },
+
+    "header_reference": {
+      "_description": "Horizontal reference bar (like ABCDE)",
+      "type": "letter_bar | icon_bar | none",
+      "items": [
+        {
+          "letter": "A",
+          "label": "Airway",
+          "color": "hex"
+        }
+      ]
+    },
+
+    "conditional_modifiers": {
+      "_description": "Global toggles that modify card content (e.g., Preterm <32 weeks)",
+      "modifiers": [
+        {
+          "id": "string",
+          "trigger_question": "string - e.g., Is the baby preterm (<32 weeks)?",
+          "type": "boolean_toggle | select",
+          "options": ["array of options if select type"],
+          "ask_on_card": "card_id - when to prompt user",
+          "affects_cards": ["array of card_ids"]
+        }
+      ]
+    },
+
+    "linked_algorithms": [
+      {
+        "id": "string",
+        "title": "string",
+        "description": "string"
+      }
+    ],
+
+    "reference_panels": {
+      "_description": "Reference information accessible from any card",
+      "panels": [
+        {
+          "id": "string",
+          "title": "string - e.g., Life-threatening problems",
+          "icon": "info | warning | list",
+          "content": {
+            "type": "bullet_list | table | text",
+            "data": "varies by type"
+          }
+        }
+      ]
+    }
+  },
+
+  "card_template": {
+    "id": "CARD_XX_NAME",
+    "type": "cover | standard | decision | carousel_action | loop_start | monitor | terminal | algorithm_link",
+    "severity": "normal | caution | critical",
+    
+    "content": {
+      "title": "string",
+      "body": "string - main instruction",
+      "sub_body": "string - secondary details",
+      "fallback_note": "string - what to do if primary fails",
+      
+      "conditional_content": {
+        "_description": "Content that changes based on active modifiers",
+        "modifier_id": {
+          "title_append": "string - added to title",
+          "body_replace": "string - replaces body",
+          "additional_instruction": "string - added below body",
+          "checklist_additions": ["array of additional checklist items"]
+        }
+      },
+
+      "slides": [
+        {
+          "id": "string",
+          "context": "infant | child | adult | preterm | term",
+          "header": "string",
+          "text": "string",
+          "details": ["array of bullet points"],
+          "image_ref": "string - filename"
+        }
+      ]
+    },
+
+    "visual_aids": {
+      "_description": "Inline images, diagrams, positioning icons",
+      "items": [
+        {
+          "id": "string",
+          "type": "inline_image | icon_row | diagram",
+          "position": "left | right | above | below",
+          "src": "string - image path",
+          "caption": "string",
+          "icons": [
+            {
+              "src": "string",
+              "label": "string", 
+              "status": "recommended | acceptable | contraindicated"
+            }
+          ]
+        }
+      ]
+    },
+
+    "wheel_config": {
+      "_description": "Simplified - no position_degrees (Ship's Helm model)",
+      "phase": "start_point | assessment | action | decision | intervention | loop | check | complete",
+      "animation": "none | pulse | shake",
+      "locked": "boolean - prevent navigation (decision/terminal)"
+    },
+
+    "local_timer": {
+      "enabled": "boolean",
+      "type": "countdown | metronome | stopwatch | interval",
+      "duration_seconds": "number",
+      "bpm": "number - for metronome",
+      "interval_seconds": "number - for repeated alerts (e.g., reassess every 30 sec)",
+      "guidance": "string",
+      "audio_enabled": "boolean"
+    },
+
+    "toolbox": [
+      {
+        "id": "string",
+        "icon": "calculator | info | video | link | table | syringe",
+        "label": "string",
+        "action": "open_modal_[type]",
+        
+        "reference_table": {
+          "_description": "Data table for reference (SpO2 targets, etc.)",
+          "headers": ["array of column headers"],
+          "rows": [["array of row data"]],
+          "highlight_row": "number - index to highlight"
+        },
+
+        "dosing_calculator": {
+          "_description": "Age/weight based dosing",
+          "drug_name": "string",
+          "concentration": "string - e.g., 1:1000",
+          "route": "IM | IV | IO",
+          "tiers": [
+            {
+              "criteria": "string - e.g., Adult & child >12 years",
+              "dose": "string - e.g., 500 micrograms",
+              "volume": "string - e.g., 0.5 mL"
+            }
+          ],
+          "warnings": ["array of warning strings"]
+        }
+      }
+    ],
+
+    "checklist": [
+      {
+        "id": "string",
+        "type": "checkbox | boolean_toggle | warning | instruction | counter | info_panel | radio_select | value_input",
+        "label": "string",
+        "note": "string - helper text",
+        "visible_if": "string - condition expression",
+        "required": "boolean",
+        "default_value": "varies by type",
+
+        "counter_config": {
+          "_description": "For type: counter",
+          "min_value": "number",
+          "max_value": "number",
+          "step": "number",
+          "unit": "string - e.g., doses, cycles"
+        },
+
+        "value_input_config": {
+          "_description": "For type: value_input",
+          "input_type": "number | text | time",
+          "unit": "string - e.g., cm H₂O, %, mL",
+          "placeholder": "string"
+        },
+
+        "info_panel_config": {
+          "_description": "For type: info_panel - collapsible reference",
+          "collapsed_label": "string",
+          "content_type": "bullet_list | table | text",
+          "content": "varies"
+        }
+      }
+    ],
+
+    "transitions": {
+      "type": "linear | split | algorithm_jump | self_loop",
+      "next_id": "string - for linear",
+      
+      "options": [
+        {
+          "label": "string",
+          "sub_label": "string",
+          "preview_card_title": "string",
+          "target_id": "string",
+          "severity": "normal | success | danger | caution",
+          "condition": "string - optional condition that must be met"
+        }
+      ],
+
+      "target_algorithm": {
+        "id": "string",
+        "entry_card": "string",
+        "context": "string - why we're jumping"
+      },
+
+      "repeat_config": {
+        "_description": "For loops with repeat limits",
+        "max_repeats": "number - e.g., 2 for 'TWO doses of adrenaline'",
+        "counter_id": "string - checklist counter to track",
+        "on_max_reached": "card_id - where to go after max"
+      }
+    },
+
+    "status": "active | complete | skipped | handoff"
+  }
+}

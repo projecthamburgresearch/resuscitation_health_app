@@ -1,0 +1,440 @@
+{
+  "algorithm_meta": {
+    "id": "algo_paed_bls_in_001",
+    "title": "Paediatric Basic Life Support",
+    "subtitle": "In-Hospital Algorithm",
+    "source": "Resuscitation Council UK (2021)",
+    "context": "in-hospital",
+    "version": "1.0.0",
+    "page_ref": "Page 4 of 40",
+    "color_theme": {
+      "primary": "#1a5276",
+      "decision": "#c0392b",
+      "action": "#7f8c8d",
+      "terminal": "#27ae60"
+    },
+    "global_timer": {
+      "enabled": true,
+      "label": "Total Time",
+      "type": "count_up",
+      "auto_start_on_card": "CARD_01_UNRESPONSIVE"
+    },
+    "cpr_ratio": "15:2",
+    "linked_algorithms": [
+      {
+        "id": "algo_paed_als_001",
+        "title": "Paediatric Advanced Life Support",
+        "description": "On arrival of in-hospital clinical emergency team"
+      }
+    ]
+  },
+  "deck": [
+    {
+      "id": "CARD_00_START",
+      "type": "cover",
+      "severity": "normal",
+      "content": {
+        "title": "Paediatric Basic Life Support",
+        "body": "In-Hospital Algorithm",
+        "sub_body": "Resuscitation Council UK Guidelines 2021"
+      },
+      "wheel_config": {
+        "phase": "start_point"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_01_UNRESPONSIVE"
+      }
+    },
+    {
+      "id": "CARD_01_UNRESPONSIVE",
+      "type": "standard",
+      "severity": "critical",
+      "content": {
+        "title": "Unresponsive",
+        "body": "Check if the child is unresponsive",
+        "sub_body": "Gently stimulate and ask 'Are you alright?'"
+      },
+      "wheel_config": {
+        "phase": "assessment"
+      },
+      "checklist": [
+        {
+          "id": "chk_safe",
+          "type": "checkbox",
+          "label": "Check for danger"
+        },
+        {
+          "id": "chk_response",
+          "type": "checkbox",
+          "label": "No response confirmed"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_02_CALL"
+      }
+    },
+    {
+      "id": "CARD_02_CALL",
+      "type": "standard",
+      "severity": "caution",
+      "content": {
+        "title": "Call for Help",
+        "body": "Call for help / activate 2222",
+        "sub_body": "Use hospital emergency number immediately"
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "chk_activated_2222",
+          "type": "checkbox",
+          "label": "Activated 2222 / crash call",
+          "required": true
+        },
+        {
+          "id": "chk_stated_location",
+          "type": "checkbox",
+          "label": "Stated location clearly"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_03_AIRWAY"
+      }
+    },
+    {
+      "id": "CARD_03_AIRWAY",
+      "type": "standard",
+      "severity": "normal",
+      "content": {
+        "title": "Open Airway",
+        "body": "Head tilt, chin lift",
+        "sub_body": "Consider airway adjuncts if available"
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "chk_airway_open",
+          "type": "checkbox",
+          "label": "Airway opened"
+        },
+        {
+          "id": "toggle_airway_adjunct",
+          "type": "boolean_toggle",
+          "label": "Airway adjunct available?"
+        },
+        {
+          "id": "chk_opa",
+          "type": "checkbox",
+          "label": "OPA/NPA inserted",
+          "visible_if": "toggle_airway_adjunct == true"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_04_BREATHING"
+      }
+    },
+    {
+      "id": "CARD_04_BREATHING",
+      "type": "decision",
+      "severity": "caution",
+      "content": {
+        "title": "Breathing & Signs of Life",
+        "body": "Breathing normally, signs of life?",
+        "sub_body": "Look, listen, feel for up to 10 seconds"
+      },
+      "wheel_config": {
+        "phase": "decision",
+        "locked": true
+      },
+      "checklist": [
+        {
+          "id": "chk_breathing_check",
+          "type": "checkbox",
+          "label": "Breathing assessed (max 10 sec)"
+        }
+      ],
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "YES",
+            "sub_label": "Breathing normally",
+            "preview_card_title": "Assess ABCDE",
+            "target_id": "CARD_END_ABCDE",
+            "severity": "success"
+          },
+          {
+            "label": "NO",
+            "sub_label": "or any doubt",
+            "preview_card_title": "5 Rescue Breaths",
+            "target_id": "CARD_05_BREATHS",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_END_ABCDE",
+      "type": "terminal",
+      "severity": "normal",
+      "content": {
+        "title": "Assess ABCDE",
+        "body": "Systematic assessment",
+        "sub_body": "O₂ monitoring, vascular access. Call further assistance as appropriate."
+      },
+      "wheel_config": {
+        "phase": "complete"
+      },
+      "checklist": [
+        {
+          "id": "chk_airway_patent",
+          "type": "checkbox",
+          "label": "A - Airway patent"
+        },
+        {
+          "id": "chk_breathing_supported",
+          "type": "checkbox",
+          "label": "B - Breathing supported"
+        },
+        {
+          "id": "chk_circulation",
+          "type": "checkbox",
+          "label": "C - Circulation assessed"
+        },
+        {
+          "id": "chk_disability",
+          "type": "checkbox",
+          "label": "D - Disability/neuro check"
+        },
+        {
+          "id": "chk_exposure",
+          "type": "checkbox",
+          "label": "E - Exposure/environment"
+        },
+        {
+          "id": "chk_o2_monitoring",
+          "type": "checkbox",
+          "label": "O₂ monitoring attached"
+        },
+        {
+          "id": "chk_iv_access",
+          "type": "checkbox",
+          "label": "IV/IO access obtained"
+        }
+      ],
+      "status": "complete"
+    },
+    {
+      "id": "CARD_05_BREATHS",
+      "type": "carousel_action",
+      "severity": "critical",
+      "content": {
+        "title": "5 Rescue Breaths",
+        "body": "Give 5 initial rescue breaths",
+        "fallback_note": "If unable/unsafe to ventilate perform continuous chest compressions, ventilate as soon as possible.",
+        "slides": [
+          {
+            "id": "slide_bag_mask",
+            "context": "professional",
+            "header": "Bag-Mask Ventilation",
+            "text": "Competent providers should use bag-mask ventilation with oxygen"
+          },
+          {
+            "id": "slide_fallback",
+            "context": "fallback",
+            "header": "If Unable to Ventilate",
+            "text": "Perform continuous chest compressions. Ventilate as soon as possible."
+          }
+        ]
+      },
+      "wheel_config": {
+        "phase": "intervention"
+      },
+      "toolbox": [
+        {
+          "id": "tool_bag_sizes",
+          "icon": "info",
+          "label": "Bag-Mask Sizes",
+          "action": "open_modal_equipment"
+        }
+      ],
+      "checklist": [
+        {
+          "id": "chk_o2_connected",
+          "type": "checkbox",
+          "label": "O₂ connected to bag"
+        },
+        {
+          "id": "chk_correct_mask",
+          "type": "checkbox",
+          "label": "Correct mask size selected"
+        },
+        {
+          "id": "chk_chest_rise",
+          "type": "checkbox",
+          "label": "Chest rise visible"
+        },
+        {
+          "id": "warn_if_unable",
+          "type": "warning",
+          "label": "If unable: Go directly to compressions"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_06_START_CPR"
+      }
+    },
+    {
+      "id": "CARD_06_START_CPR",
+      "type": "standard",
+      "severity": "critical",
+      "content": {
+        "title": "If No Signs of Life",
+        "body": "Immediately commence chest compressions",
+        "sub_body": "15 chest compressions : 2 breaths"
+      },
+      "wheel_config": {
+        "phase": "intervention"
+      },
+      "checklist": [
+        {
+          "id": "info_ratio",
+          "type": "instruction",
+          "label": "Use 15:2 compression to ventilation ratio"
+        },
+        {
+          "id": "chk_ecg",
+          "type": "checkbox",
+          "label": "Attach ECG monitoring/defibrillator when available"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_07_COMPRESSIONS"
+      }
+    },
+    {
+      "id": "CARD_07_COMPRESSIONS",
+      "type": "loop_start",
+      "severity": "critical",
+      "content": {
+        "title": "15 Chest Compressions",
+        "body": "Perform 15 chest compressions",
+        "sub_body": "Rate: 100-120/min. Depth: 1/3 of chest depth."
+      },
+      "wheel_config": {
+        "phase": "loop",
+        "animation": "pulse"
+      },
+      "local_timer": {
+        "enabled": true,
+        "type": "metronome",
+        "bpm": 110,
+        "guidance": "15 compressions",
+        "audio_enabled": true
+      },
+      "checklist": [
+        {
+          "id": "info_15_2",
+          "type": "instruction",
+          "label": "15:2 ratio (healthcare provider)"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_08_LOOP_BREATHS"
+      }
+    },
+    {
+      "id": "CARD_08_LOOP_BREATHS",
+      "type": "standard",
+      "severity": "critical",
+      "content": {
+        "title": "2 Rescue Breaths",
+        "body": "Deliver 2 effective breaths with bag-mask"
+      },
+      "wheel_config": {
+        "phase": "loop"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_09_REASSESS"
+      }
+    },
+    {
+      "id": "CARD_09_REASSESS",
+      "type": "decision",
+      "severity": "critical",
+      "content": {
+        "title": "Continue CPR",
+        "body": "Await resuscitation team",
+        "sub_body": "Continue 15:2 until team arrives or signs of life"
+      },
+      "wheel_config": {
+        "phase": "loop",
+        "locked": true
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "NO CHANGE",
+            "sub_label": "Continue CPR",
+            "preview_card_title": "15 Compressions",
+            "target_id": "CARD_07_COMPRESSIONS",
+            "severity": "danger"
+          },
+          {
+            "label": "TEAM ARRIVED",
+            "sub_label": "Handover",
+            "preview_card_title": "ALS Algorithm",
+            "target_id": "CARD_END_ALS",
+            "severity": "success"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_END_ALS",
+      "type": "algorithm_link",
+      "severity": "normal",
+      "content": {
+        "title": "Follow ALS Algorithm",
+        "body": "Paediatric Advanced Life Support",
+        "sub_body": "On arrival of in-hospital clinical emergency team"
+      },
+      "wheel_config": {
+        "phase": "complete"
+      },
+      "checklist": [
+        {
+          "id": "chk_handover",
+          "type": "checkbox",
+          "label": "SBAR handover completed"
+        },
+        {
+          "id": "chk_timer_reported",
+          "type": "checkbox",
+          "label": "Total resus time reported"
+        }
+      ],
+      "transitions": {
+        "type": "algorithm_jump",
+        "target_algorithm": {
+          "id": "algo_paed_als_001",
+          "entry_card": "CARD_00_START",
+          "context": "Team has arrived, transition to ALS"
+        }
+      },
+      "status": "complete"
+    }
+  ]
+}
