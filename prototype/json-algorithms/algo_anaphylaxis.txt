@@ -1,0 +1,669 @@
+{
+  "algorithm_meta": {
+    "id": "algo_anaphylaxis_001",
+    "title": "Anaphylaxis",
+    "subtitle": "Emergency Treatment",
+    "source": "Resuscitation Council UK (2021)",
+    "context": "universal",
+    "version": "1.0.0",
+    "page_ref": "Page 7 of 40",
+    
+    "color_theme": {
+      "primary": "#117a65",
+      "decision": "#922b21",
+      "action": "#5d6d7e",
+      "terminal": "#1e8449",
+      "warning": "#c0392b"
+    },
+
+    "global_timer": {
+      "enabled": true,
+      "label": "Time Since Recognition",
+      "type": "count_up",
+      "auto_start_on_card": "CARD_01_DIAGNOSIS"
+    },
+
+    "header_reference": {
+      "type": "letter_bar",
+      "items": [
+        { "letter": "A", "label": "Airway", "color": "#3498db" },
+        { "letter": "B", "label": "Breathing", "color": "#2ecc71" },
+        { "letter": "C", "label": "Circulation", "color": "#e74c3c" },
+        { "letter": "D", "label": "Disability", "color": "#9b59b6" },
+        { "letter": "E", "label": "Exposure", "color": "#f39c12" }
+      ]
+    },
+
+    "reference_panels": {
+      "panels": [
+        {
+          "id": "panel_life_threatening",
+          "title": "Life-threatening Problems",
+          "icon": "warning",
+          "content": {
+            "type": "categorized_list",
+            "data": {
+              "Airway": ["Hoarse voice", "Stridor"],
+              "Breathing": ["↑ work of breathing", "Wheeze", "Fatigue", "Cyanosis", "SpO₂ <94%"],
+              "Circulation": ["Low blood pressure", "Signs of shock", "Confusion", "Reduced consciousness"]
+            }
+          }
+        },
+        {
+          "id": "panel_positioning",
+          "title": "Patient Positioning",
+          "icon": "info",
+          "content": {
+            "type": "icon_status",
+            "data": [
+              { "position": "Lying flat", "status": "recommended", "note": "With or without legs elevated" },
+              { "position": "Sitting", "status": "acceptable", "note": "If breathing difficulty" },
+              { "position": "Standing/walking", "status": "contraindicated", "note": "DO NOT stand patient up" },
+              { "position": "Left lateral", "status": "acceptable", "note": "If pregnant" }
+            ]
+          }
+        }
+      ]
+    },
+
+    "linked_algorithms": [
+      {
+        "id": "algo_anaphylaxis_refractory_001",
+        "title": "Refractory Anaphylaxis Algorithm",
+        "description": "If no improvement despite TWO doses of IM adrenaline"
+      }
+    ]
+  },
+
+  "deck": [
+    {
+      "id": "CARD_00_START",
+      "type": "cover",
+      "severity": "normal",
+      "content": {
+        "title": "Anaphylaxis",
+        "body": "Emergency Treatment Algorithm",
+        "sub_body": "Resuscitation Council UK Guidelines 2021"
+      },
+      "wheel_config": {
+        "phase": "start_point"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_01_RECOGNITION"
+      }
+    },
+
+    {
+      "id": "CARD_01_RECOGNITION",
+      "type": "standard",
+      "severity": "caution",
+      "content": {
+        "title": "Anaphylaxis?",
+        "body": "Suspect anaphylaxis if sudden onset of:",
+        "sub_body": "Airway AND/OR Breathing AND/OR Circulation problems, usually with skin changes"
+      },
+      "wheel_config": {
+        "phase": "assessment"
+      },
+      "checklist": [
+        {
+          "id": "info_abcde",
+          "type": "instruction",
+          "label": "Use ABCDE approach for assessment"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_02_DIAGNOSIS"
+      }
+    },
+
+    {
+      "id": "CARD_02_DIAGNOSIS",
+      "type": "standard",
+      "severity": "caution",
+      "content": {
+        "title": "Diagnosis – Look For",
+        "body": "Sudden onset symptoms"
+      },
+      "wheel_config": {
+        "phase": "assessment"
+      },
+      "checklist": [
+        {
+          "id": "chk_airway_prob",
+          "type": "checkbox",
+          "label": "Airway problems (swelling, hoarse voice, stridor)"
+        },
+        {
+          "id": "chk_breathing_prob",
+          "type": "checkbox",
+          "label": "Breathing problems (wheeze, work of breathing, cyanosis)"
+        },
+        {
+          "id": "chk_circulation_prob",
+          "type": "checkbox",
+          "label": "Circulation problems (pale, clammy, low BP, drowsy)"
+        },
+        {
+          "id": "chk_skin",
+          "type": "checkbox",
+          "label": "Skin changes (itchy rash, flushing, urticaria)"
+        },
+        {
+          "id": "info_triggers",
+          "type": "info_panel",
+          "label": "Common triggers",
+          "info_panel_config": {
+            "collapsed_label": "View triggers",
+            "content_type": "bullet_list",
+            "content": [
+              "Food (nuts, shellfish, milk, eggs)",
+              "Drugs (antibiotics, NSAIDs, anaesthetics)",
+              "Insect stings (bee, wasp)",
+              "Latex",
+              "Contrast media"
+            ]
+          }
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_03_CALL_HELP"
+      }
+    },
+
+    {
+      "id": "CARD_03_CALL_HELP",
+      "type": "standard",
+      "severity": "critical",
+      "content": {
+        "title": "Call for HELP",
+        "body": "Call resuscitation team or ambulance"
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "chk_help_called",
+          "type": "checkbox",
+          "label": "Resuscitation team / ambulance called",
+          "required": true
+        },
+        {
+          "id": "chk_location_given",
+          "type": "checkbox",
+          "label": "Location clearly communicated"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_04_POSITION"
+      }
+    },
+
+    {
+      "id": "CARD_04_POSITION",
+      "type": "standard",
+      "severity": "normal",
+      "content": {
+        "title": "Remove Trigger & Position",
+        "body": "Remove trigger if possible. Position patient appropriately."
+      },
+      "visual_aids": {
+        "items": [
+          {
+            "id": "positioning_icons",
+            "type": "icon_row",
+            "position": "below",
+            "icons": [
+              { "src": "lying_flat.svg", "label": "Lying flat", "status": "recommended" },
+              { "src": "sitting.svg", "label": "Sitting (if SOB)", "status": "acceptable" },
+              { "src": "standing.svg", "label": "Standing", "status": "contraindicated" }
+            ]
+          }
+        ]
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "chk_trigger_removed",
+          "type": "checkbox",
+          "label": "Trigger removed if possible (e.g., stop infusion)"
+        },
+        {
+          "id": "chk_position_flat",
+          "type": "checkbox",
+          "label": "Patient lying flat (with or without legs elevated)"
+        },
+        {
+          "id": "toggle_pregnant",
+          "type": "boolean_toggle",
+          "label": "Is patient pregnant?"
+        },
+        {
+          "id": "chk_left_lateral",
+          "type": "checkbox",
+          "label": "Placed on LEFT side",
+          "visible_if": "toggle_pregnant == true"
+        },
+        {
+          "id": "toggle_breathing_diff",
+          "type": "boolean_toggle",
+          "label": "Severe breathing difficulty?"
+        },
+        {
+          "id": "chk_sitting",
+          "type": "checkbox",
+          "label": "Allowed to sit (breathing easier)",
+          "visible_if": "toggle_breathing_diff == true"
+        },
+        {
+          "id": "warn_standing",
+          "type": "warning",
+          "label": "DO NOT stand patient up – may cause cardiac arrest"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_05_ADRENALINE"
+      }
+    },
+
+    {
+      "id": "CARD_05_ADRENALINE",
+      "type": "carousel_action",
+      "severity": "critical",
+      "content": {
+        "title": "Give Intramuscular (IM) Adrenaline",
+        "body": "Inject into anterolateral aspect – middle third of thigh",
+        "slides": [
+          {
+            "id": "slide_adult",
+            "context": "adult",
+            "header": "Adult & Child >12 years",
+            "text": "500 micrograms IM (0.5 mL of 1:1000)"
+          },
+          {
+            "id": "slide_6_12",
+            "context": "child_6_12",
+            "header": "Child 6-12 years",
+            "text": "300 micrograms IM (0.3 mL of 1:1000)"
+          },
+          {
+            "id": "slide_6m_6y",
+            "context": "child_6m_6y",
+            "header": "Child 6 months to 6 years",
+            "text": "150 micrograms IM (0.15 mL of 1:1000)"
+          },
+          {
+            "id": "slide_under_6m",
+            "context": "infant",
+            "header": "Child <6 months",
+            "text": "100-150 micrograms IM (0.1-0.15 mL of 1:1000)"
+          }
+        ]
+      },
+      "visual_aids": {
+        "items": [
+          {
+            "id": "injection_site",
+            "type": "inline_image",
+            "position": "left",
+            "src": "injection_thigh.png",
+            "caption": "Anterolateral thigh – middle third"
+          }
+        ]
+      },
+      "wheel_config": {
+        "phase": "intervention"
+      },
+      "toolbox": [
+        {
+          "id": "calc_age",
+          "icon": "calculator",
+          "label": "Age Calculator",
+          "action": "open_modal_age_calc"
+        },
+        {
+          "id": "table_adrenaline",
+          "icon": "syringe",
+          "label": "Adrenaline Doses",
+          "action": "open_modal_dosing",
+          "dosing_calculator": {
+            "drug_name": "Adrenaline (Epinephrine)",
+            "concentration": "1:1000 (1 mg/mL)",
+            "route": "IM",
+            "tiers": [
+              { "criteria": "Adult & child >12 years", "dose": "500 micrograms", "volume": "0.5 mL" },
+              { "criteria": "Child 6-12 years", "dose": "300 micrograms", "volume": "0.3 mL" },
+              { "criteria": "Child 6 months to 6 years", "dose": "150 micrograms", "volume": "0.15 mL" },
+              { "criteria": "Child <6 months", "dose": "100-150 micrograms", "volume": "0.1-0.15 mL" }
+            ],
+            "warnings": [
+              "These doses are for IM injection only",
+              "IV adrenaline for anaphylaxis only by experienced specialists in appropriate setting"
+            ]
+          }
+        }
+      ],
+      "checklist": [
+        {
+          "id": "chk_dose_selected",
+          "type": "radio_select",
+          "label": "Age group / dose selected",
+          "options": [
+            "Adult/child >12yr: 0.5mL",
+            "Child 6-12yr: 0.3mL", 
+            "Child 6mo-6yr: 0.15mL",
+            "Child <6mo: 0.1-0.15mL"
+          ]
+        },
+        {
+          "id": "chk_adrenaline_given",
+          "type": "checkbox",
+          "label": "IM Adrenaline given",
+          "required": true
+        },
+        {
+          "id": "input_time_given",
+          "type": "value_input",
+          "label": "Time given",
+          "value_input_config": {
+            "input_type": "time",
+            "unit": "",
+            "placeholder": "HH:MM"
+          }
+        },
+        {
+          "id": "counter_doses",
+          "type": "counter",
+          "label": "Adrenaline doses given",
+          "counter_config": {
+            "min_value": 0,
+            "max_value": 5,
+            "step": 1,
+            "unit": "doses"
+          }
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_06_AIRWAY_O2"
+      }
+    },
+
+    {
+      "id": "CARD_06_AIRWAY_O2",
+      "type": "standard",
+      "severity": "caution",
+      "content": {
+        "title": "Establish Airway & Give O₂",
+        "body": "Apply monitoring: pulse oximetry, ECG, blood pressure"
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "chk_airway",
+          "type": "checkbox",
+          "label": "Airway established"
+        },
+        {
+          "id": "chk_high_flow_o2",
+          "type": "checkbox",
+          "label": "High flow oxygen given (15L/min via reservoir mask)"
+        },
+        {
+          "id": "chk_spo2",
+          "type": "checkbox",
+          "label": "Pulse oximetry attached"
+        },
+        {
+          "id": "chk_ecg",
+          "type": "checkbox",
+          "label": "ECG monitoring"
+        },
+        {
+          "id": "chk_bp",
+          "type": "checkbox",
+          "label": "Blood pressure monitoring"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_07_RESPONSE_CHECK"
+      }
+    },
+
+    {
+      "id": "CARD_07_RESPONSE_CHECK",
+      "type": "decision",
+      "severity": "critical",
+      "content": {
+        "title": "Response?",
+        "body": "Is there improvement in symptoms?",
+        "sub_body": "Wait 5 minutes after adrenaline"
+      },
+      "wheel_config": {
+        "phase": "check",
+        "locked": true
+      },
+      "local_timer": {
+        "enabled": true,
+        "type": "countdown",
+        "duration_seconds": 300,
+        "guidance": "Reassess at 5 minutes",
+        "audio_enabled": true
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "IMPROVING",
+            "sub_label": "Continue monitoring",
+            "target_id": "CARD_END_MONITOR",
+            "severity": "success"
+          },
+          {
+            "label": "NO RESPONSE",
+            "sub_label": "After 5 minutes",
+            "target_id": "CARD_08_REPEAT_ADRENALINE",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "CARD_08_REPEAT_ADRENALINE",
+      "type": "standard",
+      "severity": "critical",
+      "content": {
+        "title": "If No Response",
+        "body": "Repeat IM adrenaline after 5 minutes",
+        "sub_body": "Consider IV fluid bolus"
+      },
+      "wheel_config": {
+        "phase": "intervention"
+      },
+      "toolbox": [
+        {
+          "id": "table_fluids",
+          "icon": "table",
+          "label": "IV Fluid Challenge",
+          "action": "open_modal_table",
+          "reference_table": {
+            "headers": ["Patient", "Volume"],
+            "rows": [
+              ["Adults", "500-1000 mL crystalloid"],
+              ["Children", "10 mL/kg crystalloid"]
+            ]
+          }
+        }
+      ],
+      "checklist": [
+        {
+          "id": "chk_repeat_adrenaline",
+          "type": "checkbox",
+          "label": "Repeat IM adrenaline given"
+        },
+        {
+          "id": "input_time_2nd_dose",
+          "type": "value_input",
+          "label": "Time of 2nd dose",
+          "value_input_config": {
+            "input_type": "time",
+            "unit": "",
+            "placeholder": "HH:MM"
+          }
+        },
+        {
+          "id": "toggle_iv_access",
+          "type": "boolean_toggle",
+          "label": "IV access available?"
+        },
+        {
+          "id": "chk_fluid_bolus",
+          "type": "checkbox",
+          "label": "IV fluid bolus given",
+          "visible_if": "toggle_iv_access == true"
+        },
+        {
+          "id": "input_fluid_volume",
+          "type": "value_input",
+          "label": "Fluid volume given",
+          "visible_if": "toggle_iv_access == true",
+          "value_input_config": {
+            "input_type": "number",
+            "unit": "mL",
+            "placeholder": "500"
+          }
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_09_SECOND_RESPONSE"
+      }
+    },
+
+    {
+      "id": "CARD_09_SECOND_RESPONSE",
+      "type": "decision",
+      "severity": "critical",
+      "content": {
+        "title": "Response After 2nd Dose?",
+        "body": "If no improvement despite TWO doses of IM adrenaline"
+      },
+      "wheel_config": {
+        "phase": "check",
+        "locked": true
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "IMPROVING",
+            "target_id": "CARD_END_MONITOR",
+            "severity": "success"
+          },
+          {
+            "label": "NO IMPROVEMENT",
+            "sub_label": "After TWO doses",
+            "target_id": "CARD_10_REFRACTORY",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "CARD_10_REFRACTORY",
+      "type": "algorithm_link",
+      "severity": "critical",
+      "content": {
+        "title": "Refractory Anaphylaxis",
+        "body": "No improvement despite TWO doses of IM adrenaline",
+        "sub_body": "Confirm resuscitation team called. Follow REFRACTORY ANAPHYLAXIS ALGORITHM."
+      },
+      "wheel_config": {
+        "phase": "complete"
+      },
+      "checklist": [
+        {
+          "id": "chk_team_confirmed",
+          "type": "checkbox",
+          "label": "Resuscitation team/ambulance confirmed en route",
+          "required": true
+        },
+        {
+          "id": "counter_adrenaline_total",
+          "type": "counter",
+          "label": "Total adrenaline doses given",
+          "counter_config": {
+            "min_value": 2,
+            "max_value": 10,
+            "step": 1,
+            "unit": "doses"
+          }
+        },
+        {
+          "id": "info_refractory",
+          "type": "instruction",
+          "label": "Consider IV adrenaline infusion (specialist only)"
+        }
+      ],
+      "transitions": {
+        "type": "algorithm_jump",
+        "target_algorithm": {
+          "id": "algo_anaphylaxis_refractory_001",
+          "entry_card": "CARD_00_START",
+          "context": "No response to 2 doses IM adrenaline"
+        }
+      },
+      "status": "handoff"
+    },
+
+    {
+      "id": "CARD_END_MONITOR",
+      "type": "terminal",
+      "severity": "normal",
+      "content": {
+        "title": "Continue Monitoring",
+        "body": "Patient responding to treatment",
+        "sub_body": "Observe for biphasic reaction (can occur up to 72 hours)"
+      },
+      "wheel_config": {
+        "phase": "complete"
+      },
+      "checklist": [
+        {
+          "id": "chk_symptoms_improving",
+          "type": "checkbox",
+          "label": "Symptoms improving"
+        },
+        {
+          "id": "chk_obs_continued",
+          "type": "checkbox",
+          "label": "Observations continued"
+        },
+        {
+          "id": "info_biphasic",
+          "type": "warning",
+          "label": "Biphasic reaction possible – observe minimum 6-12 hours"
+        },
+        {
+          "id": "chk_discharge_plan",
+          "type": "checkbox",
+          "label": "Discharge plan discussed (epipen, allergy clinic referral)"
+        }
+      ],
+      "status": "complete"
+    }
+  ]
+}

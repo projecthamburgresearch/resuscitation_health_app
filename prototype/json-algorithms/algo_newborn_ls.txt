@@ -1,0 +1,826 @@
+{
+  "algorithm_meta": {
+    "id": "algo_newborn_ls_001",
+    "title": "Newborn Life Support",
+    "subtitle": "At Birth Only",
+    "source": "Resuscitation Council UK (2021)",
+    "context": "delivery-suite",
+    "version": "1.0.0",
+    "page_ref": "Page 6 of 40",
+    
+    "color_theme": {
+      "primary": "#1a5276",
+      "decision": "#922b21",
+      "action": "#7f8c8d",
+      "terminal": "#1e8449",
+      "warning": "#c0392b"
+    },
+
+    "global_timer": {
+      "enabled": true,
+      "label": "Time Since Birth",
+      "type": "count_up",
+      "auto_start_on_card": "CARD_02_BIRTH"
+    },
+
+    "time_targets": {
+      "sequences": [
+        {
+          "id": "initial_60",
+          "label": "Initial steps (target: 60 seconds)",
+          "duration_seconds": 60,
+          "start_card": "CARD_02_BIRTH",
+          "end_card": "CARD_05_BREATHING_CHECK",
+          "alert_type": "visual"
+        }
+      ]
+    },
+
+    "sidebar_reminders": {
+      "items": [
+        {
+          "id": "remind_temp",
+          "label": "MAINTAIN TEMPERATURE",
+          "icon": "thermometer",
+          "severity": "warning",
+          "persistent": true
+        },
+        {
+          "id": "remind_help",
+          "label": "AT ALL TIMES ASK 'IS HELP NEEDED?'",
+          "icon": "help-circle",
+          "severity": "critical",
+          "persistent": true
+        }
+      ]
+    },
+
+    "conditional_modifiers": {
+      "modifiers": [
+        {
+          "id": "mod_preterm",
+          "trigger_question": "Is the baby preterm (<32 weeks)?",
+          "type": "boolean_toggle",
+          "ask_on_card": "CARD_01_BRIEFING",
+          "affects_cards": ["CARD_02_BIRTH", "CARD_04_AIRWAY", "CARD_06_INFLATIONS"]
+        }
+      ]
+    },
+
+    "reference_panels": {
+      "panels": [
+        {
+          "id": "panel_spo2",
+          "title": "Acceptable Pre-ductal SpO₂",
+          "icon": "table",
+          "content": {
+            "type": "table",
+            "data": {
+              "headers": ["Time", "SpO₂ Target"],
+              "rows": [
+                ["2 min", "65%"],
+                ["5 min", "85%"],
+                ["10 min", "90%"]
+              ]
+            }
+          }
+        },
+        {
+          "id": "panel_oxygen",
+          "title": "Inspired Oxygen Guidelines",
+          "icon": "info",
+          "content": {
+            "type": "bullet_list",
+            "data": [
+              "28-31 weeks: 21-30%",
+              "<28 weeks: 30%",
+              "Term: Start in air"
+            ]
+          }
+        }
+      ]
+    },
+
+    "linked_algorithms": []
+  },
+
+  "deck": [
+    {
+      "id": "CARD_00_START",
+      "type": "cover",
+      "severity": "normal",
+      "content": {
+        "title": "Newborn Life Support",
+        "body": "At Birth Only",
+        "sub_body": "Resuscitation Council UK Guidelines 2021"
+      },
+      "wheel_config": {
+        "phase": "start_point"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_01_BRIEFING"
+      }
+    },
+
+    {
+      "id": "CARD_01_BRIEFING",
+      "type": "standard",
+      "severity": "normal",
+      "content": {
+        "title": "Antenatal Counselling",
+        "body": "Team briefing and equipment check",
+        "sub_body": "Prepare before delivery"
+      },
+      "wheel_config": {
+        "phase": "assessment"
+      },
+      "checklist": [
+        {
+          "id": "mod_preterm",
+          "type": "boolean_toggle",
+          "label": "Is baby expected to be PRETERM (<32 weeks)?",
+          "note": "This will modify subsequent steps"
+        },
+        {
+          "id": "chk_team_briefed",
+          "type": "checkbox",
+          "label": "Team briefed on plan"
+        },
+        {
+          "id": "chk_equipment",
+          "type": "checkbox",
+          "label": "Equipment checked and ready"
+        },
+        {
+          "id": "info_equipment",
+          "type": "info_panel",
+          "label": "Equipment checklist",
+          "info_panel_config": {
+            "collapsed_label": "View equipment list",
+            "content_type": "bullet_list",
+            "content": [
+              "Resuscitaire with radiant heater",
+              "Warm towels/plastic wrap",
+              "Suction equipment",
+              "Bag-mask device",
+              "O₂ and air supply",
+              "SpO₂ monitor",
+              "Laryngoscope + ET tubes"
+            ]
+          }
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_02_BIRTH"
+      }
+    },
+
+    {
+      "id": "CARD_02_BIRTH",
+      "type": "standard",
+      "severity": "caution",
+      "content": {
+        "title": "Birth",
+        "body": "Delay cord clamping if possible",
+        "sub_body": "Start clock / note time",
+        "conditional_content": {
+          "mod_preterm": {
+            "additional_instruction": "Place undried in plastic wrap + radiant heat"
+          }
+        }
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "chk_cord_clamped",
+          "type": "checkbox",
+          "label": "Cord clamped (delayed if possible)"
+        },
+        {
+          "id": "chk_clock_started",
+          "type": "checkbox",
+          "label": "Clock started / time noted"
+        },
+        {
+          "id": "chk_plastic_wrap",
+          "type": "checkbox",
+          "label": "Placed in plastic wrap (preterm)",
+          "visible_if": "mod_preterm == true"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_03_DRY_WARM"
+      }
+    },
+
+    {
+      "id": "CARD_03_DRY_WARM",
+      "type": "standard",
+      "severity": "normal",
+      "content": {
+        "title": "Dry / Wrap / Stimulate",
+        "body": "Keep warm",
+        "sub_body": "Gentle stimulation while drying"
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "chk_dried",
+          "type": "checkbox",
+          "label": "Baby dried thoroughly"
+        },
+        {
+          "id": "chk_warm",
+          "type": "checkbox",
+          "label": "Warm towels / radiant heater"
+        },
+        {
+          "id": "chk_stimulated",
+          "type": "checkbox",
+          "label": "Gentle stimulation given"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_04_ASSESS"
+      }
+    },
+
+    {
+      "id": "CARD_04_ASSESS",
+      "type": "standard",
+      "severity": "caution",
+      "content": {
+        "title": "Assess",
+        "body": "Colour, tone, breathing, heart rate",
+        "sub_body": "Rapid initial assessment"
+      },
+      "wheel_config": {
+        "phase": "assessment"
+      },
+      "checklist": [
+        {
+          "id": "chk_colour",
+          "type": "checkbox",
+          "label": "Colour assessed"
+        },
+        {
+          "id": "chk_tone",
+          "type": "checkbox",
+          "label": "Tone assessed"
+        },
+        {
+          "id": "chk_breathing",
+          "type": "checkbox",
+          "label": "Breathing assessed"
+        },
+        {
+          "id": "chk_hr",
+          "type": "checkbox",
+          "label": "Heart rate assessed"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_05_AIRWAY"
+      }
+    },
+
+    {
+      "id": "CARD_05_AIRWAY",
+      "type": "standard",
+      "severity": "normal",
+      "content": {
+        "title": "Ensure Open Airway",
+        "body": "Neutral position, consider suction if needed",
+        "conditional_content": {
+          "mod_preterm": {
+            "additional_instruction": "Consider CPAP"
+          }
+        }
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "chk_position",
+          "type": "checkbox",
+          "label": "Head in neutral position"
+        },
+        {
+          "id": "chk_cpap",
+          "type": "checkbox",
+          "label": "CPAP considered/applied (preterm)",
+          "visible_if": "mod_preterm == true"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_06_BREATHING_CHECK"
+      }
+    },
+
+    {
+      "id": "CARD_06_BREATHING_CHECK",
+      "type": "decision",
+      "severity": "critical",
+      "content": {
+        "title": "Breathing Check",
+        "body": "Is the baby gasping or not breathing?"
+      },
+      "wheel_config": {
+        "phase": "decision",
+        "locked": true
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "BREATHING",
+            "sub_label": "Adequate respirations",
+            "target_id": "CARD_END_ROUTINE",
+            "severity": "success"
+          },
+          {
+            "label": "GASPING / NOT BREATHING",
+            "sub_label": "Needs inflation breaths",
+            "target_id": "CARD_07_INFLATIONS",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "CARD_END_ROUTINE",
+      "type": "terminal",
+      "severity": "normal",
+      "content": {
+        "title": "Routine Care",
+        "body": "Continue monitoring",
+        "sub_body": "Skin-to-skin if appropriate"
+      },
+      "wheel_config": {
+        "phase": "complete"
+      },
+      "checklist": [
+        {
+          "id": "chk_skin_to_skin",
+          "type": "checkbox",
+          "label": "Skin-to-skin with mother"
+        },
+        {
+          "id": "chk_feeding",
+          "type": "checkbox",
+          "label": "Early feeding encouraged"
+        }
+      ],
+      "status": "complete"
+    },
+
+    {
+      "id": "CARD_07_INFLATIONS",
+      "type": "standard",
+      "severity": "critical",
+      "content": {
+        "title": "5 Inflation Breaths",
+        "body": "Give 5 inflation breaths (30 cm H₂O) – start in air",
+        "sub_body": "Apply PEEP 5-6 cm H₂O if possible. Apply SpO₂ +/- ECG.",
+        "conditional_content": {
+          "mod_preterm": {
+            "additional_instruction": "Start with 25 cm H₂O. Use 21-30% O₂ (28-31 wks) or 30% (<28 wks)."
+          }
+        }
+      },
+      "wheel_config": {
+        "phase": "intervention"
+      },
+      "toolbox": [
+        {
+          "id": "table_spo2",
+          "icon": "table",
+          "label": "SpO₂ Targets",
+          "action": "open_modal_table",
+          "reference_table": {
+            "headers": ["Time", "Target SpO₂"],
+            "rows": [
+              ["2 min", "65%"],
+              ["5 min", "85%"],
+              ["10 min", "90%"]
+            ]
+          }
+        },
+        {
+          "id": "table_oxygen",
+          "icon": "info",
+          "label": "O₂ Guidelines",
+          "action": "open_modal_info"
+        }
+      ],
+      "checklist": [
+        {
+          "id": "chk_5_inflations",
+          "type": "counter",
+          "label": "Inflation breaths given",
+          "counter_config": {
+            "min_value": 0,
+            "max_value": 5,
+            "step": 1,
+            "unit": "breaths"
+          }
+        },
+        {
+          "id": "input_pressure",
+          "type": "value_input",
+          "label": "Inflation pressure used",
+          "value_input_config": {
+            "input_type": "number",
+            "unit": "cm H₂O",
+            "placeholder": "30"
+          }
+        },
+        {
+          "id": "chk_peep",
+          "type": "checkbox",
+          "label": "PEEP applied (5-6 cm H₂O)"
+        },
+        {
+          "id": "chk_spo2_on",
+          "type": "checkbox",
+          "label": "SpO₂ monitor attached"
+        },
+        {
+          "id": "chk_ecg_on",
+          "type": "checkbox",
+          "label": "ECG attached (if available)"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_08_REASSESS_1"
+      }
+    },
+
+    {
+      "id": "CARD_08_REASSESS_1",
+      "type": "decision",
+      "severity": "critical",
+      "content": {
+        "title": "Reassess",
+        "body": "If no increase in heart rate, look for chest movement"
+      },
+      "wheel_config": {
+        "phase": "check",
+        "locked": true
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "HR INCREASING",
+            "sub_label": "Chest moving",
+            "target_id": "CARD_11_VENTILATION",
+            "severity": "success"
+          },
+          {
+            "label": "CHEST NOT MOVING",
+            "sub_label": "No HR increase",
+            "target_id": "CARD_09_CHEST_NOT_MOVING",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "CARD_09_CHEST_NOT_MOVING",
+      "type": "standard",
+      "severity": "critical",
+      "content": {
+        "title": "If Chest Not Moving",
+        "body": "Check and correct technique",
+        "sub_body": "Work through checklist systematically"
+      },
+      "wheel_config": {
+        "phase": "intervention"
+      },
+      "checklist": [
+        {
+          "id": "chk_mask_seal",
+          "type": "checkbox",
+          "label": "Check mask seal"
+        },
+        {
+          "id": "chk_head_jaw",
+          "type": "checkbox",
+          "label": "Check head and jaw position"
+        },
+        {
+          "id": "chk_2_person",
+          "type": "checkbox",
+          "label": "Consider 2-person support"
+        },
+        {
+          "id": "chk_suction",
+          "type": "checkbox",
+          "label": "Consider suction"
+        },
+        {
+          "id": "chk_lma_ett",
+          "type": "checkbox",
+          "label": "Consider laryngeal mask/tracheal tube"
+        },
+        {
+          "id": "chk_repeat_inflations",
+          "type": "checkbox",
+          "label": "Repeat inflation breaths"
+        },
+        {
+          "id": "chk_increase_pressure",
+          "type": "checkbox",
+          "label": "Consider increasing inflation pressure"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_10_REASSESS_2"
+      }
+    },
+
+    {
+      "id": "CARD_10_REASSESS_2",
+      "type": "decision",
+      "severity": "critical",
+      "content": {
+        "title": "Reassess Again",
+        "body": "If no increase in heart rate, look for chest movement"
+      },
+      "wheel_config": {
+        "phase": "check",
+        "locked": true
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "CHEST NOW MOVING",
+            "target_id": "CARD_11_VENTILATION",
+            "severity": "success"
+          },
+          {
+            "label": "STILL NOT MOVING",
+            "target_id": "CARD_09_CHEST_NOT_MOVING",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "CARD_11_VENTILATION",
+      "type": "standard",
+      "severity": "caution",
+      "content": {
+        "title": "Continue Ventilation",
+        "body": "Once chest is moving, continue ventilation breaths"
+      },
+      "wheel_config": {
+        "phase": "intervention"
+      },
+      "local_timer": {
+        "enabled": true,
+        "type": "interval",
+        "interval_seconds": 30,
+        "guidance": "Reassess every 30 seconds",
+        "audio_enabled": true
+      },
+      "checklist": [
+        {
+          "id": "chk_chest_moving",
+          "type": "checkbox",
+          "label": "Confirm chest is moving with each breath"
+        },
+        {
+          "id": "info_titrate",
+          "type": "instruction",
+          "label": "Titrate oxygen to achieve target saturations"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_12_HR_CHECK"
+      }
+    },
+
+    {
+      "id": "CARD_12_HR_CHECK",
+      "type": "decision",
+      "severity": "critical",
+      "content": {
+        "title": "Heart Rate Check",
+        "body": "Is heart rate detectable and ≥60 min⁻¹?",
+        "sub_body": "After 30 seconds of ventilation"
+      },
+      "wheel_config": {
+        "phase": "check",
+        "locked": true
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "HR ≥60",
+            "sub_label": "Improving",
+            "target_id": "CARD_11_VENTILATION",
+            "severity": "success"
+          },
+          {
+            "label": "HR <60 or NOT DETECTABLE",
+            "sub_label": "Start compressions",
+            "target_id": "CARD_13_COMPRESSIONS",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "CARD_13_COMPRESSIONS",
+      "type": "loop_start",
+      "severity": "critical",
+      "content": {
+        "title": "Chest Compressions",
+        "body": "3 compressions : 1 ventilation",
+        "sub_body": "Increase oxygen to 100%. Consider intubation if not already done."
+      },
+      "wheel_config": {
+        "phase": "loop",
+        "animation": "pulse"
+      },
+      "local_timer": {
+        "enabled": true,
+        "type": "metronome",
+        "bpm": 120,
+        "guidance": "3:1 ratio",
+        "audio_enabled": true
+      },
+      "checklist": [
+        {
+          "id": "chk_o2_100",
+          "type": "checkbox",
+          "label": "Oxygen increased to 100%"
+        },
+        {
+          "id": "chk_intubation",
+          "type": "checkbox",
+          "label": "Intubation considered/performed"
+        },
+        {
+          "id": "info_ratio",
+          "type": "instruction",
+          "label": "Synchronise: 3 compressions to 1 ventilation"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_14_REASSESS_30"
+      }
+    },
+
+    {
+      "id": "CARD_14_REASSESS_30",
+      "type": "decision",
+      "severity": "critical",
+      "content": {
+        "title": "Reassess Every 30 Seconds",
+        "body": "Heart rate and chest movement"
+      },
+      "wheel_config": {
+        "phase": "check",
+        "locked": true
+      },
+      "local_timer": {
+        "enabled": true,
+        "type": "interval",
+        "interval_seconds": 30,
+        "guidance": "Reassess now",
+        "audio_enabled": true
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "HR IMPROVING",
+            "sub_label": "≥60 and increasing",
+            "target_id": "CARD_11_VENTILATION",
+            "severity": "success"
+          },
+          {
+            "label": "HR STILL <60",
+            "sub_label": "Continue / escalate",
+            "target_id": "CARD_15_VASCULAR",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "CARD_15_VASCULAR",
+      "type": "standard",
+      "severity": "critical",
+      "content": {
+        "title": "Vascular Access & Drugs",
+        "body": "If heart rate remains <60 min⁻¹",
+        "sub_body": "Consider other factors: pneumothorax, hypovolaemia, congenital abnormality"
+      },
+      "wheel_config": {
+        "phase": "intervention"
+      },
+      "toolbox": [
+        {
+          "id": "drugs_newborn",
+          "icon": "syringe",
+          "label": "Drug Doses",
+          "action": "open_modal_dosing"
+        }
+      ],
+      "checklist": [
+        {
+          "id": "chk_uvc",
+          "type": "checkbox",
+          "label": "Vascular access obtained (UVC/IO)"
+        },
+        {
+          "id": "chk_adrenaline",
+          "type": "checkbox",
+          "label": "Adrenaline given"
+        },
+        {
+          "id": "chk_volume",
+          "type": "checkbox",
+          "label": "Volume expansion considered"
+        },
+        {
+          "id": "info_reversible",
+          "type": "info_panel",
+          "label": "Consider reversible causes",
+          "info_panel_config": {
+            "collapsed_label": "View causes",
+            "content_type": "bullet_list",
+            "content": [
+              "Pneumothorax",
+              "Hypovolaemia", 
+              "Congenital abnormality",
+              "Equipment failure"
+            ]
+          }
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_14_REASSESS_30"
+      }
+    },
+
+    {
+      "id": "CARD_END_DEBRIEF",
+      "type": "terminal",
+      "severity": "normal",
+      "content": {
+        "title": "Update & Debrief",
+        "body": "Update parents and debrief team",
+        "sub_body": "Complete records"
+      },
+      "wheel_config": {
+        "phase": "complete"
+      },
+      "checklist": [
+        {
+          "id": "chk_parents",
+          "type": "checkbox",
+          "label": "Parents updated"
+        },
+        {
+          "id": "chk_debrief",
+          "type": "checkbox",
+          "label": "Team debriefed"
+        },
+        {
+          "id": "chk_records",
+          "type": "checkbox",
+          "label": "Records completed"
+        }
+      ],
+      "status": "complete"
+    }
+  ]
+}
