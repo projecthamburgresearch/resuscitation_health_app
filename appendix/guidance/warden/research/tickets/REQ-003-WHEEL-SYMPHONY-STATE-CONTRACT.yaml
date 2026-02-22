@@ -15,19 +15,21 @@ objective: |
   Required behavior from product notes:
   - Wheel review runs along the top arc (11 o'clock to 1 o'clock) for forward progression.
   - At decision points, progression pauses until the selected decision card is actively
-    confirmed by push-to-center behavior.
+    confirmed by push-to-center behavior (forward path only).
   - Reverse interaction must retrace toward the start while preserving user branch intent.
+  - Reverse navigation must NOT force decision re-confirmation when crossing a decision node.
+  - Decision-stop at YES/NO in forward flow is a deliberate clinical record of action.
   - Dev-mode remains a developer instrument lane; main app remains user-facing source of truth.
 
 profile:
-  target_component: "app/index.html (main runtime), app/algorithms/algo_paed_bls_out.json"
+  target_component: "app/index.html (main runtime), app/algorithms/*.json"
   route: "home"
   viewport: "390x844"
   theme: "LIGHT_ONLY"
   interaction_mode: "DYNAMIC_STATE_MACHINE"
 
 state_machine_scope:
-  algorithm_source: "app/algorithms/algo_paed_bls_out.json (with runtime parity check against app/index.html active model)"
+  algorithm_source: "app/algorithms/*.json (all discoverable algorithm files via app/algorithms/index.json)"
   direction: "both" # forward | backward | both
   transition_ids:
     - "CARD_03_AIRWAY -> CARD_04_BREATHING_DECISION"
@@ -52,6 +54,15 @@ state_machine_scope:
     incoming_zone: "Top zone previews upcoming branch/state options and selected decision branch."
     current_zone: "Center card is the only active decision/action state."
     previous_zone: "Bottom zone retains reachable history and supports meaningful rewind."
+  decision_semantics:
+    forward_requires_confirmation: true
+    reverse_requires_confirmation: false
+    reverse_passes_through_decision_states: true
+    decision_stop_is_record_of_act: true
+  algorithm_generalization:
+    apply_rules_to_all_algorithms: true
+    no_hardcoded_decision_labels: true
+    no_hardcoded_card_ids_for_core_wheel_rules: true
 
 telemetry_levers:
   use_scan_json: true
@@ -94,19 +105,25 @@ implementation_directives:
   - id: "D-01"
     directive: "Disable click-to-advance bypass on decision states (wheel/knob click cannot auto-advance split cards)."
   - id: "D-02"
-    directive: "Enforce decision confirmation through push-to-center interaction for selected option."
+    directive: "Enforce decision confirmation through push-to-center interaction for selected option in FORWARD flow only."
   - id: "D-03"
     directive: "Implement explicit arc-bound forward/reverse policy (11->1 progression, reversible toward start)."
   - id: "D-04"
     directive: "Preserve prior decision selection when rewinding into a decision state."
   - id: "D-05"
     directive: "Align runtime algorithm identity with `app/algorithms` source for main route captures."
+  - id: "D-06"
+    directive: "Apply wheel/decision rules by transition semantics (linear/split/self_loop), not by specific card IDs or YES/NO labels."
+  - id: "D-07"
+    directive: "Allow reverse traversal across decision nodes without decision-confirm interaction requirements."
+  - id: "D-08"
+    directive: "Persist forward decision-stop as an explicit action record in navigation/history state."
 
 acceptance_gates:
   - id: "AG-01"
     gate: "Decision cards do not advance via wheel click or knob click."
   - id: "AG-02"
-    gate: "At split states, only selected-option push-to-center confirmation triggers advance."
+    gate: "At split states in FORWARD flow, only selected-option push-to-center confirmation triggers advance."
   - id: "AG-03"
     gate: "Forward and reverse interactions follow declared wheel arc policy and are demonstrably reversible."
   - id: "AG-04"
@@ -117,3 +134,9 @@ acceptance_gates:
     gate: "Runtime model and selected algorithm source are explicit and consistent in evidence artifacts."
   - id: "AG-07"
     gate: "No regression in timer/checklist continuity for touched transitions."
+  - id: "AG-08"
+    gate: "Reverse traversal across decision nodes does not require decision confirmation and does not block rewinding."
+  - id: "AG-09"
+    gate: "Core wheel behavior gates pass on each discoverable algorithm under `app/algorithms` (no single-algorithm lock-in)."
+  - id: "AG-10"
+    gate: "Forward decision-stop is preserved as a deliberate action record and remains auditable in state/history."
