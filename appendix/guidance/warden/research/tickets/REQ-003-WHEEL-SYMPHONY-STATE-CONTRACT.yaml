@@ -1,0 +1,119 @@
+# ==============================================================================
+# Warden Research Ticket
+# ==============================================================================
+
+ticket_id: "REQ-003-WHEEL-SYMPHONY-STATE-CONTRACT"
+date: "2026-02-22"
+status: "OPEN" # OPEN | IN_PROGRESS | RESOLVED | BLOCKED
+ticket_type: "BUG" # FEATURE | BUG | VALIDATION | RESEARCH
+title: "Main-app wheel behavior does not satisfy decision-gated forward/reverse contract"
+
+objective: |
+  Restore the intended wheel UX contract in the main clinician app (`app/`) so the flow
+  behaves as a controlled state machine, not as mixed free-click navigation.
+
+  Required behavior from product notes:
+  - Wheel review runs along the top arc (11 o'clock to 1 o'clock) for forward progression.
+  - At decision points, progression pauses until the selected decision card is actively
+    confirmed by push-to-center behavior.
+  - Reverse interaction must retrace toward the start while preserving user branch intent.
+  - Dev-mode remains a developer instrument lane; main app remains user-facing source of truth.
+
+profile:
+  target_component: "app/index.html (main runtime), app/algorithms/algo_paed_bls_out.json"
+  route: "home"
+  viewport: "390x844"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "DYNAMIC_STATE_MACHINE"
+
+state_machine_scope:
+  algorithm_source: "app/algorithms/algo_paed_bls_out.json (with runtime parity check against app/index.html active model)"
+  direction: "both" # forward | backward | both
+  transition_ids:
+    - "CARD_03_AIRWAY -> CARD_04_BREATHING_DECISION"
+    - "CARD_04_BREATHING_DECISION -> CARD_END_OBSERVE (YES)"
+    - "CARD_04_BREATHING_DECISION -> CARD_05_BREATHS (NO)"
+    - "CARD_06_CHECK_LIFE_PRE_CPR (runtime alias: CARD_06_SIGNS_OF_LIFE) -> CARD_END_RECOVERY (YES)"
+    - "CARD_06_CHECK_LIFE_PRE_CPR (runtime alias: CARD_06_SIGNS_OF_LIFE) -> CARD_07_COMPRESSIONS (NO)"
+    - "CARD_09_LOOP_CHECK (runtime alias: CARD_09_REASSESS) -> CARD_07_COMPRESSIONS (NO)"
+    - "CARD_09_LOOP_CHECK (runtime alias: CARD_09_REASSESS) -> CARD_END_RECOVERY (YES)"
+    - "Reverse path validation: CARD_05_BREATHS -> CARD_04_BREATHING_DECISION -> CARD_03_AIRWAY"
+  state_ids:
+    - "CARD_00_START"
+    - "CARD_04_BREATHING_DECISION"
+    - "CARD_05_BREATHS"
+    - "CARD_06_CHECK_LIFE_PRE_CPR"
+    - "CARD_06_SIGNS_OF_LIFE"
+    - "CARD_09_LOOP_CHECK"
+    - "CARD_09_REASSESS"
+    - "CARD_END_OBSERVE"
+    - "CARD_END_RECOVERY"
+  expected_state_contract:
+    incoming_zone: "Top zone previews upcoming branch/state options and selected decision branch."
+    current_zone: "Center card is the only active decision/action state."
+    previous_zone: "Bottom zone retains reachable history and supports meaningful rewind."
+
+telemetry_levers:
+  use_scan_json: true
+  use_blueprint_outputs: true
+  use_static_screenshots_and_splits: true
+  use_dynamic_screenshots_and_splits: true
+  require_transition_before_after_pairs: true
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: true
+  allow_web_search: false
+
+rubric_levers:
+  enforce_clear_unambiguous: true
+  enforce_self_contained: true
+  enforce_falsifiable_binary: true
+  enforce_unstacked: true
+  enforce_timeless: true
+
+deliverables:
+  require_findings_by_severity: true
+  require_code_target_map: true
+  require_regression_watchlist: true
+  require_validation_rerun_summary: true
+
+request_notes:
+  notes_file: "appendix/guidance/materials/202602220047-terminal-saved-output-health-app-logs.txt"
+  operator_intent: |
+    Treat this as a symphony interaction system: main app for clinician use,
+    dev-mode for development telemetry and parity support. Ticket should convert
+    that intent into enforceable behavior gates.
+
+evidence_anchors:
+  latest_blueprint_run: "appendix/guidance/warden/blueprint_outputs/runs/20260222-012923-warden"
+  latest_scan_run: "appendix/guidance/warden/scans_outputs/runs/20260222-012935"
+  latest_design_run: "appendix/guidance/warden/design/runs/20260222-012941__bp-20260222-012923-warden__scan-20260222-012935"
+
+implementation_directives:
+  - id: "D-01"
+    directive: "Disable click-to-advance bypass on decision states (wheel/knob click cannot auto-advance split cards)."
+  - id: "D-02"
+    directive: "Enforce decision confirmation through push-to-center interaction for selected option."
+  - id: "D-03"
+    directive: "Implement explicit arc-bound forward/reverse policy (11->1 progression, reversible toward start)."
+  - id: "D-04"
+    directive: "Preserve prior decision selection when rewinding into a decision state."
+  - id: "D-05"
+    directive: "Align runtime algorithm identity with `app/algorithms` source for main route captures."
+
+acceptance_gates:
+  - id: "AG-01"
+    gate: "Decision cards do not advance via wheel click or knob click."
+  - id: "AG-02"
+    gate: "At split states, only selected-option push-to-center confirmation triggers advance."
+  - id: "AG-03"
+    gate: "Forward and reverse interactions follow declared wheel arc policy and are demonstrably reversible."
+  - id: "AG-04"
+    gate: "Incoming/current/previous contract holds in all in-scope transitions."
+  - id: "AG-05"
+    gate: "Rewind into decision states preserves previously selected branch index unless user changes it."
+  - id: "AG-06"
+    gate: "Runtime model and selected algorithm source are explicit and consistent in evidence artifacts."
+  - id: "AG-07"
+    gate: "No regression in timer/checklist continuity for touched transitions."
