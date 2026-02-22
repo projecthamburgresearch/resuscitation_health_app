@@ -861,6 +861,7 @@ function applyAlgorithm(rawAlgorithm, sourceLabel) {
     state.decisionIndex = 0;
     state.decisionRecords = {};
     state.decisionTrail = [];
+    state.decisionTapped = false;
     state.carouselIndex = 0;
     state.checklistState = {};
     state.anchors = [];
@@ -959,6 +960,7 @@ let state = {
     decisionIndex: 0,
     decisionRecords: {},
     decisionTrail: [],
+    decisionTapped: false,
     carouselIndex: 0,
     timerSeconds: 0,
     timerRunning: false,
@@ -996,7 +998,6 @@ const modalOverlay = document.getElementById('modal-overlay');
 const WHEEL_RADIUS = 150;
 const KNOB_OFFSET = 15; // Half of knob size
 const NAV_THRESHOLD_DEG = 10;        // Small intent → one step (forward/reverse)
-const DECISION_CYCLE_DEG = 25;       // Larger intent for cycling decision options
 
 function degToPosition(deg) {
     const mathDeg = deg - 90; // Convert: 0° top → 0° right
@@ -1355,7 +1356,7 @@ function renderPreviewZone(card) {
         const options = card.transitions.options;
         
         options.forEach((opt, idx) => {
-            const isSelected = idx === state.decisionIndex;
+            const isSelected = state.decisionTapped && idx === state.decisionIndex;
             
             // Create option container (holds the option card + its preview stack)
             const optContainer = document.createElement('div');
@@ -1531,8 +1532,8 @@ function endDecisionDrag(e) {
     // Reset middle zone highlight
     activeCard.style.outline = 'none';
     
-    // If dragged down enough, confirm the decision
-    if (dy > 60) {
+    // If dragged down enough and an option was tapped, confirm the decision
+    if (dy > 60 && state.decisionTapped) {
         advance({ source: 'decision-confirm', splitConfirmed: true });
     } else {
         // Snap back
@@ -1661,6 +1662,7 @@ function advance(options = {}) {
         } else {
             state.decisionIndex = 0;
         }
+        state.decisionTapped = false;
         state.carouselIndex = 0;
 
         const autoStartCard = RUNTIME_ALGORITHM
@@ -1684,8 +1686,10 @@ function rewind() {
     const prevCard = DECK[prevId];
     if (isSplitDecisionCard(prevCard)) {
         state.decisionIndex = rememberedDecisionIndexForCard(prevCard);
+        state.decisionTapped = Object.prototype.hasOwnProperty.call(state.decisionRecords, prevId);
     } else {
         state.decisionIndex = 0;
+        state.decisionTapped = false;
     }
     state.carouselIndex = 0;
 
@@ -1696,6 +1700,7 @@ function rewind() {
 function selectDecisionOption(idx) {
     const card = DECK[state.currentId];
     state.decisionIndex = normalizeDecisionIndexForCard(card, idx);
+    state.decisionTapped = true;
     render();
 }
 
@@ -1745,7 +1750,7 @@ function handleDecisionWheelDrag(card, delta, currentAngle, arc) {
         return;
     }
 
-    // Reverse gesture: rewind out of decision card
+    // Reverse gesture: rewind out of decision card (always works, no tap needed)
     if (isReverseGesture(delta, arc)) {
         knob.classList.remove('dragging');  // Enable transition -> smooth snap
         const moved = rewind();
@@ -1756,16 +1761,14 @@ function handleDecisionWheelDrag(card, delta, currentAngle, arc) {
         return;
     }
 
-    // Forward gesture (larger threshold): cycle to next decision option
-    if (isForwardGesture(delta, arc, DECISION_CYCLE_DEG)) {
-        var numOptions = card.transitions.options.length;
-        state.decisionIndex = numOptions <= 0
-            ? 0
-            : ((state.decisionIndex + 1) % numOptions);
-
-        state.wheel.dragOrigin = currentAngle; // Rebase for next cycle step
-        renderPreviewZone(card);
-        triggerHaptic(10);
+    // Forward gesture: confirm selected option and advance (only if tapped)
+    if (state.decisionTapped && isForwardGesture(delta, arc)) {
+        knob.classList.remove('dragging');  // Enable transition -> smooth snap
+        const moved = advance({ source: 'wheel-drag', splitConfirmed: true });
+        if (moved) {
+            state.wheel.navConsumed = true;
+            triggerHaptic(15);
+        }
     }
     // Knob stays locked at anchor position — no visual movement
 }
@@ -1789,10 +1792,8 @@ function onKnobDrag(e) {
     const mode = state.wheel.mode;
 
     // Allow only one navigation transition per knob drag.
+    // Knob already at new anchor — don't fight the CSS transition.
     if (state.wheel.navConsumed) {
-        if (mode !== "DECISION") {
-            setKnobPosition(currentAngle);
-        }
         return;
     }
 
@@ -1971,6 +1972,7 @@ function snapshotForAutomation() {
         timerSeconds: state.timerSeconds,
         anchors: state.anchors.map(function (a) { return { id: a.id, angle: a.angle }; }),
         anchorIndex: state.anchorIndex,
+        decisionTapped: state.decisionTapped,
         wheel: {
             mode: state.wheel.mode,
             angle: state.wheel.angle,
@@ -2004,6 +2006,7 @@ function setCurrentCardForAutomation(cardId) {
     } else {
         state.decisionIndex = 0;
     }
+    state.decisionTapped = false;
     state.carouselIndex = 0;
     state.wheel.mode = computeWheelMode(card);
     state.wheel.dragOrigin = null;
@@ -2080,6 +2083,7 @@ window.__WARDEN_AUTOMATION = {
             };
         }
         state.decisionIndex = normalizeDecisionIndexForCard(card, index);
+        state.decisionTapped = true;
         render();
         return {
             ok: true,
