@@ -21,6 +21,7 @@ objective: |
   - Decision-stop at YES/NO in forward flow is a deliberate clinical record of action.
   - Dev-mode remains a developer instrument lane; main app remains user-facing source of truth.
   - Main and dev-mode must remain in strict page parity.
+  - When main behavior is edited, equivalent dev-mode mirror edits are required in the same change cycle.
 
 profile:
   target_component: "app/index.html (main runtime), app/algorithms/*.json"
@@ -122,6 +123,8 @@ implementation_directives:
     directive: "Persist forward decision-stop as an explicit action record in navigation/history state."
   - id: "D-09"
     directive: "Keep app/dev-mode route parity strict for all touched pages (`scripts/check_dev_mode_parity.js` pass required)."
+  - id: "D-10"
+    directive: "Apply dual-surface edits for behavioral changes: update main app logic and corresponding dev-mode mirror implementation together."
 
 acceptance_gates:
   - id: "AG-01"
@@ -146,3 +149,5 @@ acceptance_gates:
     gate: "Forward decision-stop is preserved as a deliberate action record and remains auditable in state/history."
   - id: "AG-11"
     gate: "Strict dev-mode parity passes after changes (`npm run check:devmode:parity` reports PASS)."
+  - id: "AG-12"
+    gate: "Any behavior change in main has a corresponding dev-mode mirror update in the same implementation cycle."
