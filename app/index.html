@@ -871,6 +871,7 @@ function applyAlgorithm(rawAlgorithm, sourceLabel) {
     state.wheel.didNavigate = false;
     state.wheel.suppressTapUntil = 0;
     state.wheel.lastNavAt = 0;
+    state.wheel.lastNavDirection = null;
 
     if (state.currentId && DECK[state.currentId]) {
         state.wheel.mode = computeWheelMode(DECK[state.currentId]);
@@ -982,7 +983,8 @@ let state = {
         dragDistance: 0,         // Max angular movement in current drag
         didNavigate: false,      // Whether drag committed at least one transition
         suppressTapUntil: 0,     // Timestamp; suppress tap-to-advance after drag
-        lastNavAt: 0             // Timestamp; debounce repeated drag transitions
+        lastNavAt: 0,            // Timestamp; debounce repeated drag transitions
+        lastNavDirection: null   // 'forward' | 'reverse' for direction-aware debounce
     }
 };
 
@@ -1744,6 +1746,7 @@ function startKnobDrag(e) {
     state.wheel.pointerStart = startAngle;
     state.wheel.dragDistance = 0;
     state.wheel.didNavigate = false;
+    state.wheel.lastNavDirection = null;
     // Knob stays at anchor — don't change state.wheel.angle here
 }
 
@@ -1759,18 +1762,23 @@ function shouldSuppressTap() {
     return Date.now() < (state.wheel.suppressTapUntil || 0);
 }
 
-function canCommitAnotherDragNavigation() {
+function canCommitAnotherDragNavigation(direction) {
     const now = Date.now();
-    if (state.wheel.lastNavAt && (now - state.wheel.lastNavAt) < NAV_REPEAT_DEBOUNCE_MS) {
+    if (
+        state.wheel.lastNavDirection === direction
+        && state.wheel.lastNavAt
+        && (now - state.wheel.lastNavAt) < NAV_REPEAT_DEBOUNCE_MS
+    ) {
         return false;
     }
     state.wheel.lastNavAt = now;
+    state.wheel.lastNavDirection = direction;
     return true;
 }
 
 function commitForwardFromDrag(currentAngle) {
     knob.classList.remove('dragging'); // Re-enable easing to anchor
-    const canCommit = canCommitAnotherDragNavigation();
+    const canCommit = canCommitAnotherDragNavigation('forward');
     state.wheel.dragOrigin = currentAngle; // Rebase regardless to require fresh intent
     if (!canCommit) return false;
 
@@ -1785,7 +1793,7 @@ function commitForwardFromDrag(currentAngle) {
 
 function commitReverseFromDrag(currentAngle) {
     knob.classList.remove('dragging'); // Re-enable easing to anchor
-    const canCommit = canCommitAnotherDragNavigation();
+    const canCommit = canCommitAnotherDragNavigation('reverse');
     state.wheel.dragOrigin = currentAngle; // Rebase regardless to require fresh intent
     if (!canCommit) return false;
 
@@ -2058,6 +2066,7 @@ function setCurrentCardForAutomation(cardId) {
     state.wheel.didNavigate = false;
     state.wheel.suppressTapUntil = 0;
     state.wheel.lastNavAt = 0;
+    state.wheel.lastNavDirection = null;
     resetTimerState();
     render();
     // render() calls syncAnchors() which sets wheel.angle to anchor position
