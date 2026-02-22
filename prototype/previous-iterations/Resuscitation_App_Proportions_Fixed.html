@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Resuscitation App - Corrected Proportions</title>
+    <style>
+        /* =================================================================
+           PARAMETRIC ENGINE - Code-only, no user UI
+           ================================================================= */
+        :root {
+            --app-width: 390px;
+            --app-height: 844px;
+            
+            /* Section Heights */
+            --header-h: 50px;
+            --footer-h: 100px;
+            
+            /* Wheel Geometry */
+            --wheel-diameter: 300px;
+            --wheel-radius: 150px;
+            
+            /* Card Sizes - INSCRIBED in wheel */
+            --active-card-width: 220px;
+            --active-card-height: 280px;
+            --preview-card-width: 140px;
+            --preview-card-height: 100px;
+            --history-card-width: 120px;
+            --history-card-height: 80px;
+            
+            /* Colors */
+            --primary: #1a1a1a;
+            --bg: #f5f5f5;
+            --card-bg: #e8e8e8;
+            --card-border: #1a1a1a;
+            --text-muted: #666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #222;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* =================================================================
+           APP FRAME
+           ================================================================= */
+        #app {
+            width: var(--app-width);
+            height: var(--app-height);
+            background: var(--bg);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+        }
+
+        /* =================================================================
+           HEADER
+           ================================================================= */
+        header {
+            height: var(--header-h);
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--primary);
+            background: white;
+            flex-shrink: 0;
+        }
+
+        .title { font-weight: 700; font-size: 14px; }
+        
+        .header-icons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .icon {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        /* =================================================================
+           MAIN STAGE - Three Zones
+           ================================================================= */
+        #stage {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* TOP ZONE - Preview Stack */
+        #zone-top {
+            height: 180px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 10px;
+        }
+
+        /* MIDDLE ZONE - Wheel + Active Card */
+        #zone-middle {
+            height: var(--wheel-diameter);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* BOTTOM ZONE - History Stack */
+        #zone-bottom {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 10px;
+        }
+
+        /* =================================================================
+           THE WHEEL
+           ================================================================= */
+        #wheel {
+            width: var(--wheel-diameter);
+            height: var(--wheel-diameter);
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* The Knob/Actuator */
+        #knob {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            cursor: grab;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        #knob:active { cursor: grabbing; }
+
+        /* =================================================================
+           CARDS
+           ================================================================= */
+        .card {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 8px;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Active Card - CENTERED in wheel */
+        .card-active {
+            width: var(--active-card-width);
+            height: var(--active-card-height);
+            z-index: 50;
+        }
+
+        /* Preview Cards */
+        .card-preview {
+            width: var(--preview-card-width);
+            height: var(--preview-card-height);
+        }
+
+        /* History Cards */
+        .card-history {
+            width: var(--history-card-width);
+            height: var(--history-card-height);
+            opacity: 0.6;
+        }
+
+        /* Cover State - NO border, just text */
+        .cover-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Card Content */
+        .card-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Card Icons */
+        .icon-tr {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 16px;
+            height: 16px;
+        }
+
+        .icon-bl {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Pagination Dots */
+        .card-dots {
+            position: absolute;
+            bottom: 10px;
+            display: flex;
+            gap: 6px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+        }
+        .dot.active { background: var(--primary); }
+
+        /* Decision Icon on Preview Cards */
+        .decision-icon {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 14px;
+            height: 14px;
+        }
+
+        /* =================================================================
+           PREVIEW STACK STYLING
+           ================================================================= */
+        #preview-stack {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        #preview-stack .card-preview {
+            position: absolute;
+            bottom: 0;
+        }
+
+        /* Decision Carousel - Horizontal Spread */
+        #preview-stack.carousel-mode {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        #preview-stack.carousel-mode .card-preview {
+            position: relative;
+        }
+
+        /* =================================================================
+           HISTORY STACK STYLING
+           ================================================================= */
+        #history-stack {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        #history-stack .card-history {
+            position: absolute;
+            top: 0;
+        }
+
+        /* =================================================================
+           FOOTER
+           ================================================================= */
+        footer {
+            height: var(--footer-h);
+            padding: 10px 16px;
+            border-top: 2px solid var(--primary);
+            background: white;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .footer-label {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .footer-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .checkbox-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--primary);
+            padding: 8px;
+        }
+
+        .checkbox-area input {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+        }
+
+        .overflow-dots {
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 0 8px;
+        }
+
+        .timer {
+            font-family: monospace;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border: 1px solid var(--primary);
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!-- HEADER -->
+    <header>
+        <div class="title">Resuscitation Handbook</div>
+        <div class="header-icons">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="5" r="2"/>
+                <circle cx="12" cy="12" r="2"/>
+                <circle cx="12" cy="19" r="2"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- STAGE -->
+    <div id="stage">
+        <!-- TOP: Preview Stack -->
+        <div id="zone-top">
+            <div id="preview-stack"></div>
+        </div>
+
+        <!-- MIDDLE: Wheel + Active Card -->
+        <div id="zone-middle">
+            <div id="wheel"></div>
+            <div id="knob"></div>
+            <div id="active-card-slot"></div>
+        </div>
+
+        <!-- BOTTOM: History Stack -->
+        <div id="zone-bottom">
+            <div id="history-stack"></div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-label">Check List</div>
+        <div class="footer-row">
+            <div class="checkbox-area" id="checklist-area">
+                <!-- Dynamic -->
+            </div>
+            <div class="overflow-dots">⋮</div>
+            <div class="timer" id="timer">00:00:00</div>
+        </div>
+    </footer>
+</div>
+
+<!-- SVG Icons -->
+<svg style="display:none">
+    <symbol id="icon-fullscreen" viewBox="0 0 24 24">
+        <path d="M4 4h4v2H6v2H4V4zm16 0h-4v2h2v2h2V4zM4 20h4v-2H6v-2H4v4zm16 0h-4v-2h2v-2h2v4z" 
+              fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="icon-toolbox" viewBox="0 0 24 24">
+        <rect x="4" y="8" width="16" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M8 8V6a2 2 0 012-2h4a2 2 0 012 2v2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 12v4M10 14h4" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="icon-decision" viewBox="0 0 24 24">
+        <path d="M12 4v6M12 10l-4 4M12 10l4 4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="6" y="14" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1"/>
+        <rect x="14" y="14" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1"/>
+    </symbol>
+</svg>
+
+<script>
+/* =================================================================
+   DATA MODEL
+   ================================================================= */
+const DECK = {
+    "START": {
+        id: "START",
+        type: "cover",
+        title: "Paediatric Basic Life Support",
+        next: "C01",
+        checklist: []
+    },
+    "C01": {
+        id: "C01",
+        type: "standard",
+        title: "Assessment",
+        subtitle: "Is the child unresponsive?",
+        checklist: ["Check danger", "Check response"],
+        next: "C02"
+    },
+    "C02": {
+        id: "C02",
+        type: "standard",
+        title: "Call for Help",
+        subtitle: "Shout loudly",
+        checklist: ["2nd rescuer?", "Call 999"],
+        next: "C03"
+    },
+    "C03": {
+        id: "C03",
+        type: "standard",
+        title: "Airway",
+        subtitle: "Head tilt, chin lift",
+        checklist: ["Mouth clear?"],
+        next: "C04"
+    },
+    "C04": {
+        id: "C04",
+        type: "decision",
+        title: "Breathing Check",
+        subtitle: "Breathing normally?",
+        checklist: ["Look, listen, feel"],
+        options: [
+            { label: "NO", next: "C05_NO" },
+            { label: "YES", next: "C05_YES" }
+        ]
+    },
+    "C05_NO": {
+        id: "C05_NO",
+        type: "standard",
+        title: "5 Rescue Breaths",
+        subtitle: "Give breaths now",
+        checklist: ["Chest rise?"],
+        next: "C06"
+    },
+    "C05_YES": {
+        id: "C05_YES",
+        type: "terminal",
+        title: "Recovery Position",
+        subtitle: "Monitor breathing",
+        checklist: ["Position stable?"],
+        next: null
+    },
+    "C06": {
+        id: "C06",
+        type: "standard",
+        title: "CPR",
+        subtitle: "30:2 ratio",
+        checklist: ["Rate 100-120/min"],
+        next: "C06"
+    }
+};
+
+/* =================================================================
+   STATE
+   ================================================================= */
+let state = {
+    currentId: "START",
+    history: [],
+    wheelAngle: 330,  // 11 o'clock start
+    decisionIndex: 0,
+    timerSeconds: 0,
+    timerRunning: false
+};
+
+/* =================================================================
+   DOM REFERENCES
+   ================================================================= */
+const previewStack = document.getElementById('preview-stack');
+const activeSlot = document.getElementById('active-card-slot');
+const historyStack = document.getElementById('history-stack');
+const knob = document.getElementById('knob');
+const wheel = document.getElementById('wheel');
+const checklistArea = document.getElementById('checklist-area');
+const timerEl = document.getElementById('timer');
+
+/* =================================================================
+   WHEEL GEOMETRY
+   ================================================================= */
+const WHEEL_RADIUS = 150;
+const KNOB_OFFSET = 14; // Half of knob size
+
+function setKnobPosition(deg) {
+    // Convert design degrees (0° = 12 o'clock) to math
+    const mathDeg = deg - 90;
+    const rad = mathDeg * (Math.PI / 180);
+    
+    const wheelRect = wheel.getBoundingClientRect();
+    const stageMidRect = document.getElementById('zone-middle').getBoundingClientRect();
+    
+    // Calculate center of wheel relative to zone-middle
+    const centerX = wheelRect.left - stageMidRect.left + WHEEL_RADIUS;
+    const centerY = wheelRect.top - stageMidRect.top + WHEEL_RADIUS;
+    
+    const x = centerX + WHEEL_RADIUS * Math.cos(rad) - KNOB_OFFSET;
+    const y = centerY + WHEEL_RADIUS * Math.sin(rad) - KNOB_OFFSET;
+    
+    knob.style.left = x + 'px';
+    knob.style.top = y + 'px';
+}
+
+/* =================================================================
+   RENDERING
+   ================================================================= */
+function render() {
+    const card = DECK[state.currentId];
+    
+    // === ACTIVE CARD (Middle) ===
+    activeSlot.innerHTML = '';
+    
+    if (card.type === 'cover') {
+        // Cover = just text, no card border
+        activeSlot.innerHTML = `<div class="cover-text">${card.title}</div>`;
+    } else {
+        // Standard card with border
+        const el = document.createElement('div');
+        el.className = 'card card-active';
+        el.innerHTML = `
+            <svg class="icon-tr"><use href="#icon-fullscreen"/></svg>
+            <svg class="icon-bl"><use href="#icon-toolbox"/></svg>
+            <div class="card-label">${card.title}</div>
+            <div class="card-title">${card.subtitle || ''}</div>
+            <div class="card-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        `;
+        activeSlot.appendChild(el);
+    }
+
+    // === PREVIEW STACK (Top) ===
+    previewStack.innerHTML = '';
+    previewStack.classList.remove('carousel-mode');
+    
+    if (card.type === 'decision') {
+        // DECISION CAROUSEL - Horizontal spread
+        previewStack.classList.add('carousel-mode');
+        card.options.forEach((opt, idx) => {
+            const el = document.createElement('div');
+            el.className = 'card card-preview';
+            el.innerHTML = `<div class="card-title">${opt.label}</div>`;
+            el.style.opacity = idx === state.decisionIndex ? '1' : '0.5';
+            el.style.transform = idx === state.decisionIndex ? 'scale(1.05)' : 'scale(0.9)';
+            el.onclick = () => { state.decisionIndex = idx; render(); };
+            previewStack.appendChild(el);
+        });
+    } else if (card.next) {
+        // Standard vertical stack
+        const upcoming = getUpcomingCards(card.next, 3);
+        upcoming.reverse().forEach((c, idx) => {
+            const depth = upcoming.length - 1 - idx;
+            const el = document.createElement('div');
+            el.className = 'card card-preview';
+            el.innerHTML = `
+                ${c.type === 'decision' ? '<svg class="decision-icon"><use href="#icon-decision"/></svg>' : ''}
+                <div class="card-label">${c.title}</div>
+            `;
+            el.style.transform = `translateY(${depth * -15}px) scale(${1 - depth * 0.08})`;
+            el.style.zIndex = 10 - depth;
+            previewStack.appendChild(el);
+        });
+    }
+
+    // === HISTORY STACK (Bottom) ===
+    historyStack.innerHTML = '';
+    const historyToShow = state.history.slice(-3);
+    historyToShow.forEach((id, idx) => {
+        const c = DECK[id];
+        const depth = historyToShow.length - 1 - idx;
+        const el = document.createElement('div');
+        el.className = 'card card-history';
+        el.innerHTML = `
+            ${c.type === 'decision' ? '<svg class="decision-icon"><use href="#icon-decision"/></svg>' : ''}
+            <div class="card-label">${c.title}</div>
+        `;
+        el.style.transform = `translateY(${depth * 15}px) scale(${1 - depth * 0.1})`;
+        el.style.zIndex = 10 - depth;
+        historyStack.appendChild(el);
+    });
+
+    // === CHECKLIST ===
+    checklistArea.innerHTML = '';
+    if (card.checklist && card.checklist.length > 0) {
+        card.checklist.forEach(item => {
+            const label = document.createElement('label');
+            label.style.display = 'flex';
+            label.style.alignItems = 'center';
+            label.style.marginRight = '10px';
+            label.innerHTML = `<input type="checkbox" style="margin-right:6px"> ${item}`;
+            checklistArea.appendChild(label);
+        });
+    }
+
+    // === KNOB ===
+    setKnobPosition(state.wheelAngle);
+}
+
+function getUpcomingCards(startId, count) {
+    const result = [];
+    let id = startId;
+    for (let i = 0; i < count && id; i++) {
+        const c = DECK[id];
+        if (!c) break;
+        result.push(c);
+        id = c.next || (c.options ? c.options[0].next : null);
+    }
+    return result;
+}
+
+/* =================================================================
+   WHEEL INTERACTION
+   ================================================================= */
+let isDragging = false;
+
+knob.addEventListener('mousedown', (e) => { isDragging = true; e.preventDefault(); });
+knob.addEventListener('touchstart', (e) => { isDragging = true; e.preventDefault(); }, {passive: false});
+
+document.addEventListener('mousemove', handleDrag);
+document.addEventListener('touchmove', handleDrag, {passive: false});
+
+document.addEventListener('mouseup', () => { isDragging = false; snapKnob(); });
+document.addEventListener('touchend', () => { isDragging = false; snapKnob(); });
+
+function handleDrag(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
+    const rect = wheel.getBoundingClientRect();
+    const centerX = rect.left + WHEEL_RADIUS;
+    const centerY = rect.top + WHEEL_RADIUS;
+    
+    // Calculate angle (math: 0° = right)
+    let mathDeg = Math.atan2(clientY - centerY, clientX - centerX) * (180 / Math.PI);
+    // Convert to design (0° = top)
+    let designDeg = mathDeg + 90;
+    if (designDeg < 0) designDeg += 360;
+    
+    // Calculate delta for transitions
+    let delta = state.wheelAngle - designDeg;
+    if (delta < -180) delta += 360;
+    if (delta > 180) delta -= 360;
+    
+    const card = DECK[state.currentId];
+    
+    if (card.type === 'decision') {
+        // Toggle decision index based on rotation
+        if (Math.abs(delta) > 25) {
+            state.decisionIndex = delta > 0 ? 0 : 1;
+            state.wheelAngle = designDeg;
+            render();
+        }
+    } else {
+        // Standard navigation
+        if (delta > 25) {
+            triggerNext();
+            state.wheelAngle = designDeg;
+        } else if (delta < -25) {
+            triggerBack();
+            state.wheelAngle = designDeg;
+        } else {
+            setKnobPosition(designDeg);
+        }
+    }
+}
+
+function snapKnob() {
+    const targetAngle = state.currentId === 'START' ? 330 : 270;
+    state.wheelAngle = targetAngle;
+    setKnobPosition(targetAngle);
+}
+
+/* =================================================================
+   NAVIGATION
+   ================================================================= */
+function triggerNext() {
+    const card = DECK[state.currentId];
+    let nextId;
+    
+    if (card.type === 'decision') {
+        nextId = card.options[state.decisionIndex].next;
+        state.decisionIndex = 0;
+    } else {
+        nextId = card.next;
+    }
+    
+    if (!nextId || !DECK[nextId]) return;
+    
+    state.history.push(state.currentId);
+    state.currentId = nextId;
+    
+    if (!state.timerRunning) startTimer();
+    
+    render();
+}
+
+function triggerBack() {
+    if (state.history.length === 0) return;
+    state.currentId = state.history.pop();
+    render();
+}
+
+/* =================================================================
+   TIMER
+   ================================================================= */
+function startTimer() {
+    state.timerRunning = true;
+    setInterval(() => {
+        state.timerSeconds++;
+        const h = String(Math.floor(state.timerSeconds / 3600)).padStart(2, '0');
+        const m = String(Math.floor((state.timerSeconds % 3600) / 60)).padStart(2, '0');
+        const s = String(state.timerSeconds % 60).padStart(2, '0');
+        timerEl.textContent = `${h}:${m}:${s}`;
+    }, 1000);
+}
+
+/* =================================================================
+   INIT
+   ================================================================= */
+render();
+</script>
+</body>
+</html>

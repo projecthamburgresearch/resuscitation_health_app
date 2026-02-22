@@ -1,0 +1,375 @@
+{
+  "schema_version": "1.1",
+  "created_at": "2026-02-22",
+  "source": {
+    "directory": "prototype/schema",
+    "image_pattern": "habsberry-health-resus-app_Page_XX.png",
+    "images": [
+      "habsberry-health-resus-app_Page_01.png",
+      "habsberry-health-resus-app_Page_02.png",
+      "habsberry-health-resus-app_Page_03.png",
+      "habsberry-health-resus-app_Page_04.png",
+      "habsberry-health-resus-app_Page_05.png",
+      "habsberry-health-resus-app_Page_06.png",
+      "habsberry-health-resus-app_Page_07.png",
+      "habsberry-health-resus-app_Page_08.png",
+      "habsberry-health-resus-app_Page_09.png",
+      "habsberry-health-resus-app_Page_10.png"
+    ]
+  },
+  "interpretation_notes": {
+    "intent": "Capture the UI state progression shown in the wireframe image sequence.",
+    "count_policy": "Card counts are visual estimates from grayscale wireframes; use as behavioral targets, not pixel-perfect specs.",
+    "flow_rule": "Single-page state machine: top feed -> center panel (inside wheel) -> bottom feed."
+  },
+  "persistent_shell": {
+    "header": {
+      "title": "Resuscitation Handbook",
+      "controls": [
+        "search button",
+        "vertical three-dot menu"
+      ]
+    },
+    "footer": {
+      "left": "Check List strip with checkbox + overflow menu",
+      "right": "Timer display (00:00:00)"
+    },
+    "core_elements": [
+      "large wheel (circle)",
+      "wheel knob marker (black dot on circle edge)",
+      "center content area (text or card panel)",
+      "top card feed",
+      "bottom card feed"
+    ]
+  },
+  "state_story": {
+    "arc": [
+      "S01 starts in chapter-title mode (no center panel card).",
+      "S02-S03 switch to center panel mode and establish initial feed behavior.",
+      "S04-S07 increase feed complexity and introduce lock markers.",
+      "S08-S09 simplify top feed while preserving center-to-bottom flow.",
+      "S10 restores chapter title above the wheel while center panel remains active."
+    ],
+    "states": [
+      {
+        "state_id": "S01",
+        "image": "habsberry-health-resus-app_Page_01.png",
+        "phase": "title baseline",
+        "wheel": {
+          "knob_clock_position": "10:30",
+          "center_mode": "title_text"
+        },
+        "center_panel": {
+          "visible": false,
+          "title_text_in_wheel": "Paediatric Basic Life Support",
+          "expand_icon": false,
+          "tool_icon": false,
+          "pagination_dots": 0
+        },
+        "top_feed": {
+          "stack_cards_estimate": 3,
+          "detached_cards_estimate": 0,
+          "lock_markers": "none_visible"
+        },
+        "bottom_feed": {
+          "stack_cards_estimate": 0,
+          "lock_markers": "none_visible"
+        },
+        "transition_hint": "Activate the center panel card from the top feed."
+      },
+      {
+        "state_id": "S02",
+        "image": "habsberry-health-resus-app_Page_02.png",
+        "phase": "center card + first output",
+        "wheel": {
+          "knob_clock_position": "9:00",
+          "center_mode": "content_panel"
+        },
+        "center_panel": {
+          "visible": true,
+          "title_text_in_wheel": null,
+          "expand_icon": true,
+          "tool_icon": true,
+          "pagination_dots": 3
+        },
+        "top_feed": {
+          "stack_cards_estimate": 3,
+          "detached_cards_estimate": 0,
+          "lock_markers": "none_visible"
+        },
+        "bottom_feed": {
+          "stack_cards_estimate": 1,
+          "lock_markers": "none_visible"
+        },
+        "transition_hint": "Center panel remains active while bottom output appears."
+      },
+      {
+        "state_id": "S03",
+        "image": "habsberry-health-resus-app_Page_03.png",
+        "phase": "center card steady",
+        "wheel": {
+          "knob_clock_position": "9:30",
+          "center_mode": "content_panel"
+        },
+        "center_panel": {
+          "visible": true,
+          "title_text_in_wheel": null,
+          "expand_icon": true,
+          "tool_icon": true,
+          "pagination_dots": 0
+        },
+        "top_feed": {
+          "stack_cards_estimate": 3,
+          "detached_cards_estimate": 0,
+          "lock_markers": "none_visible"
+        },
+        "bottom_feed": {
+          "stack_cards_estimate": 0,
+          "lock_markers": "none_visible"
+        },
+        "transition_hint": "Advance toward lock-aware feed states."
+      },
+      {
+        "state_id": "S04",
+        "image": "habsberry-health-resus-app_Page_04.png",
+        "phase": "lock signal appears",
+        "wheel": {
+          "knob_clock_position": "8:30",
+          "center_mode": "content_panel"
+        },
+        "center_panel": {
+          "visible": true,
+          "title_text_in_wheel": null,
+          "expand_icon": true,
+          "tool_icon": true,
+          "pagination_dots": 0
+        },
+        "top_feed": {
+          "stack_cards_estimate": 3,
+          "detached_cards_estimate": 0,
+          "lock_markers": "some_visible"
+        },
+        "bottom_feed": {
+          "stack_cards_estimate": 2,
+          "lock_markers": "none_visible"
+        },
+        "transition_hint": "Grow both feeds and start mixed locked/unlocked inventory."
+      },
+      {
+        "state_id": "S05",
+        "image": "habsberry-health-resus-app_Page_05.png",
+        "phase": "expanded inventory",
+        "wheel": {
+          "knob_clock_position": "8:00",
+          "center_mode": "content_panel"
+        },
+        "center_panel": {
+          "visible": true,
+          "title_text_in_wheel": null,
+          "expand_icon": true,
+          "tool_icon": true,
+          "pagination_dots": 3
+        },
+        "top_feed": {
+          "stack_cards_estimate": 3,
+          "detached_cards_estimate": 1,
+          "lock_markers": "some_visible"
+        },
+        "bottom_feed": {
+          "stack_cards_estimate": 3,
+          "lock_markers": "none_visible"
+        },
+        "transition_hint": "Fan out the top feed to maximum breadth."
+      },
+      {
+        "state_id": "S06",
+        "image": "habsberry-health-resus-app_Page_06.png",
+        "phase": "top fan-out maximum",
+        "wheel": {
+          "knob_clock_position": "7:00",
+          "center_mode": "content_panel"
+        },
+        "center_panel": {
+          "visible": true,
+          "title_text_in_wheel": null,
+          "expand_icon": true,
+          "tool_icon": true,
+          "pagination_dots": 0
+        },
+        "top_feed": {
+          "stack_cards_estimate": 3,
+          "detached_cards_estimate": 4,
+          "lock_markers": "some_visible"
+        },
+        "bottom_feed": {
+          "stack_cards_estimate": 3,
+          "lock_markers": "some_visible"
+        },
+        "transition_hint": "Contract top fan-out while keeping bottom stack active."
+      },
+      {
+        "state_id": "S07",
+        "image": "habsberry-health-resus-app_Page_07.png",
+        "phase": "rebalanced complexity",
+        "wheel": {
+          "knob_clock_position": "5:30",
+          "center_mode": "content_panel"
+        },
+        "center_panel": {
+          "visible": true,
+          "title_text_in_wheel": null,
+          "expand_icon": true,
+          "tool_icon": true,
+          "pagination_dots": 0
+        },
+        "top_feed": {
+          "stack_cards_estimate": 3,
+          "detached_cards_estimate": 2,
+          "lock_markers": "some_visible"
+        },
+        "bottom_feed": {
+          "stack_cards_estimate": 3,
+          "lock_markers": "some_visible"
+        },
+        "transition_hint": "Continue simplifying top inventory."
+      },
+      {
+        "state_id": "S08",
+        "image": "habsberry-health-resus-app_Page_08.png",
+        "phase": "top compression",
+        "wheel": {
+          "knob_clock_position": "4:00",
+          "center_mode": "content_panel"
+        },
+        "center_panel": {
+          "visible": true,
+          "title_text_in_wheel": null,
+          "expand_icon": true,
+          "tool_icon": true,
+          "pagination_dots": 0
+        },
+        "top_feed": {
+          "stack_cards_estimate": 2,
+          "detached_cards_estimate": 0,
+          "lock_markers": "none_visible"
+        },
+        "bottom_feed": {
+          "stack_cards_estimate": 3,
+          "lock_markers": "some_visible"
+        },
+        "transition_hint": "Reduce to a single top card while preserving bottom stack."
+      },
+      {
+        "state_id": "S09",
+        "image": "habsberry-health-resus-app_Page_09.png",
+        "phase": "single-top with center paging",
+        "wheel": {
+          "knob_clock_position": "3:00",
+          "center_mode": "content_panel"
+        },
+        "center_panel": {
+          "visible": true,
+          "title_text_in_wheel": null,
+          "expand_icon": true,
+          "tool_icon": true,
+          "pagination_dots": 3
+        },
+        "top_feed": {
+          "stack_cards_estimate": 1,
+          "detached_cards_estimate": 0,
+          "lock_markers": "none_visible"
+        },
+        "bottom_feed": {
+          "stack_cards_estimate": 3,
+          "lock_markers": "some_visible"
+        },
+        "transition_hint": "Replace top feed with chapter heading text."
+      },
+      {
+        "state_id": "S10",
+        "image": "habsberry-health-resus-app_Page_10.png",
+        "phase": "chapter heading restored",
+        "wheel": {
+          "knob_clock_position": "2:00",
+          "center_mode": "content_panel"
+        },
+        "center_panel": {
+          "visible": true,
+          "title_text_in_wheel": null,
+          "title_text_above_wheel": "Paediatric Basic Life Support",
+          "expand_icon": true,
+          "tool_icon": true,
+          "pagination_dots": 0
+        },
+        "top_feed": {
+          "stack_cards_estimate": 0,
+          "detached_cards_estimate": 0,
+          "lock_markers": "none_visible"
+        },
+        "bottom_feed": {
+          "stack_cards_estimate": 3,
+          "lock_markers": "some_visible"
+        },
+        "transition_hint": "Potential loop point back to a new chapter or reset state."
+      }
+    ],
+    "transitions": [
+      {
+        "from": "S01",
+        "to": "S02",
+        "trigger_guess": "select top stack item or auto-advance"
+      },
+      {
+        "from": "S02",
+        "to": "S03",
+        "trigger_guess": "center panel state change"
+      },
+      {
+        "from": "S03",
+        "to": "S04",
+        "trigger_guess": "knob rotation + inventory update"
+      },
+      {
+        "from": "S04",
+        "to": "S05",
+        "trigger_guess": "additional top inventory revealed"
+      },
+      {
+        "from": "S05",
+        "to": "S06",
+        "trigger_guess": "top feed fan-out expansion"
+      },
+      {
+        "from": "S06",
+        "to": "S07",
+        "trigger_guess": "top feed contraction step 1"
+      },
+      {
+        "from": "S07",
+        "to": "S08",
+        "trigger_guess": "top feed contraction step 2"
+      },
+      {
+        "from": "S08",
+        "to": "S09",
+        "trigger_guess": "single top card focus"
+      },
+      {
+        "from": "S09",
+        "to": "S10",
+        "trigger_guess": "chapter title moves above wheel"
+      }
+    ]
+  },
+  "implementation_targets": {
+    "must_support": [
+      "Single-page state machine with 10 observable visual states",
+      "Wheel knob motion driving state transitions",
+      "Top and bottom card feed counts changing by state",
+      "Optional lock markers on feed cards",
+      "Center panel variants (with/without dots, with expand/tool affordances)",
+      "Chapter title placement variants (inside wheel in S01, above wheel in S10)"
+    ],
+    "dev_mode_use": "Use these state snapshots as scan/parity fixtures for visual and behavioral parity checks."
+  }
+}

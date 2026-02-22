@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Resuscitation Handbook</title>
+    <style>
+        :root {
+            /* Geometry */
+            --wheel-diameter: 300px;
+            --wheel-radius: 150px;
+            --card-width: 180px;
+            --card-height: 210px;
+            --preview-width: 130px;
+            --preview-height: 95px;
+            --history-width: 120px;
+            --history-height: 85px;
+            --knob-size: 30px;
+            
+            /* Layout */
+            --header-h: 50px;
+            --footer-h: 100px;
+            
+            /* Colors */
+            --primary: #1a1a1a;
+            --bg: #f5f5f5;
+            --card-bg: #d0d0d0;
+            --accent-red: #d32f2f;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #222;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #app {
+            width: 390px;
+            height: 844px;
+            background: var(--bg);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid var(--primary);
+            overflow: hidden;
+        }
+
+        /* === HEADER === */
+        header {
+            height: var(--header-h);
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--primary);
+            background: white;
+            flex-shrink: 0;
+        }
+        .app-title { font-weight: 700; font-size: 14px; }
+        .header-icons { display: flex; gap: 10px; align-items: center; }
+        .header-icon { width: 22px; height: 22px; cursor: pointer; }
+
+        /* === STAGE (Main Area) === */
+        #stage {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* === ZONE: TOP (Preview Stack) === */
+        #zone-top {
+            height: 170px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 8px;
+        }
+
+        /* === ZONE: MIDDLE (Wheel + Active Card) === */
+        #zone-middle {
+            height: calc(var(--wheel-diameter) + 20px);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* The Wheel Circle */
+        #wheel {
+            width: var(--wheel-diameter);
+            height: var(--wheel-diameter);
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        /* Active Card - INSIDE the wheel */
+        #active-card {
+            width: var(--card-width);
+            height: var(--card-height);
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        #active-card.cover-mode {
+            background: transparent;
+            border: none;
+        }
+
+        #active-card.loop-mode {
+            animation: pulse-red 1.5s infinite;
+        }
+
+        @keyframes pulse-red {
+            0%, 100% { box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+            50% { box-shadow: 0 8px 35px rgba(211, 47, 47, 0.4); border-color: var(--accent-red); }
+        }
+
+        /* The Knob */
+        #knob {
+            width: var(--knob-size);
+            height: var(--knob-size);
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            z-index: 100;
+            cursor: grab;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
+        #knob:active { cursor: grabbing; }
+
+        /* === ZONE: BOTTOM (History Stack) === */
+        #zone-bottom {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 12px;
+        }
+
+        /* === FOOTER (Checklist + Timer) === */
+        footer {
+            height: var(--footer-h);
+            padding: 8px 16px;
+            border-top: 2px solid var(--primary);
+            background: white;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .footer-label { font-size: 11px; font-weight: 700; margin-bottom: 6px; color: #666; }
+        .footer-row { display: flex; align-items: center; gap: 8px; flex: 1; }
+        #checklist-area { 
+            flex: 1; 
+            border: 1px solid var(--primary); 
+            padding: 6px 10px;
+            overflow-y: auto;
+            max-height: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-content: flex-start;
+        }
+        .overflow-btn { font-size: 20px; font-weight: bold; cursor: pointer; padding: 0 5px; }
+        #timer { 
+            font-family: 'SF Mono', Monaco, monospace; 
+            font-size: 13px; 
+            padding: 8px 12px; 
+            border: 1px solid var(--primary);
+            background: white;
+        }
+
+        /* === CARD STYLES === */
+        .card {
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .preview-card {
+            width: var(--preview-width);
+            height: var(--preview-height);
+        }
+
+        .history-card {
+            width: var(--history-width);
+            height: var(--history-height);
+            opacity: 0.5;
+            filter: grayscale(80%);
+        }
+
+        /* Card Content */
+        .card-header { 
+            font-size: 10px; 
+            text-transform: uppercase; 
+            color: #666; 
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .card-title { 
+            font-size: 15px; 
+            font-weight: 700; 
+            margin-bottom: 6px;
+            padding: 0 10px;
+        }
+        .card-body { 
+            font-size: 12px; 
+            color: #444;
+            padding: 0 10px;
+            line-height: 1.3;
+        }
+
+        /* Card Icons */
+        .card-icon { position: absolute; width: 16px; height: 16px; opacity: 0.6; }
+        .icon-tl { top: 6px; left: 6px; }
+        .icon-tr { top: 6px; right: 6px; cursor: pointer; }
+        .icon-bl { bottom: 6px; left: 6px; cursor: pointer; }
+        .icon-br { bottom: 6px; right: 6px; }
+
+        /* Decision Icon on Preview */
+        .decision-indicator {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Cover Text */
+        .cover-content {
+            text-align: center;
+            padding: 20px;
+        }
+        .cover-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .cover-subtitle { font-size: 12px; color: #666; }
+
+        /* === DECISION MODE (Side-by-side options with preview stacks) === */
+        #zone-top.decision-mode {
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 12px;
+            padding-bottom: 8px;
+        }
+
+        .decision-option-container {
+            position: relative;
+            width: calc(var(--preview-width) + 20px);
+            height: calc(var(--preview-height) + 30px);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .decision-option-container.selected {
+            /* Selected container is slightly larger to show stacks */
+        }
+
+        .preview-stack-card {
+            position: absolute;
+            width: var(--preview-width);
+            height: var(--preview-height);
+            background: #e0e0e0;
+            border: 1px solid #999;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .preview-stack-card .card-header.small {
+            font-size: 8px;
+        }
+
+        .decision-option-card {
+            width: var(--preview-width);
+            height: var(--preview-height);
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: grab;
+            position: relative;
+        }
+
+        .decision-option-card:active { cursor: grabbing; }
+
+        .decision-option-card.selected {
+            border-color: var(--accent-red);
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+            transform: scale(1.02);
+        }
+
+        .decision-option-card:not(.selected) {
+            opacity: 0.6;
+            transform: scale(0.92);
+        }
+
+        .decision-option-card .card-header {
+            font-size: 9px;
+            margin-bottom: 2px;
+        }
+
+        .decision-option-card .card-body.small {
+            font-size: 9px;
+            line-height: 1.2;
+            max-height: 40px;
+            overflow: hidden;
+        }
+
+        .option-badge {
+            position: absolute;
+            bottom: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            background: #f0f0f0;
+            padding: 2px 10px;
+            border-radius: 10px;
+        }
+
+        .decision-option-card.selected .option-badge {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        /* === CHECKLIST ITEMS === */
+        .check-item {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .check-item input {
+            margin-right: 4px;
+            width: 14px;
+            height: 14px;
+            accent-color: var(--primary);
+        }
+        .check-item.toggle-item input {
+            accent-color: var(--accent-red);
+        }
+        .check-item.hidden { display: none; }
+
+        /* === CAROUSEL DOTS === */
+        .carousel-dots {
+            display: flex;
+            gap: 4px;
+            position: absolute;
+            bottom: 8px;
+        }
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            border: 1px solid var(--primary);
+            background: transparent;
+        }
+        .dot.active { background: var(--primary); }
+
+        /* === TOOLBOX MODAL === */
+        #modal-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 500;
+        }
+        #modal-overlay.visible { display: flex; }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+        }
+        .modal-title { font-weight: 700; margin-bottom: 15px; }
+        .modal-close {
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!-- Header -->
+    <header>
+        <div class="app-title">Resuscitation Handbook</div>
+        <div class="header-icons">
+            <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <svg class="header-icon" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Stage -->
+    <div id="stage">
+        <div id="zone-top"></div>
+        <div id="zone-middle">
+            <div id="wheel"></div>
+            <div id="active-card"></div>
+            <div id="knob"></div>
+        </div>
+        <div id="zone-bottom"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-label">Check List</div>
+        <div class="footer-row">
+            <div id="checklist-area"></div>
+            <div class="overflow-btn">⋮</div>
+            <div id="timer">00:00:00</div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal-overlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-title">Age Calculator</div>
+            <p style="font-size:13px;color:#666;margin-bottom:10px;">Enter date of birth to determine category</p>
+            <input type="date" style="padding:8px;width:100%;margin-bottom:10px;border:1px solid #ccc;border-radius:4px;">
+            <p style="font-size:14px;"><strong>Result:</strong> Child (>1yr)</p>
+            <button class="modal-close" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- SVG Symbols -->
+<svg style="display:none">
+    <symbol id="icon-fullscreen" viewBox="0 0 24 24">
+        <path d="M4 4h4v2H6v2H4V4zm16 0h-4v2h2v2h2V4zM4 20h4v-2H6v-2H4v4zm16 0h-4v-2h2v-2h2v4z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="icon-toolbox" viewBox="0 0 24 24">
+        <rect x="4" y="8" width="16" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M8 8V6a2 2 0 012-2h4a2 2 0 012 2v2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 12v4M10 14h4" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="icon-decision" viewBox="0 0 24 24">
+        <path d="M12 4v6M12 10l-5 5M12 10l5 5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="5" y="15" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1"/>
+        <rect x="15" y="15" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1"/>
+    </symbol>
+</svg>
+
+<script>
+// ========================================
+// THE JSON DATA (From your file)
+// ========================================
+const ALGORITHM = {
+  "algorithm_meta": {
+    "id": "algo_paed_bls_001",
+    "title": "Paediatric Out-of-Hospital BLS",
+    "source": "Resuscitation Council UK (2021)",
+    "global_timer": { "enabled": true, "label": "Total Time", "type": "count_up" }
+  },
+  "deck": [
+    {
+      "id": "CARD_00_START",
+      "type": "cover",
+      "content": {
+        "title": "Paediatric Basic Life Support",
+        "subtitle": "Out-of-Hospital Algorithm",
+        "footer_note": "Those trained only in adult BLS should use adult sequence with paediatric modifications."
+      },
+      "wheel_config": { "position_degrees": 330, "phase": "start_point" },
+      "transitions": { "type": "linear", "next_id": "CARD_01_UNRESPONSIVE" }
+    },
+    {
+      "id": "CARD_01_UNRESPONSIVE",
+      "type": "standard",
+      "content": { "title": "Assessment", "body": "Is the child unresponsive?", "slides": [] },
+      "wheel_config": { "position_degrees": 0, "phase": "assessment" },
+      "checklist": [
+        { "id": "chk_safe", "label": "Area is safe to approach", "type": "checkbox" },
+        { "id": "chk_unresp", "label": "Confirm Unresponsiveness", "type": "checkbox" }
+      ],
+      "transitions": { "type": "linear", "next_id": "CARD_02_SHOUT" }
+    },
+    {
+      "id": "CARD_02_SHOUT",
+      "type": "standard",
+      "content": { "title": "Call for Help", "body": "Shout loudly for help.", "slides": [] },
+      "wheel_config": { "position_degrees": 15, "phase": "action" },
+      "checklist": [
+        { "id": "toggle_2nd_rescuer", "label": "Is a 2nd rescuer present?", "type": "boolean_toggle" },
+        { "id": "chk_call_999", "label": "Call EMS (999)", "type": "checkbox", "visible_if": "toggle_2nd_rescuer == true" },
+        { "id": "chk_get_aed", "label": "Collect and apply AED", "type": "checkbox", "visible_if": "toggle_2nd_rescuer == true" }
+      ],
+      "transitions": { "type": "linear", "next_id": "CARD_03_AIRWAY" }
+    },
+    {
+      "id": "CARD_03_AIRWAY",
+      "type": "standard",
+      "content": { "title": "Airway", "body": "Open Airway", "slides": [{ "label": "Technique", "text": "Head tilt, chin lift" }] },
+      "wheel_config": { "position_degrees": 30, "phase": "action" },
+      "transitions": { "type": "linear", "next_id": "CARD_04_BREATHING_DECISION" }
+    },
+    {
+      "id": "CARD_04_BREATHING_DECISION",
+      "type": "decision",
+      "content": { "title": "Breathing Check", "body": "Is the child breathing normally?" },
+      "wheel_config": { "position_degrees": 45, "phase": "decision" },
+      "transitions": {
+        "type": "split",
+        "options": [
+          { "label": "YES", "preview_card_title": "Observe & Assess", "target_id": "CARD_END_OBSERVE" },
+          { "label": "NO", "sub_label": "or any doubt", "preview_card_title": "5 Rescue Breaths", "target_id": "CARD_05_BREATHS" }
+        ]
+      }
+    },
+    {
+      "id": "CARD_END_OBSERVE",
+      "type": "terminal",
+      "content": { "title": "Observation", "body": "Observe and re-assess as necessary." },
+      "wheel_config": { "position_degrees": 60, "phase": "complete" },
+      "status": "complete"
+    },
+    {
+      "id": "CARD_05_BREATHS",
+      "type": "carousel_action",
+      "content": {
+        "title": "5 Rescue Breaths",
+        "slides": [
+          { "id": "slide_infant", "header": "Infant Technique", "text": "Mouth to nose/mouth" },
+          { "id": "slide_child", "header": "Child Technique", "text": "Mouth to mouth" }
+        ]
+      },
+      "wheel_config": { "position_degrees": 90, "phase": "intervention" },
+      "toolbox": [{ "id": "calc_age", "icon": "calculator", "label": "Age Calculator", "action": "open_modal_age_calc" }],
+      "checklist": [
+        { "id": "toggle_single_rescuer", "label": "Are you a single rescuer?", "type": "boolean_toggle" },
+        { "id": "chk_speakerphone", "label": "Call EMS on speakerphone", "type": "checkbox", "visible_if": "toggle_single_rescuer == true" },
+        { "id": "chk_delay_call", "label": "Do CPR 1 min before leaving to call", "type": "checkbox", "visible_if": "toggle_single_rescuer == true AND chk_speakerphone == false" }
+      ],
+      "transitions": { "type": "linear", "next_id": "CARD_06_CHECK_LIFE_PRE_CPR" }
+    },
+    {
+      "id": "CARD_06_CHECK_LIFE_PRE_CPR",
+      "type": "decision",
+      "content": { "title": "Signs of Life?", "body": "Were signs of life observed during rescue breaths?" },
+      "wheel_config": { "position_degrees": 120, "phase": "check" },
+      "transitions": {
+        "type": "split",
+        "options": [
+          { "label": "YES", "target_id": "CARD_END_RECOVERY" },
+          { "label": "NO", "target_id": "CARD_07_COMPRESSIONS" }
+        ]
+      }
+    },
+    {
+      "id": "CARD_07_COMPRESSIONS",
+      "type": "loop_start",
+      "content": { "title": "30 Chest Compressions", "body": "Perform continuous chest compressions." },
+      "wheel_config": { "position_degrees": 180, "phase": "cpr_loop", "animation": "pulse" },
+      "local_timer": { "enabled": true, "type": "metronome", "bpm": 110, "guidance": "Push hard and fast" },
+      "transitions": { "type": "linear", "next_id": "CARD_08_LOOP_BREATHS" }
+    },
+    {
+      "id": "CARD_08_LOOP_BREATHS",
+      "type": "action",
+      "content": { "title": "2 Rescue Breaths", "body": "Deliver 2 effective breaths." },
+      "wheel_config": { "position_degrees": 200, "phase": "cpr_loop" },
+      "transitions": { "type": "linear", "next_id": "CARD_09_LOOP_CHECK" }
+    },
+    {
+      "id": "CARD_09_LOOP_CHECK",
+      "type": "decision",
+      "content": { "title": "Re-assess", "body": "Are there clear signs of life?" },
+      "wheel_config": { "position_degrees": 220, "phase": "cpr_loop" },
+      "transitions": {
+        "type": "split",
+        "options": [
+          { "label": "NO", "preview_card_title": "Resume Compressions", "target_id": "CARD_07_COMPRESSIONS" },
+          { "label": "YES", "preview_card_title": "Recovery Position", "target_id": "CARD_END_RECOVERY" }
+        ]
+      }
+    },
+    {
+      "id": "CARD_END_RECOVERY",
+      "type": "terminal",
+      "content": { "title": "Stabilised", "body": "Keep child in safe position, continue to assess and await EMS." },
+      "wheel_config": { "position_degrees": 60, "phase": "complete" },
+      "status": "complete"
+    }
+  ]
+};
+
+// Build lookup map
+const DECK = {};
+ALGORITHM.deck.forEach(card => DECK[card.id] = card);
+
+// ========================================
+// STATE
+// ========================================
+let state = {
+    currentId: "CARD_00_START",
+    history: [],
+    decisionIndex: 0,
+    carouselIndex: 0,
+    timerSeconds: 0,
+    timerRunning: false,
+    timerInterval: null,
+    checklistState: {},  // Track checkbox states
+
+    // Explicit wheel state (FSM)
+    wheel: {
+        mode: "COVER",      // COVER | LINEAR | DECISION | LOOP | TERMINAL
+        angle: 330,         // current design angle for the knob
+        dragOrigin: null    // angle at the start of the current drag
+    }
+};
+
+// ========================================
+// DOM REFERENCES
+// ========================================
+const zoneTop = document.getElementById('zone-top');
+const zoneBottom = document.getElementById('zone-bottom');
+const activeCard = document.getElementById('active-card');
+const knob = document.getElementById('knob');
+const wheel = document.getElementById('wheel');
+const checklistArea = document.getElementById('checklist-area');
+const timerEl = document.getElementById('timer');
+const modalOverlay = document.getElementById('modal-overlay');
+
+// ========================================
+// WHEEL PHYSICS
+// ========================================
+const WHEEL_RADIUS = 150;
+const KNOB_OFFSET = 15; // Half of knob size
+const THRESHOLD_DEG = 25;
+
+function degToPosition(deg) {
+    const mathDeg = deg - 90; // Convert: 0° top → 0° right
+    const rad = mathDeg * (Math.PI / 180);
+    return {
+        x: WHEEL_RADIUS + WHEEL_RADIUS * Math.cos(rad) - KNOB_OFFSET,
+        y: WHEEL_RADIUS + WHEEL_RADIUS * Math.sin(rad) - KNOB_OFFSET
+    };
+}
+
+function setKnobPosition(deg) {
+    const pos = degToPosition(deg);
+    const zoneMiddle = document.getElementById('zone-middle');
+    const offsetX = (zoneMiddle.offsetWidth - 300) / 2;
+    const offsetY = (zoneMiddle.offsetHeight - 300) / 2;
+    knob.style.left = (offsetX + pos.x) + 'px';
+    knob.style.top = (offsetY + pos.y) + 'px';
+}
+
+// ========================================
+// WHEEL STATE HELPERS (FSM + angle logic)
+// ========================================
+const DECISION_STEP_DEG = 20; // how much rotation to move to next decision option
+
+function computeWheelMode(card) {
+    if (!card) return "LINEAR";
+    if (card.type === "cover") return "COVER";
+    if (card.type === "decision") return "DECISION";
+    if (card.type === "terminal") return "TERMINAL";
+    if (card.wheel_config && card.wheel_config.phase === "cpr_loop") return "LOOP";
+    return "LINEAR";
+}
+
+function canonicalAngleForCard(card, fallbackAngle) {
+    if (card && card.wheel_config && typeof card.wheel_config.position_degrees === "number") {
+        return card.wheel_config.position_degrees;
+    }
+    return typeof fallbackAngle === "number" ? fallbackAngle : 330;
+}
+
+// Wrap-safe delta between two angles (design degrees, 0–360)
+function angleDelta(fromDeg, toDeg) {
+    let delta = fromDeg - toDeg;
+    if (delta > 180) delta -= 360;
+    if (delta < -180) delta += 360;
+    return delta;
+}
+
+// ========================================
+// RENDER ENGINE
+// ========================================
+function render() {
+    const card = DECK[state.currentId];
+    if (!card) return;
+    
+    // 1. Derive wheel mode for this card
+    state.wheel.mode = computeWheelMode(card);
+    
+    // 2. Choose angle - only snap if not actively dragging
+    if (!isDraggingKnob) {
+        state.wheel.angle = canonicalAngleForCard(card, state.wheel.angle);
+    }
+    
+    // 3. Apply knob position from state
+    setKnobPosition(state.wheel.angle);
+    
+    // 4. Continue with existing rendering pipeline
+    renderActiveCard(card);
+    renderPreviewZone(card);
+    renderHistoryZone();
+    renderChecklist(card);
+}
+
+function renderActiveCard(card) {
+    // Reset classes
+    activeCard.className = '';
+    
+    // Cover mode (transparent, no border)
+    if (card.type === 'cover') {
+        activeCard.classList.add('cover-mode');
+    }
+    
+    // Loop animation (pulse red)
+    if (card.wheel_config.animation === 'pulse' || card.type === 'loop_start') {
+        activeCard.classList.add('loop-mode');
+    }
+    
+    let html = '';
+    
+    if (card.type === 'cover') {
+        html = `
+            <div class="cover-content">
+                <div class="cover-title">${card.content.title}</div>
+                <div class="cover-subtitle">${card.content.subtitle || ''}</div>
+            </div>
+        `;
+    } else {
+        // Standard card with icons
+        const hasToolbox = card.toolbox && card.toolbox.length > 0;
+        const hasSlides = card.content.slides && card.content.slides.length > 1;
+        
+        html = `
+            <svg class="card-icon icon-tr" onclick="openFullscreen()"><use href="#icon-fullscreen"/></svg>
+            ${hasToolbox ? '<svg class="card-icon icon-bl" onclick="openToolbox()"><use href="#icon-toolbox"/></svg>' : ''}
+            
+            <div class="card-header">${card.type.replace('_', ' ')}</div>
+            <div class="card-title">${card.content.title}</div>
+            <div class="card-body">${getCardBodyContent(card)}</div>
+            
+            ${hasSlides ? renderCarouselDots(card.content.slides.length) : ''}
+        `;
+    }
+    
+    activeCard.innerHTML = html;
+}
+
+function getCardBodyContent(card) {
+    // If carousel with slides, show current slide
+    if (card.content.slides && card.content.slides.length > 0) {
+        if (card.type === 'carousel_action' && card.content.slides.length > 1) {
+            const slide = card.content.slides[state.carouselIndex] || card.content.slides[0];
+            return `<strong>${slide.header || slide.label}</strong><br>${slide.text}`;
+        } else if (card.content.slides[0]) {
+            const slide = card.content.slides[0];
+            return slide.text || card.content.body || '';
+        }
+    }
+    return card.content.body || '';
+}
+
+function renderCarouselDots(count) {
+    let dots = '';
+    for (let i = 0; i < count; i++) {
+        dots += `<div class="dot ${i === state.carouselIndex ? 'active' : ''}"></div>`;
+    }
+    return `<div class="carousel-dots">${dots}</div>`;
+}
+
+function renderPreviewZone(card) {
+    zoneTop.innerHTML = '';
+    zoneTop.classList.remove('decision-mode');
+    
+    // DECISION MODE: Two options side-by-side with preview stacks
+    if (card.type === 'decision' && card.transitions.type === 'split') {
+        zoneTop.classList.add('decision-mode');
+        
+        const options = card.transitions.options;
+        
+        options.forEach((opt, idx) => {
+            const isSelected = idx === state.decisionIndex;
+            
+            // Create option container (holds the option card + its preview stack)
+            const optContainer = document.createElement('div');
+            optContainer.className = `decision-option-container ${isSelected ? 'selected' : ''}`;
+            optContainer.dataset.optionIndex = idx;
+            
+            // Get preview cards for THIS option's path
+            const targetCard = DECK[opt.target_id];
+            const previewStack = targetCard ? getUpcomingCardsFrom(opt.target_id, 3) : [];
+            
+            // Render preview stack behind (only for selected option)
+            if (isSelected && previewStack.length > 0) {
+                previewStack.reverse().forEach((pc, pi) => {
+                    const depth = previewStack.length - pi;
+                    const stackCard = document.createElement('div');
+                    stackCard.className = 'card preview-stack-card';
+                    stackCard.style.transform = `translateY(${-depth * 8}px) scale(${1 - depth * 0.04})`;
+                    stackCard.style.zIndex = 5 - depth;
+                    stackCard.innerHTML = `<div class="card-header small">${pc.content.title}</div>`;
+                    optContainer.appendChild(stackCard);
+                });
+            }
+            
+            // Render main option card (on top)
+            const optCard = document.createElement('div');
+            optCard.className = `card decision-option-card ${isSelected ? 'selected' : ''}`;
+            optCard.style.zIndex = 10;
+            optCard.innerHTML = `
+                <div class="card-header">${card.content.title}</div>
+                <div class="card-body small">${card.content.body}</div>
+                <div class="option-badge">${opt.label}</div>
+            `;
+            
+            // Click to select this option
+            optCard.onclick = (e) => {
+                e.stopPropagation();
+                selectDecisionOption(idx);
+            };
+            
+            optContainer.appendChild(optCard);
+            zoneTop.appendChild(optContainer);
+        });
+        
+        // Setup drag handling for decision cards
+        setupDecisionDrag();
+        return;
+    }
+    
+    // LINEAR MODE: Vertical stack
+    const upcoming = getUpcomingCards(card, 3);
+    upcoming.reverse().forEach((c, i) => {
+        const depth = upcoming.length - 1 - i;
+        const el = document.createElement('div');
+        el.className = 'card preview-card';
+        el.style.transform = `translateY(${depth * -10}px) scale(${1 - depth * 0.05})`;
+        el.style.zIndex = 10 - depth;
+        
+        let iconHtml = '';
+        if (c.type === 'decision') {
+            iconHtml = '<svg class="decision-indicator"><use href="#icon-decision"/></svg>';
+        }
+        
+        el.innerHTML = `
+            ${iconHtml}
+            <div class="card-header">${c.content.title}</div>
+        `;
+        
+        zoneTop.appendChild(el);
+    });
+}
+
+// Get upcoming cards starting FROM a specific card ID
+function getUpcomingCardsFrom(startId, max) {
+    const result = [];
+    let currentId = startId;
+    
+    while (currentId && result.length < max && DECK[currentId]) {
+        const currentCard = DECK[currentId];
+        result.push(currentCard);
+        
+        if (currentCard.transitions?.next_id) {
+            currentId = currentCard.transitions.next_id;
+        } else if (currentCard.transitions?.options) {
+            currentId = currentCard.transitions.options[0].target_id;
+        } else {
+            break;
+        }
+    }
+    return result;
+}
+
+function getUpcomingCards(card, max) {
+    let nextId = card.transitions?.next_id;
+    
+    // For splits, use first option as preview path
+    if (card.transitions?.type === 'split' && card.transitions.options) {
+        nextId = card.transitions.options[0].target_id;
+    }
+    
+    return nextId ? getUpcomingCardsFrom(nextId, max) : [];
+}
+
+// ========================================
+// DECISION DRAG-TO-CONFIRM (Mouse + Touch)
+// ========================================
+let isDraggingDecision = false;
+let draggedElement = null;
+let dragStartY = 0;
+let dragStartX = 0;
+let originalTransform = '';
+
+function setupDecisionDrag() {
+    const optionCards = zoneTop.querySelectorAll('.decision-option-card.selected');
+    optionCards.forEach(card => {
+        card.addEventListener('mousedown', startDecisionDrag);
+        card.addEventListener('touchstart', startDecisionDrag, { passive: false });
+    });
+}
+
+function startDecisionDrag(e) {
+    const card = DECK[state.currentId];
+    if (card.type !== 'decision') return;
+    
+    isDraggingDecision = true;
+    draggedElement = e.currentTarget;
+    originalTransform = draggedElement.style.transform;
+    
+    const touch = e.touches ? e.touches[0] : e;
+    dragStartY = touch.clientY;
+    dragStartX = touch.clientX;
+    
+    e.preventDefault();
+    e.stopPropagation();
+    
+    document.addEventListener('mousemove', onDecisionDrag);
+    document.addEventListener('touchmove', onDecisionDrag, { passive: false });
+    document.addEventListener('mouseup', endDecisionDrag);
+    document.addEventListener('touchend', endDecisionDrag);
+}
+
+function onDecisionDrag(e) {
+    if (!isDraggingDecision || !draggedElement) return;
+    e.preventDefault();
+    
+    const touch = e.touches ? e.touches[0] : e;
+    const dy = touch.clientY - dragStartY;
+    const dx = touch.clientX - dragStartX;
+    
+    // Visual feedback: move card with cursor
+    draggedElement.style.transform = `translate(${dx}px, ${dy}px) scale(1.05)`;
+    draggedElement.style.zIndex = 100;
+    draggedElement.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)';
+    
+    // Highlight middle zone if dragging toward it
+    if (dy > 30) {
+        activeCard.style.outline = '3px dashed #666';
+    } else {
+        activeCard.style.outline = 'none';
+    }
+}
+
+function endDecisionDrag(e) {
+    if (!isDraggingDecision) return;
+    
+    document.removeEventListener('mousemove', onDecisionDrag);
+    document.removeEventListener('touchmove', onDecisionDrag);
+    document.removeEventListener('mouseup', endDecisionDrag);
+    document.removeEventListener('touchend', endDecisionDrag);
+    
+    const touch = e.changedTouches ? e.changedTouches[0] : e;
+    const dy = touch.clientY - dragStartY;
+    
+    // Reset middle zone highlight
+    activeCard.style.outline = 'none';
+    
+    // If dragged down enough, confirm the decision
+    if (dy > 60) {
+        advance();
+    } else {
+        // Snap back
+        if (draggedElement) {
+            draggedElement.style.transform = originalTransform || '';
+            draggedElement.style.zIndex = 10;
+            draggedElement.style.boxShadow = '';
+        }
+    }
+    
+    isDraggingDecision = false;
+    draggedElement = null;
+}
+
+function renderHistoryZone() {
+    zoneBottom.innerHTML = '';
+    
+    const recent = state.history.slice(-3);
+    recent.forEach((id, i, arr) => {
+        const c = DECK[id];
+        if (!c) return;
+        
+        const depth = arr.length - 1 - i;
+        const el = document.createElement('div');
+        el.className = 'card history-card';
+        el.style.transform = `translateY(${depth * 8}px) scale(${1 - depth * 0.06})`;
+        el.style.zIndex = 10 - depth;
+        el.innerHTML = `<div class="card-header">${c.content.title}</div>`;
+        zoneBottom.appendChild(el);
+    });
+}
+
+function renderChecklist(card) {
+    checklistArea.innerHTML = '';
+    
+    if (!card.checklist) return;
+    
+    card.checklist.forEach(item => {
+        const el = document.createElement('label');
+        el.className = `check-item ${item.type === 'boolean_toggle' ? 'toggle-item' : ''}`;
+        
+        // Check visibility
+        if (item.visible_if) {
+            const visible = evaluateVisibility(item.visible_if);
+            if (!visible) el.classList.add('hidden');
+        }
+        
+        const checked = state.checklistState[item.id] ? 'checked' : '';
+        el.innerHTML = `
+            <input type="checkbox" ${checked} onchange="handleCheckChange('${item.id}', '${item.type}', this.checked)">
+            <span>${item.label}</span>
+        `;
+        checklistArea.appendChild(el);
+    });
+}
+
+function evaluateVisibility(condition) {
+    // Simple parser for "toggle_id == true" or "toggle_id == true AND other == false"
+    const parts = condition.split(' AND ');
+    return parts.every(part => {
+        const match = part.trim().match(/(\w+)\s*==\s*(true|false)/);
+        if (match) {
+            const [, id, expected] = match;
+            const actual = !!state.checklistState[id];
+            return actual === (expected === 'true');
+        }
+        return true;
+    });
+}
+
+function handleCheckChange(id, type, checked) {
+    state.checklistState[id] = checked;
+    
+    // Re-render checklist to update visibility
+    const card = DECK[state.currentId];
+    renderChecklist(card);
+}
+
+// ========================================
+// NAVIGATION
+// ========================================
+function advance() {
+    const card = DECK[state.currentId];
+    
+    if (!card || card.status === 'complete') return;
+    
+    let nextId = null;
+    
+    if (card.transitions.type === 'linear') {
+        nextId = card.transitions.next_id;
+    } else if (card.transitions.type === 'split') {
+        nextId = card.transitions.options[state.decisionIndex].target_id;
+        state.decisionIndex = 0;
+    }
+    
+    if (nextId && DECK[nextId]) {
+        state.history.push(state.currentId);
+        state.currentId = nextId;
+        state.carouselIndex = 0;
+        
+        if (!state.timerRunning) startTimer();
+        
+        render();
+    }
+}
+
+function rewind() {
+    if (state.history.length > 0) {
+        state.currentId = state.history.pop();
+        state.decisionIndex = 0;
+        state.carouselIndex = 0;
+        render();
+    }
+}
+
+function selectDecisionOption(idx) {
+    state.decisionIndex = idx;
+    render();
+}
+
+// ========================================
+// DRAG HANDLING - WHEEL (FSM-Driven)
+// ========================================
+let isDraggingKnob = false;
+
+knob.addEventListener('mousedown', startKnobDrag);
+knob.addEventListener('touchstart', startKnobDrag, { passive: false });
+document.addEventListener('mousemove', onKnobDrag);
+document.addEventListener('touchmove', onKnobDrag, { passive: false });
+document.addEventListener('mouseup', endKnobDrag);
+document.addEventListener('touchend', endKnobDrag);
+
+// Convert pointer event → design angle (0° at top, clockwise)
+function getAngleFromEvent(e) {
+    const touch = e.touches ? e.touches[0] : e;
+    const rect = wheel.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+
+    let deg = Math.atan2(touch.clientY - cy, touch.clientX - cx) * 180 / Math.PI + 90;
+    if (deg < 0) deg += 360;
+    return deg;
+}
+
+function startKnobDrag(e) {
+    isDraggingKnob = true;
+    e.preventDefault();
+    e.stopPropagation();
+
+    const startAngle = getAngleFromEvent(e);
+    state.wheel.dragOrigin = startAngle;
+    state.wheel.angle = startAngle;
+}
+
+function handleDecisionWheelDrag(card, delta, currentAngle) {
+    if (!card.transitions || card.transitions.type !== 'split') {
+        // Fallback: no decision carousel, just move knob visually
+        state.wheel.angle = currentAngle;
+        setKnobPosition(state.wheel.angle);
+        return;
+    }
+
+    if (Math.abs(delta) < DECISION_STEP_DEG) {
+        // Below threshold → just wiggle the knob visually
+        state.wheel.angle = currentAngle;
+        setKnobPosition(state.wheel.angle);
+        return;
+    }
+
+    const direction = delta > 0 ? +1 : -1; // positive: anticlockwise, negative: clockwise
+    const numOptions = card.transitions.options.length;
+
+    state.decisionIndex = Math.min(
+        numOptions - 1,
+        Math.max(0, state.decisionIndex + direction)
+    );
+
+    state.wheel.dragOrigin = currentAngle;  // rebase for next step
+    state.wheel.angle = currentAngle;
+
+    // Re-render decision carousel (knob stays where it is during drag)
+    renderPreviewZone(card);
+
+    if (navigator.vibrate) navigator.vibrate(10);
+}
+
+function onKnobDrag(e) {
+    if (!isDraggingKnob) return;
+    e.preventDefault();
+
+    const card = DECK[state.currentId];
+    if (!card) return;
+
+    const currentAngle = getAngleFromEvent(e);
+
+    if (state.wheel.dragOrigin == null) {
+        state.wheel.dragOrigin = currentAngle;
+    }
+
+    // Compute wrap-safe delta
+    const delta = angleDelta(state.wheel.dragOrigin, currentAngle);
+
+    const mode = state.wheel.mode;
+
+    // --- Mode: COVER (start screen) → purely decorative, no navigation ---
+    if (mode === "COVER") {
+        // Allow drag to trigger first advance
+        if (delta > THRESHOLD_DEG) {
+            advance();
+            state.wheel.dragOrigin = currentAngle;
+            if (navigator.vibrate) navigator.vibrate(15);
+            return;
+        }
+        state.wheel.angle = currentAngle;
+        setKnobPosition(state.wheel.angle);
+        return;
+    }
+
+    // --- Mode: TERMINAL → allow small wiggle, but no nav ---
+    if (mode === "TERMINAL") {
+        state.wheel.angle = currentAngle;
+        setKnobPosition(state.wheel.angle);
+        return;
+    }
+
+    // --- Mode: DECISION → rotate through options only, no card nav ---
+    if (mode === "DECISION") {
+        handleDecisionWheelDrag(card, delta, currentAngle);
+        return;
+    }
+
+    // --- Modes: LINEAR / LOOP → standard navigation over the deck ---
+    if (delta > THRESHOLD_DEG) {
+        // Anticlockwise = ADVANCE
+        advance();
+        state.wheel.dragOrigin = currentAngle;
+        if (navigator.vibrate) navigator.vibrate(15);
+        return;
+    }
+
+    if (delta < -THRESHOLD_DEG) {
+        // Clockwise = REWIND
+        rewind();
+        state.wheel.dragOrigin = currentAngle;
+        if (navigator.vibrate) navigator.vibrate(15);
+        return;
+    }
+
+    // Below thresholds → just move the knob visually
+    state.wheel.angle = currentAngle;
+    setKnobPosition(state.wheel.angle);
+}
+
+function endKnobDrag() {
+    if (!isDraggingKnob) return;
+    isDraggingKnob = false;
+
+    state.wheel.dragOrigin = null;
+
+    // On drag end, snap back to canonical angle for current card
+    const card = DECK[state.currentId];
+    if (card) {
+        state.wheel.angle = canonicalAngleForCard(card, state.wheel.angle);
+        setKnobPosition(state.wheel.angle);
+    }
+}
+
+// (Decision drag-to-confirm handling is in renderPreviewZone section)
+
+// ========================================
+// TIMER
+// ========================================
+function startTimer() {
+    state.timerRunning = true;
+    state.timerInterval = setInterval(() => {
+        state.timerSeconds++;
+        updateTimerDisplay();
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const h = Math.floor(state.timerSeconds / 3600);
+    const m = Math.floor((state.timerSeconds % 3600) / 60);
+    const s = state.timerSeconds % 60;
+    timerEl.textContent = [h, m, s].map(v => v.toString().padStart(2, '0')).join(':');
+}
+
+// ========================================
+// TOOLBOX / MODAL
+// ========================================
+function openToolbox() {
+    modalOverlay.classList.add('visible');
+}
+
+function closeModal() {
+    modalOverlay.classList.remove('visible');
+}
+
+function openFullscreen() {
+    // Placeholder for fullscreen functionality
+    alert('Fullscreen mode - would expand card details');
+}
+
+// ========================================
+// CAROUSEL (for cards with multiple slides)
+// ========================================
+activeCard.addEventListener('click', (e) => {
+    const card = DECK[state.currentId];
+    if (card.type === 'carousel_action' && card.content.slides?.length > 1) {
+        // Simple: click cycles through slides
+        const rect = activeCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        
+        if (x > rect.width / 2) {
+            // Click right half: next slide
+            state.carouselIndex = (state.carouselIndex + 1) % card.content.slides.length;
+        } else {
+            // Click left half: prev slide
+            state.carouselIndex = (state.carouselIndex - 1 + card.content.slides.length) % card.content.slides.length;
+        }
+        render();
+    }
+});
+
+// ========================================
+// INIT
+// ========================================
+
+// Click on wheel = advance (backup interaction)
+wheel.addEventListener('click', (e) => {
+    if (e.target === knob) return;
+    advance();
+});
+
+// Click on knob = advance (backup interaction)
+knob.addEventListener('click', (e) => {
+    advance();
+});
+
+render();
+</script>
+</body>
+</html>

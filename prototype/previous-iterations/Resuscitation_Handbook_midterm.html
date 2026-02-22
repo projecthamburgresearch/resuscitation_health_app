@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Resuscitation Handbook (Mid-Term)</title>
+    <style>
+        :root {
+            /* --- GEOMETRY ENGINE --- */
+            --wheel-diameter: 320px;
+            --wheel-radius: 160px; /* diameter / 2 */
+            --rail-thickness: 1px;
+            
+            /* The Middle Card is Inscribed: Width ~ 70% of diameter */
+            --card-width: 220px; 
+            --card-height: 280px;
+            
+            /* Preview Stack */
+            --preview-width: 140px;
+            --preview-height: 100px;
+            
+            /* History Stack */
+            --history-width: 120px;
+            --history-height: 85px;
+            
+            /* --- COLOR ENGINE (Parametric) --- */
+            --primary: #1a1a1a;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --accent-red: #d32f2f;
+            --text-main: #111;
+            --text-sub: #666;
+            
+            /* --- LAYOUT --- */
+            --header-h: 60px;
+            --footer-h: 120px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #111; /* Dark outer background for focus */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* The Mobile Frame */
+        #app-frame {
+            width: 100%;
+            max-width: 400px; /* Simulate large phone */
+            height: 100%;
+            max-height: 900px;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        /* === 1. HEADER === */
+        header {
+            height: var(--header-h);
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 500;
+        }
+        .header-title { font-weight: 700; font-size: 15px; color: var(--text-main); }
+        .header-tools { display: flex; gap: 15px; opacity: 0.8; }
+
+        /* === 2. STAGE (The Canvas) === */
+        #stage {
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            perspective: 1000px; /* For 3D stack effects */
+        }
+
+        /* --- Zone Top (Preview) --- */
+        #zone-top {
+            flex: 1; /* Takes available space */
+            min-height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Align to bottom of zone */
+            position: relative;
+            padding-bottom: 20px;
+            z-index: 50;
+        }
+        
+        /* Decision Carousel Mode for Top Zone */
+        #zone-top.carousel-mode {
+            flex-direction: row;
+            align-items: center;
+            overflow: visible; /* Allow flanking cards */
+            gap: 15px;
+            padding-bottom: 0;
+        }
+
+        /* --- Zone Middle (The Wheel) --- */
+        #zone-middle {
+            height: var(--wheel-diameter);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        #wheel-rail {
+            width: var(--wheel-diameter);
+            height: var(--wheel-diameter);
+            border: var(--rail-thickness) solid #ccc;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        #knob {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 200;
+            /* Interaction visual cue */
+            transition: transform 0.1s;
+        }
+        #knob:active { transform: scale(1.1); }
+
+        /* --- Zone Bottom (History) --- */
+        #zone-bottom {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 20px;
+            z-index: 40;
+            opacity: 0.8;
+        }
+
+        /* === 3. CARDS === */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s;
+            overflow: hidden;
+        }
+
+        /* Card States */
+        .card.active {
+            width: var(--card-width);
+            height: var(--card-height);
+            z-index: 150;
+        }
+        
+        .card.preview {
+            width: var(--preview-width);
+            height: var(--preview-height);
+            background: #f0f0f0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .card.history {
+            width: var(--history-width);
+            height: var(--history-height);
+            background: #e5e5e5;
+            filter: grayscale(1);
+        }
+        
+        .card.cover {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        /* Decision Option Cards (In Carousel) */
+        .decision-card {
+            width: var(--preview-width);
+            height: var(--preview-height);
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s;
+            opacity: 0.5;
+            transform: scale(0.9);
+        }
+        .decision-card.selected {
+            opacity: 1;
+            transform: scale(1.1);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .decision-card.confirmed {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Card Content */
+        .card-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; padding: 0 10px; }
+        .card-body { font-size: 13px; color: var(--text-sub); padding: 0 15px; line-height: 1.4; }
+        
+        /* Icons */
+        .icon { width: 20px; height: 20px; opacity: 0.7; }
+        .pos-tr { position: absolute; top: 10px; right: 10px; } /* Fullscreen */
+        .pos-bl { position: absolute; bottom: 10px; left: 10px; } /* Toolbox */
+        .pos-preview-icon { position: absolute; top: 5px; right: 5px; width: 14px; opacity: 0.5; }
+
+        /* Carousel Dots */
+        .dots-container {
+            position: absolute;
+            bottom: 12px;
+            display: flex;
+            gap: 4px;
+        }
+        .dot { width: 6px; height: 6px; border-radius: 50%; background: #ccc; }
+        .dot.active { background: var(--primary); }
+
+        /* === 4. FOOTER === */
+        footer {
+            height: var(--footer-h);
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            z-index: 500;
+        }
+        
+        .footer-top {
+            padding: 5px 15px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .footer-main {
+            flex: 1;
+            display: flex;
+            padding: 0 15px 15px 15px;
+            gap: 10px;
+        }
+
+        #checklist-container {
+            flex: 1;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 8px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .chk-item {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            gap: 8px;
+        }
+        .chk-item.hidden { display: none; } /* CSS class for toggle logic */
+
+        #timer-box {
+            width: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 14px;
+            background: white;
+        }
+
+        /* === 5. MODAL === */
+        #modal-backdrop {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            display: none; /* Flex when active */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-card {
+            width: 80%;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="app-frame">
+    <!-- Header -->
+    <header>
+        <div class="header-title">Resuscitation Handbook</div>
+        <div class="header-tools">
+            <!-- Search Icon -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle><path d="M21 21L16.65 16.65"></path>
+            </svg>
+            <!-- Menu Icon -->
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="5" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="12" cy="19" r="2"></circle>
+            </svg>
+        </div>
+    </header>
+
+    <!-- The Stage -->
+    <div id="stage">
+        <div id="zone-top">
+            <!-- Preview Cards Injected Here -->
+        </div>
+
+        <div id="zone-middle">
+            <div id="wheel-rail"></div>
+            <!-- Active Card Injected Here -->
+            <div id="active-card-container"></div> 
+            <div id="knob"></div>
+        </div>
+
+        <div id="zone-bottom">
+            <!-- History Cards Injected Here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">Check List</div>
+        <div class="footer-main">
+            <div id="checklist-container">
+                <!-- Checklist items injected here -->
+            </div>
+            <div id="timer-box">00:00:00</div>
+        </div>
+    </footer>
+
+    <!-- Tool Modal -->
+    <div id="modal-backdrop" onclick="closeModal()">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <h3>Age Calculator</h3>
+            <p style="margin:10px 0; font-size:13px; color:#666;">Enter Date of Birth</p>
+            <input type="date" style="padding:5px; width:100%; margin-bottom:15px;">
+            <button onclick="closeModal()" style="padding:10px 20px; background:var(--primary); color:white; border:none; border-radius:5px;">Close</button>
+        </div>
+    </div>
+
+    <!-- Hidden SVG Symbols for cloning -->
+    <svg style="display:none">
+        <symbol id="sym-decision-upper" viewBox="0 0 24 24">
+            <path d="M12 2V6M12 6L5 12M12 6L19 12" stroke="currentColor" stroke-width="2" fill="none"/>
+            <rect x="3" y="12" width="4" height="4" stroke="currentColor"/>
+            <rect x="17" y="12" width="4" height="4" stroke="currentColor"/>
+        </symbol>
+        <symbol id="sym-toolbox" viewBox="0 0 24 24">
+             <rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+             <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" fill="none"/>
+             <path d="M12 11v6M9 14h6" stroke="currentColor" stroke-width="2"/>
+        </symbol>
+        <symbol id="sym-fullscreen" viewBox="0 0 24 24">
+            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="2" fill="none"/>
+        </symbol>
+    </svg>
+</div>
+
+<script>
+/** 
+ * RESUSCITATION APP ENGINE (Mid-Term Refactor)
+ * Follows Strict Behavioral Spec 
+ */
+
+// --- 1. DATA SCHEMA ---
+const DECK = {
+    "START": { 
+        id: "START", type: "cover", 
+        title: "Paediatric Basic Life Support", 
+        body: "Out-of-Hospital Algorithm",
+        next: "C01" 
+    },
+    "C01": { 
+        id: "C01", type: "standard", 
+        title: "Assessment", 
+        body: "Is the child unresponsive?", 
+        checklist: [
+            {id: "safe", label: "Area Safe", type: "checkbox"},
+            {id: "unresp", label: "Confirm Unresponsive", type: "checkbox"}
+        ],
+        next: "C02" 
+    },
+    "C02": { 
+        id: "C02", type: "standard", 
+        title: "Call for Help", 
+        body: "Shout loudly for help.", 
+        checklist: [
+            {id: "res2", label: "2nd Rescuer?", type: "boolean_toggle"},
+            {id: "call999", label: "Call 999", type: "checkbox", visible_if: "res2"},
+            {id: "aed", label: "Fetch AED", type: "checkbox", visible_if: "res2"}
+        ],
+        next: "C03" 
+    },
+    "C03": { 
+        id: "C03", type: "standard", 
+        title: "Airway", 
+        body: "Head tilt, chin lift.", 
+        toolbox: true,
+        next: "C04" 
+    },
+    "C04": { 
+        id: "C04", type: "decision", // MIRACLE MODE
+        title: "Breathing Check", 
+        body: "Is the child breathing normally?", 
+        options: [
+            { label: "NO", next: "C05_BREATHS" },
+            { label: "YES", next: "END_OBSERVE" }
+        ]
+    },
+    "C05_BREATHS": { 
+        id: "C05_BREATHS", type: "standard", 
+        title: "5 Rescue Breaths", 
+        body: "Infant: Mouth-to-nose\nChild: Mouth-to-mouth",
+        toolbox: true,
+        content_slides: ["Technique", "Volume"], 
+        next: "C06_SIGNS" 
+    },
+    "C06_SIGNS": {
+        id: "C06_SIGNS", type: "decision",
+        title: "Signs of Life?",
+        body: "Did you see movement/coughing?",
+        options: [
+            { label: "NO", next: "C07_CPR" },
+            { label: "YES", next: "END_RECOVERY" }
+        ]
+    },
+    "C07_CPR": {
+        id: "C07_CPR", type: "loop_start",
+        title: "30 Compressions",
+        body: "Push Hard & Fast (100-120bpm)",
+        next: "C08_BREATHS"
+    },
+    "C08_BREATHS": {
+        id: "C08_BREATHS", type: "standard",
+        title: "2 Breaths",
+        body: "Deliver effective breaths",
+        next: "C09_CHECK"
+    },
+    "C09_CHECK": {
+        id: "C09_CHECK", type: "decision",
+        title: "Re-assess",
+        options: [
+            { label: "NO", next: "C07_CPR" }, // Loop
+            { label: "YES", next: "END_RECOVERY" }
+        ]
+    },
+    "END_OBSERVE": { id: "END", type: "terminal", title: "Observe", body: "Monitor Condition" },
+    "END_RECOVERY": { id: "END", type: "terminal", title: "Recovery", body: "Await EMS" }
+};
+
+// --- 2. STATE MANAGEMENT ---
+let state = {
+    currId: "START",
+    history: [],
+    decisionIdx: 0,     // 0 = Left/No, 1 = Right/Yes
+    slideIdx: 0,        // For carousel cards
+    timerSecs: 0,
+    timerRunning: false,
+    checklistData: {},  // { "safe": true }
+    knobAngle: 330      // 11 o'clock visual start
+};
+
+// --- 3. GEOMETRY ENGINE ---
+const WHEEL_R = 160; 
+const KNOB_R = 16;   // 32px / 2
+
+// Helper: Design Degree (0=Top) -> Trig Degree (0=Right)
+function toRad(deg) { return (deg - 90) * (Math.PI / 180); }
+
+// Helper: Place knob on circle
+function renderKnob(deg) {
+    const knob = document.getElementById('knob');
+    const rail = document.getElementById('wheel-rail');
+    // Calculate relative to the container center
+    // Container is zone-middle
+    const rad = toRad(deg);
+    
+    // We need to offset by container center.
+    // Assuming zone-middle is flex centered, we just use absolute from center
+    // But CSS absolute is from top-left.
+    // Center is 160, 160 (radius).
+    
+    const x = WHEEL_R + (WHEEL_R * Math.cos(rad)) - KNOB_R;
+    const y = WHEEL_R + (WHEEL_R * Math.sin(rad)) - KNOB_R;
+    
+    knob.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+
+// --- 4. RENDER PIPELINE ---
+
+function render() {
+    const card = DECK[state.currId];
+    if(!card) return;
+
+    // A. Render Active Card
+    renderMiddle(card);
+    
+    // B. Render Top (Preview or Decision Carousel)
+    renderTop(card);
+    
+    // C. Render Bottom (History)
+    renderBottom();
+    
+    // D. Render Footer (Checklist)
+    renderChecklist(card);
+
+    // E. Knob Visual
+    // If not dragging, snap knob to a logical "Rest" position based on state
+    if(!isDragging) {
+        // Simple logic: Start=330, Standard=270 (9 o'clock), Decision=180 (6 o'clock)
+        let restDeg = 270;
+        if(card.type === 'cover') restDeg = 330;
+        if(card.type === 'decision') restDeg = 180; // Lock at bottom
+        
+        // We handle smooth transition in CSS or requestAnimationFrame in a real app
+        // For prototype, just snap
+        renderKnob(restDeg);
+        state.knobAngle = restDeg;
+    }
+}
+
+function renderMiddle(card) {
+    const container = document.getElementById('active-card-container');
+    container.innerHTML = '';
+    
+    const el = document.createElement('div');
+    // Base Classes
+    let classes = ['card', 'active'];
+    if(card.type === 'cover') classes.push('cover');
+    el.className = classes.join(' ');
+    
+    // Content
+    let html = '';
+    if(card.type === 'cover') {
+        html = `
+            <div style="font-size:22px; font-weight:800; margin-bottom:10px; line-height:1.2;">${card.title}</div>
+            <div style="font-size:14px; opacity:0.6;">${card.body}</div>
+            <div style="font-size:10px; opacity:0.4; margin-top:20px;">PULL WHEEL TO START</div>
+        `;
+    } else {
+        // Standard Layout
+        html = `
+            <svg class="icon pos-tr"><use href="#sym-fullscreen"/></svg>
+            ${card.toolbox ? '<svg class="icon pos-bl" onclick="openModal()"><use href="#sym-toolbox"/></svg>' : ''}
+            
+            <div style="font-size:10px; text-transform:uppercase; color:#999; margin-bottom:5px;">STEP ${state.history.length + 1}</div>
+            <div class="card-title">${card.title}</div>
+            <div class="card-body">${card.body}</div>
+        `;
+        
+        // Add Dots if slides
+        if(card.content_slides) {
+            html += `<div class="dots-container">
+                ${card.content_slides.map((_,i) => `<div class="dot ${i===state.slideIdx ? 'active':''}"></div>`).join('')}
+            </div>`;
+        }
+    }
+    el.innerHTML = html;
+    container.appendChild(el);
+}
+
+function renderTop(card) {
+    const zone = document.getElementById('zone-top');
+    zone.innerHTML = '';
+    
+    // MODE 1: DECISION CAROUSEL (The Miracle)
+    if(card.type === 'decision') {
+        zone.classList.add('carousel-mode');
+        
+        // Render options horizontally
+        card.options.forEach((opt, idx) => {
+            const optEl = document.createElement('div');
+            const isSelected = idx === state.decisionIdx;
+            optEl.className = `decision-card ${isSelected ? 'selected' : ''}`;
+            optEl.innerHTML = `<div style="font-weight:700; font-size:18px;">${opt.label}</div>`;
+            
+            // Interaction: Tap to Select
+            optEl.onclick = () => {
+                state.decisionIdx = idx;
+                render();
+            };
+            
+            zone.appendChild(optEl);
+        });
+        
+    } else {
+        // MODE 2: PREVIEW STACK
+        zone.classList.remove('carousel-mode');
+        
+        // Look ahead 3 cards
+        let nextId = card.next;
+        let stack = [];
+        for(let i=0; i<3; i++) {
+            if(!nextId || !DECK[nextId]) break;
+            stack.push(DECK[nextId]);
+            // If next is decision, use first option for preview path logic
+            if(DECK[nextId].type === 'decision') {
+                nextId = DECK[nextId].options[0].next;
+            } else {
+                nextId = DECK[nextId].next;
+            }
+        }
+        
+        // Render Stack (Reverse order for Z-index)
+        stack.reverse().forEach((c, i) => {
+            const depth = stack.length - 1 - i; // 0 is front
+            const el = document.createElement('div');
+            el.className = 'card preview';
+            
+            // 3D Stacking Logic
+            const scale = 1 - (depth * 0.1);
+            const yOff = depth * -15;
+            el.style.transform = `translateY(${yOff}px) scale(${scale})`;
+            el.style.zIndex = 10 - depth;
+            el.style.opacity = 1 - (depth * 0.3);
+            
+            // Icon Logic
+            let iconHtml = '';
+            if(c.type === 'decision') {
+                iconHtml = `<svg class="pos-preview-icon"><use href="#sym-decision-upper"/></svg>`;
+            }
+            
+            el.innerHTML = `${iconHtml}<div style="font-size:10px; font-weight:700; margin-top:10px;">${c.title}</div>`;
+            zone.appendChild(el);
+        });
+    }
+}
+
+function renderBottom() {
+    const zone = document.getElementById('zone-bottom');
+    zone.innerHTML = '';
+    
+    // Show last completed
+    if(state.history.length > 0) {
+        const lastId = state.history[state.history.length - 1];
+        const c = DECK[lastId];
+        
+        const el = document.createElement('div');
+        el.className = 'card history';
+        el.innerHTML = `<div style="font-size:10px; font-weight:700;">${c.title}</div>`;
+        zone.appendChild(el);
+    }
+}
+
+function renderChecklist(card) {
+    const container = document.getElementById('checklist-container');
+    container.innerHTML = ''; // Clear strict
+    
+    if(!card.checklist) return;
+
+    card.checklist.forEach(item => {
+        // Visibility Logic
+        if(item.visible_if) {
+            // Check dependency
+            if(!state.checklistData[item.visible_if]) return; // Skip if dependency not met
+        }
+        
+        const row = document.createElement('div');
+        row.className = 'chk-item';
+        
+        const chk = document.createElement('input');
+        chk.type = 'checkbox';
+        chk.checked = !!state.checklistData[item.id];
+        
+        // Handle Change
+        chk.onchange = (e) => {
+            state.checklistData[item.id] = e.target.checked;
+            render(); // Re-render to handle toggle logic
+        };
+        
+        const label = document.createElement('span');
+        label.innerText = item.label;
+        
+        row.appendChild(chk);
+        row.appendChild(label);
+        container.appendChild(row);
+    });
+}
+
+// --- 5. PHYSICS ENGINE (Wheel & Gestures) ---
+
+let isDragging = false;
+let dragStartAngle = 0;
+
+const knobEl = document.getElementById('knob');
+
+knobEl.addEventListener('mousedown', startDrag);
+knobEl.addEventListener('touchstart', startDrag, {passive:false});
+
+document.addEventListener('mousemove', doDrag);
+document.addEventListener('touchmove', doDrag, {passive:false});
+
+document.addEventListener('mouseup', endDrag);
+document.addEventListener('touchend', endDrag);
+
+
+function startDrag(e) {
+    isDragging = true;
+    e.preventDefault();
+}
+
+function doDrag(e) {
+    if(!isDragging) return;
+    e.preventDefault();
+    
+    const pt = e.touches ? e.touches[0] : e;
+    
+    // Calculate Angle relative to wheel center
+    // Wheel center is zone-middle center
+    const zone = document.getElementById('zone-middle');
+    const rect = zone.getBoundingClientRect();
+    const cx = rect.left + (rect.width/2);
+    const cy = rect.top + (rect.height/2);
+    
+    const dx = pt.clientX - cx;
+    const dy = pt.clientY - cy;
+    
+    // Math.atan2 returns -PI to PI.
+    // -PI is Left (-180), 0 is Right, PI/2 is Down (90), -PI/2 is Top (-90)
+    // We want Design Degrees: 0=Top, 90=Right, 180=Bottom, 270=Left
+    let rad = Math.atan2(dy, dx);
+    let deg = (rad * 180 / Math.PI) + 90; 
+    if(deg < 0) deg += 360;
+    
+    // LOGIC GATE: Decision Mode
+    const card = DECK[state.currId];
+    if(card.type === 'decision') {
+        // LOCK VERTICAL. Map X-movement to carousel.
+        // Simplified: use angle delta.
+        // Clockwise = Right, Anti = Left
+        let delta = deg - state.knobAngle;
+        if(delta < -180) delta += 360;
+        if(delta > 180) delta -= 360;
+        
+        if(Math.abs(delta) > 20) {
+             // Switch Decision
+             if(delta > 0) state.decisionIdx = 1; // Clockwise -> YES
+             else state.decisionIdx = 0;          // Anti -> NO
+             state.knobAngle = deg;
+             render();
+             // Haptic would fire here
+        }
+        // Don't update knob position visually to follow finger exactly,
+        // Keep it somewhat restricted or snap to regions.
+        renderKnob(deg); 
+        return;
+    }
+    
+    // LOGIC GATE: Standard Mode
+    // Anti-Clockwise = FORWARD (The "Pull Down")
+    // Clockwise = BACKWARD
+    
+    // Calc Delta
+    let delta = deg - state.knobAngle;
+    // Fix wrap around (e.g. 350 -> 10)
+    if(delta < -180) delta += 360;
+    if(delta > 180) delta -= 360;
+    
+    // Threshold
+    if(delta < -25) { // Anti-Clockwise (Negative delta in this coordinate space?)
+        // Wait, check coords:
+        // Top(0) -> Left(270) is 270-0 = 270? No.
+        // Javascript ATAN2: 
+        // 12 oclock = -90 (or 270)
+        // 9 oclock = 180
+        // Our 'deg' logic: 0=Top, 270=Left.
+        // Moving 0 -> 270 is increasing? No 360.
+        // Let's rely on simple delta check.
+        // If moving Top(0) to Left(270), deg goes 360->350->340. Delta is negative.
+        // So Negative Delta = Anti-Clockwise = FORWARD.
+        
+        goNext();
+        state.knobAngle = deg; // Snap internal state
+    } 
+    else if(delta > 25) {
+        goBack();
+        state.knobAngle = deg;
+    }
+    
+    renderKnob(deg);
+}
+
+function endDrag() {
+    isDragging = false;
+    render(); // Snap knob back to rest
+}
+
+// --- 6. TRANSITION LOGIC ---
+
+function goNext() {
+    const card = DECK[state.currId];
+    let nextId = card.next;
+    
+    // Decision Logic
+    if(card.type === 'decision') {
+        // Can't advance via wheel here, need Swipe Down.
+        // BUT, for prototype simple usage, let's say pulling wheel WAY down confirms?
+        // No, strict spec says Swipe Down on card.
+        // Disabling wheel advance for decision.
+        return; 
+    }
+    
+    if(nextId) {
+        state.history.push(state.currId);
+        state.currId = nextId;
+        
+        // Timer Logic
+        if(!state.timerRunning) {
+            state.timerRunning = true;
+            setInterval(tickTimer, 1000);
+        }
+        render();
+    }
+}
+
+function goBack() {
+    if(state.history.length > 0) {
+        state.currId = state.history.pop();
+        state.decisionIdx = 0; // Reset
+        render();
+    }
+}
+
+// SWIPE DOWN TO CONFIRM DECISION
+const zoneTop = document.getElementById('zone-top');
+let touchStartY = 0;
+zoneTop.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, {passive:false});
+zoneTop.addEventListener('touchend', e => {
+    const card = DECK[state.currId];
+    if(card.type !== 'decision') return;
+    
+    let dy = e.changedTouches[0].clientY - touchStartY;
+    if(dy > 50) { // Swipe Down Detected
+        const choice = card.options[state.decisionIdx];
+        state.history.push(state.currId);
+        state.currId = choice.next;
+        state.decisionIdx = 0;
+        render();
+    }
+});
+
+
+// --- 7. UTILS ---
+function tickTimer() {
+    state.timerSecs++;
+    const date = new Date(0);
+    date.setSeconds(state.timerSecs);
+    document.getElementById('timer-box').innerText = date.toISOString().substr(11, 8);
+}
+
+function openModal() {
+    document.getElementById('modal-backdrop').style.display = 'flex';
+}
+function closeModal() {
+    document.getElementById('modal-backdrop').style.display = 'none';
+}
+
+// --- BOOT ---
+render();
+
+</script>
+</body>
+</html>

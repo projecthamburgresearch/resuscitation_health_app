@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Resuscitation App</title>
+    <style>
+        :root {
+            --wheel-diameter: 300px;
+            /* Card must be MUCH smaller than wheel - visible gap on all sides */
+            --card-width: 180px;
+            --card-height: 200px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #222;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #app {
+            width: 390px;
+            height: 844px;
+            background: #f5f5f5;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #1a1a1a;
+        }
+
+        /* HEADER */
+        header {
+            height: 50px;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #1a1a1a;
+            background: white;
+        }
+        .title { font-weight: 700; font-size: 14px; }
+        .header-icons { display: flex; gap: 8px; align-items: center; }
+
+        /* MAIN STAGE */
+        #stage {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* TOP - Preview cards */
+        #zone-top {
+            height: 150px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 10px;
+        }
+
+        /* MIDDLE - The wheel with card INSIDE */
+        #zone-middle {
+            height: 320px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* THE WHEEL CIRCLE - centered */
+        #wheel {
+            width: var(--wheel-diameter);
+            height: var(--wheel-diameter);
+            border: 1px solid #1a1a1a;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* ACTIVE CARD - centered INSIDE the wheel (smaller than wheel) */
+        #active-card {
+            width: var(--card-width);
+            height: var(--card-height);
+            background: #d0d0d0;
+            border: 2px solid #1a1a1a;
+            border-radius: 6px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        /* KNOB on the wheel edge */
+        #knob {
+            width: 30px;
+            height: 30px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 50;
+            cursor: grab;
+        }
+
+        /* BOTTOM - History cards */
+        #zone-bottom {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 15px;
+        }
+
+        /* FOOTER */
+        footer {
+            height: 90px;
+            padding: 8px 16px;
+            border-top: 2px solid #1a1a1a;
+            background: white;
+        }
+        .footer-label { font-size: 11px; font-weight: 700; margin-bottom: 6px; }
+        .footer-row { display: flex; align-items: center; gap: 8px; }
+        .checkbox-area { flex: 1; border: 1px solid #1a1a1a; height: 40px; display: flex; align-items: center; padding: 0 10px; }
+        .timer { font-family: monospace; font-size: 12px; padding: 8px 12px; border: 1px solid #1a1a1a; }
+
+        /* Card styles */
+        .preview-card {
+            width: 120px;
+            height: 90px;
+            background: #d0d0d0;
+            border: 2px solid #1a1a1a;
+            border-radius: 6px;
+            position: absolute;
+        }
+
+        .history-card {
+            width: 110px;
+            height: 80px;
+            background: #d0d0d0;
+            border: 2px solid #1a1a1a;
+            border-radius: 6px;
+            position: absolute;
+            opacity: 0.6;
+        }
+
+        /* Icons on cards */
+        .icon-tr { position: absolute; top: 6px; right: 6px; width: 14px; height: 14px; }
+        .icon-bl { position: absolute; bottom: 6px; left: 6px; width: 16px; height: 16px; }
+        .icon-decision { position: absolute; top: 4px; right: 4px; width: 12px; height: 12px; }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <header>
+        <div class="title">Resuscitation Handbook</div>
+        <div class="header-icons">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/>
+            </svg>
+        </div>
+    </header>
+
+    <div id="stage">
+        <div id="zone-top"></div>
+        <div id="zone-middle">
+            <div id="wheel"></div>
+            <div id="active-card"></div>
+            <div id="knob"></div>
+        </div>
+        <div id="zone-bottom"></div>
+    </div>
+
+    <footer>
+        <div class="footer-label">Check List</div>
+        <div class="footer-row">
+            <div class="checkbox-area" id="checklist"></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/>
+            </svg>
+            <div class="timer" id="timer">00:00:00</div>
+        </div>
+    </footer>
+</div>
+
+<script>
+const DECK = {
+    "START": { id: "START", type: "cover", title: "Paediatric Basic Life Support", next: "C01" },
+    "C01": { id: "C01", type: "standard", title: "Assessment", next: "C02" },
+    "C02": { id: "C02", type: "standard", title: "Call for Help", next: "C03" },
+    "C03": { id: "C03", type: "standard", title: "Airway", next: "C04" },
+    "C04": { id: "C04", type: "decision", title: "Breathing?", options: [{ label: "NO", next: "C05" }, { label: "YES", next: "C06" }] },
+    "C05": { id: "C05", type: "standard", title: "5 Breaths", next: "C07" },
+    "C06": { id: "C06", type: "terminal", title: "Recovery", next: null },
+    "C07": { id: "C07", type: "loop", title: "CPR 30:2", next: "C07" }
+};
+
+let state = { currentId: "C01", history: ["START"], wheelAngle: 270, timerRunning: false, timerSeconds: 0 };
+
+const WHEEL_R = 150; // radius = diameter/2
+
+function positionKnob(deg) {
+    const rad = (deg - 90) * Math.PI / 180;
+    const knob = document.getElementById('knob');
+    // Knob positioned relative to center (50%, 50%) of zone-middle
+    // Using calc to position from center
+    const x = WHEEL_R * Math.cos(rad);
+    const y = WHEEL_R * Math.sin(rad);
+    knob.style.left = `calc(50% + ${x}px - 15px)`;
+    knob.style.top = `calc(50% + ${y}px - 15px)`;
+}
+
+function render() {
+    const card = DECK[state.currentId];
+    const activeCard = document.getElementById('active-card');
+    
+    // Render active card content
+    if (card.type === 'cover') {
+        activeCard.style.background = 'transparent';
+        activeCard.style.border = 'none';
+        activeCard.innerHTML = `<div style="text-align:center;font-weight:700;padding:20px">${card.title}</div>`;
+    } else {
+        activeCard.style.background = '#d0d0d0';
+        activeCard.style.border = '2px solid #1a1a1a';
+        activeCard.innerHTML = `
+            <svg class="icon-tr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 4h4v2H6v2H4V4zm16 0h-4v2h2v2h2V4zM4 20h4v-2H6v-2H4v4zm16 0h-4v-2h2v-2h2v4z"/>
+            </svg>
+            <svg class="icon-bl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="4" y="8" width="16" height="12" rx="1"/>
+                <path d="M8 8V6a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                <path d="M12 12v4M10 14h4"/>
+            </svg>
+        `;
+    }
+    
+    // Preview stack
+    const zoneTop = document.getElementById('zone-top');
+    zoneTop.innerHTML = '';
+    let nextId = card.next || (card.options ? card.options[0].next : null);
+    const upcoming = [];
+    for (let i = 0; i < 3 && nextId && DECK[nextId]; i++) {
+        upcoming.push(DECK[nextId]);
+        nextId = DECK[nextId].next || (DECK[nextId].options ? DECK[nextId].options[0].next : null);
+    }
+    upcoming.reverse().forEach((c, i) => {
+        const depth = upcoming.length - 1 - i;
+        const el = document.createElement('div');
+        el.className = 'preview-card';
+        el.style.transform = `translateY(${depth * -10}px) scale(${1 - depth * 0.05})`;
+        el.style.zIndex = 10 - depth;
+        if (c.type === 'decision') {
+            el.innerHTML = `<svg class="icon-decision" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 4v6l-4 4m4-4l4 4"/><rect x="6" y="14" width="4" height="4"/><rect x="14" y="14" width="4" height="4"/>
+            </svg>`;
+        }
+        zoneTop.appendChild(el);
+    });
+    
+    // History stack
+    const zoneBottom = document.getElementById('zone-bottom');
+    zoneBottom.innerHTML = '';
+    state.history.slice(-3).forEach((id, i, arr) => {
+        const c = DECK[id];
+        const depth = arr.length - 1 - i;
+        const el = document.createElement('div');
+        el.className = 'history-card';
+        el.style.transform = `translateY(${depth * 10}px) scale(${1 - depth * 0.06})`;
+        el.style.zIndex = 10 - depth;
+        zoneBottom.appendChild(el);
+    });
+    
+    positionKnob(state.wheelAngle);
+}
+
+// Drag logic
+let dragging = false;
+const knob = document.getElementById('knob');
+knob.onmousedown = knob.ontouchstart = (e) => { dragging = true; e.preventDefault(); };
+document.onmouseup = document.ontouchend = () => { dragging = false; };
+document.onmousemove = document.ontouchmove = (e) => {
+    if (!dragging) return;
+    const touch = e.touches ? e.touches[0] : e;
+    const zoneMiddle = document.getElementById('zone-middle');
+    const rect = zoneMiddle.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    let deg = Math.atan2(touch.clientY - cy, touch.clientX - cx) * 180 / Math.PI + 90;
+    if (deg < 0) deg += 360;
+    
+    let delta = state.wheelAngle - deg;
+    if (delta < -180) delta += 360;
+    if (delta > 180) delta -= 360;
+    
+    if (delta > 25) {
+        const card = DECK[state.currentId];
+        const nextId = card.next || (card.options ? card.options[0].next : null);
+        if (nextId && DECK[nextId]) {
+            state.history.push(state.currentId);
+            state.currentId = nextId;
+            if (!state.timerRunning) {
+                state.timerRunning = true;
+                setInterval(() => {
+                    state.timerSeconds++;
+                    document.getElementById('timer').textContent = new Date(state.timerSeconds * 1000).toISOString().substr(11, 8);
+                }, 1000);
+            }
+            render();
+        }
+        state.wheelAngle = deg;
+    } else if (delta < -25 && state.history.length) {
+        state.currentId = state.history.pop();
+        state.wheelAngle = deg;
+        render();
+    }
+    positionKnob(deg);
+};
+
+render();
+</script>
+</body>
+</html>

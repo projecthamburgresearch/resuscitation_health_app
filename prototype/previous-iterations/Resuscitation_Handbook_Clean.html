@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Resus App PWA Prototype</title>
+    <style>
+        /* --- 1. THE PARAMETRIC ENGINE (CSS Variables) --- */
+        /* 
+         * DEVELOPER NOTE: These variables control global styling.
+         * Adjust values here or via browser DevTools for testing.
+         * NO user-facing UI for these - code-only control.
+         */
+        :root {
+            /* Core Geometry */
+            --stroke-width: 2px;
+            --card-radius: 12px;
+            --app-width: 100%;
+            
+            /* Color Matrix */
+            --base-hue: 0;
+            --primary: #111;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --rail-color: #e0e0e0;
+            --accent-red: #d32f2f;
+
+            /* Exposure Engine (Adjust in code for testing) */
+            --global-contrast: 100%;
+            --global-sepia: 0%;
+            --global-brightness: 100%;
+            
+            /* Layout Dimensions */
+            --header-h: 60px;
+            --footer-h: 120px;
+            --safe-margin: 16px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #333;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            /* Parametric Filters Applied Globally */
+            filter: contrast(var(--global-contrast)) sepia(var(--global-sepia)) brightness(var(--global-brightness));
+        }
+
+        /* --- 2. THE MOBILE FRAME --- */
+        #app-frame {
+            width: 390px;
+            height: 844px;
+            background-color: var(--bg-color);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        /* --- 3. SECTIONS --- */
+        
+        /* HEADER */
+        header {
+            height: var(--header-h);
+            border-bottom: var(--stroke-width) solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--safe-margin);
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            z-index: 500;
+        }
+        .app-title { font-weight: 700; font-size: 16px; letter-spacing: 0.5px; }
+        .header-icons { display: flex; gap: 15px; }
+        .icon-btn { width: 24px; height: 24px; cursor: pointer; }
+
+        /* FOOTER */
+        footer {
+            height: var(--footer-h);
+            border-top: var(--stroke-width) solid var(--primary);
+            background: var(--card-bg);
+            padding: 10px var(--safe-margin);
+            display: flex;
+            flex-direction: column;
+            z-index: 500;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* STAGE */
+        #stage {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ZONES */
+        #zone-top {
+            flex: 1;
+            position: relative;
+            perspective: 1000px;
+            z-index: 50;
+        }
+
+        #zone-middle {
+            height: 360px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        #zone-bottom {
+            flex: 1;
+            position: relative;
+            z-index: 40;
+        }
+
+        /* --- 4. THE WHEEL RAIL --- */
+        #wheel-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 340px;
+            height: 340px;
+            pointer-events: none;
+            z-index: 90; 
+        }
+
+        .rail-circle {
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 1px;
+        }
+
+        #actuator-node {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 0; 
+            left: 50%;
+            margin-left: -16px;
+            margin-top: -16px;
+            cursor: grab;
+            pointer-events: auto;
+            z-index: 200;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* --- 5. CARDS --- */
+        .card {
+            background: var(--card-bg);
+            border: var(--stroke-width) solid var(--primary);
+            border-radius: var(--card-radius);
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .card-preview {
+            width: 200px;
+            height: 120px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .card-active {
+            width: 255px;
+            height: 320px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 110;
+        }
+
+        .card-history {
+            width: 180px;
+            height: 100px;
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
+
+        .card-header { font-weight: bold; font-size: 14px; margin-bottom: 8px; text-transform: uppercase; color: #666; }
+        .card-body { font-size: 18px; font-weight: 600; padding: 0 10px; }
+        
+        .card-icon-tl { position: absolute; top: 8px; left: 8px; width: 20px; opacity: 0.5; }
+        .card-icon-tr { position: absolute; top: 8px; right: 8px; width: 20px; cursor: pointer;}
+        .card-icon-bl { position: absolute; bottom: 8px; left: 8px; width: 24px; cursor: pointer;}
+        .card-dots { position: absolute; bottom: 10px; display: flex; gap: 4px; }
+        .dot { width: 6px; height: 6px; border-radius: 50%; border: 1px solid #333; }
+        .dot.active { background: #333; }
+
+        /* CHECKLIST */
+        #checklist-items {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+        .check-row {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 8px;
+            border: 1px solid #eee;
+            padding: 8px;
+            border-radius: 6px;
+        }
+        .check-row input { margin-right: 10px; width: 18px; height: 18px; accent-color: var(--primary); }
+
+        #timer-display {
+            font-family: monospace;
+            font-size: 14px;
+            text-align: right;
+            border: 1px solid var(--primary);
+            padding: 4px 8px;
+            align-self: flex-end;
+            margin-top: 5px;
+        }
+
+        /* DECISION HIGHLIGHTING */
+        .decision-highlight {
+            border: 2px solid var(--accent-red);
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="app-frame">
+    <!-- HEADER -->
+    <header>
+        <div class="app-title">Resuscitation Handbook</div>
+        <div class="header-icons">
+            <!-- Search Icon -->
+            <svg class="icon-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <!-- 3-dot Menu (for future features, not settings) -->
+            <svg class="icon-btn" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="5" r="2"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+                <circle cx="12" cy="19" r="2"></circle>
+            </svg>
+        </div>
+    </header>
+
+    <!-- NO SETTINGS PANEL - Parametric values are code-only -->
+
+    <!-- STAGE -->
+    <div id="stage">
+        <div id="zone-top"></div>
+
+        <div id="zone-middle">
+            <div id="wheel-container">
+                <svg width="340" height="340">
+                    <circle cx="170" cy="170" r="170" class="rail-circle" />
+                </svg>
+                <div id="actuator-node"></div>
+            </div>
+            <div id="middle-card-slot"></div>
+        </div>
+
+        <div id="zone-bottom"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div id="checklist-items"></div>
+        <div id="timer-display">00:00:00</div>
+    </footer>
+</div>
+
+<!-- SVG SPRITES -->
+<svg style="display:none">
+    <symbol id="icon-decision-upper" viewBox="0 0 24 24">
+        <path d="M12 2v8m0 0l-6 6m6-6l6 6" stroke="currentColor" stroke-width="2" fill="none"/>
+        <rect x="4" y="16" width="4" height="4" stroke="currentColor" fill="none"/>
+        <rect x="16" y="16" width="4" height="4" stroke="currentColor" fill="none"/>
+    </symbol>
+    <symbol id="icon-toolbox" viewBox="0 0 24 24">
+        <rect x="3" y="7" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="M12 11v6M9 14h6" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="icon-fullscreen" viewBox="0 0 24 24">
+        <path d="M3 3h6v2H5v4H3V3zm18 0h-6v2h4v4h2V3zm-6 18h6v-6h-2v4h-4v2zM3 21h6v-2H5v-4H3v6z" fill="currentColor"/>
+    </symbol>
+</svg>
+
+<script>
+/**
+ * RESUSCITATION APP - CLEAN VERSION
+ * 
+ * Parametric Engine: CSS variables in :root (code-only, no UI)
+ * To test: Use browser DevTools to modify --global-contrast, etc.
+ */
+
+// 1. DATA SCHEMA
+const CARD_DB = {
+    "CARD_START": {
+        id: "CARD_START",
+        title: "Paediatric Basic Life Support",
+        body: "Pull wheel to start",
+        type: "cover",
+        next: "CARD_01"
+    },
+    "CARD_01": {
+        id: "CARD_01",
+        title: "Assessment",
+        body: "Is the child unresponsive?",
+        type: "standard",
+        checklist: ["Check Danger", "Check Response"],
+        next: "CARD_02"
+    },
+    "CARD_02": {
+        id: "CARD_02",
+        title: "Call for Help",
+        body: "Shout loudly for help",
+        type: "standard",
+        checklist: ["2nd Rescuer?", "Call 999", "Get AED"],
+        next: "CARD_03"
+    },
+    "CARD_03": {
+        id: "CARD_03",
+        title: "Airway",
+        body: "Open Airway\n(Head tilt, chin lift)",
+        type: "standard",
+        checklist: ["Mouth Clear?"],
+        next: "CARD_04"
+    },
+    "CARD_04": {
+        id: "CARD_04",
+        title: "Breathing Check",
+        body: "Is the child breathing normally?",
+        type: "decision",
+        options: [
+            { label: "NO", next: "CARD_05_NO" },
+            { label: "YES", next: "CARD_05_YES" }
+        ],
+        checklist: ["Look, Listen, Feel"]
+    },
+    "CARD_05_NO": {
+        id: "CARD_05_NO",
+        title: "5 Rescue Breaths",
+        body: "Give 5 breaths immediately",
+        type: "standard",
+        next: "CARD_CPR"
+    },
+    "CARD_05_YES": {
+        id: "CARD_05_YES",
+        title: "Observation",
+        body: "Recovery Position",
+        type: "terminal"
+    }
+};
+
+// 2. STATE
+let state = {
+    activeId: "CARD_START",
+    history: [],
+    wheelAngle: 330,
+    timerSeconds: 0,
+    timerRunning: false,
+    decisionIndex: 0
+};
+
+// 3. RENDERING
+function render() {
+    const activeCard = CARD_DB[state.activeId];
+    
+    // Middle Card
+    const middleSlot = document.getElementById('middle-card-slot');
+    let toolsHtml = activeCard.type !== 'cover' ? 
+        `<svg class="card-icon-bl"><use href="#icon-toolbox"></use></svg>
+         <svg class="card-icon-tr"><use href="#icon-fullscreen"></use></svg>` : '';
+          
+    middleSlot.innerHTML = `
+        <div class="card card-active">
+            <div class="card-header">${activeCard.title}</div>
+            <div class="card-body" style="white-space: pre-line">${activeCard.body}</div>
+            ${toolsHtml}
+            <div class="card-dots">
+                <div class="dot active"></div><div class="dot"></div>
+            </div>
+        </div>
+    `;
+
+    // Top Zone
+    const topZone = document.getElementById('zone-top');
+    topZone.innerHTML = '';
+    
+    let nextId = activeCard.next;
+    
+    if (activeCard.type === 'decision') {
+        renderDecisionCarousel(activeCard, topZone);
+    } else if (nextId) {
+        let stackIds = [];
+        let curr = nextId;
+        for(let i=0; i<3; i++) {
+            if(curr && CARD_DB[curr]) {
+                stackIds.push(curr);
+                curr = CARD_DB[curr].next || (CARD_DB[curr].options ? CARD_DB[curr].options[0].next : null);
+            }
+        }
+        
+        stackIds.reverse().forEach((id, index) => {
+            let c = CARD_DB[id];
+            let offset = (stackIds.length - 1 - index) * 10;
+            let scale = 0.9 - ((stackIds.length - 1 - index) * 0.05);
+            
+            let iconHtml = c.type === 'decision' ? 
+                `<svg class="card-icon-tl"><use href="#icon-decision-upper"></use></svg>` : '';
+
+            let cardEl = document.createElement('div');
+            cardEl.className = 'card card-preview';
+            cardEl.innerHTML = `<div class="card-header">${c.title}</div>${iconHtml}`;
+            cardEl.style.bottom = `${10 + offset}px`;
+            cardEl.style.left = `50%`;
+            cardEl.style.marginLeft = `-100px`;
+            cardEl.style.zIndex = index;
+            cardEl.style.transform = `scale(${scale}) translateY(-${offset}px)`;
+            
+            cardEl.ontouchstart = handleCardSwipeStart;
+            
+            topZone.appendChild(cardEl);
+        });
+    }
+
+    // Bottom Zone (History)
+    const botZone = document.getElementById('zone-bottom');
+    botZone.innerHTML = '';
+    if (state.history.length > 0) {
+        let lastId = state.history[state.history.length - 1];
+        let c = CARD_DB[lastId];
+        botZone.innerHTML = `
+            <div class="card card-history" style="top: 10px; left: 50%; transform: translateX(-50%)">
+                <div class="card-header">${c.title}</div>
+            </div>
+        `;
+    }
+
+    // Checklist
+    const checkContainer = document.getElementById('checklist-items');
+    checkContainer.innerHTML = '';
+    if (activeCard.checklist) {
+        activeCard.checklist.forEach(item => {
+            checkContainer.innerHTML += `
+                <div class="check-row">
+                    <input type="checkbox"> ${item}
+                </div>
+            `;
+        });
+    }
+
+    updateKnobVisuals();
+}
+
+function renderDecisionCarousel(card, container) {
+    card.options.forEach((opt, idx) => {
+        let isSelected = idx === state.decisionIndex;
+        let scale = isSelected ? 1.0 : 0.8;
+        let opacity = isSelected ? 1.0 : 0.5;
+        let xOffset = (idx - state.decisionIndex) * 160;
+        
+        let el = document.createElement('div');
+        el.className = `card card-preview ${isSelected ? 'decision-highlight' : ''}`;
+        el.innerHTML = `<div class="card-header">OPTION</div><div class="card-body">${opt.label}</div>`;
+        el.style.bottom = '20px';
+        el.style.left = '50%';
+        el.style.marginLeft = '-100px';
+        el.style.transform = `translateX(${xOffset}px) scale(${scale})`;
+        el.style.opacity = opacity;
+        el.style.zIndex = isSelected ? 50 : 10;
+        
+        if (isSelected) {
+            el.ontouchstart = (e) => handleDecisionSwipe(e, opt.next);
+        }
+        
+        container.appendChild(el);
+    });
+}
+
+// 4. WHEEL PHYSICS
+const knob = document.getElementById('actuator-node');
+let isDragging = false;
+
+knob.addEventListener('mousedown', startDrag);
+knob.addEventListener('touchstart', startDrag, {passive: false});
+
+document.addEventListener('mousemove', moveDrag);
+document.addEventListener('touchmove', moveDrag, {passive: false});
+
+document.addEventListener('mouseup', endDrag);
+document.addEventListener('touchend', endDrag);
+
+function startDrag(e) {
+    isDragging = true;
+    e.preventDefault();
+}
+
+function moveDrag(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    
+    let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
+    const rect = document.getElementById('wheel-container').getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    let rad = Math.atan2(clientY - centerY, clientX - centerX);
+    let deg = rad * (180 / Math.PI) + 90; 
+    if (deg < 0) deg += 360;
+    
+    let delta = state.wheelAngle - deg;
+    if (delta < -180) delta += 360; 
+    if (delta > 180) delta -= 360;
+
+    if (CARD_DB[state.activeId].type === 'decision') {
+        if (Math.abs(delta) > 30) {
+            if (delta > 0) state.decisionIndex = 0;
+            else state.decisionIndex = 1;
+            if (state.decisionIndex > 1) state.decisionIndex = 1;
+            if (state.decisionIndex < 0) state.decisionIndex = 0;
+            
+            state.wheelAngle = deg;
+            render();
+            
+            if (navigator.vibrate) navigator.vibrate(10);
+        }
+    } else {
+        if (delta > 30) {
+            triggerTransition();
+            state.wheelAngle = deg; 
+        } else if (delta < -30) {
+            triggerRewind();
+            state.wheelAngle = deg;
+        } else {
+            updateKnobVisuals(deg); 
+        }
+    }
+}
+
+function endDrag() {
+    isDragging = false;
+    if (state.activeId === 'CARD_START') {
+        updateKnobVisuals(330);
+    } else {
+        updateKnobVisuals(270);
+    }
+}
+
+function updateKnobVisuals(degOverride = null) {
+    let deg = degOverride !== null ? degOverride : state.wheelAngle;
+    
+    // KEY MATH: (deg - 90) offset for correct positioning
+    let rad = (deg - 90) * (Math.PI / 180);
+    let x = 170 + 170 * Math.cos(rad);
+    let y = 170 + 170 * Math.sin(rad);
+    
+    knob.style.left = x + 'px';
+    knob.style.top = y + 'px';
+    
+    if (!isDragging && degOverride !== null) state.wheelAngle = degOverride;
+}
+
+// 5. NAVIGATION
+function triggerTransition() {
+    let curr = CARD_DB[state.activeId];
+    if (curr.next) {
+        state.history.push(state.activeId);
+        state.activeId = curr.next;
+        
+        if (!state.timerRunning) {
+            state.timerRunning = true;
+            setInterval(updateTimer, 1000);
+        }
+        
+        render();
+    }
+}
+
+function triggerRewind() {
+    if (state.history.length > 0) {
+        state.activeId = state.history.pop();
+        render();
+    }
+}
+
+// 6. SWIPE GESTURES
+let swipeStartY = 0;
+function handleDecisionSwipe(e, targetId) {
+    swipeStartY = e.touches[0].clientY;
+    e.target.addEventListener('touchend', (endE) => {
+        let diff = endE.changedTouches[0].clientY - swipeStartY;
+        if (diff > 50) {
+            state.history.push(state.activeId);
+            state.activeId = targetId;
+            state.decisionIndex = 0;
+            render();
+        }
+    }, {once: true});
+}
+
+function handleCardSwipeStart(e) {
+    swipeStartY = e.touches[0].clientY;
+    e.target.addEventListener('touchend', (endE) => {
+        let diff = endE.changedTouches[0].clientY - swipeStartY;
+        if (diff > 50) triggerTransition();
+    }, {once: true});
+}
+
+// 7. TIMER
+function updateTimer() {
+    state.timerSeconds++;
+    let d = new Date(null);
+    d.setSeconds(state.timerSeconds);
+    let str = d.toISOString().substr(11, 8);
+    document.getElementById('timer-display').innerText = str;
+}
+
+// DEVELOPER UTILITY: Adjust parametric values via console
+// Example: setParam('--global-contrast', '120%')
+window.setParam = function(name, value) {
+    document.documentElement.style.setProperty(name, value);
+    console.log(`Set ${name} to ${value}`);
+};
+
+// Initialize
+render();
+
+</script>
+</body>
+</html>

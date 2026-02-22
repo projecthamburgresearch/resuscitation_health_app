@@ -1,0 +1,154 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "resuscitation-algorithm-schema-v2",
+  "title": "Resuscitation Algorithm Schema",
+  "version": "2.0.0",
+  "description": "Universal schema for resuscitation flowchart algorithms",
+
+  "_documentation": {
+    "card_types": {
+      "cover": "Title/entry card - no checklist, transparent in UI",
+      "standard": "Regular action card with optional checklist",
+      "decision": "YES/NO branch point - wheel locks, toggles options",
+      "carousel_action": "Action with multiple technique slides (swipe horizontally)",
+      "loop_start": "Entry point of a repeating cycle (e.g., CPR) - pulse animation",
+      "monitor": "Holding state with potential degradation trigger",
+      "terminal": "End state - wheel locked, process complete",
+      "algorithm_link": "Handoff to different algorithm"
+    },
+    "transition_types": {
+      "linear": "Simple next_id progression",
+      "split": "Decision with multiple options array",
+      "algorithm_jump": "Cross-reference to another algorithm",
+      "self_loop": "Monitor state that can loop to itself or degrade"
+    },
+    "checklist_item_types": {
+      "checkbox": "Simple confirmation tick",
+      "boolean_toggle": "ON/OFF that reveals/hides other items",
+      "radio_select": "Choose one from options",
+      "warning": "Red highlighted instruction (do NOT do X)",
+      "instruction": "Grey info text, not interactive",
+      "counter": "Numeric input (e.g., number of compressions)"
+    },
+    "html_zone_mapping": {
+      "header": "Algorithm title, search, settings icons",
+      "zone_top": "Preview stack (upcoming cards) OR decision carousel",
+      "zone_middle": "Active card inscribed in wheel circle",
+      "zone_bottom": "History stack (completed cards)",
+      "footer": "Dynamic checklist + global timer"
+    }
+  },
+
+  "template": {
+    "algorithm_meta": {
+      "id": "algo_[name]_[version]",
+      "title": "Algorithm Title",
+      "subtitle": "Optional subtitle",
+      "source": "Resuscitation Council UK (2021)",
+      "context": "out-of-hospital | in-hospital | universal",
+      "version": "1.0.0",
+      "page_ref": "Page X of Handbook",
+      "color_theme": {
+        "primary": "#1a5276",
+        "decision": "#c0392b",
+        "action": "#7f8c8d",
+        "terminal": "#27ae60"
+      },
+      "global_timer": {
+        "enabled": true,
+        "label": "Total Time",
+        "type": "count_up",
+        "auto_start_on_card": "CARD_01"
+      },
+      "linked_algorithms": [
+        {
+          "id": "algo_paed_als_001",
+          "title": "Paediatric Advanced Life Support",
+          "description": "For in-hospital escalation"
+        }
+      ]
+    },
+
+    "card_template": {
+      "id": "CARD_XX_NAME",
+      "type": "standard",
+      "severity": "normal | caution | critical",
+      
+      "content": {
+        "title": "Card Title",
+        "body": "Main instruction text",
+        "sub_body": "Secondary details",
+        "fallback_note": "What to do if primary action fails",
+        "slides": [
+          {
+            "id": "slide_1",
+            "context": "infant | child | adult",
+            "header": "Technique Name",
+            "text": "Detailed instruction",
+            "image_ref": "optional_image.png"
+          }
+        ]
+      },
+
+      "wheel_config": {
+        "position_degrees": 0,
+        "phase": "start_point | assessment | action | decision | intervention | cpr_loop | check | complete",
+        "animation": "none | pulse | shake",
+        "locked": false
+      },
+
+      "local_timer": {
+        "enabled": false,
+        "type": "countdown | metronome | stopwatch",
+        "duration_seconds": 120,
+        "bpm": 110,
+        "guidance": "Timer guidance text",
+        "audio_enabled": true
+      },
+
+      "toolbox": [
+        {
+          "id": "tool_id",
+          "icon": "calculator | info | video | link",
+          "label": "Tool Name",
+          "action": "open_modal_[type]",
+          "data": {}
+        }
+      ],
+
+      "checklist": [
+        {
+          "id": "chk_item_id",
+          "type": "checkbox | boolean_toggle | warning | instruction | counter",
+          "label": "Item label",
+          "note": "Optional helper text",
+          "visible_if": "other_id == true",
+          "required": false,
+          "default_value": false
+        }
+      ],
+
+      "transitions": {
+        "type": "linear | split | algorithm_jump | self_loop",
+        "next_id": "CARD_XX",
+        "options": [
+          {
+            "label": "YES",
+            "sub_label": "optional qualifier",
+            "preview_card_title": "What comes next",
+            "target_id": "CARD_XX",
+            "severity": "normal | success | danger"
+          }
+        ],
+        "target_algorithm": {
+          "id": "algo_id",
+          "entry_card": "CARD_XX",
+          "context": "Why we're jumping"
+        },
+        "degradation_target": "CARD_XX"
+      },
+
+      "status": "active | complete | skipped"
+    }
+  }
+}

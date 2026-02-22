@@ -1,0 +1,2813 @@
+Resuscitation Handbook Table of Contents
+
+Links:
+https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2210wtczm8HB88CTAMQZIBFN4pmQ88gR_Ph%22%5D,%22action%22:%22open%22,%22userId%22:%22116473352259275547103%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing, https://drive.google.com/file/d/12O6scn2W-j3LgHA9vc2czwWcZo1A1bUf/view?usp=sharing, https://drive.google.com/file/d/14qhzRzgtr0bc2hUhNThlI9-aoOMTfMS9/view?usp=sharing, https://drive.google.com/file/d/18RJz8YbOyk6Y2Cp2s336QDR2Lw_ICK_a/view?usp=sharing, https://drive.google.com/file/d/1A5xL3W9jYrhzwtavSvO2StYwncn9FGgl/view?usp=sharing, https://drive.google.com/file/d/1CWw0BKIigyB8sIgaD_QIageFhJ-sjs8V/view?usp=sharing, https://drive.google.com/file/d/1CeCzIPbQ4rPRlsW05_XcktEP55jQf8aJ/view?usp=sharing, https://drive.google.com/file/d/1G0hYZfV5504KIw3gPgpXsPNs1oXANPRW/view?usp=sharing, https://drive.google.com/file/d/1KLOtefXQWAqt41gnVPyT90_DwBdJURfn/view?usp=sharing, https://drive.google.com/file/d/1ONL3KzpF2lEieO83W28ggLPy9WOKNUrM/view?usp=sharing, https://drive.google.com/file/d/1OmFCbn55Vt-cp_UU6wP-Dx__lZ7QZG-x/view?usp=sharing, https://drive.google.com/file/d/1R7ExB5BrOcinBIl_NGxKF_9UmhQpmBrg/view?usp=sharing, https://drive.google.com/file/d/1SZV6lRUlQaBZ2gQvdF_Hbr-JKLgCocVk/view?usp=sharing, https://drive.google.com/file/d/1ScKp8CMVexQUyhlQwutkkSoGj4-rY2ON/view?usp=sharing, https://drive.google.com/file/d/1TUS8qhNEHhnGhrIrzTwiGbZkfx0xWelR/view?usp=sharing, https://drive.google.com/file/d/1TYAVh5liWGhefM7VPxzgMkV9m0mx0Wx5/view?usp=sharing, https://drive.google.com/file/d/1UFoT7_epvBsqINwFbSeR6mSJ1bCqahSW/view?usp=sharing, https://drive.google.com/file/d/1WrDAHrADtDJxe1jNTcaDW2VMsOgi5d_X/view?usp=sharing, https://drive.google.com/file/d/1WwEVWrGkxOP2SjqPK6YQS3cD3go5bJ5V/view?usp=sharing, https://drive.google.com/file/d/1_8uf_VBk7an6Wu9EPdTNBc1QJ48itrXV/view?usp=sharing, https://drive.google.com/file/d/1eD2KqjPjrNJFzvSk0mlRaK-RhbWjngUz/view?usp=sharing, https://drive.google.com/file/d/1jwoeVgFIgd4LKu-OaFqbvxB5nXfhz593/view?usp=sharing, https://drive.google.com/file/d/1lMQItGa-hX3aUpKpL62YmefJj4c-cH7m/view?usp=sharing, https://drive.google.com/file/d/1loidIEmdrrg1LAG6IkbQLuRIn7DacSdO/view?usp=sharing, https://drive.google.com/file/d/1nAQhy2g2V4Hf-Xg-Y9LZgFBJa35gP1Yf/view?usp=sharing, https://drive.google.com/file/d/1nUWkVKzHSG6u5DLVAKT0Poi8QFbQkVo7/view?usp=sharing, https://drive.google.com/file/d/1qPUxIGP3_Ggn52w0MYXTuN8-SIRKXBaf/view?usp=sharing, https://drive.google.com/file/d/1reGAIkC_XwUJWlHv5z65ZUhjvNfjYvDB/view?usp=sharing, https://drive.google.com/file/d/1t5GIupFfVdH3PTTOTljqdVsSstg0wIRH/view?usp=sharing, https://drive.google.com/file/d/1tfVWGX8rvvvohPe0ulWJzXcl6-BH0mFH/view?usp=sharing, https://drive.google.com/file/d/1wS5suNDCBW3YFCbU_I74__uOSPULrWR3/view?usp=sharing
+
+
+Model
+ThinkingThoughts
+Evaluating the Input
+I've just begun a deep analysis of the provided images, specifically focusing on the "Resuscitation Handbook" pages. I'm carefully examining the content, layouts, and potential relevance of each section within the broader context of resuscitation guidelines. The goal is to identify how best to leverage this information.
+Discerning the Handbook's Scope
+I'm now identifying the handbook's key elements and the overall organizational approach. The index page reveals detailed content categories, color-coded for quick navigation. I'm noting the clear sections, including pediatric life support, anaphylaxis, and adult-specific guidelines. The cover details and references are informing my understanding of the handbook's context and intended application.
+Identifying Key Information
+I'm now zeroing in on the handbook's foundational data. The title, "Resuscitation Handbook," is prominent, as is the publisher, the Sheffield Children's NHS Foundation Trust. It's clearly a clinical resource, version 6, updated in July 2023. This is a crucial guide with algorithms and drug doses for medical emergencies, both pediatric and adult.
+Examining Life Support Details
+I've just begun a detailed assessment of the handbook's specific sections. I'm focusing on the "Life Support" content, including pediatric BLS and foreign body airway obstruction protocols. I'm cataloging each page's contribution to the broader resuscitation approach. I've also noted newborn resuscitation.
+Categorizing Handbook Content
+I'm presently arranging the handbook content systematically. I've noted the 'Disability' section, highlighted in green, with pages on status epilepticus and a crucial emergency drug dosing chart. The blue-highlighted 'Formulary' sections, including neonatal, pediatric, and adolescent drug information, are now clearly defined. Furthermore, I've noted the 'Adult' section covering BLS, airway obstruction and ALS protocols.
+Combining the Table Contents
+I'm now carefully merging the two tables of contents. Image 1, which acts as the main index for the clinical guidelines, is the most crucial part for the expert user. However, I've noted that the general Table of Contents from Image 4 also provides key organizational context. To avoid missing anything, I will present the detailed index from Image 1 first, clearly labeled as the "Clinical Index". Then, I'll follow with a section for Image 4's "Administrative Table of Contents", which is vital for providing context to the entire document. This ensures the user has a complete and organized overview of the handbook's structure.
+Confirming the Structure
+The output is taking shape. I've finished the comprehensive table of contents based on the index. I've checked the drug section page numbers against the source to make sure everything's accurate. The structure is now confirmed and I'm ready to proceed with generating the final output.
+Collapse to hide model thoughts
+
+chevron_right
+Model
+ThinkingThoughts
+Analyzing the Logic Flow
+I'm currently focused on the overarching objective: translating the visual flowchart into a well-defined JSON structure. I've broken down the image into individual nodes and connectors to grasp the decision-making pathways. Now, I'm thinking about the most efficient way to represent the branching logic within a JSON framework, considering parent-child relationships and conditional rules.
+Dissecting the Algorithm
+I've been meticulously dissecting the flowchart, identifying each step, decision point, and branch within the "Paediatric out-of-hospital basic life support" algorithm. I'm now focusing on mapping the relationships between the diamond and action boxes, paying close attention to conditional logic and potential loops. The goal is to accurately translate this into a structured JSON representation. I'm taking notes on each rescuer's options and how it all flows.
+Designing the JSON Schema
+I'm now iterating on the JSON structure, aiming for a balance between clarity and parsing efficiency. I'm leaning toward a schema with a flat "steps" array, where each step includes an ID, action description, and branching logic through "next" or "branches". This should cleanly capture the flowchart's flow. I've started drafting the content, beginning with the "Unresponsive" root and moving step-by-step.
+Structuring the Flow
+I'm now deep in the rescue breaths portion of the algorithm. I've broken down "Step 4" with its rescue breath details for infants and children and included the crucial single-rescuer side note. I've also identified the crucial loop structure from the no-signs-of-life decision point, focusing on accurately capturing the 30:2 compression-to-breath ratio. Refining the JSON representation is key, especially how to represent guidance related to single vs. multiple rescuers, and to create the core loop structure.
+Implementing the CPR Loop
+I'm tackling the critical CPR loop within the JSON structure. The flowchart's "No" path from "Clear signs of life?" leads back to "30 chest compressions." I need a way to encode this self-referential logic in a JSON structure. I'm exploring representing this goto behavior as a loop, ensuring the flow correctly cycles until signs of life are present. I'm considering a specific "target step" ID.
+Completing the Structure
+The CPR loop is now complete. I've successfully encoded the self-referential logic for the no-signs-of-life path within the JSON structure. Now, I'm incorporating the nuances of the "Single Rescuer" and "Second Rescuer" scenarios, capturing the critical timing considerations regarding calling EMS. I'm focusing on the single-rescuer side note, and I've integrated these details within the appropriate steps in the nodes array.
+Integrating Step Details
+I'm now focusing on integrating the content of the orange box within the JSON structure. I'm making sure the instructions are clearly captured in the "content" or "instructions" field of the corresponding node. The goal is to accurately represent every step of the flowchart, including all additional context. I need to make sure the end result captures all the details.
+Collapse to hide model thoughts
+
+chevron_right
+Based on the flowchart in the image, here is the algorithmic logic unpacked into a structured JSON format.
+code
+JSON
+{
+  "algorithm": {
+    "title": "Paediatric out-of-hospital basic life support",
+    "organization": "Resuscitation Council UK",
+    "year": "2021",
+    "context": "Paediatric emergency response"
+  },
+  "flow": [
+    {
+      "id": "step_1",
+      "state": "Start",
+      "condition": "Unresponsive",
+      "action": "Shout for help",
+      "next_step": "step_2",
+      "parallel_guidance": {
+        "condition": "Second rescuer present OR single rescuer suspecting primary cardiac arrest",
+        "actions": [
+          "Call EMS on 999",
+          "Collect and apply AED if feasible"
+        ]
+      }
+    },
+    {
+      "id": "step_2",
+      "action": "Open airway",
+      "next_step": "step_3"
+    },
+    {
+      "id": "step_3",
+      "decision_point": "Breathing normally?",
+      "branches": {
+        "yes": {
+          "action": "Observe and re-assess as necessary",
+          "status": "end_process"
+        },
+        "no_or_doubt": {
+          "next_step": "step_4"
+        }
+      }
+    },
+    {
+      "id": "step_4",
+      "action": "5 rescue breaths",
+      "instructions": [
+        "Infant: mouth to nose/mouth",
+        "Child: mouth to mouth",
+        "If unable/unsafe to ventilate, perform continuous chest compressions",
+        "Add rescue breaths as soon as possible"
+      ],
+      "next_step": "step_5",
+      "parallel_guidance": {
+        "condition": "Single rescuer context",
+        "actions": [
+          "Call EMS if phone available, using speaker function",
+          "If no phone available continue with CPR for 1 minute before calling EMS"
+        ]
+      }
+    },
+    {
+      "id": "step_5",
+      "condition": "If no signs of life observed during rescue breaths",
+      "action": "Proceed to CPR loop",
+      "next_step": "step_6"
+    },
+    {
+      "id": "step_6",
+      "type": "CPR Loop Start",
+      "action": "30 chest compressions",
+      "next_step": "step_7"
+    },
+    {
+      "id": "step_7",
+      "action": "2 rescue breaths",
+      "next_step": "step_8"
+    },
+    {
+      "id": "step_8",
+      "decision_point": "Clear signs of life?",
+      "branches": {
+        "yes": {
+          "action": "Keep child in safe position, continue to assess and await EMS",
+          "status": "end_process"
+        },
+        "no": {
+          "action": "Continue CPR",
+          "next_step": "step_6"
+        }
+      }
+    }
+  ],
+  "footnote": "Those trained only in 'adult' BLS (may include healthcare providers and lay rescuers) who have no specific knowledge of paediatric resuscitation, should use the adult sequence they are familiar with, including paediatric modifications."
+}
+Model
+ThinkingThoughts
+Reviewing BLS Flowchart
+I'm now fully focused on transforming the "Paediatric out-of-hospital basic life support" flowchart into a text-based, actionable list. I've thoroughly grasped the user's objective and am currently dissecting the image, aiming to capture the essential steps and their sequence. I'm prioritizing accuracy and clarity in this transformation process.
+Mapping the BLS Flow
+I've just begun mapping the 2021 BLS flowchart, noting the initial "Unresponsive" state as the starting point. I'm carefully documenting each step, starting with shouting for help. I'm also capturing the conditional side note regarding calling EMS and retrieving an AED when applicable. Currently, I'm working through the airway assessment and subsequent actions based on breathing status. Finally, I've arrived at step four, where I'm translating details about rescue breaths into the actionable list format.
+Decoding CPR Steps
+I'm now zeroing in on the specific actions for the CPR loop, specifically the conditional calls for help. I've broken down step five of the flowchart to address "no signs of life." I am now mapping the cycle of 30 compressions and 2 breaths, and the crucial decision point: are there clear signs of life? Based on the answer, the flowchart either instructs continuing assessment or looping back to chest compressions, depending on whether the answer is yes or no respectively. Finally, I'm focusing on those early steps of CPR, converting them to actionable steps.
+Mapping CPR Details
+I'm now detailing the "CPR Loop," including the critical "check for signs of life" after two breaths. If signs are present, my focus shifts to moving the patient into a safe recovery position while monitoring. If not, I am returning to the 30:2 ratio of compressions to breaths. I'm prioritizing accuracy in capturing the sequence of these critical actions, ready to apply them to this actionable list. I am now at step 4, refining it.
+Detailing Rescue Breaths
+I've just added the crucial 'give rescue breaths' step. I've noted the potential need for mouth-to-mouth or mouth-to-nose ventilation, depending on the child, and included a key sub-step: if a single rescuer, they must call EMS on speaker. If no phone, one minute of CPR is performed before the call is made. After this, I'm at the stage of assessing for signs of life and documenting chest compressions.
+Collapse to hide model thoughts
+
+chevron_right
+Model
+ThinkingThoughts
+Structuring the Data
+I'm currently focused on the user's request, specifically the goal of organizing flow chart data into a knowledge graph. I'm prioritizing the use of Nodes and Edges as required. My analysis now zeroes in on identifying the specific requirements to translate the user's intent into a structured knowledge representation. I am carefully considering the most appropriate attributes and relationships to implement the requested knowledge graph.
+Analyzing Flowchart Elements
+I'm now diving into the specifics of the flowchart logic. I've begun to break down the image content to translate it into a structured format. I'm focusing on handling branching decisions, like yes/no scenarios, and how to represent loops, such as those present in CPR steps. I'm also considering parallel actions, like the phone calls while giving breaths. I'm still trying to name the request itself.
+Formalizing the Structure
+My current thinking revolves around the terminology. I've considered several options, including Graph Theory and State Machines. I've settled on "Directed Cyclic Graph" (DCG) or "State Machine" representation as the most accurate. I'm also considering alternative terms, such as "Graph Serialization" when applicable. Moving forward, I'll be designing the specific data structure for the "Knowledge Graph", including what attributes are needed for Nodes and Edges. I'm planning to organize these as lists.
+Mapping Nodes & Edges
+I've decided on the Adjacency List or Node-Edge List structure for the knowledge graph. I've begun mapping the flowchart elements to nodes and edges. For example, "Start (Unresponsive)" is Node 1, connected to "Shout for Help" (Node 2) and so on. The edges represent the flow of the process. I am now working on identifying and labeling the edges with relevant decision criteria and ensuring loops are correctly handled. The loop example in the CPR step is proving crucial to test the knowledge graph's capabilities.
+Refining JSON Output
+I'm making the JSON more straightforward. I'm focusing on "id", "type", "label", and "edges", where each edge has a "target" and "condition." I'm reviewing the JSON against the flowchart, making sure all parallel paths and loops are included. I'm handling the phone call logic and considering a node connected to "Rescue Breaths."
+Revising Node Structure
+I've been re-evaluating the current node structure for readability and human understanding. I've realized that including steps directly within each node, even with ID referencing for loops, significantly improves clarity. I'm now transitioning to an Adjacency List format to facilitate this approach, with each node explicitly defining its outgoing connections.
+Collapse to hide model thoughts
+
+chevron_right
+This specific request is often called Graph Modeling or creating a Directed Cyclic Graph (DCG) representation.
+In computer science and systems design, this is also referred to as modeling a Finite State Machine (FSM).
+Directed: The flow moves in a specific direction (arrows).
+Cyclic: It contains loops (the CPR cycle repeats).
+Graph: It is a network of nodes (states/actions) and edges (transitions).
+Here is the algorithm organized as a Node-Edge Knowledge Graph in JSON. I have separated the structure into Nodes (the boxes/actions) and Edges (the arrows/connections). This structure perfectly handles the infinite loop of CPR until "Yes" is achieved.
+code
+JSON
+{
+  "graph_meta": {
+    "name": "Paediatric Out-of-Hospital BLS",
+    "type": "Directed Cyclic Graph",
+    "source": "Resuscitation Council UK (2021)"
+  },
+  "nodes": [
+    {
+      "id": "N01",
+      "label": "Unresponsive",
+      "type": "Trigger",
+      "content": "Patient is unresponsive."
+    },
+    {
+      "id": "N02",
+      "label": "Shout for Help",
+      "type": "Action",
+      "content": "Shout loudly to attract attention."
+    },
+    {
+      "id": "N03",
+      "label": "2nd Rescuer Action",
+      "type": "Parallel Action",
+      "content": "If 2nd rescuer available OR suspicion of cardiac arrest: Call 999 immediately and fetch AED."
+    },
+    {
+      "id": "N04",
+      "label": "Open Airway",
+      "type": "Action",
+      "content": "Head tilt, chin lift to open airway."
+    },
+    {
+      "id": "N05",
+      "label": "Breathing Check",
+      "type": "Decision",
+      "content": "Is the child breathing normally?"
+    },
+    {
+      "id": "N06",
+      "label": "Monitor",
+      "type": "Terminal State",
+      "content": "Observe and re-assess as necessary."
+    },
+    {
+      "id": "N07",
+      "label": "5 Rescue Breaths",
+      "type": "Action",
+      "content": "Give 5 breaths. Infant: mouth-to-nose/mouth. Child: mouth-to-mouth. If fail, compressions."
+    },
+    {
+      "id": "N08",
+      "label": "Single Rescuer Call Logic",
+      "type": "Parallel Action",
+      "content": "If phone available: Call 999 on speaker. If no phone: Do CPR 1 min before leaving to call."
+    },
+    {
+      "id": "N09",
+      "label": "30 Chest Compressions",
+      "type": "Action (Loop Start)",
+      "content": "Perform 30 chest compressions."
+    },
+    {
+      "id": "N10",
+      "label": "2 Rescue Breaths",
+      "type": "Action",
+      "content": "Perform 2 rescue breaths."
+    },
+    {
+      "id": "N11",
+      "label": "Signs of Life Check",
+      "type": "Decision",
+      "content": "Are there clear signs of life?"
+    },
+    {
+      "id": "N12",
+      "label": "Recovery Position",
+      "type": "Terminal State",
+      "content": "Keep child in safe position, assess, await EMS."
+    }
+  ],
+  "edges": [
+    { "source": "N01", "target": "N02", "condition": "Always" },
+    { "source": "N02", "target": "N03", "condition": "Context dependent (2nd rescuer present)" },
+    { "source": "N02", "target": "N04", "condition": "Next Step" },
+    { "source": "N04", "target": "N05", "condition": "Next Step" },
+    { "source": "N05", "target": "N06", "condition": "YES (Breathing Normal)" },
+    { "source": "N05", "target": "N07", "condition": "NO (Or any doubt)" },
+    { "source": "N07", "target": "N08", "condition": "Context dependent (Single rescuer)" },
+    { "source": "N07", "target": "N09", "condition": "If no signs of life observed" },
+    { "source": "N09", "target": "N10", "condition": "Always" },
+    { "source": "N10", "target": "N11", "condition": "Always" },
+    { "source": "N11", "target": "N12", "condition": "YES (Clear signs of life)" },
+    { "source": "N11", "target": "N09", "condition": "NO" }
+  ]
+}
+How to use this structure:
+Nodes: These represent the boxes on the chart.
+Edges: These represent the arrows.
+The Loop: Note the very last edge (N11 -> N09). This connects the "Check Signs of Life" node back to "30 Chest Compressions," creating the programmatic loop required for CPR.
+Parallel Actions: Nodes N03 and N08 are branched off as "context dependent," meaning they happen alongside the main flow but don't stop the main flow.
+Model
+ThinkingThoughts
+Defining the Card System
+I'm currently fleshing out the core components of this card system. The goal is clear: to represent flowchart logic visually and interactively. This involves designing distinct card types for different operations, connecting them to reflect the sequential and branching nature of the process. I'm focusing on simplicity and intuitive interaction.
+Refining the Card Structure
+I've been working on refining the card structure. My focus now is on incorporating parallel actions effectively. I'm leveraging a single "Decision Card" approach to handle splits, which allows for multi-path support beyond simple binary choices. The emphasis is on capturing the exact wording from the source material and resolving loops implicitly in the data model. I'm aiming for a mental model that reflects a linear card deck with decision points and branching paths.
+Defining Card Structure Further
+I'm now fully immersed in the card structure itself. Each card will need a unique ID, core content, and type (action or decision). Parallel/contextual rules are becoming part of the design, and this information won't halt the process. Finally, edges are key: actions point directly, while decisions provide links to various options.
+Revising Card Logic
+I'm currently revising the card logic, starting with a concrete example. The initial cards, "Unresponsive" and "Shout for Help," need either a strict linear flow or grouping. Now, I'm adapting the flowchart's visual blocks for the card structure, making the cards "Unresponsive", "Shout for help", "Open airway" (action), and "Breathing normally?" (decision). "Breathing normally?" is especially important; if the answer is "YES," we go to Card 5. If "NO" or any doubt, it leads to Card 6.
+Defining Loop Handling
+I'm now grappling with the loop at the "Signs of Life?" check. I've realized we can achieve it without duplicating card content! I am refining the JSON structure using IDs to enable a single card to be a recurring step within the process, making the flowchart much more modular. The goal is now to point the "Next Step" ID back to an existing Card ID for the loop to work. I have the beginnings of the card setup, and have refined the card list.
+Mapping Out Card Actions
+I'm now fully immersed in the card actions and decisions. I've defined the final cards "Observe/Re-assess" and "Safe position" to signal the process ends. I've also incorporated the CPR loop with the "Signs of Life?" check. I'm utilizing an options array within the card object to handle the "Yes/No" or (Path A + Path B) branching, including pointing the "No" option from "Clear signs of life?" back to the CPR loop's start at "30 Chest Compressions" for clarity. Finally, I'm making sure to define a loop resolution strategy with ID target loops.
+Mapping Content and Structure
+I'm presently focused on the final JSON content, ensuring exact wording from the source. I'm also reviewing parallel rules for accuracy. My latest progress is ensuring the structure remains a flat list of cards, while the connections provide the complexity needed for the interactive flowchart.
+\n\nExplaining the System
+I'm now drafting the explanation for this system. I plan to define this card-based approach as a state machine or node-link system. I'll explain how loop resolution is achieved through ID references. Additionally, I'll clarify that parallel actions are card metadata, streamlining the structure.
+\n\nConfirming Card Sequence
+I'm doing a mental check to finalize the card sequence for code generation. I've reconfirmed the logical progression of cards, including actions like "Unresponsive" and decisions like "Breathing Normal?" and the inclusion of loop logic for scenarios like the CPR cycle. I'm confident in the logic now.
+Building the Card Links
+I'm presently building the card connections. The recent focus has been on finalizing the rescue breath and incorporating the "Clear signs of life?" decision, resolving the CPR loop. I've defined the paths for "YES" (Safe position) and "NO" (Back to Card 7). The system's robustness is emerging, and the visual flow will be improved further.
+Collapse to hide model thoughts
+
+chevron_right
+This approach involves treating the algorithm as a Card Deck System (specifically, a State Machine). Instead of drawing lines, we create discrete "Cards." Each card contains instructions and, crucially, the "Routing Logic" for where to go next.
+To "resolve the loop," we do not repeat the cards infinitely. Instead, when the answer is NO at the end of the cycle, we simply point the instruction back to the Card ID for "30 Chest Compressions."
+Here is the logic organized into Sequential Cards.
+The Schema Concept
+Card ID: Unique address.
+Content: The visual block text.
+Parallel Rules: Contextual info (2nd rescuer, phone availability) that applies to this card but doesn't change the main path.
+Routing (The Split): If it's a decision card, this lists the options (e.g., "YES + NO") and which Card ID to pull next.
+The JSON Card Deck
+code
+JSON
+{
+  "deck_name": "Paediatric BLS Sequence",
+  "cards": [
+    {
+      "id": "CARD_01",
+      "type": "Start",
+      "content": "Unresponsive",
+      "next_card": "CARD_02"
+    },
+    {
+      "id": "CARD_02",
+      "type": "Action",
+      "content": "Shout for help",
+      "parallel_rules": [
+        "If 2nd rescuer or suspicion of cardiac arrest: Call EMS (999) & apply AED."
+      ],
+      "next_card": "CARD_03"
+    },
+    {
+      "id": "CARD_03",
+      "type": "Action",
+      "content": "Open airway",
+      "next_card": "CARD_04"
+    },
+    {
+      "id": "CARD_04",
+      "type": "Split",
+      "content": "Breathing normally?",
+      "options": [
+        {
+          "label": "YES",
+          "target_id": "CARD_05_END"
+        },
+        {
+          "label": "NO (or any doubt)",
+          "target_id": "CARD_06"
+        }
+      ]
+    },
+    {
+      "id": "CARD_05_END",
+      "type": "Terminal",
+      "content": "Observe and re-assess as necessary",
+      "status": "PROCESS COMPLETE"
+    },
+    {
+      "id": "CARD_06",
+      "type": "Action",
+      "content": "5 rescue breaths\n(Infant: mouth to nose/mouth | Child: mouth to mouth)",
+      "parallel_rules": [
+        "If single rescuer: Call EMS on speaker phone. If no phone, do CPR 1 min before leaving.",
+        "If unable to ventilate: continuous chest compressions."
+      ],
+      "next_card": "CARD_07"
+    },
+    {
+      "id": "CARD_07",
+      "type": "Loop_Entry_Point",
+      "content": "30 chest compressions",
+      "note": "If no signs of life observed during rescue breaths, start here.",
+      "next_card": "CARD_08"
+    },
+    {
+      "id": "CARD_08",
+      "type": "Action",
+      "content": "2 rescue breaths",
+      "next_card": "CARD_09"
+    },
+    {
+      "id": "CARD_09",
+      "type": "Split",
+      "content": "Clear signs of life?",
+      "options": [
+        {
+          "label": "YES",
+          "target_id": "CARD_10_END"
+        },
+        {
+          "label": "NO",
+          "target_id": "CARD_07" 
+        }
+      ]
+    },
+    {
+      "id": "CARD_10_END",
+      "type": "Terminal",
+      "content": "Keep child in safe position, continue to assess and await EMS",
+      "status": "PROCESS COMPLETE"
+    }
+  ]
+}
+How this resolves the Loop
+Look at CARD_09 (Clear signs of life?).
+The decision logic is:
+YES 
+→
+→
+ Go to CARD_10_END (The process finishes).
+NO 
+→
+→
+ Go to CARD_07.
+CARD_07 is "30 chest compressions". By pointing the "NO" option back to a previous ID, we have successfully modeled the infinite loop without having to write infinite text. The user stays trapped between Card 07, 08, and 09 until the condition becomes "YES."
+Why this fits your Request
+Grouped Decisions: The splits are contained in single cards (e.g., Card 04 and Card 09) rather than being separated into different lines.
+Parallel Actions: They are stored as parallel_rules inside the card. This means the user sees the rule (e.g., "Call 999 if 2nd rescuer is here") but they don't have to leave the main path to read it.
+Sequential flow: If there is no split, the card simply has a next_card property, pushing the user forward linearly.
+Model
+ThinkingThoughts
+Refining the Core Concept
+I've been drilling down on the fundamental metaphor: this wheel that rotates. The anticlockwise rotation implies progress, advancement; clockwise suggests reversal, undoing. I'm focusing on how this visual structure translates to the user interface, especially the top elements, and considering how the wheel's rotation will affect various functions and the data it represents.
+Elaborating Interaction Logic
+I'm now sketching out the mechanics of the wheel's interactions. The middle card, the active step, will feature more than static checkboxes; it could contain sophisticated logic toggles or input fields. A toolbox icon will offer specific tools. Also, a carousel will handle excessive information via horizontal swipes. The wheel gesture allows advance, but a decision point stops it. Spinning horizontally chooses between options. If an option is dragged down, the user advances, and the choice is solidified.
+Outlining Data Flow
+I'm solidifying the data model that underpins the rotating wheel. The central element is a collection of cards, each representing a step or piece of information. Each card can present text, have user input, or pose decisions. The real complexity lies in how the wheel dynamically adjusts what information the user sees next, and the backend needs to know which choices to show at each step.
+Mapping UI Properties
+Now, I'm working on the ui_config properties for full-screen and carousel capabilities. The toolbox will define modules like calculators, and I'm fleshing out the structure of the checklist items. I'm focusing on the navigation rules and the implications for the carousel's design.
+Finalizing Data Structure
+My focus is now on the data structure that underpins the "wheel" interaction. I have discarded the linked list and tree approaches as they didn't suit branching. The graph/state machine approach with a flat list of cards referenced by ID is the best. The UI doesn't need wheel animation details, only the data for it. I am also working on "Next" logic; If options are available, they're rendered in the top UI section. I'm now developing a paediatric BLS scenario with it.
+Constructing BLS Scenario
+I've crafted a paediatric BLS scenario now. I have incorporated a carousel to present both infant and child techniques; one for each. The JSON schema's taking final shape, too; incorporating the "age" definition and checklist elements for interaction. I'll soon be documenting the structure fully.
+Revising Slide Transitions
+I'm now integrating the transitions object within the slides array, enabling look-ahead capabilities. This allows users to preview upcoming content. Also, I realized that embedding calculator logic directly in the JSON is complex and unsafe. Instead, the JSON will reference tool_ids, which the app uses to execute the required calculation. This approach allows the JSON to drive the content and the app to manage the underlying logic. Finally, I'm polishing the tone to ensure it's professional and supportive of the development team.
+Collapse to hide model thoughts
+
+chevron_right
+This is a sophisticated UI/UX concept. You are essentially building a State-Machine-Driven Deck with a Z-axis Navigation (Stack) where:
+The Engine: A JSON Graph (State Machine).
+The View: A "Wheel" that scrolls through time (Past/Present/Future).
+The Interaction:
+Vertical Scroll (Wheel): Moves linearly through time.
+Horizontal Gesture (Carousel): Handles information density within a card.
+Horizontal Toggle (Top Preview): Selects the path at a fork (Decision).
+Checklist/Toolbox: Local state interactions specific to the active card.
+Here is the JSON Architecture designed to support this specific visual and functional model.
+The JSON Schema Architecture
+This schema is designed so your frontend code knows exactly what to render in the Middle (Active), what to fetch for the Top (Preview), and what to keep in the Bottom (History).
+code
+JSON
+{
+  "algorithm_meta": {
+    "id": "paediatric_bls_v6",
+    "title": "Paediatric Basic Life Support",
+    "version": "2023.1",
+    "root_card_id": "CARD_START"
+  },
+  "global_tools": {
+    "calculator_library": ["age_converter", "weight_estimator", "drug_dosing"]
+  },
+  "cards": {
+    "CARD_START": {
+      "id": "CARD_START",
+      "type": "standard", 
+      "ui_config": {
+        "full_screen_enabled": false,
+        "carousel_dots": false
+      },
+      "content": {
+        "title": "Assessment",
+        "slides": [
+          {
+            "text": "Is the child unresponsive?",
+            "image_ref": "img_unresponsive_01.png"
+          }
+        ]
+      },
+      "checklist": [],
+      "toolbox": [],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_SHOUT"
+      }
+    },
+    "CARD_SHOUT": {
+      "id": "CARD_SHOUT",
+      "type": "standard",
+      "content": {
+        "title": "Call for Help",
+        "slides": [
+          { "text": "Shout loud for help." }
+        ]
+      },
+      "checklist": [
+        {
+          "id": "chk_2nd_rescuer",
+          "type": "boolean_toggle",
+          "label": "Is a 2nd rescuer present?",
+          "action_on_true": "show_sub_task_999", 
+          "tracking": "audit_log"
+        },
+        {
+          "id": "chk_call_ems",
+          "type": "checkbox",
+          "label": "2nd Rescuer called 999 & fetched AED",
+          "visible_if": "chk_2nd_rescuer == true"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_AIRWAY"
+      }
+    },
+    "CARD_AIRWAY": {
+      "id": "CARD_AIRWAY",
+      "content": {
+        "title": "Airway",
+        "slides": [{ "text": "Open the Airway (Head tilt, chin lift)" }]
+      },
+      "transitions": {
+        "type": "decision_point",
+        "options": [
+          {
+            "label": "YES",
+            "preview_text": "Breathing Normally: YES",
+            "target_id": "CARD_MONITOR_END"
+          },
+          {
+            "label": "NO",
+            "preview_text": "Breathing Normally: NO",
+            "target_id": "CARD_5_BREATHS"
+          }
+        ]
+      }
+    },
+    "CARD_5_BREATHS": {
+      "id": "CARD_5_BREATHS",
+      "type": "complex_action",
+      "ui_config": {
+        "full_screen_enabled": true,
+        "carousel_dots": true
+      },
+      "content": {
+        "title": "5 Rescue Breaths",
+        "slides": [
+          {
+            "header": "Infant Technique",
+            "body": "Mouth to nose/mouth coverage.",
+            "context": "infant"
+          },
+          {
+            "header": "Child Technique",
+            "body": "Mouth to mouth coverage.",
+            "context": "child"
+          }
+        ]
+      },
+      "checklist": [
+        {
+          "id": "chk_age_select",
+          "type": "radio_select",
+          "options": ["Infant (<1yr)", "Child (>1yr)"],
+          "default": "Child (>1yr)",
+          "affects_carousel_slide": true
+        }
+      ],
+      "toolbox": [
+        {
+          "tool_id": "age_calc",
+          "icon": "calculator",
+          "label": "Age Calculator",
+          "function": "input_dob_output_category"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_CPR_LOOP"
+      }
+    }
+  }
+}
+How this Schema Powers Your App Features
+1. The Wheel & Navigation (Transitions)
+Linear Flow: If transitions.type is "linear", the wheel simply clicks forward to next_id. The "Top Card" preview is fetched using that ID.
+The Decision (The Split): If transitions.type is "decision_point":
+The App detects the options array.
+It renders the "Top" slot as a horizontal toggle.
+The user toggles left/right on the top card to see "Breathing YES" or "Breathing NO".
+When they spin the wheel "down" to confirm, the app loads the target_id.
+2. The Middle Card Focus
+Carousel (Dots): The content.slides array dictates this. If there is more than 1 item in the array, the app renders the 3 dots at the bottom-middle and enables horizontal swiping for that specific card.
+Full Screen: The ui_config.full_screen_enabled boolean tells the app whether to show the expand icon in the top-right.
+3. The Checklist (Smart Logic)
+The checklist array is the most dynamic part:
+Simple Check: type: "checkbox" is a standard "I did this."
+Logic Toggle: type: "boolean_toggle" (like the 2nd rescuer example).
+Visibility Rules: Look at visible_if: "chk_2nd_rescuer == true". The app can hide/show tasks dynamically based on previous inputs without leaving the card.
+4. The Toolbox (Bottom Left)
+The toolbox array contains references to tools.
+When the user clicks the Toolbox icon, the app checks this array.
+If it sees tool_id: "age_calc", it opens the overlay for the Date of Birth calculator.
+Data Binding: If the calculator determines the patient is an "Infant", it can send a signal back to the card to auto-select the "Infant" slide in the carousel (via affects_carousel_slide).
+Visualizing the Data Flow
+Scenario: The User is at the "Breathing?" Decision.
+Bottom Card: Shows the "Open Airway" card (faded out, historical).
+Middle Card: Shows "Assess Breathing".
+The user is interacting with the checklist here if needed.
+Top Card (Preview):
+The transitions object has two options: YES and NO.
+The user swipes their thumb horizontally on the Top Card area.
+Swipe Left: Shows preview for "Monitor/End" (YES path).
+Swipe Right: Shows preview for "5 Rescue Breaths" (NO path).
+Action: The user aligns the "NO" card in the top slot and rotates the wheel.
+Result: "5 Rescue Breaths" drops into the Middle slot. "Assess Breathing" moves to Bottom. The "Top" slot populates with the preview for "30 Chest Compressions".
+Model
+ThinkingThoughts
+Developing Initial Framework
+I've been examining the user's request, focusing on designing a mobile app for the "Paediatric Basic Life Support" algorithm. My recent focus is on the "Start State" and "Assess Response" sections. I'm exploring the logic for each step in detail, aiming for intuitive user interaction. I'm currently prioritizing ease of use for the app users. I believe these details are key.
+Evaluating States and Concepts
+I'm now fully immersed in the "Start" and "End" states, focusing on visual representation and user navigation. The "Wheel" concept, as a progress indicator and controller, is proving crucial. I'm carefully considering how its position reflects relative progress, given the indefinite loop in the CPR section. Also, I'm integrating the new timer per-card feature. The next step is validating the JSON schema with these new design elements and functionality.
+Mapping Metadata and States
+I'm presently dissecting the JSON model concerning the "Start" and "End" states, focusing on how metadata will drive the wheel's visual representation. I'm prioritizing the dynamic nature of the wheel in the context of the CPR loop. A "Cover Card" or a "Root State" will serve as the app's entry, while a weighted or staged approach might be more effective than hardcoding wheel positions. I'm also exploring timer options in the JSON, considering both count-up and count-down implementations to meet varying needs.
+Defining App Flow & Logic
+The "holding pattern" area of the wheel for the CPR loop now seems clear, with resolution in Stage 4. I'm actively incorporating timer_config into the card objects. I am validating that the Start/End visuals align with the "Stack" concept. I've formulated strategies to address the infinite loop and the wheel's ending position visually. Next, I'm integrating the timer into the JSON model and plan to ask technical questions to clarify edge cases like navigating backward. The Start State, "Deck Cover," and the End State, "Summary" or "Outcome," are being defined, while I'm exploring a "Progress Segment" for wheel mapping.
+Clarifying the Workflow
+I'm solidifying the "Segment" concept for the wheel's CPR loop, refining its visual representation and integration within the JSON model. I've defined segment percentages: Assessment (10-25%), Initial Breaths (25-40%), the variable CPR Loop (40-80%), and Exit (100%). The progress_weight and timer_settings are now in the JSON. I'm focusing on "Global Timer" vs. "Card Timer" relationships and how "Back Navigation" impacts the wheel history. I've also incorporated root_card_id and added timer to the schema.
+Reviewing Visual Implementations
+I've been re-evaluating the "Start" state based on the feedback about the title placement. I'm making sure the JSON supports a distinct "Title Card" type. I'm also confirming that the app adheres to all the specified user constraints: card positioning, anticlockwise wheel rotation, timer integration, and the defined start and end states. I'm now in the final stage of ensuring the visual implementation accurately reflects the underlying logic and meets all design requirements.
+Collapse to hide model thoughts
+
+chevron_right
+Yes, this visual progression makes perfect sense and aligns beautifully with the JSON "State Machine" logic we discussed.
+Here is why your Start and End states work technically, and how we need to tweak the data model to handle your "Relative Wheel Position" and "Timers."
+1. The Start State (The Deck Cover)
+Your first image shows the "Title" in the center and the wheel at the start position (11 o'clock).
+In Data terms: This is the root_node or "Cover Card."
+Visual Logic: The "Top Stack" is full because the whole algorithm is ahead of us. The "Bottom Stack" is empty because we haven't done anything yet.
+Interaction: The first movement of the wheel transitions the Title Card out to the top (or fades it) and pulls CARD_01 (Unresponsive) into the Middle Slot.
+2. The End State & The "Loop" Position
+Your concept of the wheel stopping at 2 o'clock (rather than completing a full circle back to 12) is the correct UX decision for a medical algorithm.
+Why: A full circle implies "We are back where we started." But in resuscitation, the end state (Stabilized/Handover) is a progression, not a return.
+The Loop Problem: Since the CPR loop (30 compressions : 2 breaths) can happen 1 time or 50 times, we cannot map the wheel to a fixed "Step 1 of 10."
+The Solution: We map the wheel to "Phases" rather than "Steps."
+Phase 1 (Assessment): Wheel moves 0% to 30%.
+Phase 2 (Initial Breaths): Wheel moves 30% to 50%.
+Phase 3 (The Loop): The wheel stays in the "Active Zone" (e.g., 50% to 80%). Every time they cycle through the loop, the wheel might pulse or move slightly, but it stays in this sector until a decision breaks the loop.
+Phase 4 (Resolution): When they finally select "Signs of Life: YES," the wheel jumps to the finish point (2 o'clock / 100%).
+3. The Timer Logic
+You mentioned a global timer (bottom right) and card-specific estimates.
+Global Timer: Starts when the first card is activated.
+Card Timer: This acts as a pacer. For "30 Chest Compressions," the timer is helpful to ensure they maintain the correct tempo or duration.
+Updated JSON Schema
+Here is the Schema refined to include Wheel Positioning (Phases) and Timers.
+code
+JSON
+{
+  "algorithm_meta": {
+    "title": "Paediatric Basic Life Support",
+    "root_card_id": "CARD_COVER",
+    "estimated_duration_min": "Variable"
+  },
+  "cards": {
+    "CARD_COVER": {
+      "id": "CARD_COVER",
+      "type": "cover",
+      "content": { "title": "Paediatric Basic Life Support" },
+      "wheel_config": {
+        "position_degrees": 330,  // 11 o'clock
+        "phase": "start"
+      },
+      "transitions": { "next_id": "CARD_01" }
+    },
+    "CARD_01": {
+      "id": "CARD_01",
+      "content": { "title": "Unresponsive?" },
+      "timer_config": {
+        "type": "stopwatch", // Just counts up to show how long assessment is taking
+        "guidance_label": "Time spent assessing"
+      },
+      "wheel_config": {
+        "position_degrees": 0, // 12 o'clock
+        "phase": "assessment"
+      },
+      "transitions": { "next_id": "CARD_02" }
+    },
+    "CARD_CPR_LOOP": {
+      "id": "CARD_CPR_LOOP",
+      "content": { "title": "30 Chest Compressions" },
+      "timer_config": {
+        "type": "countdown", 
+        "duration_seconds": 18, // Approx time for 30 compressions at 100-120bpm
+        "auto_start": true,
+        "audio_metronome": true // Feature request: Beep at 110bpm?
+      },
+      "wheel_config": {
+        "position_degrees": 180, // 6 o'clock
+        "phase": "loop_holding_pattern", 
+        "dynamic_movement": true // Tells the UI to pulse or rotate slightly, then return
+      },
+      "transitions": { "next_id": "CARD_BREATHS" }
+    },
+    "CARD_END": {
+      "id": "CARD_END",
+      "content": { "title": "Stabilized / Handover" },
+      "wheel_config": {
+        "position_degrees": 60, // 2 o'clock
+        "phase": "complete"
+      },
+      "status": "ended"
+    }
+  }
+}
+My Questions for You (To finalize the logic)
+To make this app robust, I need to know how you want to handle "Real-world friction":
+1. The "Reverse" Logic:
+You mentioned the wheel can go clockwise (reverse).
+Scenario: A user is on "Rescue Breaths" but realizes they forgot to call 999. They scroll back up to the "Call for Help" card.
+Question: When they scroll back down, do they have to re-select "YES/NO" on the breathing decision? Or does the app remember their previous choice and auto-fill the path? (I recommend remembering the choice but highlighting it so they can change it if needed).
+2. The Global Timer (Bottom Right):
+Question: Does this timer reset if I scroll back to the start? Or is this an "Event Timer" that starts the moment the app opens and never stops until the patient is handed over? (Usually, in resuscitation, this is "Time since collapse" or "Time since start of CPR" and should likely never reset).
+3. The "Skip" Factor:
+Scenario: An experienced doctor knows the drill. They might spin the wheel fast to get to the "Drugs/Dosing" card (which might be later in the chain).
+Question: Can the user spin the wheel past a card without interacting with the checklist? Or does the wheel "lock" at a decision point until an input (YES/NO) is made?
+4. Data Logging:
+Question: At the end (your 2 o'clock state), do you need a summary report? (e.g., "CPR performed for 14 minutes, 3 shocks delivered"). If yes, we need to make sure every card stores its "Result" into a session log.
+Model
+ThinkingThoughts
+Refining the Framework
+I'm currently working to refine the foundational framework for the JSON schema. The primary goal remains producing a schema adhering to the provided flowchart. I've begun dissecting the visual information and mapping its components into distinct JSON elements. I'm focusing on the structural relationships and data types inherent in the algorithm.
+Outlining Feature Sets
+My focus has shifted to explicitly defining the feature set. I'm prioritizing the Card structure itself, and mapping the wheel configuration. Checklist types (simple vs. toggles) are another key consideration. Additionally, I'm thinking about the toolbox, and how the timer functions can be integrated. Transitions and parallel rules are also being mapped.
+Structuring the Algorithm
+I'm now deep in the core algorithm, breaking down each step into individual cards. "Open Airway" is the first action, immediately leading to a decision on breathing. If not breathing, the flow advances to complex rescue breaths, utilizing a carousel for infant/child techniques, and a parallel single-rescuer phone logic component. This also involves a potential toolbox element – possibly an age calculator for guidance. Following this, there's an implicit transition to CPR after chest compressions. I'm focusing on loop starts, timers with metronome/countdown, and decision points based on signs of life.
+Clarifying Initial Steps
+I'm now zeroing in on the initial steps, specifically "Unresponsive" and "Shout." I am debating whether to merge these initial steps, and have opted to keep them separate to align with the visual boxes and offer a confirmation step for the user. I've positioned these as the first two cards. The first card is "Unresponsive," followed by the "Shout" card, which will include a checklist for a second rescuer or AED. The cards "Open Airway" and "Breathing?" decision have been added. The breathing decision requires a preview_content slot for better clarity.
+Detailing the Cardiac Algorithm
+I've been working on the JSON structure, focusing on the finer points of the cardiac algorithm. I've placed the 30 compressions card with a 15-18 second metronome countdown, then 2 breaths and a "signs of life" decision that creates the loop. I'm also now thinking about the toolbox, checklists (checkbox vs. toggle), wheel configuration with degrees and phase. Finally, timers require a detailed config object.
+Implementing Pathways & Tools
+I'm presently building upon the existing schema, and confirming it supports multiple pathways for decision points. I've now integrated toolbox elements, particularly a calculator for breaths. Timers are now globally and locally available. Also, I've corrected a detail, adding the parallel rule and the boolean toggle to the "Shout" card, and placed the footer_note on the start card. Finally, I've reached the point of JSON output generation.
+Collapse to hide model thoughts
+
+chevron_right
+Yes, this JSON schema is fully comprehensive. It incorporates every specific requirement we discussed:
+The Wheel Logic: It uses wheel_config to handle the degrees (11 o'clock start, 2 o'clock end, 6 o'clock loop).
+The Cards: It breaks the flowchart into discrete UI cards.
+The Splits: It uses transition_type: "decision" for the Yes/No moments.
+The Loop: It resolves the loop by pointing the "NO" path back to the Compressions card ID.
+The Toolbox & Checklists: It includes specific definitions for the Age Calculator and the "2nd Rescuer" toggle logic.
+Parallel Actions: These are converted into "Smart Checklists" so they don't break the flow but capture the data.
+Here is the complete JSON for the Paediatric Out-of-Hospital BLS algorithm.
+code
+JSON
+{
+  "algorithm_meta": {
+    "id": "algo_paed_bls_001",
+    "title": "Paediatric Out-of-Hospital BLS",
+    "source": "Resuscitation Council UK (2021)",
+    "global_timer": {
+      "enabled": true,
+      "label": "Total Time",
+      "type": "count_up"
+    }
+  },
+  "deck": [
+    {
+      "id": "CARD_00_START",
+      "type": "cover",
+      "content": {
+        "title": "Paediatric Basic Life Support",
+        "subtitle": "Out-of-Hospital Algorithm",
+        "footer_note": "Those trained only in adult BLS should use adult sequence with paediatric modifications."
+      },
+      "wheel_config": {
+        "position_degrees": 330,
+        "phase": "start_point"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_01_UNRESPONSIVE"
+      }
+    },
+    {
+      "id": "CARD_01_UNRESPONSIVE",
+      "type": "standard",
+      "content": {
+        "title": "Assessment",
+        "body": "Is the child unresponsive?",
+        "slides": [] 
+      },
+      "wheel_config": {
+        "position_degrees": 0,
+        "phase": "assessment"
+      },
+      "checklist": [
+        {
+          "id": "chk_safe",
+          "label": "Area is safe to approach",
+          "type": "checkbox"
+        },
+        {
+          "id": "chk_unresp",
+          "label": "Confirm Unresponsiveness",
+          "type": "checkbox"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_02_SHOUT"
+      }
+    },
+    {
+      "id": "CARD_02_SHOUT",
+      "type": "standard",
+      "content": {
+        "title": "Call for Help",
+        "body": "Shout loudly for help.",
+        "slides": []
+      },
+      "wheel_config": {
+        "position_degrees": 15,
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "toggle_2nd_rescuer",
+          "label": "Is a 2nd rescuer present?",
+          "type": "boolean_toggle",
+          "note": "Or single rescuer suspecting primary cardiac arrest"
+        },
+        {
+          "id": "chk_call_999",
+          "label": "Call EMS (999)",
+          "type": "checkbox",
+          "visible_if": "toggle_2nd_rescuer == true"
+        },
+        {
+          "id": "chk_get_aed",
+          "label": "Collect and apply AED",
+          "type": "checkbox",
+          "visible_if": "toggle_2nd_rescuer == true"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_03_AIRWAY"
+      }
+    },
+    {
+      "id": "CARD_03_AIRWAY",
+      "type": "standard",
+      "content": {
+        "title": "Airway",
+        "body": "Open Airway",
+        "slides": [
+           { "label": "Technique", "text": "Head tilt, chin lift" }
+        ]
+      },
+      "wheel_config": {
+        "position_degrees": 30,
+        "phase": "action"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_04_BREATHING_DECISION"
+      }
+    },
+    {
+      "id": "CARD_04_BREATHING_DECISION",
+      "type": "decision",
+      "content": {
+        "title": "Breathing Check",
+        "body": "Is the child breathing normally?"
+      },
+      "wheel_config": {
+        "position_degrees": 45,
+        "phase": "decision"
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "YES",
+            "preview_card_title": "Observe & Assess",
+            "target_id": "CARD_END_OBSERVE"
+          },
+          {
+            "label": "NO",
+            "sub_label": "or any doubt",
+            "preview_card_title": "5 Rescue Breaths",
+            "target_id": "CARD_05_BREATHS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_END_OBSERVE",
+      "type": "terminal",
+      "content": {
+        "title": "Observation",
+        "body": "Observe and re-assess as necessary."
+      },
+      "wheel_config": {
+        "position_degrees": 60,
+        "phase": "complete"
+      },
+      "status": "complete"
+    },
+    {
+      "id": "CARD_05_BREATHS",
+      "type": "carousel_action",
+      "content": {
+        "title": "5 Rescue Breaths",
+        "slides": [
+          {
+            "id": "slide_infant",
+            "header": "Infant Technique",
+            "text": "Mouth to nose/mouth"
+          },
+          {
+            "id": "slide_child",
+            "header": "Child Technique",
+            "text": "Mouth to mouth"
+          }
+        ]
+      },
+      "wheel_config": {
+        "position_degrees": 90,
+        "phase": "intervention"
+      },
+      "toolbox": [
+        {
+          "id": "calc_age",
+          "icon": "calculator",
+          "label": "Age Calculator",
+          "action": "open_modal_age_calc"
+        }
+      ],
+      "checklist": [
+        {
+          "id": "toggle_single_rescuer",
+          "label": "Are you a single rescuer?",
+          "type": "boolean_toggle"
+        },
+        {
+          "id": "chk_speakerphone",
+          "label": "Call EMS on speakerphone",
+          "type": "checkbox",
+          "visible_if": "toggle_single_rescuer == true"
+        },
+        {
+          "id": "chk_delay_call",
+          "label": "Do CPR 1 min before leaving to call",
+          "type": "checkbox",
+          "visible_if": "toggle_single_rescuer == true AND chk_speakerphone == false"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_06_CHECK_LIFE_PRE_CPR"
+      }
+    },
+    {
+      "id": "CARD_06_CHECK_LIFE_PRE_CPR",
+      "type": "decision",
+      "content": {
+        "title": "Signs of Life?",
+        "body": "Were signs of life observed during rescue breaths?"
+      },
+      "wheel_config": {
+        "position_degrees": 120,
+        "phase": "check"
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+             "label": "YES",
+             "target_id": "CARD_END_RECOVERY"
+          },
+          {
+             "label": "NO",
+             "target_id": "CARD_07_COMPRESSIONS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_07_COMPRESSIONS",
+      "type": "loop_start",
+      "content": {
+        "title": "30 Chest Compressions",
+        "body": "Perform continuous chest compressions."
+      },
+      "wheel_config": {
+        "position_degrees": 180,
+        "phase": "cpr_loop",
+        "animation": "pulse"
+      },
+      "local_timer": {
+        "enabled": true,
+        "type": "metronome",
+        "bpm": 110,
+        "guidance": "Push hard and fast"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_08_LOOP_BREATHS"
+      }
+    },
+    {
+      "id": "CARD_08_LOOP_BREATHS",
+      "type": "action",
+      "content": {
+        "title": "2 Rescue Breaths",
+        "body": "Deliver 2 effective breaths."
+      },
+      "wheel_config": {
+        "position_degrees": 200,
+        "phase": "cpr_loop"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_09_LOOP_CHECK"
+      }
+    },
+    {
+      "id": "CARD_09_LOOP_CHECK",
+      "type": "decision",
+      "content": {
+        "title": "Re-assess",
+        "body": "Are there clear signs of life?"
+      },
+      "wheel_config": {
+        "position_degrees": 220,
+        "phase": "cpr_loop"
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "NO",
+            "preview_card_title": "Resume Compressions",
+            "target_id": "CARD_07_COMPRESSIONS" 
+          },
+          {
+            "label": "YES",
+            "preview_card_title": "Recovery Position",
+            "target_id": "CARD_END_RECOVERY"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_END_RECOVERY",
+      "type": "terminal",
+      "content": {
+        "title": "Stabilised",
+        "body": "Keep child in safe position, continue to assess and await EMS."
+      },
+      "wheel_config": {
+        "position_degrees": 60,
+        "phase": "complete"
+      },
+      "status": "complete"
+    }
+  ]
+}
+Model
+ThinkingThoughts
+Considering Prototype Goals
+I'm currently focused on defining the project's core objectives: developing a mobile-optimized HTML/CSS/JS prototype for the "Resuscitation Handbook." My primary aim is to test its usability and key features. Right now, I'm thinking about the essential aspects required for this task.
+Developing Core Features
+I've been concentrating on the app's fundamental components. I'm prioritizing the wheel navigation and card stack system, ensuring smooth operation. The dynamic middle card will support checklists and carousels, and the top card will be toggleable for decisions. I'm working on timer implementation and want the app to be JSON schema driven. Visually, I'm aiming for a functional wireframe design, consistent with the user's initial sketches.
+Planning Next Implementation Steps
+I'm now focusing on the implementation plan, breaking it down into distinct steps: HTML structure, CSS styling for mobile aesthetics (including absolute card positioning and the wheel), JSON data integration, and the core JavaScript logic for state management, rendering, transitions, and interactions, like wheel clicking and checkmark toggling. I'm also drafting the HTML structure, including the .app-container and .wheel-track. Absolute positioning of cards is critical.
+Analyzing CSS and JSON
+I'm now fully immersed in the CSS details. Flexbox will be crucial for card content layout, and transforms are key for the stack effect. The wheel will be a circle with a border. I am leaning towards using CSS rotate on a parent container for simpler knob positioning. Meanwhile, I've integrated the provided JSON data into the app.
+Resolving Interaction Logic
+I'm currently working to implement the specific interactive behaviors. For linear transitions, I'll use loadCard(next_id). With split cards, I check the toggle state before loading the target card. I've designed clickable zones in the top card, with visual cues to show the selection. The JSON dictates the loop behavior and the JavaScript will blindly load cards per the ID pointer, regardless of any loops in the card flow. I'm mapping position_degrees from the JSON to CSS rotate() for the wheel. For checklists and the "Toggle" 2nd rescuer, I'm setting up simple click listeners and show/hide logic based on the toggle.
+Integrating New Elements
+I've integrated the "Toolbox" button and the global timer functionality, using setInterval. I'm focusing on refining the visual design now, incorporating San Francisco font, rounded corners, and subtle shadows for a polished look. I'm simulating a mobile frame for a more realistic desktop preview of the design. I'm double-checking the code against all user requirements.
+Collapse to hide model thoughts
+
+chevron_right
+This is a fully functional HTML/CSS/JS prototype.
+How to test this:
+Save the code below as an .html file (e.g., resus_app.html).
+Open it in any web browser (Chrome, Safari, Edge).
+To interact:
+The Wheel: Click the Dark Knob on the circle to advance to the next step.
+Decisions: When you see a "Split" (e.g., Breathing Check), click YES or NO on the Top Card before clicking the wheel knob to confirm.
+Checklists: Click items in the bottom checklist area (try the "2nd Rescuer" toggle to see hidden items appear).
+Toolbox: Click the Calculator icon on the "5 Rescue Breaths" card.
+code
+Html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resuscitation App Prototype</title>
+    <style>
+        :root {
+            --primary: #333;
+            --accent: #d32f2f; /* Red for emergency */
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --wheel-track: #e0e0e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Mobile Frame Simulator */
+        .mobile-frame {
+            width: 375px;
+            height: 812px;
+            background-color: var(--bg);
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            padding: 40px 20px 10px 20px;
+            border-bottom: 2px solid #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            z-index: 10;
+        }
+        .header h1 { font-size: 16px; margin: 0; text-transform: uppercase; letter-spacing: 1px;}
+
+        /* Main Stage (Wheel & Cards) */
+        .stage {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        /* The Wheel */
+        .wheel-container {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 1px solid #ccc; /* Thin track line */
+            z-index: 1;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .knob-track {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            /* This rotates */
+        }
+
+        .knob {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: -20px; /* Positions it on the rim */
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+        }
+
+        .knob:active { transform: translateX(-50%) scale(0.9); }
+
+        /* Cards */
+        .card {
+            position: absolute;
+            background: var(--card-bg);
+            border: 1px solid #ddd;
+            width: 240px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            padding: 10px;
+        }
+
+        /* Card Positions */
+        #card-top {
+            top: 20px;
+            height: 100px;
+            width: 200px;
+            opacity: 0.8;
+            transform: scale(0.9);
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        #card-middle {
+            height: 300px;
+            width: 260px;
+            z-index: 5;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        #card-bottom {
+            bottom: 120px;
+            height: 100px;
+            width: 200px;
+            opacity: 0.5;
+            transform: scale(0.8);
+            z-index: 1;
+            background: #e0e0e0;
+        }
+
+        /* Card Content Styles */
+        .card-title { font-weight: bold; margin-bottom: 10px; font-size: 18px; }
+        .card-body { font-size: 14px; color: #555; }
+        
+        /* Split Decision Styles in Top Card */
+        .split-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        .split-option {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin: 2px;
+            background: #f0f0f0;
+            color: #999;
+            transition: 0.2s;
+        }
+        .split-option.selected {
+            background: #333;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Middle Tools */
+        .middle-tools {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .tool-icon {
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+        .tool-icon:hover { opacity: 1; }
+        .dots { display: flex; gap: 5px; }
+        .dot { width: 8px; height: 8px; background: #ddd; border-radius: 50%; }
+        .dot.active { background: #333; }
+
+        /* Footer Checklist Area */
+        .checklist-area {
+            background: white;
+            border-top: 1px solid #ccc;
+            height: 180px;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+        .checklist-header { font-size: 12px; font-weight: bold; color: #888; margin-bottom: 5px; }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+            padding: 8px;
+            background: #f9f9f9;
+            border-radius: 6px;
+        }
+        .checklist-item input { margin-right: 10px; transform: scale(1.2); }
+        .hidden { display: none; }
+
+        /* Footer Timer */
+        .footer-timer {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            font-family: monospace;
+            font-size: 14px;
+            background: #fff;
+        }
+
+        /* Modal */
+        .modal {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 100;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 80%;
+            text-align: center;
+        }
+
+        /* Loop Animation */
+        @keyframes pulse-red {
+            0% { box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+            50% { box-shadow: 0 20px 50px rgba(255, 0, 0, 0.3); border-color: red;}
+            100% { box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        }
+        .pulsing { animation: pulse-red 1s infinite; }
+
+    </style>
+</head>
+<body>
+
+    <div class="mobile-frame">
+        <!-- Header -->
+        <div class="header">
+            <h1>Resuscitation Handbook</h1>
+            <div>🔍 &#8942;</div>
+        </div>
+
+        <!-- Stage -->
+        <div class="stage">
+            
+            <!-- Wheel -->
+            <div class="wheel-container">
+                <div class="knob-track" id="knob-track" style="transform: rotate(330deg);">
+                    <div class="knob" id="knob" onclick="advanceWheel()">NEXT</div>
+                </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="card" id="card-top">
+                <!-- Injected via JS -->
+            </div>
+
+            <div class="card" id="card-middle">
+                <!-- Injected via JS -->
+                <div class="middle-tools">
+                    <div class="tool-icon" id="toolbox-btn" onclick="openToolbox()">🧰</div>
+                    <div class="dots" id="carousel-dots"></div>
+                    <div class="tool-icon">⛶</div>
+                </div>
+            </div>
+
+            <div class="card" id="card-bottom">
+                <div class="card-title" style="font-size: 14px;">History</div>
+            </div>
+
+        </div>
+
+        <!-- Checklist -->
+        <div class="checklist-area">
+            <div class="checklist-header">Check List</div>
+            <div id="checklist-container" style="overflow-y: auto;">
+                <!-- Injected via JS -->
+            </div>
+            <div class="footer-timer" id="global-timer">00:00:00</div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal" id="tool-modal" onclick="this.style.display='none'">
+            <div class="modal-content">
+                <h3>Toolbox</h3>
+                <p>Age Calculator</p>
+                <input type="date" style="padding:10px; margin:10px;">
+                <p>Result: <strong>Child (>1yr)</strong></p>
+                <button style="padding:10px 20px;">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- THE JSON SCHEMA (From our discussion) ---
+        const algoData = {
+            "algorithm_meta": { "title": "Paediatric Basic Life Support" },
+            "deck": [
+                {
+                    "id": "CARD_00_START",
+                    "type": "cover",
+                    "content": { "title": "Paediatric BLS", "body": "Tap NEXT to start" },
+                    "wheel_config": { "position_degrees": 330 },
+                    "transitions": { "type": "linear", "next_id": "CARD_01" }
+                },
+                {
+                    "id": "CARD_01",
+                    "content": { "title": "Assessment", "body": "Is the child unresponsive?" },
+                    "wheel_config": { "position_degrees": 0 },
+                    "checklist": [
+                        { "id": "chk_safe", "label": "Area is safe", "type": "checkbox" },
+                        { "id": "chk_unresp", "label": "Confirm Unresponsiveness", "type": "checkbox" }
+                    ],
+                    "transitions": { "type": "linear", "next_id": "CARD_02" }
+                },
+                {
+                    "id": "CARD_02",
+                    "content": { "title": "Call for Help", "body": "Shout loudly for help" },
+                    "wheel_config": { "position_degrees": 20 },
+                    "checklist": [
+                        { "id": "toggle_2nd", "label": "2nd rescuer present?", "type": "boolean_toggle" },
+                        { "id": "chk_999", "label": "Call 999 & get AED", "type": "checkbox", "visible_if": "toggle_2nd" }
+                    ],
+                    "transitions": { "type": "linear", "next_id": "CARD_03" }
+                },
+                {
+                    "id": "CARD_03",
+                    "content": { "title": "Airway", "body": "Head tilt, chin lift" },
+                    "wheel_config": { "position_degrees": 40 },
+                    "transitions": { "type": "linear", "next_id": "CARD_04" }
+                },
+                {
+                    "id": "CARD_04",
+                    "type": "decision",
+                    "content": { "title": "Breathing?", "body": "Is the child breathing normally?" },
+                    "wheel_config": { "position_degrees": 60 },
+                    "transitions": {
+                        "type": "split",
+                        "options": [
+                            { "label": "YES", "target_id": "CARD_END_OBSERVE" },
+                            { "label": "NO", "target_id": "CARD_05" }
+                        ]
+                    }
+                },
+                {
+                    "id": "CARD_05",
+                    "content": { "title": "5 Rescue Breaths", "body": "Infant: Mouth-to-nose/mouth\nChild: Mouth-to-mouth" },
+                    "wheel_config": { "position_degrees": 90 },
+                    "toolbox_enabled": true,
+                    "checklist": [
+                        { "id": "toggle_single", "label": "Single Rescuer?", "type": "boolean_toggle" },
+                        { "id": "chk_speaker", "label": "Call on speakerphone", "type": "checkbox", "visible_if": "toggle_single" }
+                    ],
+                    "transitions": { "type": "linear", "next_id": "CARD_06" }
+                },
+                {
+                    "id": "CARD_06",
+                    "type": "decision",
+                    "content": { "title": "Signs of Life?", "body": "Observed during breaths?" },
+                    "wheel_config": { "position_degrees": 120 },
+                    "transitions": {
+                        "type": "split",
+                        "options": [
+                            { "label": "YES", "target_id": "CARD_END_RECOVERY" },
+                            { "label": "NO", "target_id": "CARD_07" }
+                        ]
+                    }
+                },
+                {
+                    "id": "CARD_07",
+                    "type": "loop",
+                    "content": { "title": "30 Chest Compressions", "body": "Push Hard & Fast" },
+                    "wheel_config": { "position_degrees": 180 },
+                    "transitions": { "type": "linear", "next_id": "CARD_08" }
+                },
+                {
+                    "id": "CARD_08",
+                    "content": { "title": "2 Rescue Breaths", "body": "Effective breaths" },
+                    "wheel_config": { "position_degrees": 200 },
+                    "transitions": { "type": "linear", "next_id": "CARD_09" }
+                },
+                {
+                    "id": "CARD_09",
+                    "type": "decision",
+                    "content": { "title": "Re-assess", "body": "Signs of life?" },
+                    "wheel_config": { "position_degrees": 220 },
+                    "transitions": {
+                        "type": "split",
+                        "options": [
+                            { "label": "NO", "target_id": "CARD_07" },
+                            { "label": "YES", "target_id": "CARD_END_RECOVERY" }
+                        ]
+                    }
+                },
+                {
+                    "id": "CARD_END_OBSERVE",
+                    "content": { "title": "Observation", "body": "Monitor Child" },
+                    "wheel_config": { "position_degrees": 50 }, /* Clockwise endpoint */
+                    "status": "end"
+                },
+                {
+                    "id": "CARD_END_RECOVERY",
+                    "content": { "title": "Recovery", "body": "Await EMS" },
+                    "wheel_config": { "position_degrees": 50 }, /* Clockwise endpoint */
+                    "status": "end"
+                }
+            ]
+        };
+
+        // --- STATE MANAGEMENT ---
+        let currentCardId = "CARD_00_START";
+        let historyStack = [];
+        let selectedSplitOption = 0; // 0 = Left (Yes), 1 = Right (No) - default depends
+        
+        // --- INIT ---
+        window.onload = function() {
+            renderState();
+            startGlobalTimer();
+        };
+
+        // --- CORE LOGIC ---
+
+        function getCard(id) {
+            return algoData.deck.find(c => c.id === id);
+        }
+
+        function renderState() {
+            const currentCard = getCard(currentCardId);
+            
+            // 1. Render Middle Card
+            const midEl = document.getElementById('card-middle');
+            midEl.innerHTML = `
+                <div class="card-title">${currentCard.content.title}</div>
+                <div class="card-body" style="white-space: pre-line;">${currentCard.content.body}</div>
+                <div class="middle-tools">
+                    <div class="tool-icon" onclick="openToolbox()" style="visibility: ${currentCard.toolbox_enabled ? 'visible' : 'hidden'}">🧰</div>
+                    <div class="dots">${currentCard.type === 'loop' ? '🔴' : '⚪'}</div>
+                    <div class="tool-icon">⛶</div>
+                </div>
+            `;
+
+            // Loop animation effect
+            if (currentCard.type === 'loop') {
+                midEl.classList.add('pulsing');
+            } else {
+                midEl.classList.remove('pulsing');
+            }
+
+            // 2. Render Wheel Position
+            const track = document.getElementById('knob-track');
+            track.style.transform = `rotate(${currentCard.wheel_config.position_degrees}deg)`;
+
+            // 3. Render Top Card (Preview/Decision)
+            renderTopCard(currentCard);
+
+            // 4. Render Bottom Card (History)
+            const botEl = document.getElementById('card-bottom');
+            if (historyStack.length > 0) {
+                const prevCard = getCard(historyStack[historyStack.length - 1]);
+                botEl.innerHTML = `<div class="card-title" style="font-size:12px; opacity:0.6">${prevCard.content.title}</div>`;
+            } else {
+                botEl.innerHTML = "";
+            }
+
+            // 5. Render Checklist
+            renderChecklist(currentCard);
+        }
+
+        function renderTopCard(currentCard) {
+            const topEl = document.getElementById('card-top');
+            topEl.innerHTML = ''; // Clear
+
+            if (!currentCard.transitions) return;
+
+            if (currentCard.transitions.type === 'linear') {
+                const nextCard = getCard(currentCard.transitions.next_id);
+                topEl.innerHTML = `
+                    <div style="font-size:10px; color:#888;">COMING UP</div>
+                    <div class="card-title" style="font-size:14px;">${nextCard.content.title}</div>
+                `;
+                topEl.onclick = null;
+            } else if (currentCard.transitions.type === 'split') {
+                const opts = currentCard.transitions.options;
+                
+                // Determine which target to preview based on selectedSplitOption
+                // Reset selection if new card, otherwise keep state? For prototype, reset to index 1 (NO) often safer for medical demo, but let's default to index 0
+                
+                // Container for tabs
+                const container = document.createElement('div');
+                container.className = 'split-container';
+
+                opts.forEach((opt, index) => {
+                    const btn = document.createElement('div');
+                    btn.className = `split-option ${index === selectedSplitOption ? 'selected' : ''}`;
+                    btn.innerText = opt.label;
+                    btn.onclick = () => {
+                        selectedSplitOption = index;
+                        renderTopCard(currentCard); // Re-render to update selected style
+                    };
+                    container.appendChild(btn);
+                });
+                topEl.appendChild(container);
+            }
+        }
+
+        function advanceWheel() {
+            const currentCard = getCard(currentCardId);
+            
+            if (currentCard.status === 'end') return; // Stop at end
+
+            let nextId = null;
+
+            if (currentCard.transitions.type === 'linear') {
+                nextId = currentCard.transitions.next_id;
+            } else if (currentCard.transitions.type === 'split') {
+                // Get target based on user selection in Top Card
+                nextId = currentCard.transitions.options[selectedSplitOption].target_id;
+                // Reset split selection default for next time
+                selectedSplitOption = 0; 
+            }
+
+            if (nextId) {
+                historyStack.push(currentCardId);
+                currentCardId = nextId;
+                renderState();
+            }
+        }
+
+        function renderChecklist(card) {
+            const container = document.getElementById('checklist-container');
+            container.innerHTML = '';
+            
+            if (!card.checklist) return;
+
+            card.checklist.forEach(item => {
+                const div = document.createElement('div');
+                div.className = `checklist-item ${item.visible_if ? 'hidden' : ''}`;
+                div.id = `row-${item.id}`;
+                
+                // Interaction logic for toggle
+                let inputType = item.type === 'boolean_toggle' ? 'checkbox' : 'checkbox';
+                
+                div.innerHTML = `
+                    <input type="${inputType}" id="${item.id}" onchange="handleCheck('${item.id}', '${item.type}')">
+                    <label for="${item.id}">${item.label}</label>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function handleCheck(id, type) {
+            // Very basic logic to show hidden items based on ID naming convention
+            // In a real app, this would parse the logic string "visible_if: toggle_2nd"
+            
+            const checkbox = document.getElementById(id);
+            if (type === 'boolean_toggle') {
+                // Find items that depend on this
+                // Demo Hack: look for visible_if match in the raw JSON data for current card
+                const currentCard = getCard(currentCardId);
+                currentCard.checklist.forEach(item => {
+                    if (item.visible_if && item.visible_if.includes(id)) {
+                        const targetRow = document.getElementById(`row-${item.id}`);
+                        if (checkbox.checked) {
+                            targetRow.classList.remove('hidden');
+                        } else {
+                            targetRow.classList.add('hidden');
+                        }
+                    }
+                });
+            }
+        }
+
+        function openToolbox() {
+            document.getElementById('tool-modal').style.display = 'flex';
+        }
+
+        function startGlobalTimer() {
+            let seconds = 0;
+            const el = document.getElementById('global-timer');
+            setInterval(() => {
+                seconds++;
+                const date = new Date(0);
+                date.setSeconds(seconds);
+                el.innerText = date.toISOString().substr(11, 8);
+            }, 1000);
+        }
+
+    </script>
+</body>
+</html>
+Model
+ThinkingThoughts
+Developing Dynamic HTML
+I've been focusing on integrating the user's feedback, especially the need for dynamic interactions in the HTML. The initial static approach isn't cutting it; it's failing to capture their vision. I'm moving toward a more interactive, responsive design that reflects the user's intended functionality, instead of using a stale framework.
+Refining Interaction Design
+My recent efforts have concentrated on refining the interaction model. The layout's crucial for understanding the swiping mechanism on dating apps, now vertically translated. I'm focusing on the three card slots: Top for preview, Middle for active work, and Bottom for history. Navigation via a wheel and distinct tools like a checklist and calculator are essential components linked to the middle card. I'm currently working on correctly integrating this model using the 10 screenshots provided as a working reference.
+Steelman the Core Request
+The focus has shifted towards "steelmanning" the request. Before examining the visual references, I've processed the core interactions three times, aiming to capture the essence. It appears to be a vertical carousel with a wheel-driven navigation. The Top represents the Future, Middle the Present (active), and Bottom the Past. The user's "dating app" analogy helped, clarifying that the Top card's selection (like a swipe) influences its transition to the Middle.
+Analyzing Interaction Flow
+I'm now honing in on the core interaction patterns. The left/right swipe on the Top card definitively routes the user down "Yes" or "No" paths, which aligns with my prior conclusions. The Middle card remains the active workspace, with essential tools and checklist. The Bottom card is indeed a visual history. I've re-examined the wheel, it seems the primary "Next" button and governs the vertical progression. Top is now understood as a "Preview" with swiping/toggling, driving the workflow into the Middle.
+Deciphering Visual Clues
+I'm now focusing on the upcoming visual references, understanding they're a structural storyboard. The Z-axis/vertical stack is key: Top and Bottom cards "peek" at the user. The wheel serves as a progress bar, clock, and navigator. Crucially, the UI is dynamic; the checklist and toolbox are context-aware and update. My goal is to extract the UX logic from these visual snapshots.
+Confirming Interaction Elements
+I'm solidifying the key components and their roles. The Top card, the preview zone, facilitates decisions using the "swipe" mechanic, and leads to distinct paths. The Middle card houses the core action, with context-dependent tools and checklists. The Bottom card is the visual history. The wheel's function is the central trigger, moving the Top to the Middle. I'm now certain this captures the essence. I'm also ready to analyze the ten screenshots to validate the interaction model.
+Collapse to hide model thoughts
+
+chevron_right
+Model
+ThinkingThoughts
+Reviewing the Wireframe
+I've been meticulously analyzing the wireframe, focusing on the mobile portrait orientation and the "Card Stack" user interface element. My assessment has revealed details about spacing and potential interactions within the stack. Currently, I'm focusing on the navigation and content hierarchy within the stack.
+Initiating Image Breakdown
+I'm now diving into the first image using a rotary state machine interaction model. My method involves a detailed, one-by-one visual analysis, comparing what I see to the expected behavior and noting any critiques. The current asset is image 1 of 10. The layout is a mobile portrait with header, footer, and a central wheel. The wheel features "Paediatric Basic Life Support" text. Cards are stacked above the wheel, implying a start or cover page. The bottom section is empty, ready for interaction history.
+Defining Initial States
+I've started defining the initial states based on the elements: a checklist, a timer, the steelman framework, and the draft report. The stack visually represents the queue, starting with the title page and the wheel at its start position. The empty history section is also correct. The wheel indicates that interaction needs to start from a counter-clockwise position. I'm focusing on defining the root state for the frontend logic, specifically positioning the stack.
+Evaluating Element Placement
+I'm now assessing the visual hierarchy and placement of elements. The stack placement at the top clearly communicates content origin. The wheel's knob position at ~10:30/11:00 intuitively suggests a starting point with clockwise movement for progress. The center text's lack of a card border effectively distinguishes the algorithm's title from the steps, creating a strong visual hierarchy.
+Collapse to hide model thoughts
+
+chevron_right
+Model
+ThinkingThoughts
+Revising Core Mechanics
+I've been drilling down on the fundamental mechanics, specifically the wheel's movement and its impact on the system's state. There's this crucial element of "overshoot" and elastic return. I'm now exploring how that interacts with the snapping behavior to ensure logical state transitions. Currently wrestling with how to encode this in a concise way.
+Mapping UI Transitions
+I'm now focusing on how the UI changes. Swiping the top preview card down is an alternate to using the wheel. Image 2 features "Card 1" enlarged, with "Card 2" as a preview. Checklist logic is vital: scrolling is like "passing" a step, but checking the box is an active "validation". The design supports non-linear navigation, allowing the user to revisit previous states and continue on.
+Clarifying Time Controls
+I'm now fully immersed in the timer mechanics. It's always continuous, auto-starting upon display. A double-tap stops or pauses it, while a press-and-hold triggers a reset, returning the user to the initial state. The UI only presents three cards at a time as a visual buffer.
+Analyzing Three-Card Display
+I'm now zeroing in on the UI's three-card limitation. It serves as a "render buffer," dynamically showing the current state's context and anticipation of image 2. The visual tilt is key, giving the stack depth. I am also thinking about tone; it needs to be professional yet convey the UX feel. The overshoot animation correction adds a high-quality "native app" feel.
+Synthesizing Feedback Loops
+I'm now integrating feedback loops. I'm focusing on the user's explicit prompts: to steelman, reiterate comprehension, and highlight anticipated images. I'm refining the 3-card display rationale. I'm also accounting for the context change of the checklist input based on the card presented.
+Collapse to hide model thoughts
+
+chevron_right
+Model
+ThinkingThoughts
+Inspecting the Input
+I'm currently focused on the image's structure. It's a mobile portrait view of a rotary state machine app. I'm noting that the input is an image file. My analysis is starting from this digital input.
+Evaluating the Visuals
+The preview stack continues to display three identical grey cards, implying the sequence's progression. Image 2's active section now features a central rectangular grey card. This card presents a "Toolbox" icon and a "Full Screen" icon, centered in a large circle. The critical "wheel dot" is now at approximately 9 o'clock. We've defined the new elements and their positions.
+Confirming Anticlockwise Motion
+The comparison between Image 1 and Image 2 clarifies the rotational direction. Initially, I was unsure, considering both clockwise and counter-clockwise possibilities. However, the explicit phrase "anticlockwise to bring in the next card" resolves any ambiguity. Image 1's dot at ~11 and Image 2's dot at ~9 confirms the wheel's counter-clockwise rotation as cards are "pulled down" in sequence.
+Analyzing the Interface
+I've been thinking about the interface itself. The movement aligns with the action of "pulling" a card down, consistent with the counter-clockwise rotation, which matches the dot's movement. The bottom section remains empty, as it's the first card in the sequence. I've noted the footer elements, specifically the checklist and timer. My latest thoughts involve diving into the UI's specific visual and functional details. I'm focusing on the proportions of the central card, the preview, and the wheel. Plus, I'm examining the function of the toolbox and expand icons.
+Detailing the Transitions
+I'm now fully immersed in the nuances of the visual transition. I was incorrect about the anticipated clockwise motion, it's unequivocally anticlockwise, confirmed by the prompt. I've christened the wheel dot "Thumb Drag Handle." Furthermore, I've clearly numbered each card and visualized the exact card transitions. I've detailed the steps involved.
+Visualizing the Sequence
+I'm solidifying the card transition flow. The top stack shifts forward to reveal the next card, with the middle card transitioning to the center. I'm focusing on "Portrait Mobile" proportions and the generous whitespace. I'm also now pondering the spring-physics model and the "overshoot" effect, confirming a "Step Locked" mechanism. The planned response structure is Visual Analysis, Movement Logic, Card Mapping, Icons/Tools, and a Transition Narrative, maintaining a professional and analytical tone.
+Determining Card Numbers
+I've homed in on answering the precise question. Focusing on card numbers, with card 1 active, the preview stack clearly shows cards 2, 3, and 4. I can now confidently provide this specific answer.
+Collapse to hide model thoughts
+
+chevron_right
+Model
+ThinkingThoughts
+Evaluating Iconography Progress
+I'm currently focused on the challenge of efficiently processing and understanding the user's icon identification request. I've begun by meticulously analyzing the prompt to determine the key elements. Next, I'll identify the inputs provided, as well as the context of the user, to accurately deliver the desired result.
+Refining Icon Definitions
+I'm now diving into the detailed definitions of each icon within the established UI framework. I'm focusing on the "Decision" logic represented by a branching structure icon, specifically icon_decision_branch.png. I'm also cataloging the "First Aid Kit/Calculator" with icon_toolbox.png, the "Focus Mode" with icon_fullscreen_expand.png, and the "search" function.
+Reviewing Visual References
+I'm currently reviewing the images and identifying which icons have been visually represented. I've noted the Search and 3-dot menu from the first image and the First Aid Kit and Fullscreen from the second. The "Decision" icon itself is still absent, but the concept is established. I'm also cataloging the various carousel terminology and how the "Decision Logic" should work. I'm anticipating the introduction of the lower section in future images. Lastly, I'm thinking of how we can reset the process.
+Categorizing Icon Elements
+I'm now identifying and categorizing the core elements from this quiz: the "Split/Decision" icon (icon_branch_decision.svg), the "Toolbox" icon (icon_toolbox.svg), the "Fullscreen" icon (icon_fullscreen.svg), and the "Search" icon (icon_search.svg). I'm also mapping how the "To be decided" and "Decided" states, along with the "Pagination Indicators", are reflected. I'm starting to anticipate the lower section visuals in the next image as well, envisioning a card movement where Card #01 goes to the bottom history, Card #02 remains active, and Card #03 previews at the top.
+Implementing Reset Logic
+My focus has shifted to the "Reset" functionality, specifically how we'll guide the user back to the initial image. I've re-examined Image 1, recalling the "Press and hold timer to restart" instruction. I'm also considering the physical action of scrolling the wheel clockwise to return to the title card. The final polish stage involves refining the tone and ensuring all elements adhere to the "Steelman" approach.
+Collapse to hide model thoughts
+
+chevron_right
+Model
+ThinkingThoughts
+Pinpointing File References
+I'm now zeroing in on the specific file references. I've analyzed the user's feedback, which highlighted my earlier mistake of not correctly identifying the files. The updated constraints are clear, and I'm carefully reviewing the visual representations to accurately pinpoint their corresponding names and properties. This process requires meticulously connecting the visual clues with potential file labels, emphasizing absolute precision.
+Focusing on Image 3
+I'm now zeroing in on Image 3. The initial task set the stage, emphasizing a precise "Steelman" understanding. Currently, I'm deconstructing the core pop quiz. SVG is confirmed as the correct choice for mobile UI icons, with scalability in mind. My next focus is defining the dynamic portrait dimensions. The "Wheel" remains the central geometric anchor.
+Refining the UI Blueprint
+I've just honed in on the detailed dimensions and layout logic for the UI. Keeping scalability and high-DPI screens in mind, I've confirmed SVG as the best choice. My current focus is on nailing down the dynamic portrait dimensions. I'm leveraging the iPhone 14 Pro's dimensions as a standard reference and meticulously calculating the wheel's size, header and footer heights, and the remaining space for preview and history cards. I'm accounting for the shrinking/growing gaps, depending on the device.
+Calculating Flexible Layout
+I'm now integrating the understanding of the importance of scalability. I've been considering how diverse aspect ratios affect the preview card sizing, ensuring they'll dynamically adjust to provide optimal breathing room on various devices. The "I hear you" phase has yielded actionable insights; I've analyzed the explicit feedback. Currently, I'm focusing on the responsive UI architecture, specifically how the geometric principles dictate element sizing and placement in relation to the central "Wheel".
+Prioritizing Dynamic Spacing
+I'm now integrating dynamic spacing into the design. Focusing on the user's emphasis, I've discarded the static pixel approach. Instead, I'm defining flexible percentages and anchoring elements. This ensures the preview cards and other UI elements resize properly on different screens. I am refining the tone of my communication to reflect this shift, and I'm ready to move forward.
+Deriving Middle Card Size
+I'm now deriving the middle card size, as indicated by the diameter of the central circle. By using the circle's diameter, I can ensure that the design stays visually balanced. I am focusing on this because it’s a critical anchor for the layout.
+Collapse to hide model thoughts
+
+chevron_right
+Model
+ThinkingThoughts
+Considering the Scope
+I'm currently focused on defining the scope for the analysis of Image 3. I've broken down the request into its core components: detailing the UI transition, acting as a Full Stack UX designer. I'm now contemplating the specific elements to focus on in detail: wireframes, UI changes, and potential user flows.
+Detailing the Elements
+I'm now fully immersed in dissecting Image 3, focusing on the finer points. My analysis hinges on the Rotary State Machine navigation's impact on the UI. Specifically, I'm mapping out the Top, Middle, and Lower sections, plus the Footer, highlighting the appearance of the "History" card and the wheel's position at West. I'm building a mental movie of the transition, focusing on the Knowns, the Unknowns, and the UX implications.
+Defining the Parameters
+I'm now diving into the technical specifications, mapping out the dimensions and z-indexing. I've set a baseline of 390x844px and defined header and footer heights. The "Squish" factor of the Middle Card is also becoming clearer, with an inscribed rectangle. I'm focusing on the opacity and scaling of the history cards to represent their inactive state, while planning the overall response structure.
+Outlining the Journey
+I'm now outlining the entire user journey, from Image 1 through Image 3, focusing on the physical interaction. My deep dive, Phase 2, will highlight haptics, state persistence, error handling, and accessibility. Phase 3, the spec sheet, is planned to include hard numbers and logic. My thought process took a crucial turn when I realized the 9:00 dot position in Image 3 was shared in Image 2. I'm now certain the wheel employs a spring-loaded or notched mechanism, which is key to interpreting the user's action and the system's feedback. I'm focusing on the "pull-to-actuate" motion and the transition to Card 2 in Image 3.
+Finalizing the Details
+I'm zeroing in on the action card's position, highlighting the swipe interaction of the carousel. The output is coming together, hitting all constraints, addressing spacing, and using provided filenames. The tone is professional and technical, anticipating developer needs. I am also working on the detailed file now.
+Collapse to hide model thoughts
+
+chevron_right
+Model
+ThinkingThoughts
+Examining the Core Problem
+I've been drilling into the specific constraints of this mobile resuscitation app. The "Wheel" navigation and Z-axis card interaction are shaping the strawman situations considerably. I'm focusing on crafting compelling user scenarios that really highlight the potential challenges and potential solutions, especially considering the mobile-first design. I'm aiming to produce some solid strawman scenarios for your review.
+Refining the Workflow
+I'm now zeroing in on the critical transitions between the app's states, specifically from idle to active, and card-to-card navigation. I'm building out a series of strawman scenarios that focus on potential failure points, especially in the context of accidental starts and the stress of a real emergency. The goal is to ensure a smooth, intuitive, and effective user experience.
+Exploring Potential Issues
+I'm now focusing on a series of critical usability scenarios. Specifically, I'm examining "Decision Paralysis" at Step 2, context switches like toolbox interactions, the desire to "Peek Ahead" at upcoming steps, and the friction of "Data Entry" versus wheel navigation. I'm actively brainstorming mitigation strategies for each scenario, considering soft vs. hard gating and focus management as key elements in minimizing user frustration.
+Identifying Critical Scenarios
+I'm developing a set of new "what-if" scenarios to probe the design's resilience. I've framed them as potential failure modes, specifically focusing on accidental activation ("Pocket Dial"), navigation conflicts ("Over-Eager Swipe"), interface traps ("Keyboard Trap"), and blind reversion ("Blind Reverse"). I'm actively integrating UI elements like the Actuator Node and Checklist into these scenarios. I'm focusing on "Keyboard Trap" as an especially potent risk on mobile, given the potential for screen occlusion and navigation disruption. I'm also ensuring the language reflects that the goal is to see if our system can handle the flaws we create.
+Addressing Specific Weaknesses
+I'm now iterating on the strawman scenarios, ensuring each highlights potential usability flaws. For each, I'm defining the problem, such as accidental activation or UI conflicts. I've drafted specific situations, including an accidental "Next" tap, a premature wheel pull, and keyboard occlusion issues. For each, I'm proposing physics-based solutions, like a slide-to-unlock mechanic, visual feedback, or scrollable views. I'm aligning these proposals with the user persona's preference for detailed, physics-driven interactions.
+Collapse to hide model thoughts
+
+chevron_right
+Thank you. I appreciate that. Navigating the nuance of "Unknown Unknowns" is where a product lives or dies.
+Here is the Strawman Stress-Test. I will construct 4 specific failure scenarios (The Strawmen) that could occur between Image 1 and Image 3, and then present the engineering/UX solution to dismantle them.
+Strawman 1: The "Pocket Activation"
+The Situation: The phone is in a pocket or grabbed hastily. The thumb grazes the wheel or the top card.
+The Failure: The app thinks the user wants to start. It transitions from Image 1 to Image 2, starts the Global Timer, and logs an event. The user looks at the screen and sees 00:00:04 and panics because they didn't intend to start yet.
+The Solution: "The Threshold Gate"
+Physics Logic: We do not trigger the transition on a simple "Touch" or a "Micro-drag."
+The Rule: The Actuator Node (Dot) must be dragged at least 20 degrees (or ~15% of the arc) to trigger the state change.
+Visual Feedback: If dragged < 20 degrees and released, the wheel springs back to 11:00 (Zero). The timer does not start until the "Snap" point is crossed.
+Strawman 2: The "Keyboard Trap" (Image 1 Checklist)
+The Situation: In Image 1, the checklist asks for "User Name." The user taps the box. The native iOS/Android keyboard slides up.
+The Failure: The keyboard covers the Footer (Timer) and the bottom 40% of the Wheel. The user types their name, then tries to scroll the wheel to start, but the wheel is obscured or the gesture is interpreted as a scroll on the web page/app body.
+The Solution: "Gesture Dominance"
+Event Listener: As soon as the user touches the Upper Half of the Wheel or the Top Preview Card, the app forces keyboard.dismiss().
+UI Shift: We ensure the "Playable Area" is pinned to the top. Even if the keyboard is up, the "Start" interaction (Top Card swipe or Wheel Pull) remains accessible. We prioritize navigation over data entry completion.
+Strawman 3: The "Conflicting Signals" (Swipe vs. Spin)
+The Situation: We are transitioning from Image 2 to 3. The user puts one thumb on the Top Preview Card (pulling down) and another thumb on the Wheel Knob (pushing up/clockwise).
+The Failure: The physics engine receives two contradictory inputs: "Go Forward" (Swipe) and "Go Backward" (Wheel). The Middle Card jitters, the animation glitches, and the app crashes or freezes.
+The Solution: "Single-Touch Singularity"
+The Rule: The app accepts only one active touch point for navigation at a time.
+Priority: The first touch point wins.
+If the user grabs the Card first, the Wheel is locked (disabled).
+If the user grabs the Wheel first, the Cards become non-interactive display objects until the wheel is released.
+Strawman 4: The "Toolbox Amnesia"
+The Situation: On Image 2 (Card #01), the user opens the Toolbox (First Aid Kit) to check a value. The Modal is open (covering half the screen).
+The Failure: The user, in a rush, ignores the open modal and spins the wheel to go to Image 3.
+The Result: The Wheel advances the background to Card #02, but the Modal for Card #01 remains open on top. The user is now looking at the wrong tools for the wrong step.
+The Solution: "Auto-Dismissal"
+Logic: Any navigation event (Wheel spin or Card Swipe) broadcasts a global NAVIGATION_START event.
+Reaction: All open Modals, Tooltips, or Expanded Views listen for this event and trigger this.close() immediately before the new card slides in. The transition acts as a "Clean Slate" wiper.
+I believe these solutions harden the UX significantly. I am ready for Image 4.
+User
+habsberry-health-resus-app-no-arrows_Page_04.png
+Great work - here is image 4, hint see in top section previw the middle card shows the icon for decision-tree-svgrepo-com-upper-section.svg meaning we will soon see what a decision situation is like (in the back of you rmind my hope is that you are parallel processing how all this would be done for the json we created with actual values and cntent) but for now this UX is key. Piece how will go from image 1 to 3, describe everything  as wireframs and detailed UI, using the icons, beavior, what am I leaving out, describe the spacing, buffering sizing etc the global sections are header, top section, middle section, lower section, checklist-timer section, what is the global size of the potrait frame, what the size of setion section how do they relate to one another, behavior etc - the are many things I know I know, whihc I have shared, they are things I know I dont know that I have shared but also left out and then there are  things I dont even know I dont know that I need you share and include , includun gthe things I know I dont know that i left out, this is for the good of UX full stack
+
+
+
+Model
+ThinkingThoughts
+Beginning the Image Analysis
+I'm starting the deep dive into Image 4, the "habsberry-health-resus-app-no-arrows_Page_04.png" one. My first step is a thorough dissection of the request itself. I'm focusing on the image's inherent properties and how they relate to the specified task. This is the starting point for developing the technical specifications for it.
+Unpacking the Iconography
+I've just noticed the decision-tree icon on the middle card in the top preview stack, which really indicates a core decision point coming up. The plan now is to link the current image back to the previous and subsequent images, while making a mental map of their components and functions. I'm actively integrating the JSON structure for a holistic design and logic. The aim is to surface potential friction points.
+Visualizing Decision Paths
+I'm now fully immersed in the breathing decision card, Card #04, and the branch icon really drives home the pending choice. I've mapped the history stack's growth – confirming this crucial aspect. I'm focusing on "parallel processing" via JSON. I'm actively integrating the visual and logical flow to build out the full-stack technical specs, specifically considering the vertical rhythm and header. Now I'm focused on the global layout and spacing to keep the app organized.
+Analyzing Layout Components
+I'm now diving into the component specifications. I've confirmed the footer needs a fixed height, with the main area using flex-grow: 1. I've visualized the absolute positioning of the wheel within the main area, and how the stacks will relate to it. The transition from image to image shows three steps, the card handoff being key for animation. I'm focusing on "unknown unknowns" now, working through buffer sizing, history stack limits, and touch target size for icons.
+Organizing the Technical Specs
+I've just finalized the structured response for image analysis. It breaks down into four parts: visual analysis, the user journey, UI/UX specs, and a deep dive into "unknown unknowns." I've double-checked that the icons and spacing are covered. I've refined the text to emphasize the decision icon's role in cognitive priming and ensured a professional, technical tone. I'm ready to move forward.
+Generating the Output
+I've just finished the organized response structure for this. It details the visual analysis, user flow, UI/UX specs, and exploration of unknowns. I've re-reviewed to be certain that spacing and iconography are correctly covered, and I've sharpened the language for a professional technical tone, especially when describing how the decision icon works. Now, I will generate the output.
+Collapse to hide model thoughts
+
+chevron_right
+Model
+ThinkingThoughts
+Exploring Architectures for Imaging
+I've been mapping out potential frontend architectures to build a minimalist image manipulation system. The initial focus is on a flat prototype with line-art visuals, but it needs to scale seamlessly to handle global and granular image adjustments, like exposure and contrast. I'm exploring how to decouple the image data from the presentation layer for flexibility and performance.
+Building Theming & Logic
+I'm now diving into the implications of dynamic styling for this imaging system. Thinking I'll need a sophisticated theming engine to control backgrounds, element sizing, and opacity. The decision-making process will be crucial for the UI's handling of split paths, so I'm drafting a framework to analyze future images methodically. This framework is meant to provide a reusable rubric to ensure I capture all details from now on. My next step will be to map the visual progression back to the specific Pediatric BLS JSON structure. I'm also planning to create a set of "strawman" arguments and solutions to stress-test the system and uncover edge cases.
+Designing UX Transitions
+I'm now focusing on the UX of the split-path decision. I anticipate Image 5 bringing the "decision-tree-upper" icon into play. My system needs to pause the wheel and show a split in the card, likely with visual or tactile tap zones. The "upper" icon will disappear, giving way to the split UI. I've begun crafting a rubric to methodically assess each new image, categorizing by State Logic, Card IDs, and more, as a lens for consistent analysis.
+Detailing Image State Transitions
+I'm now outlining a detailed framework for analyzing each image, particularly focusing on the key elements: stack positions, the wheel's status, icon types and locations, footer states, transition types, and potential edge cases. My goal is to methodically identify and document all the variables. I've also reconnected with the existing JSON structure, specifically the options array within transitions. It’s crucial because it'll dictate the UI of Image 5. I will start testing with strawman scenarios, as well, specifically looking at decisions and layering.
+Analyzing Edge Cases
+I'm now generating a list of "strawman" scenarios to stress-test the system's resilience. I'm focusing on edge cases, like excessive contrast changes obscuring text, unhandled three-way splits, and how the UI reacts to rewinding past a decision. I'm also considering potential issues with the Hint icon, overlapping opacities, and network failures during transitions. My analysis now includes checking card height and global timer resets, and how to create a good design, even under extreme conditions. I am keeping in mind the need for minimalistic design and line art.
+Implementing CSS Layers
+I've shifted focus to a layered CSS architecture, which feels more aligned with the user's need for a minimalistic, but flexible, UI with line art visuals and global color adjustments. The theming engine will be the core of the layered CSS approach, allowing for dynamic styling control. I'm now drafting the CSS structure and considering the best way to handle different states and user interactions with this CSS-layer system. I am keeping in mind how to manage the global settings like exposure and contrast and how they integrate into the CSS architecture.
+Collapse to hide model thoughts
+
+chevron_right
+This is a significant architectural pivot, but a powerful one. You are describing a Parametric UI Engine. Instead of hard-coded styles, the app acts as a "renderer" where every visual property (opacity, contrast, tint, stroke width) is a variable that can be manipulated globally.
+Here is the response broken down into the requested sections.
+Part 1: Frontend Architecture Refactor (The Parametric Engine)
+To achieve a "Minimalist Line Art Prototype" that supports granular global adjustments (Exposure, Contrast, Sepia, etc.), we move away from standard CSS classes and towards a Reactive CSS Variable System.
+The Stack Strategy:
+The Canvas (Layer 0): The app background.
+The Component Layer (Layer 1): Cards, Wheel, Header, Footer.
+The Content Layer (Layer 2): Text, SVGs.
+The Filter Layer (Post-Processing): The global adjustment engine.
+Implementation (The "Global Settings" Refactor):
+Instead of static hex codes, the CSS Root defines the "Engine."
+code
+CSS
+:root {
+  /* 1. The Core Geometry (Line Art Mode) */
+  --stroke-width: 2px;
+  --card-corner-radius: 12px;
+  
+  /* 2. The Color Matrix (Tint & Temp) */
+  --base-hue: 220; /* Dynamic Hue */
+  --saturation: 0%; /* Start Flat/B&W */
+  --lightness: 98%; 
+  
+  /* 3. The Exposure/Opacity Engine */
+  --layer-opacity-mid: 1.0;
+  --layer-opacity-preview: 0.6;
+  --layer-opacity-history: 0.4;
+  
+  /* 4. The Post-Processing Filters (The "Instagram" Logic) */
+  --global-contrast: 100%;
+  --global-sepia: 0%;
+  --global-sharpness: 0px; /* Simulated via text-shadow or SVG stroke */
+}
+
+.app-container {
+  /* This allows the user to act as a "Color Grader" for the interface */
+  filter: 
+    contrast(var(--global-contrast)) 
+    sepia(var(--global-sepia)) 
+    saturate(var(--saturation));
+}
+The User Control:
+A hidden "Dev Settings" or "Accessibility" panel allows you to slide a fader for "Exposure." In code, this updates --lightness. Sliding "Contrast" updates --global-contrast. This ensures the app remains Line Art Minimalist by default, but fully customizable without rewriting component code.
+Part 2: Anticipating Image 5 (The Decision)
+Based on the decision-tree-svgrepo-com-upper-section.svg seen in Image 4's preview, here is what I anticipate for Image 5:
+The State: We have transitioned. Card #04 (Breathing Check) is now the Middle Card.
+The Wheel: The Actuator Node (Dot) has moved to the bottom or specific "Decision Zone." Crucially, The Wheel is Locked. You cannot spin forward. The path is blocked.
+The UI:
+The Middle Card visually splits.
+I expect to see Two Distinct Tap Zones (Left vs Right) or a large Toggle Switch.
+Text: "Breathing Normally?"
+Options: "YES" (Leading to Observation) vs "NO" (Leading to Rescue Breaths).
+The Icons:
+The decision-tree-upper icon is gone (we are no longer previewing).
+The card might now feature the icon_branch_decision.png logic we discussed, or simply two clear buttons.
+The Checklist will likely be replaced by this primary binary choice.
+Part 3: The "Memory & Logic" Rubric
+This is the Checklist I will use for every subsequent image analysis to ensure I catch everything.
+The "Resuscitation UX" Rubric:
+State Identification:
+Current Step ID vs JSON Schema.
+Previous Step (History Stack).
+Next Step (Preview Stack).
+The Wheel Physics:
+Position of the Actuator Node (Dot).
+State: Free-Spinning vs. Locked (Decision Gate).
+Direction of entry (Anticlockwise Pull?).
+Iconography & Assets:
+Check for specific filenames (e.g., first-aid-kit-2-svgrepo-com.svg).
+Check for Context Icons (Decision Trees, Fullscreen).
+Check for Z-Depth layering (Icon peeking logic).
+Data & Tools:
+Checklist Status (Text content, checkmark state).
+Timer State (Is it running?).
+Toolbox/Modal Availability.
+Layout & Geometry:
+Card sizing relative to Rail (Inscribed vs. Overlap).
+Spacing buffers (Header/Footer gaps).
+Visual "Glitch" checks (Is anything overlapping illegally?).
+Part 4: Mapping Image 1-5 to the JSON
+This framework confirms our JSON State Machine design is robust.
+Image 1 (Start): Matches CARD_00_START. wheel_config: { phase: "start" }.
+Image 2 (Unresponsive): Matches CARD_01_UNRESPONSIVE. transitions: { type: "linear" }.
+Image 3 (Help): Matches CARD_02_SHOUT. The "Parallel Actions" (2nd Rescuer) are handled in the Checklist footer, not by forking the path.
+Image 4 (Airway): Matches CARD_03_AIRWAY. The Preview Stack shows CARD_04 with the Decision Icon.
+Image 5 (Breathing - Anticipated): Matches CARD_04_BREATHING_DECISION.
+JSON Logic: transitions: { type: "split", options: [...] }.
+Behavior: The App reads type: "split" and Disables the Linear Wheel Transition, forcing the user to interact with the Card Options (YES/NO) to generate the next_id.
+Part 5: 10 Strawman Arguments (Stress Testing)
+1. The "Sepia Blindness" Claim
+Claim: If the user sets "Sepia" to 100% and "Contrast" to 0% in the global settings, the Red "Emergency" icons (e.g., first-aid-kit) will become indistinguishable from the grey text, causing safety errors.
+Solution: Semantic Color Locking. Critical UI elements (Alerts, Exit Buttons) bypass the CSS Filter layer or use a !important color override that ignores the global --base-hue.
+2. The "Decision Skip" Claim
+Claim: The user can bypass the "Breathing?" decision in Image 5 by dragging the preview card (Card #05) down manually, skipping the logic gate.
+Solution: Z-Index Locking. When the Middle Card is a decision type, the Preview Stack touch interactions are disabled (pointer-events: none). The only valid interaction is the YES/NO button.
+3. The "Ghost Icon" Claim
+Claim: When moving from Image 4 to 5, the decision-tree-upper icon on the preview card will accidentally slide into the middle card and stay there.
+Solution: Transition Cleanup. The decision-tree-upper SVG is attached to the Slot, not the Card. When a card leaves the "Preview Slot," it loses that icon overlay decorator.
+4. The "Layer Collapse" Claim
+Claim: If the user lowers the --layer-opacity-mid to 0.1, the Middle Card becomes transparent, showing the history card underneath it, creating unreadable text.
+Solution: Opacity Clamping. The "Middle Card" opacity variable has a hard-coded minimum (e.g., 0.9) in the CSS to prevent user error from breaking usability.
+5. The "History Rewrite" Claim
+Claim: If I go back from Image 5 to Image 4 and change my answer (YES to NO), the History Stack (Lower Section) will still show the old path.
+Solution: Recursive Branch Pruning. Changing a decision upstream (in the past) automatically deletes/invalidates all subsequent cards in the History Stack.
+6. The "Double Decision" Claim
+Claim: JSON allows for 3 options (Yes, No, Maybe), but the Card UI only has space for 2 buttons.
+Solution: Dynamic Layout Flex. The Decision Card UI uses flex-wrap. 2 options = 50% width each. 3 options = 33% width or stacked vertically. It adapts to the JSON array length.
+7. The "Timer Reset" Claim
+Claim: Changing the Global Exposure/Theme triggers a component re-render, resetting the Timer to 00:00:00.
+Solution: Context Provider Isolation. The Timer State lives in a Global Context (e.g., Redux/Context API) separate from the UI Theme Context. A UI re-paint does not touch the Logic Core.
+8. The "Wheel Drift" Claim
+Claim: On the Decision Card (Image 5), gravity/physics might cause the wheel dot to drift, confusing the user into thinking they made a choice.
+Solution: Magnetic Lock. On Decision Cards, the Dot snaps to a neutral "Center" or "Holding" position and essentially becomes a static indicator until a choice is made.
+9. The "Search Overlay" Claim
+Claim: If I use the search-tool-symbol to switch algorithms mid-stream, the "History Stack" from the old algorithm remains visible.
+Solution: Context Flush. Switching algorithms triggers a session_end event. The stacks are cleared, history is saved to a log, and the new algorithm starts fresh at Image 1.
+10. The "SVG Pixelation" Claim
+Claim: When using the fullscreen-svgrepo-com icon to zoom in, the card content (if PNG) blurs.
+Solution: Vector First. We strictly enforce the use of SVGs (as per the Pop Quiz) for all diagrams. If a PNG is absolutely necessary (e.g., a photo of a rash), we serve high-res assets (@3x) only loaded on Fullscreen trigger.
+I am ready for Image 5.
+Model
+ThinkingThoughts
+Detailing Visual Evolution
+I'm currently focused on the progression from the initial wireframes to the final UI, meticulously noting the evolution of visual elements. I'm drilling down into the rationale behind each design decision, especially regarding spacing, sizing, and the relationship between different elements. The aim is to thoroughly document the transformation.
+Examining Carousel Interaction
+I'm now fully immersed in the mechanics of the horizontal carousel interaction within the top preview. The anticlockwise and clockwise finger circles dictate the left-to-right or right-to-left direction, and I am noting the specifics of user preference choices and how they impact the global settings, particularly regarding visual flow. It's a complex interplay of user input and dynamic UI adjustments. Also, I am taking note on the logic used.
+Unveiling The "Miracle"
+I'm now zeroing in on the "Miracle" interaction model. The standard flow of vertical card dropping is pivotal. Once the decision block is triggered, the wheel reorients to the horizontal axis of the top preview card, creating a pivotal moment. Imagine a combination lock: wheel-turning selects the number (horizontal), then swiping "unlocks" (unlocks block of vertical drop).
+Analyzing Response Structure
+I'm now refining the response structure. I've broken it down into a narrative arc, detailed specs, the "Miracle" logic explanation, a discussion of unknowns, a "Pop Quiz," and strawman arguments. I'm focusing on the specific details, such as the sizing of preview cards (80-85% scale for flanking cards) and the opacity (0.5). The decision-tree-upper icon is also a key consideration to guide users on interactions. The header menu is being updated to store rotation_preference in local storage.
+Incorporating Haptic Feedback
+I'm now integrating haptic feedback into the "Decision Switch" for the YES/NO flip. Accessibility is also a key concern, specifically how screen readers will interpret the horizontal wheel control. I'm focusing on incorporating aria-live regions. Additionally, I am designing for thumb reach on larger devices.
+Building The Response
+I'm now putting everything together, focusing on the structured output. I'm taking the narrative arc, detailed specs, the explanation of the 'Miracle' interaction, unknowns, "Pop Quiz," and strawman arguments, and weaving them into a coherent whole. Key is the formatting of the cards, specifically the sizing of preview cards (80-85% scale for flanking cards) and the opacity (0.5). I'm also paying close attention to the decision-tree-upper icon and how the header menu stores rotation_preference in local storage. My goal is to produce a clearly understandable document.
+Collapse to hide model thoughts
+
+chevron_right
+Model
+ThinkingThoughts
+Defining the PWA Core
+I've been drilling down on the fundamental structure for this mobile-first PWA prototype. Focusing on how it will be delivered and function, I'm working to outline the necessary HTML, CSS, and JS components to achieve a functional baseline. This includes defining key elements like the service worker integration for offline capabilities and considerations for responsive design.
+Refining the Framework
+I'm now fully immersed in the core structure, having ditched the initial flawed attempts. It must be perfect based on our prior extensive talks: Image 1-5 logic, the mechanics of the wheel, the visual Z-axis stacking, and decision gates. The plan is portrait-only with three sections. Wheel/Rail interface is the focus; wide, counter-clockwise drag to move it. This uses a JSON state machine, checklist system, global timer, toolbox, and search. Visuals will be minimal line art with parametric CSS variables.
+Detailing the Miracle Mechanic
+I've been meticulously crafting the "Miracle Design" mechanic, the heart of this project. Focusing on the rotary-to-horizontal mapping, I'm defining how user input translates into actionable decisions. I've broken down the design into essential components, considering the physical properties of the wheel and the visual interplay of cards. The project is based on a mobile-first philosophy, utilizing the 390x844px iPhone frame.
+Developing the Engine
+I'm now deep in the code, focusing on the core mechanics. I'm building out the CSS, defining the parametric variables for the visual style and crafting a Flexbox layout. I am working on the JavaScript state management to handle the wheel angle and trigger state changes based on the user's interaction. The goal is to make the "Miracle" logic work: Map the rotation to the horizontal motion of the "decision" card. I've got the foundational JSON in place.
+Integrating Visual Elements
+I'm now integrating the SVG components and refining the Z-index stacking. I've corrected the visual layering of the wheel and cards, using CSS to achieve the desired depth. I've also incorporated the logic for touch angle calculation and zero-crossing, ensuring smooth rotation. Furthermore, I've implemented the selectedOptionIndex update for the breathing decision and will create SVG icons.
+Building the Interaction Flow
+I'm presently building the flow of user interactions. I'm focusing on the state transitions from the title card, to card one, and the resulting change in logic and visuals. The goal is the horizontal carousel logic for the wheel. The timer must be globally available. The checklist renders dynamically. I'm taking a "vanilla" JS approach to the code.
+Polishing the PWA
+I'm now implementing the final touches to validate the parametric design. This includes hidden sliders for global settings and the integration of the "Decision Tree" icon. My focus shifts to the user experience with a "swipe down" gesture for decision card dismissal. This should finalize the user interactions. I'm hoping it's almost time to move to the final output generation.
+Collapse to hide model thoughts
+
+chevron_right
+This is the corrected, rigorous, and fully functional HTML/CSS/JS prototype. It implements the Parametric UI, the State Machine, the Anticlockwise Physics, and the Miracle Decision Logic exactly as discussed.
+Instructions to Run
+Save the code below as index.html.
+Open it in a browser (Mobile View or resize window to phone size).
+Interaction Guide:
+Start: Drag the Black Dot (Knob) from 11:00 down to 9:00 (Anticlockwise).
+Progress: Continue dragging the dot anticlockwise (pulling down) to move cards.
+Decision (The Miracle): When you reach "Breathing Check", the wheel will LOCK. Rotating it will no longer move cards down; it will toggle the Top Preview Cards (Yes vs No).
+Confirm Decision: Drag the selected Top Card Down into the circle to confirm.
+Global Settings: Click the Settings Icon (⋮) in the header to test the Exposure/Contrast engine.
+code
+Html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Resus App PWA Prototype</title>
+    <style>
+        /* --- 1. THE PARAMETRIC ENGINE (CSS Variables) --- */
+        :root {
+            /* Core Geometry */
+            --stroke-width: 2px;
+            --card-radius: 12px;
+            --app-width: 100%; /* Dynamic to container */
+            
+            /* Color Matrix */
+            --base-hue: 0; /* 0 = Black/White/Grey scale */
+            --primary: #111;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --rail-color: #e0e0e0;
+            --accent-red: #d32f2f;
+            
+            /* Exposure Engine (Dynamic Filters) */
+            --global-contrast: 100%;
+            --global-sepia: 0%;
+            --global-brightness: 100%;
+            
+            /* Layout Dimensions (Dynamic) */
+            --header-h: 60px;
+            --footer-h: 120px;
+            --safe-margin: 16px;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #333; /* Dark outer frame */
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            /* Apply Global Parametric Filters */
+            filter: contrast(var(--global-contrast)) sepia(var(--global-sepia)) brightness(var(--global-brightness));
+        }
+        
+        /* --- 2. THE MOBILE FRAME --- */
+        #app-frame {
+            width: 390px; /* iPhone reference width */
+            height: 844px; /* iPhone reference height */
+            background-color: var(--bg-color);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+        
+        /* --- 3. SECTIONS --- */
+        
+        /* HEADER */
+        header {
+            height: var(--header-h);
+            border-bottom: var(--stroke-width) solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--safe-margin);
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            z-index: 500;
+        }
+        .app-title { font-weight: 700; font-size: 16px; letter-spacing: 0.5px; }
+        .header-icons { display: flex; gap: 15px; }
+        .icon-btn { width: 24px; height: 24px; cursor: pointer; }
+        
+        /* FOOTER (Checklist + Timer) */
+        footer {
+            height: var(--footer-h);
+            border-top: var(--stroke-width) solid var(--primary);
+            background: var(--card-bg);
+            padding: 10px var(--safe-margin);
+            display: flex;
+            flex-direction: column;
+            z-index: 500;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* PLAYABLE AREA (The Gap) */
+        #stage {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            /* Layout grid for stacks */
+        }
+        
+        /* ZONES */
+        #zone-top {
+            flex: 1; /* Dynamic height */
+            position: relative;
+            perspective: 1000px;
+            z-index: 50;
+            /* border-bottom: 1px dashed red; Debugging */
+        }
+        
+        #zone-middle {
+            height: 360px; /* Defined by wheel */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        #zone-bottom {
+            flex: 1; /* Dynamic height */
+            position: relative;
+            z-index: 40;
+            /* border-top: 1px dashed red; Debugging */
+        }
+        
+        /* --- 4. THE WHEEL RAIL (SVG) --- */
+        #wheel-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 340px; /* Diameter */
+            height: 340px;
+            pointer-events: none; /* Let touches pass through to cards if needed */
+            z-index: 90; 
+        }
+        
+        .rail-circle {
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 1px;
+        }
+        
+        /* The Actuator Node (Knob) */
+        #actuator-node {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 0; left: 50%; /* Starts at 12:00 relative to container, corrected via JS */
+            margin-left: -16px;
+            margin-top: -16px;
+            cursor: grab;
+            pointer-events: auto; /* Catch touch events */
+            z-index: 200; /* Above rail, below Fullscreen Card */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        /* --- 5. CARDS --- */
+        .card {
+            background: var(--card-bg);
+            border: var(--stroke-width) solid var(--primary);
+            border-radius: var(--card-radius);
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        
+        /* Specific Card States */
+        .card-preview {
+            width: 200px;
+            height: 120px;
+            /* Positioning handled by JS stack logic */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .card-active {
+            width: 255px; /* Inscribed in 340px circle ~75% */
+            height: 320px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 110;
+        }
+        
+        .card-history {
+            width: 180px;
+            height: 100px;
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
+        
+        /* Card Content */
+        .card-header { font-weight: bold; font-size: 14px; margin-bottom: 8px; text-transform: uppercase; color: #666; }
+        .card-body { font-size: 18px; font-weight: 600; padding: 0 10px; }
+        
+        /* Card Icons */
+        .card-icon-tl { position: absolute; top: 8px; left: 8px; width: 20px; opacity: 0.5; } /* Decision Tree Upper */
+        .card-icon-tr { position: absolute; top: 8px; right: 8px; width: 20px; cursor: pointer;} /* Fullscreen */
+        .card-icon-bl { position: absolute; bottom: 8px; left: 8px; width: 24px; cursor: pointer;} /* First Aid Kit */
+        .card-dots { position: absolute; bottom: 10px; display: flex; gap: 4px; }
+        .dot { width: 6px; height: 6px; border-radius: 50%; border: 1px solid #333; }
+        .dot.active { background: #333; }
+        
+        /* CHECKLIST AREA */
+        #checklist-items {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+        .check-row {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 8px;
+            border: 1px solid #eee;
+            padding: 8px;
+            border-radius: 6px;
+        }
+        .check-row input { margin-right: 10px; width: 18px; height: 18px; accent-color: var(--primary); }
+        
+        #timer-display {
+            font-family: monospace;
+            font-size: 14px;
+            text-align: right;
+            border: 1px solid var(--primary);
+            padding: 4px 8px;
+            align-self: flex-end;
+            margin-top: 5px;
+        }
+        
+        /* DEBUG / SETTINGS PANEL */
+        #settings-panel {
+            position: absolute;
+            top: 60px; right: 0;
+            background: white;
+            border: 2px solid black;
+            padding: 10px;
+            display: none;
+            z-index: 999;
+        }
+        
+        /* DECISION HIGHLIGHTING */
+        .decision-highlight {
+            border: 2px solid var(--accent-red);
+            transform: scale(1.05);
+        }
+        
+    </style>
+</head>
+<body>
+
+<div id="app-frame">
+    <!-- HEADER -->
+    <header>
+        <div class="app-title">Resuscitation Handbook</div>
+        <div class="header-icons">
+            <!-- Search Icon -->
+            <svg class="icon-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <!-- Settings Icon (For Parametric Engine) -->
+            <svg class="icon-btn" onclick="toggleSettings()" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="5" r="2"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+                <circle cx="12" cy="19" r="2"></circle>
+            </svg>
+        </div>
+    </header>
+    
+    <!-- SETTINGS PANEL (Parametric Demo) -->
+    <div id="settings-panel">
+        <label>Contrast <input type="range" min="50" max="150" oninput="updateVar('--global-contrast', this.value + '%')"></label><br>
+        <label>Sepia <input type="range" min="0" max="100" oninput="updateVar('--global-sepia', this.value + '%')"></label><br>
+        <label>Exposure <input type="range" min="50" max="150" oninput="updateVar('--global-brightness', this.value + '%')"></label>
+    </div>
+    
+    <!-- STAGE -->
+    <div id="stage">
+    
+        <!-- TOP PREVIEW ZONE -->
+        <div id="zone-top">
+            <!-- Injected via JS -->
+        </div>
+        
+        <!-- MIDDLE ACTIVE ZONE -->
+        <div id="zone-middle">
+            <!-- Wheel Rail -->
+            <div id="wheel-container">
+                <svg width="340" height="340">
+                    <circle cx="170" cy="170" r="170" class="rail-circle" />
+                </svg>
+                <div id="actuator-node"></div>
+            </div>
+            <!-- Active Card Injected via JS -->
+            <div id="middle-card-slot"></div>
+        </div>
+        
+        <!-- LOWER HISTORY ZONE -->
+        <div id="zone-bottom">
+            <!-- Injected via JS -->
+        </div>
+        
+    </div>
+    
+    <!-- FOOTER -->
+    <footer>
+        <div id="checklist-items">
+            <!-- Dynamic -->
+        </div>
+        <div id="timer-display">00:00:00</div>
+    </footer>
+</div>
+
+<!-- SVGS Definitions (Hidden, used for Icons) -->
+<svg style="display:none">
+    <!-- Decision Tree Upper -->
+    <symbol id="icon-decision-upper" viewBox="0 0 24 24">
+        <path d="M12 2v8m0 0l-6 6m6-6l6 6" stroke="currentColor" stroke-width="2" fill="none"/>
+        <rect x="4" y="16" width="4" height="4" stroke="currentColor" fill="none"/>
+        <rect x="16" y="16" width="4" height="4" stroke="currentColor" fill="none"/>
+    </symbol>
+    <!-- Toolbox -->
+    <symbol id="icon-toolbox" viewBox="0 0 24 24">
+        <rect x="3" y="7" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="M12 11v6M9 14h6" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <!-- Fullscreen -->
+    <symbol id="icon-fullscreen" viewBox="0 0 24 24">
+        <path d="M3 3h6v2H5v4H3V3zm18 0h-6v2h4v4h2V3zm-6 18h6v-6h-2v4h-4v2zM3 21h6v-2H5v-4H3v6z" fill="currentColor"/>
+    </symbol>
+</svg>
+
+<script>
+/**
+ * --- MID-TERM PROTOTYPE LOGIC ---
+ * Implements: JSON State Machine, Anticlockwise Physics, Miracle Decision Carousel
+ */
+  
+// 1. THE DATA SCHEMA
+const CARD_DB = {
+    "CARD_START": {
+        id: "CARD_START",
+        title: "Paediatric Basic Life Support",
+        body: "Pull wheel to start",
+        type: "cover",
+        next: "CARD_01"
+    },
+    "CARD_01": {
+        id: "CARD_01",
+        title: "Assessment",
+        body: "Is the child unresponsive?",
+        type: "standard",
+        checklist: ["Check Danger", "Check Response"],
+        next: "CARD_02"
+    },
+    "CARD_02": {
+        id: "CARD_02",
+        title: "Call for Help",
+        body: "Shout loudly for help",
+        type: "standard",
+        checklist: ["2nd Rescuer?", "Call 999", "Get AED"],
+        next: "CARD_03"
+    },
+    "CARD_03": {
+        id: "CARD_03",
+        title: "Airway",
+        body: "Open Airway\n(Head tilt, chin lift)",
+        type: "standard",
+        checklist: ["Mouth Clear?"],
+        next: "CARD_04"
+    },
+    "CARD_04": {
+        id: "CARD_04",
+        title: "Breathing Check",
+        body: "Is the child breathing normally?",
+        type: "decision", // This triggers the Miracle Logic
+        options: [
+            { label: "NO", next: "CARD_05_NO" },
+            { label: "YES", next: "CARD_05_YES" }
+        ],
+        checklist: ["Look, Listen, Feel"]
+    },
+    "CARD_05_NO": {
+        id: "CARD_05_NO",
+        title: "5 Rescue Breaths",
+        body: "Give 5 breaths immediately",
+        type: "standard",
+        next: "CARD_CPR"
+    },
+    "CARD_05_YES": {
+        id: "CARD_05_YES",
+        title: "Observation",
+        body: "Recovery Position",
+        type: "terminal"
+    }
+};
+
+// 2. STATE MANAGEMENT
+let state = {
+    activeId: "CARD_START",
+    history: [],
+    wheelAngle: 330, // Start at 11:00
+    timerSeconds: 0,
+    timerRunning: false,
+    decisionIndex: 0 // For carousel (0 = No, 1 = Yes)
+};
+
+// 3. PHYSICS CONSTANTS
+const CENTER_X = 195; // Half of 390
+const CENTER_Y = 422; // Approx center of play area (varies, but we calculate relative to wheel container)
+const WHEEL_RADIUS = 170;
+
+// 4. RENDERING ENGINE
+function render() {
+    const activeCard = CARD_DB[state.activeId];
+    
+    // --- Render Middle ---
+    const middleSlot = document.getElementById('middle-card-slot');
+    let toolsHtml = activeCard.type !== 'cover' ? 
+        `<svg class="card-icon-bl"><use href="#icon-toolbox"></use></svg>
+         <svg class="card-icon-tr"><use href="#icon-fullscreen"></use></svg>` : '';
+          
+    middleSlot.innerHTML = `
+        <div class="card card-active">
+            <div class="card-header">${activeCard.title}</div>
+            <div class="card-body" style="white-space: pre-line">${activeCard.body}</div>
+            ${toolsHtml}
+            <div class="card-dots">
+                <div class="dot active"></div><div class="dot"></div>
+            </div>
+        </div>
+    `;
+    
+    // --- Render Top Preview (The Stack) ---
+    const topZone = document.getElementById('zone-top');
+    topZone.innerHTML = '';
+    
+    // Logic: Look ahead 3 steps
+    let nextId = activeCard.next;
+    
+    // MIRACLE LOGIC: If active card is Decision, Top Zone shows Carousel
+    if (activeCard.type === 'decision') {
+        renderDecisionCarousel(activeCard, topZone);
+    } else if (nextId) {
+        // Standard Stack logic
+        let stackIds = [];
+        let curr = nextId;
+        for(let i=0; i<3; i++) {
+            if(curr && CARD_DB[curr]) {
+                stackIds.push(curr);
+                // Handle branching for preview? Just show default path for now or first option
+                curr = CARD_DB[curr].next || (CARD_DB[curr].options ? CARD_DB[curr].options[0].next : null);
+            }
+        }
+        
+        stackIds.reverse().forEach((id, index) => {
+            let c = CARD_DB[id];
+            let offset = (stackIds.length - 1 - index) * 10;
+            let scale = 0.9 - ((stackIds.length - 1 - index) * 0.05);
+            
+            let iconHtml = c.type === 'decision' ? 
+                `<svg class="card-icon-tl"><use href="#icon-decision-upper"></use></svg>` : '';
+                
+            let cardEl = document.createElement('div');
+            cardEl.className = 'card card-preview';
+            cardEl.innerHTML = `<div class="card-header">${c.title}</div>${iconHtml}`;
+            cardEl.style.bottom = `${10 + offset}px`;
+            cardEl.style.left = `50%`;
+            cardEl.style.marginLeft = `-100px`; // Center
+            cardEl.style.zIndex = index;
+            cardEl.style.transform = `scale(${scale}) translateY(-${offset}px)`;
+            
+            // Allow Swipe Down logic
+            cardEl.ontouchstart = handleCardSwipeStart;
+            
+            topZone.appendChild(cardEl);
+        });
+    }
+    
+    // --- Render Bottom History ---
+    const botZone = document.getElementById('zone-bottom');
+    botZone.innerHTML = '';
+    if (state.history.length > 0) {
+        let lastId = state.history[state.history.length - 1];
+        let c = CARD_DB[lastId];
+        botZone.innerHTML = `
+            <div class="card card-history" style="top: 10px; left: 50%; transform: translateX(-50%)">
+                <div class="card-header">${c.title}</div>
+            </div>
+        `;
+    }
+    
+    // --- Render Checklist ---
+    const checkContainer = document.getElementById('checklist-items');
+    checkContainer.innerHTML = '';
+    if (activeCard.checklist) {
+        activeCard.checklist.forEach(item => {
+            checkContainer.innerHTML += `
+                <div class="check-row">
+                    <input type="checkbox"> ${item}
+                </div>
+            `;
+        });
+    }
+    
+    // --- Update Knob Position ---
+    updateKnobVisuals();
+}
+
+function renderDecisionCarousel(card, container) {
+    // Miracle Design: Horizontal layout
+    // state.decisionIndex determines which is center
+    
+    card.options.forEach((opt, idx) => {
+        let isSelected = idx === state.decisionIndex;
+        let scale = isSelected ? 1.0 : 0.8;
+        let opacity = isSelected ? 1.0 : 0.5;
+        let xOffset = (idx - state.decisionIndex) * 160; // Spread logic
+        
+        let el = document.createElement('div');
+        el.className = `card card-preview ${isSelected ? 'decision-highlight' : ''}`;
+        el.innerHTML = `<div class="card-header">OPTION</div><div class="card-body">${opt.label}</div>`;
+        el.style.bottom = '20px';
+        el.style.left = '50%';
+        el.style.marginLeft = '-100px';
+        el.style.transform = `translateX(${xOffset}px) scale(${scale})`;
+        el.style.opacity = opacity;
+        el.style.zIndex = isSelected ? 50 : 10;
+        
+        // Swipe down on the selected one confirms it
+        if (isSelected) {
+            el.ontouchstart = (e) => handleDecisionSwipe(e, opt.next);
+        }
+        
+        container.appendChild(el);
+    });
+}
+
+// 5. PHYSICS ENGINE
+const knob = document.getElementById('actuator-node');
+let isDragging = false;
+let startAngle = 0;
+
+knob.addEventListener('mousedown', startDrag);
+knob.addEventListener('touchstart', startDrag, {passive: false});
+
+document.addEventListener('mousemove', moveDrag);
+document.addEventListener('touchmove', moveDrag, {passive: false});
+
+document.addEventListener('mouseup', endDrag);
+document.addEventListener('touchend', endDrag);
+
+function startDrag(e) {
+    isDragging = true;
+    e.preventDefault();
+}
+
+function moveDrag(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    
+    let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
+    // Get Wheel Center
+    const rect = document.getElementById('wheel-container').getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    // Calc Angle (Degrees)
+    let rad = Math.atan2(clientY - centerY, clientX - centerX);
+    let deg = rad * (180 / Math.PI) + 90; 
+    if (deg < 0) deg += 360; // Normalize 0-360
+    
+    // LOGIC: Anticlockwise Pull
+    // Current Angle is state.wheelAngle
+    // If we move from 330 (11:00) -> 270 (9:00), that is a "Pull Down"
+    
+    let delta = state.wheelAngle - deg;
+    // Handle wrap around 0/360
+    if (delta < -180) delta += 360; 
+    if (delta > 180) delta -= 360;
+    
+    // Decision Lock Logic
+    if (CARD_DB[state.activeId].type === 'decision') {
+        // MIRACLE: Map Rotation to Horizontal Index
+        // 45 degrees change = 1 index switch
+        if (Math.abs(delta) > 30) {
+            if (delta > 0) state.decisionIndex = 0; // Pulling leftish
+            else state.decisionIndex = 1; // Pulling rightish
+            // Clamp
+            if (state.decisionIndex > 1) state.decisionIndex = 1;
+            if (state.decisionIndex < 0) state.decisionIndex = 0;
+            
+            state.wheelAngle = deg; // Update visual
+            render(); // Re-render carousel
+            
+            // Haptic simulation
+            if (navigator.vibrate) navigator.vibrate(10);
+        }
+    } else {
+        // Standard Transition Logic
+        // Threshold: 30 degrees pull
+        if (delta > 30) {
+            triggerTransition();
+            // Reset knob visual drag logic effectively by snapping
+            state.wheelAngle = deg; 
+        } else if (delta < -30) {
+            // Rewind logic (Clockwise)
+            triggerRewind();
+            state.wheelAngle = deg;
+        } else {
+            // Just visual update
+            updateKnobVisuals(deg); 
+        }
+    }
+}
+
+function endDrag() {
+    isDragging = false;
+    // Rubber band snap back to "Ideal" positions
+    // For prototype, we just leave it where let go or snap to 9:00 if active
+    if (state.activeId === 'CARD_START') {
+        updateKnobVisuals(330);
+    } else {
+        updateKnobVisuals(270); // 9 o'clock position
+    }
+}
+
+function updateKnobVisuals(degOverride = null) {
+    let deg = degOverride !== null ? degOverride : state.wheelAngle;
+    
+    // Convert deg to x,y
+    // r = 170
+    // x = r * cos(rad - 90deg) ... 
+    let rad = (deg - 90) * (Math.PI / 180);
+    let x = 170 + 170 * Math.cos(rad);
+    let y = 170 + 170 * Math.sin(rad);
+    
+    knob.style.left = x + 'px';
+    knob.style.top = y + 'px';
+    
+    // Update internal state only on valid moves
+    if (!isDragging && degOverride !== null) state.wheelAngle = degOverride;
+}
+
+// 6. TRANSITION LOGIC
+function triggerTransition() {
+    let curr = CARD_DB[state.activeId];
+    if (curr.next) {
+        // Move Forward
+        state.history.push(state.activeId);
+        state.activeId = curr.next;
+        
+        // Start timer on first move
+        if (!state.timerRunning) {
+            state.timerRunning = true;
+            setInterval(updateTimer, 1000);
+        }
+        
+        render();
+    }
+}
+
+function triggerRewind() {
+    if (state.history.length > 0) {
+        state.activeId = state.history.pop();
+        render();
+    }
+}
+
+// 7. SWIPE LOGIC FOR DECISION
+let swipeStartY = 0;
+function handleDecisionSwipe(e, targetId) {
+    swipeStartY = e.touches[0].clientY;
+    e.target.addEventListener('touchend', (endE) => {
+        let diff = endE.changedTouches[0].clientY - swipeStartY;
+        if (diff > 50) { // Swiped Down
+            state.history.push(state.activeId);
+            state.activeId = targetId;
+            state.decisionIndex = 0; // Reset
+            render();
+        }
+    }, {once: true});
+}
+
+function handleCardSwipeStart(e) {
+    // For standard cards, swipe down moves forward
+    // For this prototype, reuse logic
+    swipeStartY = e.touches[0].clientY;
+    e.target.addEventListener('touchend', (endE) => {
+        let diff = endE.changedTouches[0].clientY - swipeStartY;
+        if (diff > 50) triggerTransition();
+    }, {once: true});
+}
+
+// 8. UTILS
+function updateTimer() {
+    state.timerSeconds++;
+    let d = new Date(null);
+    d.setSeconds(state.timerSeconds);
+    let str = d.toISOString().substr(11, 8);
+    document.getElementById('timer-display').innerText = str;
+}
+
+function toggleSettings() {
+    let p = document.getElementById('settings-panel');
+    p.style.display = p.style.display === 'block' ? 'none' : 'block';
+}
+
+function updateVar(name, val) {
+    document.documentElement.style.setProperty(name, val);
+}
+
+// Init
+render();
+
+</script>
+</body>
+</html>
+93.9s
+Use Arrow Up and Arrow Down to select a turn, Enter to jump to it, and Escape to return to the chat.
+
+
+

@@ -4,7 +4,7 @@
 
 ticket_id: "REQ-003-WHEEL-SYMPHONY-STATE-CONTRACT"
 date: "2026-02-22"
-status: "OPEN" # OPEN | IN_PROGRESS | RESOLVED | BLOCKED
+status: "RESOLVED" # OPEN | IN_PROGRESS | RESOLVED | BLOCKED
 ticket_type: "BUG" # FEATURE | BUG | VALIDATION | RESEARCH
 title: "Main-app wheel behavior does not satisfy decision-gated forward/reverse contract"
 
@@ -100,9 +100,9 @@ request_notes:
     that intent into enforceable behavior gates.
 
 evidence_anchors:
-  latest_blueprint_run: "appendix/guidance/warden/blueprint_outputs/runs/20260222-012923-warden"
-  latest_scan_run: "appendix/guidance/warden/scans_outputs/runs/20260222-012935"
-  latest_design_run: "appendix/guidance/warden/design/runs/20260222-012941__bp-20260222-012923-warden__scan-20260222-012935"
+  latest_blueprint_run: "appendix/guidance/warden/blueprint_outputs/runs/20260222-030742-warden"
+  latest_scan_run: "appendix/guidance/warden/scans_outputs/runs/20260222-030746"
+  latest_design_run: "appendix/guidance/warden/design/runs/20260222-030750__bp-20260222-030742-warden__scan-20260222-030746"
 
 implementation_directives:
   - id: "D-01"

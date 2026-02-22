@@ -1,0 +1,315 @@
+{
+  "algorithm_meta": {
+    "id": "algo_paed_bls_001",
+    "title": "Paediatric Out-of-Hospital BLS",
+    "source": "Resuscitation Council UK (2021)",
+    "global_timer": {
+      "enabled": true,
+      "label": "Total Time",
+      "type": "count_up"
+    }
+  },
+  "deck": [
+    {
+      "id": "CARD_00_START",
+      "type": "cover",
+      "content": {
+        "title": "Paediatric Basic Life Support",
+        "subtitle": "Out-of-Hospital Algorithm",
+        "footer_note": "Those trained only in adult BLS should use adult sequence with paediatric modifications."
+      },
+      "wheel_config": {
+        "position_degrees": 330,
+        "phase": "start_point"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_01_UNRESPONSIVE"
+      }
+    },
+    {
+      "id": "CARD_01_UNRESPONSIVE",
+      "type": "standard",
+      "content": {
+        "title": "Assessment",
+        "body": "Is the child unresponsive?",
+        "slides": [] 
+      },
+      "wheel_config": {
+        "position_degrees": 0,
+        "phase": "assessment"
+      },
+      "checklist": [
+        {
+          "id": "chk_safe",
+          "label": "Area is safe to approach",
+          "type": "checkbox"
+        },
+        {
+          "id": "chk_unresp",
+          "label": "Confirm Unresponsiveness",
+          "type": "checkbox"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_02_SHOUT"
+      }
+    },
+    {
+      "id": "CARD_02_SHOUT",
+      "type": "standard",
+      "content": {
+        "title": "Call for Help",
+        "body": "Shout loudly for help.",
+        "slides": []
+      },
+      "wheel_config": {
+        "position_degrees": 15,
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "toggle_2nd_rescuer",
+          "label": "Is a 2nd rescuer present?",
+          "type": "boolean_toggle",
+          "note": "Or single rescuer suspecting primary cardiac arrest"
+        },
+        {
+          "id": "chk_call_999",
+          "label": "Call EMS (999)",
+          "type": "checkbox",
+          "visible_if": "toggle_2nd_rescuer == true"
+        },
+        {
+          "id": "chk_get_aed",
+          "label": "Collect and apply AED",
+          "type": "checkbox",
+          "visible_if": "toggle_2nd_rescuer == true"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_03_AIRWAY"
+      }
+    },
+    {
+      "id": "CARD_03_AIRWAY",
+      "type": "standard",
+      "content": {
+        "title": "Airway",
+        "body": "Open Airway",
+        "slides": [
+           { "label": "Technique", "text": "Head tilt, chin lift" }
+        ]
+      },
+      "wheel_config": {
+        "position_degrees": 30,
+        "phase": "action"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_04_BREATHING_DECISION"
+      }
+    },
+    {
+      "id": "CARD_04_BREATHING_DECISION",
+      "type": "decision",
+      "content": {
+        "title": "Breathing Check",
+        "body": "Is the child breathing normally?"
+      },
+      "wheel_config": {
+        "position_degrees": 45,
+        "phase": "decision"
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "YES",
+            "preview_card_title": "Observe & Assess",
+            "target_id": "CARD_END_OBSERVE"
+          },
+          {
+            "label": "NO",
+            "sub_label": "or any doubt",
+            "preview_card_title": "5 Rescue Breaths",
+            "target_id": "CARD_05_BREATHS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_END_OBSERVE",
+      "type": "terminal",
+      "content": {
+        "title": "Observation",
+        "body": "Observe and re-assess as necessary."
+      },
+      "wheel_config": {
+        "position_degrees": 60,
+        "phase": "complete"
+      },
+      "status": "complete"
+    },
+    {
+      "id": "CARD_05_BREATHS",
+      "type": "carousel_action",
+      "content": {
+        "title": "5 Rescue Breaths",
+        "slides": [
+          {
+            "id": "slide_infant",
+            "header": "Infant Technique",
+            "text": "Mouth to nose/mouth"
+          },
+          {
+            "id": "slide_child",
+            "header": "Child Technique",
+            "text": "Mouth to mouth"
+          }
+        ]
+      },
+      "wheel_config": {
+        "position_degrees": 90,
+        "phase": "intervention"
+      },
+      "toolbox": [
+        {
+          "id": "calc_age",
+          "icon": "calculator",
+          "label": "Age Calculator",
+          "action": "open_modal_age_calc"
+        }
+      ],
+      "checklist": [
+        {
+          "id": "toggle_single_rescuer",
+          "label": "Are you a single rescuer?",
+          "type": "boolean_toggle"
+        },
+        {
+          "id": "chk_speakerphone",
+          "label": "Call EMS on speakerphone",
+          "type": "checkbox",
+          "visible_if": "toggle_single_rescuer == true"
+        },
+        {
+          "id": "chk_delay_call",
+          "label": "Do CPR 1 min before leaving to call",
+          "type": "checkbox",
+          "visible_if": "toggle_single_rescuer == true AND chk_speakerphone == false"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_06_CHECK_LIFE_PRE_CPR"
+      }
+    },
+    {
+      "id": "CARD_06_CHECK_LIFE_PRE_CPR",
+      "type": "decision",
+      "content": {
+        "title": "Signs of Life?",
+        "body": "Were signs of life observed during rescue breaths?"
+      },
+      "wheel_config": {
+        "position_degrees": 120,
+        "phase": "check"
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+             "label": "YES",
+             "target_id": "CARD_END_RECOVERY"
+          },
+          {
+             "label": "NO",
+             "target_id": "CARD_07_COMPRESSIONS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_07_COMPRESSIONS",
+      "type": "loop_start",
+      "content": {
+        "title": "30 Chest Compressions",
+        "body": "Perform continuous chest compressions."
+      },
+      "wheel_config": {
+        "position_degrees": 180,
+        "phase": "cpr_loop",
+        "animation": "pulse"
+      },
+      "local_timer": {
+        "enabled": true,
+        "type": "metronome",
+        "bpm": 110,
+        "guidance": "Push hard and fast"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_08_LOOP_BREATHS"
+      }
+    },
+    {
+      "id": "CARD_08_LOOP_BREATHS",
+      "type": "action",
+      "content": {
+        "title": "2 Rescue Breaths",
+        "body": "Deliver 2 effective breaths."
+      },
+      "wheel_config": {
+        "position_degrees": 200,
+        "phase": "cpr_loop"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_09_LOOP_CHECK"
+      }
+    },
+    {
+      "id": "CARD_09_LOOP_CHECK",
+      "type": "decision",
+      "content": {
+        "title": "Re-assess",
+        "body": "Are there clear signs of life?"
+      },
+      "wheel_config": {
+        "position_degrees": 220,
+        "phase": "cpr_loop"
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "NO",
+            "preview_card_title": "Resume Compressions",
+            "target_id": "CARD_07_COMPRESSIONS" 
+          },
+          {
+            "label": "YES",
+            "preview_card_title": "Recovery Position",
+            "target_id": "CARD_END_RECOVERY"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_END_RECOVERY",
+      "type": "terminal",
+      "content": {
+        "title": "Stabilised",
+        "body": "Keep child in safe position, continue to assess and await EMS."
+      },
+      "wheel_config": {
+        "position_degrees": 60,
+        "phase": "complete"
+      },
+      "status": "complete"
+    }
+  ]
+}

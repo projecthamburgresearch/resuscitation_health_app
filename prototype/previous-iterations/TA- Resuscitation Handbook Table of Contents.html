@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resuscitation Handbook – TOC Prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <style>
+    /* ------------------------------------------------------------------
+       1. PARAMETRIC ENGINE (geometry + colour + global filters)
+       ------------------------------------------------------------------ */
+    :root {
+      --stroke-width: 2px;
+      --card-radius: 12px;
+
+      --primary: #111;
+      --card-bg: #fafafa;
+      --canvas-bg: #f5f6f7;
+
+      --header-h: 60px;
+      --footer-h: 120px;
+      --safe-margin: 16px;
+
+      --global-contrast: 100%;
+      --global-sepia: 0%;
+      --global-brightness: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #202020;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Roboto, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      height: 100vh;
+      filter:
+        contrast(var(--global-contrast))
+        sepia(var(--global-sepia))
+        brightness(var(--global-brightness));
+    }
+
+    /* ------------------------------------------------------------------
+       2. APP FRAME
+       ------------------------------------------------------------------ */
+    #app-frame {
+      width: 375px;
+      max-width: 420px;
+      height: 100%;
+      background: var(--canvas-bg);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    }
+
+    /* Fullscreen mode (middle section only) */
+    #app-frame.fullscreen > header,
+    #app-frame.fullscreen > footer {
+      display: none;
+    }
+    #app-frame.fullscreen #stage {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    /* ------------------------------------------------------------------
+       3. HEADER
+       ------------------------------------------------------------------ */
+    header {
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--safe-margin);
+      border-bottom: var(--stroke-width) solid var(--primary);
+      background: #fff;
+      z-index: 10;
+    }
+
+    .app-title {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .icon-btn {
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+    }
+
+    /* Settings panel is kept as a DEV tool – hidden by default */
+    #settings-panel {
+      position: absolute;
+      top: var(--header-h);
+      right: 0;
+      width: 220px;
+      background: #fff;
+      border-left: var(--stroke-width) solid var(--primary);
+      border-bottom: var(--stroke-width) solid var(--primary);
+      padding: 8px 12px;
+      font-size: 12px;
+      display: none;
+      z-index: 20;
+    }
+
+    #settings-panel label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+      gap: 8px;
+    }
+
+    #settings-panel input[type=range] {
+      flex: 1;
+    }
+
+    /* ------------------------------------------------------------------
+       4. STAGE LAYOUT (top / middle / bottom)
+       ------------------------------------------------------------------ */
+    #stage {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #zone-top,
+    #zone-middle,
+    #zone-bottom {
+      position: relative;
+      padding: 0 var(--safe-margin);
+    }
+
+    #zone-top {
+      flex: 0 0 140px;
+    }
+
+    #zone-middle {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #zone-bottom {
+      flex: 0 0 120px;
+    }
+
+    /* ------------------------------------------------------------------
+       5. WHEEL
+       ------------------------------------------------------------------ */
+    #wheel-container {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      max-width: 90%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .rail-circle {
+      fill: none;
+      stroke: var(--primary);
+      stroke-width: 1px;
+    }
+
+    #actuator-node {
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -16px;
+      margin-top: -16px;
+      cursor: grab;
+      pointer-events: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 5;
+    }
+
+    /* ------------------------------------------------------------------
+       6. CARDS
+       ------------------------------------------------------------------ */
+    .card {
+      background: var(--card-bg);
+      border: var(--stroke-width) solid var(--primary);
+      border-radius: var(--card-radius);
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .card-header {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 6px;
+    }
+
+    .card-body {
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    .card-active {
+      width: 260px;
+      height: 320px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+      z-index: 10;
+    }
+
+    .card-preview {
+      width: 190px;
+      height: 110px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.5;
+      filter: grayscale(100%);
+    }
+
+    .card-history {
+      width: 180px;
+      height: 90px;
+      opacity: 0.5;
+      filter: grayscale(100%);
+      left: 50%;
+      transform: translateX(-50%);
+      top: 12px;
+    }
+
+    .card-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 4px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      border: 1px solid #999;
+    }
+
+    .dot.active {
+      background: #111;
+    }
+
+    .card-icon-tr,
+    .card-icon-bl {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+    }
+
+    .card-icon-tr {
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    .card-icon-bl {
+      bottom: 10px;
+      left: 10px;
+    }
+
+    /* Decision carousel chips (top zone) */
+    .decision-carousel {
+      position: absolute;
+      left: 50%;
+      top: 10px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+    }
+
+    .decision-chip {
+      min-width: 120px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 2px solid #d9d0c2;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: #b69e7c;
+      background: #fbf7f0;
+    }
+
+    .decision-chip.selected {
+      border-color: #b84539;
+      color: #111;
+    }
+
+    /* ------------------------------------------------------------------
+       7. FOOTER (checklist + timer)
+       ------------------------------------------------------------------ */
+    footer {
+      height: var(--footer-h);
+      border-top: var(--stroke-width) solid var(--primary);
+      background: #ffffff;
+      padding: 8px var(--safe-margin);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      z-index: 10;
+    }
+
+    #checklist-items {
+      flex: 1;
+      overflow: hidden;
+      font-size: 13px;
+    }
+
+    .chk-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .chk-row input {
+      width: 16px;
+      height: 16px;
+    }
+
+    #timer-display {
+      align-self: flex-end;
+      border: var(--stroke-width) solid var(--primary);
+      padding: 4px 10px;
+      font-family: "SF Mono", ui-monospace, Menlo, monospace;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      cursor: pointer; /* indicates interactive timer */
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+<div id="app-frame">
+  <!-- HEADER -->
+  <header>
+    <div class="app-title">Resuscitation Handbook</div>
+    <div class="header-icons">
+      <!-- Search icon (visual only for now) -->
+      <svg class="icon-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="16" y1="16" x2="21" y2="21"></line>
+      </svg>
+      <!-- 3-dot icon: opens DEV settings (not for clinicians) -->
+      <svg class="icon-btn" id="dev-settings-toggle" viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="12" cy="5" r="2"></circle>
+        <circle cx="12" cy="12" r="2"></circle>
+        <circle cx="12" cy="19" r="2"></circle>
+      </svg>
+    </div>
+  </header>
+
+  <!-- DEV SETTINGS PANEL -->
+  <div id="settings-panel">
+    <!-- These sliders feed the parametric filters – developer only -->
+    <label>Contrast
+      <input type="range" min="50" max="150"
+             oninput="updateVar('--global-contrast', this.value + '%')">
+    </label>
+    <label>Sepia
+      <input type="range" min="0" max="100"
+             oninput="updateVar('--global-sepia', this.value + '%')">
+    </label>
+    <label>Exposure
+      <input type="range" min="50" max="150"
+             oninput="updateVar('--global-brightness', this.value + '%')">
+    </label>
+  </div>
+
+  <!-- STAGE -->
+  <div id="stage">
+    <div id="zone-top"></div>
+
+    <div id="zone-middle">
+      <!-- Wheel -->
+      <div id="wheel-container">
+        <svg width="340" height="340">
+          <circle cx="170" cy="170" r="170" class="rail-circle" />
+        </svg>
+        <div id="actuator-node"></div>
+      </div>
+      <!-- Active card goes here -->
+      <div id="middle-card-slot"></div>
+    </div>
+
+    <div id="zone-bottom"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div id="checklist-items"></div>
+    <div id="timer-display">00:00:00</div>
+  </footer>
+</div>
+
+<!-- SVG SYMBOLS -->
+<svg style="display:none">
+  <symbol id="icon-decision-upper" viewBox="0 0 24 24">
+    <path d="M12 2v8m0 0l-6 6m6-6l6 6" stroke="currentColor" stroke-width="2" fill="none"/>
+    <rect x="4" y="16" width="4" height="4" stroke="currentColor" fill="none"/>
+    <rect x="16" y="16" width="4" height="4" stroke="currentColor" fill="none"/>
+  </symbol>
+
+  <symbol id="icon-toolbox" viewBox="0 0 24 24">
+    <rect x="3" y="8" width="18" height="11" rx="2" ry="2" stroke="currentColor" fill="none"/>
+    <path d="M9 8V6h6v2" stroke="currentColor" fill="none"/>
+    <path d="M9 13h6" stroke="currentColor" stroke-width="2"/>
+  </symbol>
+
+  <symbol id="icon-fullscreen" viewBox="0 0 24 24">
+    <path d="M3 3h6v2H5v4H3V3zm18 0h-6v2h4v4h2V3zm-6 18h6v-6h-2v4h-4v2zM3 21h6v-2H5v-4H3v6z" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<script>
+/* =====================================================================
+ * 1. CARD DATABASE – minimal mid-term flow
+ * ===================================================================== */
+const CARD_DB = {
+  CARD_START: {
+    id: "CARD_START",
+    title: "Paediatric Basic Life Support",
+    body: "Pull wheel to start",
+    type: "cover",
+    checklist: [],
+    next: "CARD_01"
+  },
+  CARD_01: {
+    id: "CARD_01",
+    title: "Assessment",
+    body: "Is the child unresponsive?",
+    type: "standard",
+    checklist: ["Check danger", "Check response"],
+    next: "CARD_02"
+  },
+  CARD_02: {
+    id: "CARD_02",
+    title: "Airway",
+    body: "Open airway.\n\nTilt head and lift chin.",
+    type: "standard",
+    checklist: ["Position child", "Head tilt / chin lift"],
+    next: "CARD_03"
+  },
+  CARD_03: {
+    id: "CARD_03",
+    title: "Call for Help",
+    body: "Shout for help.\nConsider emergency call.",
+    type: "standard",
+    checklist: ["Shout for help", "Activate emergency system"],
+    next: "CARD_04"
+  },
+  CARD_04: {
+    id: "CARD_04",
+    title: "Breathing Check",
+    body: "Is the child breathing normally?",
+    type: "decision",
+    options: [
+      { label: "NO", next: "CARD_05_NO" },
+      { label: "YES", next: "CARD_05_YES" }
+    ],
+    checklist: ["Look, listen, feel"]
+  },
+  CARD_05_NO: {
+    id: "CARD_05_NO",
+    title: "5 Rescue Breaths",
+    body: "Give 5 rescue breaths.\nWatch for chest rise.",
+    type: "standard",
+    checklist: ["Seal mask", "Deliver 5 breaths"],
+    next: "CARD_CPR"
+  },
+  CARD_05_YES: {
+    id: "CARD_05_YES",
+    title: "Observation",
+    body: "Place in recovery position.\nMonitor breathing.",
+    type: "terminal",
+    checklist: ["Recovery position", "Monitor breathing"]
+  },
+  CARD_CPR: {
+    id: "CARD_CPR",
+    title: "CPR Cycle",
+    body: "30 chest compressions : 2 breaths.\nRepeat for 1 minute.",
+    type: "standard",
+    checklist: ["Compression depth", "Compression rate", "Airway maintained"],
+    next: "CARD_CPR" // loop
+  }
+};
+
+/* =====================================================================
+ * 2. GLOBAL STATE
+ * ===================================================================== */
+const ROOT_CARD_ID = "CARD_START";
+
+let state = {
+  activeId: ROOT_CARD_ID,
+  history: [],          // stack of visited card ids
+  wheelAngle: 330,      // initial angle (approx 11 o'clock)
+  decisionIndex: 0,     // index into options[] on decision cards
+  timerSeconds: 0,
+  timerRunning: false
+};
+
+let timerIntervalId = null;
+let isFullscreen = false;
+
+/* =====================================================================
+ * 3. RENDERING ENGINE
+ * ===================================================================== */
+
+function render() {
+  const activeCard = CARD_DB[state.activeId];
+
+  /* ----- Middle card ----- */
+  const middleSlot = document.getElementById('middle-card-slot');
+  const toolsHtml = activeCard.type !== 'cover'
+    ? `<svg class="card-icon-bl"><use href="#icon-toolbox"></use></svg>
+       <svg class="card-icon-tr" id="fullscreen-toggle-icon"><use href="#icon-fullscreen"></use></svg>`
+    : '';
+
+  middleSlot.innerHTML = `
+    <div class="card card-active" id="active-card">
+      <div class="card-header">${activeCard.title}</div>
+      <div class="card-body" style="white-space: pre-line">${activeCard.body}</div>
+      ${toolsHtml}
+      <div class="card-dots">
+        <div class="dot active"></div><div class="dot"></div>
+      </div>
+    </div>
+  `;
+
+  // Attach swipe behaviour to active card as a second modality
+  const activeCardEl = document.getElementById('active-card');
+  if (activeCardEl) {
+    activeCardEl.addEventListener('touchstart', handleCardSwipeStart, { passive: true });
+  }
+
+  // Attach fullscreen toggle on each render (icon is re-created)
+  const fsIcon = document.getElementById('fullscreen-toggle-icon');
+  if (fsIcon) {
+    fsIcon.addEventListener('click', toggleFullscreenMode);
+  }
+
+  /* ----- Top zone: preview / decision carousel ----- */
+  const topZone = document.getElementById('zone-top');
+  topZone.innerHTML = '';
+
+  if (activeCard.type === 'decision') {
+    renderDecisionCarousel(activeCard, topZone);
+  } else if (activeCard.next) {
+    // Look ahead up to 3 steps
+    let nextId = activeCard.next;
+    let depth = 0;
+    while (nextId && depth < 3) {
+      const c = CARD_DB[nextId];
+      const scale = 1 - depth * 0.08;
+      const offset = depth * 20;
+
+      const cardEl = document.createElement('div');
+      cardEl.className = 'card card-preview';
+      cardEl.style.top = `${20 + offset}px`;
+      cardEl.style.zIndex = 3 - depth;
+      cardEl.style.transform = `translateX(-50%) translateY(${offset}px) scale(${scale})`;
+      cardEl.innerHTML = `<div class="card-header">${c.title}</div>`;
+
+      // Swipe down on preview also advances
+      cardEl.ontouchstart = handleCardSwipeStart;
+
+      topZone.appendChild(cardEl);
+
+      nextId = c.next;
+      depth++;
+    }
+  }
+
+  /* ----- Bottom zone: history ----- */
+  const bottomZone = document.getElementById('zone-bottom');
+  bottomZone.innerHTML = '';
+  if (state.history.length > 0) {
+    const lastId = state.history[state.history.length - 1];
+    const lastCard = CARD_DB[lastId];
+    bottomZone.innerHTML = `
+      <div class="card card-history">
+        <div class="card-header">Previous</div>
+        <div class="card-body" style="font-size:14px">${lastCard.title}</div>
+      </div>
+    `;
+  }
+
+  /* ----- Checklist for active card ----- */
+  const checklistEl = document.getElementById('checklist-items');
+  checklistEl.innerHTML = '';
+  (activeCard.checklist || []).forEach(text => {
+    const row = document.createElement('div');
+    row.className = 'chk-row';
+    row.innerHTML = `
+      <input type="checkbox">
+      <span>${text}</span>
+    `;
+    checklistEl.appendChild(row);
+  });
+}
+
+function renderDecisionCarousel(card, container) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'decision-carousel';
+
+  card.options.forEach((opt, idx) => {
+    const chip = document.createElement('div');
+    chip.className = 'decision-chip' + (idx === state.decisionIndex ? ' selected' : '');
+    chip.textContent = opt.label;
+    // Horizontal tap selects which option is "armed"
+    chip.addEventListener('click', () => {
+      state.decisionIndex = idx;
+      render();
+    });
+    // Swipe down commits that option
+    chip.addEventListener('touchstart', (e) => handleDecisionSwipe(e, opt.next), { passive: true });
+    wrapper.appendChild(chip);
+  });
+
+  container.appendChild(wrapper);
+}
+
+/* =====================================================================
+ * 4. WHEEL PHYSICS (anticlockwise = forward)
+ * ===================================================================== */
+const knob = document.getElementById('actuator-node');
+let isDragging = false;
+
+knob.addEventListener('mousedown', startDrag);
+knob.addEventListener('touchstart', startDrag, { passive: false });
+document.addEventListener('mousemove', moveDrag);
+document.addEventListener('touchmove', moveDrag, { passive: false });
+document.addEventListener('mouseup', endDrag);
+document.addEventListener('touchend', endDrag);
+
+function startDrag(e) {
+  isDragging = true;
+  e.preventDefault();
+}
+
+function moveDrag(e) {
+  if (!isDragging) return;
+  e.preventDefault();
+
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+  const rect = document.getElementById('wheel-container').getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const rad = Math.atan2(clientY - centerY, clientX - centerX);
+  let deg = rad * (180 / Math.PI) + 90;
+  if (deg < 0) deg += 360;
+
+  let delta = state.wheelAngle - deg;
+  if (delta < -180) delta += 360;
+  if (delta > 180) delta -= 360;
+
+  const activeCard = CARD_DB[state.activeId];
+
+  if (activeCard.type === 'decision') {
+    // Use the wheel to toggle the armed option
+    if (Math.abs(delta) > 30) {
+      state.decisionIndex = delta > 0 ? 0 : 1;
+      if (navigator.vibrate) navigator.vibrate(10);
+      state.wheelAngle = deg;
+      updateKnobVisuals();
+      render();
+    }
+  } else {
+    // Standard movement – pull down (anticlockwise) to go forward
+    if (delta > 30) {
+      state.wheelAngle = deg;
+      updateKnobVisuals();
+      triggerTransition();
+    } else if (delta < -30) {
+      state.wheelAngle = deg;
+      updateKnobVisuals();
+      triggerRewind();
+    } else {
+      state.wheelAngle = deg;
+      updateKnobVisuals();
+    }
+  }
+}
+
+function endDrag() {
+  isDragging = false;
+  // Snap knob to 11 o'clock on cover, 9 o'clock afterwards
+  if (state.activeId === ROOT_CARD_ID) {
+    updateKnobVisuals(330);
+  } else {
+    updateKnobVisuals(270);
+  }
+}
+
+function updateKnobVisuals(degOverride = null) {
+  const deg = degOverride !== null ? degOverride : state.wheelAngle;
+  const rad = (deg - 90) * (Math.PI / 180);
+  const r = 170;
+
+  const x = 170 + r * Math.cos(rad);
+  const y = 170 + r * Math.sin(rad);
+
+  knob.style.left = x + 'px';
+  knob.style.top = y + 'px';
+
+  if (!isDragging && degOverride !== null) {
+    state.wheelAngle = degOverride;
+  }
+}
+
+/* =====================================================================
+ * 5. NAVIGATION HELPERS (transition / rewind / swipe)
+ * ===================================================================== */
+function triggerTransition() {
+  const curr = CARD_DB[state.activeId];
+
+  if (curr.type === 'decision') {
+    const opt = curr.options[state.decisionIndex];
+    if (!opt) return;
+    state.history.push(state.activeId);
+    state.activeId = opt.next;
+  } else if (curr.next) {
+    state.history.push(state.activeId);
+    state.activeId = curr.next;
+  } else {
+    return;
+  }
+
+  ensureTimerRunning();
+  render();
+}
+
+function triggerRewind() {
+  if (state.history.length === 0) return;
+  state.activeId = state.history.pop();
+  render();
+}
+
+/* Touch-based forward navigation (swipe DOWN on active / preview) */
+let swipeStartY = 0;
+
+function handleCardSwipeStart(e) {
+  swipeStartY = e.touches[0].clientY;
+  e.target.addEventListener('touchend', (endE) => {
+    const diff = endE.changedTouches[0].clientY - swipeStartY;
+    if (diff > 50) {
+      triggerTransition();
+    }
+  }, { once: true });
+}
+
+/* Swipe DOWN on decision chip to confirm that branch */
+function handleDecisionSwipe(e, targetId) {
+  swipeStartY = e.touches[0].clientY;
+  e.target.addEventListener('touchend', (endE) => {
+    const diff = endE.changedTouches[0].clientY - swipeStartY;
+    if (diff > 50) {
+      state.history.push(state.activeId);
+      state.activeId = targetId;
+      state.decisionIndex = 0;
+      ensureTimerRunning();
+      render();
+    }
+  }, { once: true });
+}
+
+/* =====================================================================
+ * 6. TIMER ENGINE (click / double-click / press & hold)
+ * ===================================================================== */
+function ensureTimerRunning() {
+  if (state.timerRunning) return;
+  state.timerRunning = true;
+  if (!timerIntervalId) {
+    timerIntervalId = setInterval(updateTimer, 1000);
+  }
+}
+
+function pauseTimer() {
+  if (timerIntervalId) {
+    clearInterval(timerIntervalId);
+    timerIntervalId = null;
+  }
+  state.timerRunning = false;
+}
+
+function resetTimerDisplay() {
+  state.timerSeconds = 0;
+  const d = new Date(null);
+  d.setSeconds(0);
+  document.getElementById('timer-display').innerText = d.toISOString().substr(11, 8);
+}
+
+function restartTimer() {
+  pauseTimer();
+  resetTimerDisplay();
+  ensureTimerRunning();
+}
+
+function updateTimer() {
+  state.timerSeconds++;
+  const d = new Date(null);
+  d.setSeconds(state.timerSeconds);
+  document.getElementById('timer-display').innerText = d.toISOString().substr(11, 8);
+}
+
+/* Timer interaction wiring:
+   - Single click: start/pause
+   - Double-click: restart (reset to 00:00:00 and run)
+   - Press & hold (~800ms): full reset of algorithm (refresh)      */
+function wireTimerInteractions() {
+  const el = document.getElementById('timer-display');
+  if (!el) return;
+
+  let clickTimeout = null;
+  let longPressTimeout = null;
+  let longPressTriggered = false;
+  const LONG_PRESS_MS = 800;
+
+  function clearLongPress() {
+    if (longPressTimeout) {
+      clearTimeout(longPressTimeout);
+      longPressTimeout = null;
+    }
+  }
+
+  el.addEventListener('pointerdown', () => {
+    longPressTriggered = false;
+    clearLongPress();
+    longPressTimeout = setTimeout(() => {
+      longPressTriggered = true;
+      resetApplicationState();
+    }, LONG_PRESS_MS);
+  });
+
+  ['pointerup', 'pointerleave', 'pointercancel'].forEach(evt => {
+    el.addEventListener(evt, clearLongPress);
+  });
+
+  el.addEventListener('click', () => {
+    if (longPressTriggered) return;
+    if (clickTimeout) return;
+    clickTimeout = setTimeout(() => {
+      clickTimeout = null;
+      if (state.timerRunning) {
+        pauseTimer();
+      } else {
+        ensureTimerRunning();
+      }
+    }, 250);
+  });
+
+  el.addEventListener('dblclick', () => {
+    if (longPressTriggered) return;
+    if (clickTimeout) {
+      clearTimeout(clickTimeout);
+      clickTimeout = null;
+    }
+    restartTimer();
+  });
+}
+
+/* Full reset used by long-press on the timer */
+function resetApplicationState() {
+  pauseTimer();
+  resetTimerDisplay();
+  state.activeId = ROOT_CARD_ID;
+  state.history = [];
+  state.decisionIndex = 0;
+  state.wheelAngle = 330;
+  render();
+  updateKnobVisuals(330);
+}
+
+/* =====================================================================
+ * 7. MISC UTILITIES – fullscreen + dev settings
+ * ===================================================================== */
+function toggleFullscreenMode() {
+  const frame = document.getElementById('app-frame');
+  isFullscreen = !isFullscreen;
+  frame.classList.toggle('fullscreen', isFullscreen);
+}
+
+function toggleSettings() {
+  const p = document.getElementById('settings-panel');
+  p.style.display = p.style.display === 'block' ? 'none' : 'block';
+}
+
+function updateVar(name, val) {
+  document.documentElement.style.setProperty(name, val);
+}
+
+/* =====================================================================
+ * 8. BOOTSTRAP
+ * ===================================================================== */
+function bootstrap() {
+  render();
+  resetTimerDisplay();
+  updateKnobVisuals(330);
+  wireTimerInteractions();
+
+  document.getElementById('dev-settings-toggle')
+          .addEventListener('click', toggleSettings);
+}
+
+bootstrap();
+</script>
+</body>
+</html>
