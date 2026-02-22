@@ -1,0 +1,456 @@
+{
+  "algorithm_meta": {
+    "id": "algo_paed_bls_out_001",
+    "title": "Paediatric Basic Life Support",
+    "subtitle": "Out-of-Hospital Algorithm",
+    "source": "Resuscitation Council UK (2021)",
+    "context": "out-of-hospital",
+    "version": "2.0.0",
+    "page_ref": "Page 3 of 40",
+    "color_theme": {
+      "primary": "#1a5276",
+      "decision": "#c0392b",
+      "action": "#7f8c8d",
+      "terminal": "#27ae60"
+    },
+    "global_timer": {
+      "enabled": true,
+      "label": "Total Time",
+      "type": "count_up",
+      "auto_start_on_card": "CARD_01_UNRESPONSIVE"
+    },
+    "cpr_ratio": "30:2",
+    "footer_disclaimer": "Those trained only in 'adult' BLS (may include healthcare providers and lay rescuers) who have no specific knowledge of paediatric resuscitation, should use the adult sequence they are familiar with, including paediatric modifications."
+  },
+  "deck": [
+    {
+      "id": "CARD_00_START",
+      "type": "cover",
+      "severity": "normal",
+      "content": {
+        "title": "Paediatric Basic Life Support",
+        "body": "Out-of-Hospital Algorithm",
+        "sub_body": "Resuscitation Council UK Guidelines 2021"
+      },
+      "wheel_config": {
+        "phase": "start_point"
+      },
+      "checklist": [],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_01_UNRESPONSIVE"
+      }
+    },
+    {
+      "id": "CARD_01_UNRESPONSIVE",
+      "type": "standard",
+      "severity": "critical",
+      "content": {
+        "title": "Unresponsive",
+        "body": "Check if the child is unresponsive",
+        "sub_body": "Gently stimulate and ask 'Are you alright?'"
+      },
+      "wheel_config": {
+        "phase": "assessment"
+      },
+      "checklist": [
+        {
+          "id": "chk_safe",
+          "type": "checkbox",
+          "label": "Scene is safe to approach",
+          "required": true
+        },
+        {
+          "id": "chk_response",
+          "type": "checkbox",
+          "label": "No response to verbal/tactile stimulation",
+          "required": true
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_02_SHOUT"
+      }
+    },
+    {
+      "id": "CARD_02_SHOUT",
+      "type": "standard",
+      "severity": "normal",
+      "content": {
+        "title": "Shout for Help",
+        "body": "Shout loudly for help"
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "toggle_2nd_rescuer",
+          "type": "boolean_toggle",
+          "label": "2nd rescuer present OR suspect cardiac arrest?",
+          "note": "If yes, they should call EMS while you continue"
+        },
+        {
+          "id": "chk_call_999",
+          "type": "checkbox",
+          "label": "2nd rescuer: Call EMS (999/112)",
+          "visible_if": "toggle_2nd_rescuer == true"
+        },
+        {
+          "id": "chk_get_aed",
+          "type": "checkbox",
+          "label": "2nd rescuer: Collect and apply AED if feasible",
+          "visible_if": "toggle_2nd_rescuer == true"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_03_AIRWAY"
+      }
+    },
+    {
+      "id": "CARD_03_AIRWAY",
+      "type": "standard",
+      "severity": "normal",
+      "content": {
+        "title": "Open Airway",
+        "body": "Head tilt, chin lift",
+        "slides": [
+          {
+            "id": "slide_technique",
+            "header": "Technique",
+            "text": "Place one hand on forehead, gently tilt head back. Lift chin using fingertips under bony part of chin."
+          }
+        ]
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_04_BREATHING"
+      }
+    },
+    {
+      "id": "CARD_04_BREATHING",
+      "type": "decision",
+      "severity": "caution",
+      "content": {
+        "title": "Breathing Check",
+        "body": "Is the child breathing normally?",
+        "sub_body": "Look, listen and feel for up to 10 seconds"
+      },
+      "wheel_config": {
+        "phase": "decision",
+        "locked": true
+      },
+      "checklist": [
+        {
+          "id": "chk_look",
+          "type": "checkbox",
+          "label": "LOOK for chest movement"
+        },
+        {
+          "id": "chk_listen",
+          "type": "checkbox",
+          "label": "LISTEN for breath sounds"
+        },
+        {
+          "id": "chk_feel",
+          "type": "checkbox",
+          "label": "FEEL for air on your cheek"
+        }
+      ],
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "YES",
+            "sub_label": "Breathing normally",
+            "preview_card_title": "Observe & Monitor",
+            "target_id": "CARD_END_OBSERVE",
+            "severity": "success"
+          },
+          {
+            "label": "NO",
+            "sub_label": "or any doubt",
+            "preview_card_title": "5 Rescue Breaths",
+            "target_id": "CARD_05_BREATHS",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_END_OBSERVE",
+      "type": "terminal",
+      "severity": "normal",
+      "content": {
+        "title": "Observation",
+        "body": "Observe and re-assess as necessary",
+        "sub_body": "Place in recovery position if appropriate. Continue monitoring until help arrives."
+      },
+      "wheel_config": {
+        "phase": "complete"
+      },
+      "checklist": [
+        {
+          "id": "chk_recovery_position",
+          "type": "checkbox",
+          "label": "Consider recovery position"
+        },
+        {
+          "id": "chk_monitor",
+          "type": "checkbox",
+          "label": "Continue to monitor breathing"
+        }
+      ],
+      "status": "complete"
+    },
+    {
+      "id": "CARD_05_BREATHS",
+      "type": "carousel_action",
+      "severity": "critical",
+      "content": {
+        "title": "5 Rescue Breaths",
+        "body": "Give 5 initial rescue breaths",
+        "fallback_note": "If unable/unsafe to ventilate, perform continuous chest compressions. Add rescue breaths as soon as possible.",
+        "slides": [
+          {
+            "id": "slide_infant",
+            "context": "infant",
+            "header": "Infant (<1 year)",
+            "text": "Mouth over mouth AND nose. Neutral head position. Gentle puffs.",
+            "image_ref": "infant_breaths.png"
+          },
+          {
+            "id": "slide_child",
+            "context": "child",
+            "header": "Child (>1 year)",
+            "text": "Mouth to mouth. Pinch nose. Head tilt-chin lift.",
+            "image_ref": "child_breaths.png"
+          }
+        ]
+      },
+      "wheel_config": {
+        "phase": "intervention"
+      },
+      "toolbox": [
+        {
+          "id": "calc_age",
+          "icon": "calculator",
+          "label": "Age Calculator",
+          "action": "open_modal_age_calc"
+        }
+      ],
+      "checklist": [
+        {
+          "id": "toggle_single_rescuer",
+          "type": "boolean_toggle",
+          "label": "Are you a SINGLE rescuer?"
+        },
+        {
+          "id": "chk_speakerphone",
+          "type": "checkbox",
+          "label": "Call EMS on speakerphone now",
+          "visible_if": "toggle_single_rescuer == true"
+        },
+        {
+          "id": "chk_delay_call",
+          "type": "checkbox",
+          "label": "No phone? Do CPR 1 min, then go call",
+          "visible_if": "toggle_single_rescuer == true AND chk_speakerphone == false"
+        },
+        {
+          "id": "warn_cant_ventilate",
+          "type": "warning",
+          "label": "If unable to ventilate: Skip to chest compressions"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_06_SIGNS_OF_LIFE"
+      }
+    },
+    {
+      "id": "CARD_06_SIGNS_OF_LIFE",
+      "type": "decision",
+      "severity": "caution",
+      "content": {
+        "title": "Signs of Life?",
+        "body": "Were signs of life observed during rescue breaths?",
+        "sub_body": "Movement, coughing, normal breathing"
+      },
+      "wheel_config": {
+        "phase": "check",
+        "locked": true
+      },
+      "checklist": [
+        {
+          "id": "info_signs",
+          "type": "instruction",
+          "label": "Signs include: movement, coughing, normal breathing (not gasps)"
+        }
+      ],
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "YES",
+            "preview_card_title": "Recovery Position",
+            "target_id": "CARD_END_RECOVERY",
+            "severity": "success"
+          },
+          {
+            "label": "NO",
+            "sub_label": "No signs of life",
+            "preview_card_title": "Start CPR",
+            "target_id": "CARD_07_COMPRESSIONS",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_07_COMPRESSIONS",
+      "type": "loop_start",
+      "severity": "critical",
+      "content": {
+        "title": "30 Chest Compressions",
+        "body": "Perform 30 chest compressions",
+        "sub_body": "Push hard and fast. Rate: 100-120/min. Depth: 1/3 of chest.",
+        "slides": [
+          {
+            "id": "slide_infant_cpr",
+            "context": "infant",
+            "header": "Infant",
+            "text": "Two finger technique or encircling thumbs technique"
+          },
+          {
+            "id": "slide_child_cpr",
+            "context": "child",
+            "header": "Child",
+            "text": "One or two hands on lower half of sternum"
+          }
+        ]
+      },
+      "wheel_config": {
+        "phase": "loop",
+        "animation": "pulse"
+      },
+      "local_timer": {
+        "enabled": true,
+        "type": "metronome",
+        "bpm": 110,
+        "guidance": "Push to the beat",
+        "audio_enabled": true
+      },
+      "checklist": [
+        {
+          "id": "info_depth",
+          "type": "instruction",
+          "label": "Compress 1/3 depth of chest"
+        },
+        {
+          "id": "info_recoil",
+          "type": "instruction",
+          "label": "Allow full chest recoil"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_08_LOOP_BREATHS"
+      }
+    },
+    {
+      "id": "CARD_08_LOOP_BREATHS",
+      "type": "standard",
+      "severity": "critical",
+      "content": {
+        "title": "2 Rescue Breaths",
+        "body": "Deliver 2 effective rescue breaths",
+        "sub_body": "Watch for chest rise with each breath"
+      },
+      "wheel_config": {
+        "phase": "loop"
+      },
+      "checklist": [
+        {
+          "id": "chk_chest_rise",
+          "type": "checkbox",
+          "label": "Confirm chest rise with each breath"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_09_REASSESS"
+      }
+    },
+    {
+      "id": "CARD_09_REASSESS",
+      "type": "decision",
+      "severity": "critical",
+      "content": {
+        "title": "Re-assess",
+        "body": "Are there clear signs of life?",
+        "sub_body": "Check briefly - do not interrupt CPR for long"
+      },
+      "wheel_config": {
+        "phase": "loop",
+        "locked": true
+      },
+      "checklist": [],
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "NO",
+            "sub_label": "Continue CPR",
+            "preview_card_title": "30 Compressions",
+            "target_id": "CARD_07_COMPRESSIONS",
+            "severity": "danger"
+          },
+          {
+            "label": "YES",
+            "sub_label": "Signs of life",
+            "preview_card_title": "Recovery",
+            "target_id": "CARD_END_RECOVERY",
+            "severity": "success"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_END_RECOVERY",
+      "type": "terminal",
+      "severity": "normal",
+      "content": {
+        "title": "Stabilised",
+        "body": "Keep child in safe position",
+        "sub_body": "Continue to assess and await EMS"
+      },
+      "wheel_config": {
+        "phase": "complete"
+      },
+      "checklist": [
+        {
+          "id": "chk_safe_position",
+          "type": "checkbox",
+          "label": "Place in recovery position"
+        },
+        {
+          "id": "chk_monitor_breathing",
+          "type": "checkbox",
+          "label": "Monitor breathing continuously"
+        },
+        {
+          "id": "chk_await_ems",
+          "type": "checkbox",
+          "label": "Await EMS arrival"
+        }
+      ],
+      "status": "complete"
+    }
+  ]
+}

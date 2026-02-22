@@ -1,2 +1,5 @@
 appendix/
 .DS_Store
+node_modules/
+.claude/
+.specstory/

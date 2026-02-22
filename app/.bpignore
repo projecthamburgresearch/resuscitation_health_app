@@ -1,0 +1,2 @@
+# Exclude dev-mode mirror routes from Blueprint app-root runs
+dev-mode/

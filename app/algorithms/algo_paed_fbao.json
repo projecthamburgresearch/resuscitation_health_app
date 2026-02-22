@@ -1,0 +1,494 @@
+{
+  "algorithm_meta": {
+    "id": "algo_paed_fbao_001",
+    "title": "Paediatric Foreign Body Airway Obstruction",
+    "subtitle": "Choking Algorithm",
+    "source": "Resuscitation Council UK (2021)",
+    "context": "universal",
+    "version": "1.0.0",
+    "page_ref": "Page 5 of 40",
+    "color_theme": {
+      "primary": "#1a5276",
+      "decision": "#c0392b",
+      "action": "#7f8c8d",
+      "terminal": "#27ae60",
+      "warning": "#e74c3c"
+    },
+    "global_timer": {
+      "enabled": true,
+      "label": "Total Time",
+      "type": "count_up",
+      "auto_start_on_card": "CARD_01_SUSPECT"
+    },
+    "linked_algorithms": [
+      {
+        "id": "algo_paed_bls_out_001",
+        "title": "Paediatric Basic Life Support",
+        "description": "If child becomes unconscious"
+      }
+    ]
+  },
+  "deck": [
+    {
+      "id": "CARD_00_START",
+      "type": "cover",
+      "severity": "normal",
+      "content": {
+        "title": "Paediatric Foreign Body Airway Obstruction",
+        "body": "Choking Algorithm",
+        "sub_body": "Resuscitation Council UK Guidelines 2021"
+      },
+      "wheel_config": {
+        "phase": "start_point"
+      },
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_01_SUSPECT"
+      }
+    },
+    {
+      "id": "CARD_01_SUSPECT",
+      "type": "standard",
+      "severity": "caution",
+      "content": {
+        "title": "Suspect Foreign Body",
+        "body": "Suspect foreign body airway obstruction",
+        "sub_body": "Sudden onset, witnessed choking episode, coughing/gagging"
+      },
+      "wheel_config": {
+        "phase": "assessment"
+      },
+      "checklist": [
+        {
+          "id": "chk_sudden",
+          "type": "checkbox",
+          "label": "Sudden onset while eating/playing with small objects"
+        },
+        {
+          "id": "chk_witnessed",
+          "type": "checkbox",
+          "label": "Episode witnessed or strongly suspected"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_02_SHOUT"
+      }
+    },
+    {
+      "id": "CARD_02_SHOUT",
+      "type": "standard",
+      "severity": "normal",
+      "content": {
+        "title": "Shout for HELP",
+        "body": "Shout for help but don't leave the child"
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "chk_shout",
+          "type": "checkbox",
+          "label": "Help summoned"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_03_COUGH_CHECK"
+      }
+    },
+    {
+      "id": "CARD_03_COUGH_CHECK",
+      "type": "decision",
+      "severity": "caution",
+      "content": {
+        "title": "Cough Effective?",
+        "body": "Assess the effectiveness of cough",
+        "sub_body": "Can the child cough, cry, speak, or breathe?"
+      },
+      "wheel_config": {
+        "phase": "decision",
+        "locked": true
+      },
+      "checklist": [
+        {
+          "id": "info_effective",
+          "type": "instruction",
+          "label": "Effective cough: Loud cough, able to take breath, fully responsive"
+        },
+        {
+          "id": "info_ineffective",
+          "type": "instruction",
+          "label": "Ineffective cough: Silent/quiet cough, unable to breathe, cyanosis, decreasing consciousness"
+        }
+      ],
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "YES",
+            "sub_label": "Effective cough",
+            "preview_card_title": "Encourage Cough",
+            "target_id": "CARD_04_ENCOURAGE",
+            "severity": "success"
+          },
+          {
+            "label": "NO",
+            "sub_label": "Ineffective cough",
+            "preview_card_title": "Call EMS",
+            "target_id": "CARD_05_CALL_EMS",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_04_ENCOURAGE",
+      "type": "monitor",
+      "severity": "normal",
+      "content": {
+        "title": "Encourage Cough",
+        "body": "Encourage coughing",
+        "sub_body": "Continue to check for deterioration"
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "chk_encourage",
+          "type": "checkbox",
+          "label": "Encouraged child to keep coughing"
+        },
+        {
+          "id": "info_monitor",
+          "type": "instruction",
+          "label": "Stay with child, monitor continuously"
+        }
+      ],
+      "transitions": {
+        "type": "self_loop",
+        "options": [
+          {
+            "label": "STILL COUGHING",
+            "sub_label": "Continue monitoring",
+            "target_id": "CARD_04_ENCOURAGE"
+          },
+          {
+            "label": "CLEARED",
+            "sub_label": "Object expelled",
+            "target_id": "CARD_END_MEDICAL",
+            "severity": "success"
+          },
+          {
+            "label": "DETERIORATING",
+            "sub_label": "Cough becoming ineffective",
+            "target_id": "CARD_05_CALL_EMS",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_05_CALL_EMS",
+      "type": "standard",
+      "severity": "critical",
+      "content": {
+        "title": "Call EMS / Resuscitation Team",
+        "body": "Call for emergency help now",
+        "sub_body": "Single rescuer – use speaker function if on mobile phone"
+      },
+      "wheel_config": {
+        "phase": "action"
+      },
+      "checklist": [
+        {
+          "id": "chk_ems_called",
+          "type": "checkbox",
+          "label": "EMS/Resuscitation team called",
+          "required": true
+        },
+        {
+          "id": "chk_speaker",
+          "type": "checkbox",
+          "label": "Using speaker phone (if single rescuer)"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_06_CONSCIOUS_CHECK"
+      }
+    },
+    {
+      "id": "CARD_06_CONSCIOUS_CHECK",
+      "type": "decision",
+      "severity": "critical",
+      "content": {
+        "title": "Is the Child Conscious?",
+        "body": "Assess consciousness level"
+      },
+      "wheel_config": {
+        "phase": "decision",
+        "locked": true
+      },
+      "checklist": [
+        {
+          "id": "info_conscious",
+          "type": "instruction",
+          "label": "Conscious = responsive, moving, making sounds"
+        }
+      ],
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "UNCONSCIOUS",
+            "preview_card_title": "Open Airway → BLS",
+            "target_id": "CARD_07_UNCONSCIOUS",
+            "severity": "danger"
+          },
+          {
+            "label": "CONSCIOUS",
+            "preview_card_title": "Back Blows & Thrusts",
+            "target_id": "CARD_08_BACK_BLOWS",
+            "severity": "caution"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_07_UNCONSCIOUS",
+      "type": "standard",
+      "severity": "critical",
+      "content": {
+        "title": "Unconscious - Open Airway",
+        "body": "Open airway and try rescue breaths",
+        "sub_body": "If chest does not rise, reposition and try again"
+      },
+      "wheel_config": {
+        "phase": "intervention"
+      },
+      "checklist": [
+        {
+          "id": "chk_airway_open",
+          "type": "checkbox",
+          "label": "Airway opened"
+        },
+        {
+          "id": "chk_breaths_attempted",
+          "type": "checkbox",
+          "label": "5 rescue breaths attempted"
+        },
+        {
+          "id": "warn_no_finger",
+          "type": "warning",
+          "label": "NO repeated or blind finger sweeps"
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_LINK_BLS"
+      }
+    },
+    {
+      "id": "CARD_LINK_BLS",
+      "type": "algorithm_link",
+      "severity": "critical",
+      "content": {
+        "title": "Continue with PAEDIATRIC BASIC LIFE SUPPORT",
+        "body": "Follow BLS algorithm",
+        "sub_body": "Start CPR if no signs of life after rescue breaths"
+      },
+      "wheel_config": {
+        "phase": "complete"
+      },
+      "checklist": [
+        {
+          "id": "warn_no_sweeps",
+          "type": "warning",
+          "label": "No repeated or blind finger sweeps"
+        }
+      ],
+      "transitions": {
+        "type": "algorithm_jump",
+        "target_algorithm": {
+          "id": "algo_paed_bls_out_001",
+          "entry_card": "CARD_06_SIGNS_OF_LIFE",
+          "context": "Continue from signs of life check after rescue breaths"
+        }
+      },
+      "status": "handoff"
+    },
+    {
+      "id": "CARD_08_BACK_BLOWS",
+      "type": "carousel_action",
+      "severity": "critical",
+      "content": {
+        "title": "Back Blows & Thrusts",
+        "body": "Alternate back blows and thrusts",
+        "slides": [
+          {
+            "id": "slide_infant",
+            "context": "infant",
+            "header": "Infant (<1 year)",
+            "text": "5 back blows (head down position)\nTHEN 5 chest thrusts (same position as CPR)",
+            "details": [
+              "Support head and jaw",
+              "Head lower than chest",
+              "Sharp back blows between shoulder blades",
+              "2-finger chest thrusts (lower sternum)"
+            ]
+          },
+          {
+            "id": "slide_child",
+            "context": "child",
+            "header": "Child (>1 year)",
+            "text": "5 back blows\nTHEN 5 abdominal thrusts (Heimlich)",
+            "details": [
+              "Stand/kneel behind child",
+              "Sharp back blows between shoulder blades",
+              "Fist above umbilicus, below ribcage",
+              "Pull sharply inward and upward"
+            ]
+          }
+        ]
+      },
+      "wheel_config": {
+        "phase": "intervention"
+      },
+      "toolbox": [
+        {
+          "id": "calc_age",
+          "icon": "calculator",
+          "label": "Age Calculator",
+          "action": "open_modal_age_calc"
+        },
+        {
+          "id": "video_technique",
+          "icon": "video",
+          "label": "Technique Video",
+          "action": "open_modal_video"
+        }
+      ],
+      "checklist": [
+        {
+          "id": "chk_5_back",
+          "type": "counter",
+          "label": "Back blows delivered",
+          "max_value": 5
+        },
+        {
+          "id": "chk_5_thrust",
+          "type": "counter",
+          "label": "Thrusts delivered",
+          "max_value": 5
+        }
+      ],
+      "transitions": {
+        "type": "linear",
+        "next_id": "CARD_09_RELIEVED_CHECK"
+      }
+    },
+    {
+      "id": "CARD_09_RELIEVED_CHECK",
+      "type": "decision",
+      "severity": "critical",
+      "content": {
+        "title": "Obstruction Relieved?",
+        "body": "Check if foreign body has been expelled",
+        "sub_body": "Can child breathe/cough/cry now?"
+      },
+      "wheel_config": {
+        "phase": "decision",
+        "locked": true
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "NO",
+            "sub_label": "Still obstructed",
+            "preview_card_title": "Repeat: Back Blows",
+            "target_id": "CARD_10_REASSESS_CONSCIOUS",
+            "severity": "danger"
+          },
+          {
+            "label": "YES",
+            "sub_label": "Object expelled",
+            "preview_card_title": "Medical Follow-up",
+            "target_id": "CARD_END_MEDICAL",
+            "severity": "success"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_10_REASSESS_CONSCIOUS",
+      "type": "decision",
+      "severity": "critical",
+      "content": {
+        "title": "Re-assess Consciousness",
+        "body": "Is child still conscious?",
+        "sub_body": "Before repeating back blows and thrusts"
+      },
+      "wheel_config": {
+        "phase": "check",
+        "locked": true
+      },
+      "transitions": {
+        "type": "split",
+        "options": [
+          {
+            "label": "STILL CONSCIOUS",
+            "preview_card_title": "Repeat Back Blows",
+            "target_id": "CARD_08_BACK_BLOWS",
+            "severity": "caution"
+          },
+          {
+            "label": "NOW UNCONSCIOUS",
+            "preview_card_title": "Open Airway → BLS",
+            "target_id": "CARD_07_UNCONSCIOUS",
+            "severity": "danger"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CARD_END_MEDICAL",
+      "type": "terminal",
+      "severity": "normal",
+      "content": {
+        "title": "Urgent Medical Follow-up",
+        "body": "Seek medical assessment",
+        "sub_body": "Even if object expelled, child needs evaluation for internal injury"
+      },
+      "wheel_config": {
+        "phase": "complete"
+      },
+      "checklist": [
+        {
+          "id": "chk_object_out",
+          "type": "checkbox",
+          "label": "Confirm object expelled"
+        },
+        {
+          "id": "chk_breathing_normal",
+          "type": "checkbox",
+          "label": "Breathing returned to normal"
+        },
+        {
+          "id": "info_followup",
+          "type": "instruction",
+          "label": "Abdominal thrusts can cause internal injury - medical assessment required"
+        },
+        {
+          "id": "chk_transport",
+          "type": "checkbox",
+          "label": "Transport to ED arranged"
+        }
+      ],
+      "status": "complete"
+    }
+  ]
+}
