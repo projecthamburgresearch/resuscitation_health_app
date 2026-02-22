@@ -20,6 +20,7 @@ objective: |
   - Reverse navigation must NOT force decision re-confirmation when crossing a decision node.
   - Decision-stop at YES/NO in forward flow is a deliberate clinical record of action.
   - Dev-mode remains a developer instrument lane; main app remains user-facing source of truth.
+  - Main and dev-mode must remain in strict page parity.
 
 profile:
   target_component: "app/index.html (main runtime), app/algorithms/*.json"
@@ -65,6 +66,7 @@ state_machine_scope:
     no_hardcoded_card_ids_for_core_wheel_rules: true
 
 telemetry_levers:
+  use_devmode_parity_check: true
   use_scan_json: true
   use_blueprint_outputs: true
   use_static_screenshots_and_splits: true
@@ -118,6 +120,8 @@ implementation_directives:
     directive: "Allow reverse traversal across decision nodes without decision-confirm interaction requirements."
   - id: "D-08"
     directive: "Persist forward decision-stop as an explicit action record in navigation/history state."
+  - id: "D-09"
+    directive: "Keep app/dev-mode route parity strict for all touched pages (`scripts/check_dev_mode_parity.js` pass required)."
 
 acceptance_gates:
   - id: "AG-01"
@@ -140,3 +144,5 @@ acceptance_gates:
     gate: "Core wheel behavior gates pass on each discoverable algorithm under `app/algorithms` (no single-algorithm lock-in)."
   - id: "AG-10"
     gate: "Forward decision-stop is preserved as a deliberate action record and remains auditable in state/history."
+  - id: "AG-11"
+    gate: "Strict dev-mode parity passes after changes (`npm run check:devmode:parity` reports PASS)."
