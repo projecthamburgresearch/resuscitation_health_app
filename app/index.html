@@ -866,12 +866,7 @@ function applyAlgorithm(rawAlgorithm, sourceLabel) {
     state.anchors = [];
     state.anchorIndex = 0;
     state.wheel.dragOrigin = null;
-    state.wheel.pointerStart = null;
-    state.wheel.dragDistance = 0;
-    state.wheel.didNavigate = false;
-    state.wheel.suppressTapUntil = 0;
-    state.wheel.lastNavAt = 0;
-    state.wheel.lastNavDirection = null;
+    state.wheel.navConsumed = false;
 
     if (state.currentId && DECK[state.currentId]) {
         state.wheel.mode = computeWheelMode(DECK[state.currentId]);
@@ -979,12 +974,7 @@ let state = {
         mode: "COVER",           // COVER | LINEAR | DECISION | LOOP | TERMINAL
         angle: 330,              // Knob angle — always reflects current anchor
         dragOrigin: null,        // Angle at the start of current drag gesture
-        pointerStart: null,      // Angle where current pointer drag began
-        dragDistance: 0,         // Max angular movement in current drag
-        didNavigate: false,      // Whether drag committed at least one transition
-        suppressTapUntil: 0,     // Timestamp; suppress tap-to-advance after drag
-        lastNavAt: 0,            // Timestamp; debounce repeated drag transitions
-        lastNavDirection: null   // 'forward' | 'reverse' for direction-aware debounce
+        navConsumed: false       // One navigation transition per drag gesture
     }
 };
 
@@ -1007,7 +997,6 @@ const WHEEL_RADIUS = 150;
 const KNOB_OFFSET = 15; // Half of knob size
 const NAV_THRESHOLD_DEG = 10;        // Small intent → one step (forward/reverse)
 const DECISION_CYCLE_DEG = 25;       // Larger intent for cycling decision options
-const NAV_REPEAT_DEBOUNCE_MS = 120;  // Prevent noisy multi-trigger jitter
 
 function degToPosition(deg) {
     const mathDeg = deg - 90; // Convert: 0° top → 0° right
@@ -1743,67 +1732,12 @@ function startKnobDrag(e) {
     const arc = getCurrentWheelArc();
     const startAngle = clampAngleToArc(getAngleFromEvent(e), arc);
     state.wheel.dragOrigin = startAngle;
-    state.wheel.pointerStart = startAngle;
-    state.wheel.dragDistance = 0;
-    state.wheel.didNavigate = false;
-    state.wheel.lastNavDirection = null;
+    state.wheel.navConsumed = false;
     // Knob stays at anchor — don't change state.wheel.angle here
 }
 
 function triggerHaptic(ms) {
     if (navigator.vibrate) navigator.vibrate(ms);
-}
-
-function markTapSuppressed() {
-    state.wheel.suppressTapUntil = Date.now() + 320;
-}
-
-function shouldSuppressTap() {
-    return Date.now() < (state.wheel.suppressTapUntil || 0);
-}
-
-function canCommitAnotherDragNavigation(direction) {
-    const now = Date.now();
-    if (
-        state.wheel.lastNavDirection === direction
-        && state.wheel.lastNavAt
-        && (now - state.wheel.lastNavAt) < NAV_REPEAT_DEBOUNCE_MS
-    ) {
-        return false;
-    }
-    state.wheel.lastNavAt = now;
-    state.wheel.lastNavDirection = direction;
-    return true;
-}
-
-function commitForwardFromDrag(currentAngle) {
-    knob.classList.remove('dragging'); // Re-enable easing to anchor
-    const canCommit = canCommitAnotherDragNavigation('forward');
-    state.wheel.dragOrigin = currentAngle; // Rebase regardless to require fresh intent
-    if (!canCommit) return false;
-
-    const moved = advance({ source: 'wheel-drag' });
-    if (moved) {
-        state.wheel.didNavigate = true;
-        markTapSuppressed();
-        triggerHaptic(15);
-    }
-    return moved;
-}
-
-function commitReverseFromDrag(currentAngle) {
-    knob.classList.remove('dragging'); // Re-enable easing to anchor
-    const canCommit = canCommitAnotherDragNavigation('reverse');
-    state.wheel.dragOrigin = currentAngle; // Rebase regardless to require fresh intent
-    if (!canCommit) return false;
-
-    const moved = rewind();
-    if (moved) {
-        state.wheel.didNavigate = true;
-        markTapSuppressed();
-        triggerHaptic(15);
-    }
-    return moved;
 }
 
 function handleDecisionWheelDrag(card, delta, currentAngle, arc) {
@@ -1813,7 +1747,12 @@ function handleDecisionWheelDrag(card, delta, currentAngle, arc) {
 
     // Reverse gesture: rewind out of decision card
     if (isReverseGesture(delta, arc)) {
-        commitReverseFromDrag(currentAngle);
+        knob.classList.remove('dragging');  // Enable transition -> smooth snap
+        const moved = rewind();
+        if (moved) {
+            state.wheel.navConsumed = true;
+            triggerHaptic(15);
+        }
         return;
     }
 
@@ -1844,23 +1783,26 @@ function onKnobDrag(e) {
     if (state.wheel.dragOrigin == null) {
         state.wheel.dragOrigin = currentAngle;
     }
-    if (state.wheel.pointerStart == null) {
-        state.wheel.pointerStart = currentAngle;
-    }
 
-    const pointerTravel = Math.abs(angleDelta(state.wheel.pointerStart, currentAngle));
-    state.wheel.dragDistance = Math.max(state.wheel.dragDistance || 0, pointerTravel);
-
-    // Delta from current anchor, not pointer start.
-    // This prevents accidental double-step commits from one medium drag.
-    const delta = angleDelta(currentAnchorAngle(), currentAngle);
+    const delta = angleDelta(state.wheel.dragOrigin, currentAngle);
 
     const mode = state.wheel.mode;
+
+    // Allow only one navigation transition per knob drag.
+    if (state.wheel.navConsumed) {
+        if (mode !== "DECISION") {
+            setKnobPosition(currentAngle);
+        }
+        return;
+    }
 
     // --- Mode: COVER (start screen) → forward gesture advances ---
     if (mode === "COVER") {
         if (isForwardGesture(delta, arc)) {
-            commitForwardFromDrag(currentAngle);
+            knob.classList.remove('dragging');  // Enable transition -> smooth snap
+            advance({ source: 'wheel-drag' });
+            state.wheel.navConsumed = true;
+            triggerHaptic(15);
         } else {
             setKnobPosition(currentAngle);  // Follow finger
         }
@@ -1870,7 +1812,10 @@ function onKnobDrag(e) {
     // --- Mode: TERMINAL → allow reverse gesture to rewind ---
     if (mode === "TERMINAL") {
         if (isReverseGesture(delta, arc)) {
-            commitReverseFromDrag(currentAngle);
+            knob.classList.remove('dragging');
+            rewind();
+            state.wheel.navConsumed = true;
+            triggerHaptic(15);
         } else {
             setKnobPosition(currentAngle);  // Follow finger
         }
@@ -1885,12 +1830,18 @@ function onKnobDrag(e) {
 
     // --- Modes: LINEAR / LOOP → snap to next/previous anchor ---
     if (isForwardGesture(delta, arc)) {
-        commitForwardFromDrag(currentAngle);
+        knob.classList.remove('dragging');  // Enable transition -> smooth snap
+        advance({ source: 'wheel-drag' });
+        state.wheel.navConsumed = true;
+        triggerHaptic(15);
         return;
     }
 
     if (isReverseGesture(delta, arc)) {
-        commitReverseFromDrag(currentAngle);
+        knob.classList.remove('dragging');
+        rewind();
+        state.wheel.navConsumed = true;
+        triggerHaptic(15);
         return;
     }
     // Below threshold → knob follows finger for responsive feel
@@ -1902,13 +1853,8 @@ function endKnobDrag() {
     isDraggingKnob = false;
 
     knob.classList.remove('dragging');  // Enable transition → smooth snap back
-    if ((state.wheel.dragDistance || 0) > 2 || state.wheel.didNavigate) {
-        markTapSuppressed();
-    }
     state.wheel.dragOrigin = null;
-    state.wheel.pointerStart = null;
-    state.wheel.dragDistance = 0;
-    state.wheel.didNavigate = false;
+    state.wheel.navConsumed = false;
 
     // Smooth snap back to current anchor
     state.wheel.angle = currentAnchorAngle();
@@ -2061,12 +2007,7 @@ function setCurrentCardForAutomation(cardId) {
     state.carouselIndex = 0;
     state.wheel.mode = computeWheelMode(card);
     state.wheel.dragOrigin = null;
-    state.wheel.pointerStart = null;
-    state.wheel.dragDistance = 0;
-    state.wheel.didNavigate = false;
-    state.wheel.suppressTapUntil = 0;
-    state.wheel.lastNavAt = 0;
-    state.wheel.lastNavDirection = null;
+    state.wheel.navConsumed = false;
     resetTimerState();
     render();
     // render() calls syncAnchors() which sets wheel.angle to anchor position
@@ -2183,11 +2124,6 @@ function canTapAdvance(card) {
 
 // Click on wheel = advance (backup interaction)
 wheel.addEventListener('click', (e) => {
-    if (shouldSuppressTap()) {
-        e.preventDefault();
-        e.stopPropagation();
-        return;
-    }
     if (e.target === knob) return;
     const card = DECK[state.currentId];
     if (!canTapAdvance(card)) return;
@@ -2196,11 +2132,6 @@ wheel.addEventListener('click', (e) => {
 
 // Click on knob = advance (backup interaction)
 knob.addEventListener('click', (e) => {
-    if (shouldSuppressTap()) {
-        e.preventDefault();
-        e.stopPropagation();
-        return;
-    }
     const card = DECK[state.currentId];
     if (!canTapAdvance(card)) return;
     advance({ source: 'knob-tap' });
