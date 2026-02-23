@@ -25,7 +25,11 @@ function copyStaticAssets() {
   };
 }
 
+// GitHub Pages serves at https://<user>.github.io/<repo>/ so we need a base path in production
+const base = process.env.BASE_PATH ?? '/';
+
 export default defineConfig({
+  base,
   root: '.',
   publicDir: 'public',
   resolve: {

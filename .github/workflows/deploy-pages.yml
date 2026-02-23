@@ -28,13 +28,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm ci --prefix app
+
+      - name: Build for GitHub Pages
+        run: npm run build --prefix app
+        env:
+          BASE_PATH: /resuscitation_health_app/
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload app artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: app
+          path: app/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
