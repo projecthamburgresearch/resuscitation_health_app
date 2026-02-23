@@ -10,6 +10,7 @@
  */
 
 const fs = require('fs');
+const fsPromises = fs.promises;
 const path = require('path');
 let chromium = null;
 
@@ -169,23 +170,25 @@ Env:
 // Discovery
 // -----------------------------------------------------------------------------
 
-function discoverDevModePages() {
+async function discoverDevModePages() {
   const pages = [];
   const warnings = [];
   const bySlug = new Map();
 
-  if (!fs.existsSync(DEV_MODE_DIR)) {
+  try {
+    await fsPromises.access(DEV_MODE_DIR);
+  } catch {
     warnings.push(`Missing directory: ${relativeFromRepo(DEV_MODE_DIR)}`);
     return { pages, warnings };
   }
 
-  function walk(dir) {
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
+  async function walk(dir) {
+    const entries = await fsPromises.readdir(dir, { withFileTypes: true });
     for (const entry of entries) {
       const abs = path.join(dir, entry.name);
       if (entry.isDirectory()) {
         if (entry.name.startsWith('.')) continue;
-        walk(abs);
+        await walk(abs);
         continue;
       }
       if (!entry.isFile()) continue;
@@ -219,7 +222,7 @@ function discoverDevModePages() {
     }
   }
 
-  walk(DEV_MODE_DIR);
+  await walk(DEV_MODE_DIR);
 
   // Prefer canonical home source (index.html) when duplicate home files exist.
   const home = pages.filter((p) => p.slug === '');
@@ -1165,14 +1168,14 @@ function safeNumber(v) {
 // Output
 // -----------------------------------------------------------------------------
 
-function ensureDir(dirPath) {
-  if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath, { recursive: true });
+async function ensureDir(dirPath) {
+  await fsPromises.mkdir(dirPath, { recursive: true });
 }
 
-function removeDirIfEmpty(dirPath) {
+async function removeDirIfEmpty(dirPath) {
   try {
-    const entries = fs.readdirSync(dirPath);
-    if (entries.length === 0) fs.rmdirSync(dirPath);
+    const entries = await fsPromises.readdir(dirPath);
+    if (entries.length === 0) await fsPromises.rmdir(dirPath);
   } catch {
     // best-effort cleanup only
   }
@@ -1211,9 +1214,14 @@ function parseLegacyScanFilename(file) {
   };
 }
 
-function findPreviousScan(pageName, viewportPart) {
+async function findPreviousScan(pageName, viewportPart) {
   const currentPath = currentArtifactPath(pageName, 'scan', viewportPart);
-  if (fs.existsSync(currentPath)) return currentPath;
+  try {
+    await fsPromises.access(currentPath);
+    return currentPath;
+  } catch {
+    // continue
+  }
 
   const scanRoots = [SCAN_ROOT_DIR];
   if (LEGACY_SCAN_ROOT_DIR !== SCAN_ROOT_DIR) scanRoots.push(LEGACY_SCAN_ROOT_DIR);
@@ -1221,8 +1229,13 @@ function findPreviousScan(pageName, viewportPart) {
 
   const rows = [];
   for (const root of scanRoots) {
-    if (!fs.existsSync(root)) continue;
-    for (const file of fs.readdirSync(root, { withFileTypes: true })) {
+    try {
+      await fsPromises.access(root);
+    } catch {
+      continue;
+    }
+    const entries = await fsPromises.readdir(root, { withFileTypes: true });
+    for (const file of entries) {
       if (!file.isFile()) continue;
       const parsed = parseLegacyScanFilename(file.name);
       if (!parsed) continue;
@@ -1254,20 +1267,20 @@ function relativeFromRepo(abs) {
   return path.relative(REPO_ROOT, abs) || '.';
 }
 
-function rotateCurrentSnapshotsToArchive() {
-  ensureDir(SCAN_CURRENT_DIR);
-  ensureDir(SCAN_ARCHIVE_DIR);
+async function rotateCurrentSnapshotsToArchive() {
+  await ensureDir(SCAN_CURRENT_DIR);
+  await ensureDir(SCAN_ARCHIVE_DIR);
 
-  const entries = fs.readdirSync(SCAN_CURRENT_DIR, { withFileTypes: true });
+  const entries = await fsPromises.readdir(SCAN_CURRENT_DIR, { withFileTypes: true });
   if (entries.length === 0) return null;
 
   const archiveDir = path.join(SCAN_ARCHIVE_DIR, `current-${RUN_STAMP}`);
-  ensureDir(archiveDir);
+  await ensureDir(archiveDir);
 
   for (const entry of entries) {
     const src = path.join(SCAN_CURRENT_DIR, entry.name);
     const dst = path.join(archiveDir, entry.name);
-    fs.renameSync(src, dst);
+    await fsPromises.rename(src, dst);
   }
   return archiveDir;
 }
@@ -1295,7 +1308,7 @@ function formatCoverageLine(coverage) {
   return `${coverage.scannedCount}/${coverage.includeableCount} includeable scanned, ${coverage.scannedCount}/${coverage.uniqueCandidateCount} unique candidates, capped=${coverage.capped}`;
 }
 
-function writeCoverageReport(rows, runDir) {
+async function writeCoverageReport(rows, runDir) {
   const covered = rows.filter((row) => row.coverage);
   if (covered.length === 0) return null;
 
@@ -1338,12 +1351,15 @@ function writeCoverageReport(rows, runDir) {
 
   const runFilePath = path.join(runDir, 'scan-coverage-report.json');
   const currentFilePath = path.join(SCAN_CURRENT_DIR, 'scan-coverage-report.json');
-  fs.writeFileSync(runFilePath, JSON.stringify(report, null, 2), 'utf8');
-  fs.copyFileSync(runFilePath, currentFilePath);
+  const reportJson = JSON.stringify(report, null, 2);
+  await Promise.all([
+    fsPromises.writeFile(runFilePath, reportJson, 'utf8'),
+    fsPromises.writeFile(currentFilePath, reportJson, 'utf8')
+  ]);
   return { runFilePath, currentFilePath };
 }
 
-function writeRunManifest(runDir, rows, options) {
+async function writeRunManifest(runDir, rows, options) {
   const manifest = {
     generatedAt: new Date().toISOString(),
     runStamp: RUN_STAMP,
@@ -1366,8 +1382,11 @@ function writeRunManifest(runDir, rows, options) {
 
   const runManifestPath = path.join(runDir, 'run_manifest.json');
   const currentManifestPath = path.join(SCAN_CURRENT_DIR, 'run_manifest.json');
-  fs.writeFileSync(runManifestPath, JSON.stringify(manifest, null, 2), 'utf8');
-  fs.copyFileSync(runManifestPath, currentManifestPath);
+  const manifestJson = JSON.stringify(manifest, null, 2);
+  await Promise.all([
+    fsPromises.writeFile(runManifestPath, manifestJson, 'utf8'),
+    fsPromises.writeFile(currentManifestPath, manifestJson, 'utf8')
+  ]);
   return { runManifestPath, currentManifestPath };
 }
 
@@ -1382,7 +1401,7 @@ async function main() {
     return;
   }
 
-  const discovery = discoverDevModePages();
+  const discovery = await discoverDevModePages();
   const viewports = resolveViewports(cli.viewportSpecs, cli.multiViewport);
   const includeViewportInFilename = cli.viewportSpecs.length > 0 || cli.multiViewport || viewports.length > 1;
   const rawPage = cli.positionals[0];
@@ -1408,14 +1427,16 @@ async function main() {
   const chromiumBrowser = ensurePlaywrightChromium();
 
   const targets = resolveTargets(rawPage, cli.scanAll, discovery.pages);
-  ensureDir(SCAN_ROOT_DIR);
-  ensureDir(SCAN_RUNS_DIR);
-  ensureDir(SCAN_CURRENT_DIR);
-  ensureDir(SCAN_ARCHIVE_DIR);
+  await Promise.all([
+    ensureDir(SCAN_ROOT_DIR),
+    ensureDir(SCAN_RUNS_DIR),
+    ensureDir(SCAN_CURRENT_DIR),
+    ensureDir(SCAN_ARCHIVE_DIR),
+  ]);
 
-  const archivedCurrentDir = rotateCurrentSnapshotsToArchive();
+  const archivedCurrentDir = await rotateCurrentSnapshotsToArchive();
   const runDir = path.join(SCAN_RUNS_DIR, RUN_STAMP);
-  ensureDir(runDir);
+  await ensureDir(runDir);
 
   console.log('\nDesign Telemetry Scanner');
   console.log(`  Base URL   : ${BASE_URL}`);
@@ -1446,11 +1467,13 @@ async function main() {
         try {
           const result = await scanPage(browser, target, vp);
           const viewportPart = includeViewportInFilename ? vpKey : null;
-          const previousScan = cli.diff ? findPreviousScan(result.pageName, viewportPart) : null;
+          const previousScan = cli.diff ? await findPreviousScan(result.pageName, viewportPart) : null;
           const scanFile = runArtifactPath(runDir, result.pageName, 'scan', viewportPart);
           const currentScanFile = currentArtifactPath(result.pageName, 'scan', viewportPart);
-          fs.writeFileSync(scanFile, result.json, 'utf8');
-          fs.copyFileSync(scanFile, currentScanFile);
+          await Promise.all([
+            fsPromises.writeFile(scanFile, result.json, 'utf8'),
+            fsPromises.writeFile(currentScanFile, result.json, 'utf8')
+          ]);
           console.log(`  Saved      : ${path.basename(scanFile)} (run + current)`);
           if ((result.attempts || 1) > 1) {
             console.log(`  Retries    : succeeded on attempt ${result.attempts}/${SCAN_MAX_ATTEMPTS}`);
@@ -1466,12 +1489,15 @@ async function main() {
 
           if (cli.diff) {
             if (previousScan) {
-              const prevJson = fs.readFileSync(previousScan, 'utf8');
+              const prevJson = await fsPromises.readFile(previousScan, 'utf8');
               const diff = diffScans(prevJson, result.json);
               const diffFile = runArtifactPath(runDir, result.pageName, 'diff', viewportPart);
               const currentDiffFile = currentArtifactPath(result.pageName, 'diff', viewportPart);
-              fs.writeFileSync(diffFile, JSON.stringify(diff, null, 2), 'utf8');
-              fs.copyFileSync(diffFile, currentDiffFile);
+              const diffJson = JSON.stringify(diff, null, 2);
+              await Promise.all([
+                fsPromises.writeFile(diffFile, diffJson, 'utf8'),
+                fsPromises.writeFile(currentDiffFile, diffJson, 'utf8')
+              ]);
               const s = diff.summary;
               console.log(`  Diff       : ${s.changed} changed, ${s.added} added, ${s.removed} removed -> ${path.basename(diffFile)}`);
               results.push({
@@ -1516,7 +1542,7 @@ async function main() {
       }
     }
   } catch (err) {
-    removeDirIfEmpty(runDir);
+    await removeDirIfEmpty(runDir);
     throw err;
   } finally {
     if (browser) await browser.close();
@@ -1530,7 +1556,7 @@ async function main() {
   }
   console.log('-'.repeat(84));
 
-  const manifest = writeRunManifest(runDir, results, {
+  const manifest = await writeRunManifest(runDir, results, {
     diff: cli.diff,
     coverageReport: cli.coverageReport,
     multiViewport: cli.multiViewport,
@@ -1542,7 +1568,7 @@ async function main() {
   console.log(`  Run manifest: ${path.basename(manifest.runManifestPath)} (run + current)`);
 
   if (cli.coverageReport) {
-    const coveragePaths = writeCoverageReport(results, runDir);
+    const coveragePaths = await writeCoverageReport(results, runDir);
     if (coveragePaths) {
       console.log(`  Coverage report: ${path.basename(coveragePaths.runFilePath)} (run + current)`);
     } else {
