@@ -3,3 +3,4 @@ appendix/
 node_modules/
 .claude/
 .specstory/
+app/dist/

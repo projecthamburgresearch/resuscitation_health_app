@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/dev_server.js",
-    "start": "node scripts/dev_server.js",
-    "build": "node -e \"console.log('No build step for static app.')\"",
+    "dev": "npm run dev --prefix app",
+    "dev:legacy": "node scripts/dev_server.js",
+    "start": "npm run dev --prefix app",
+    "build": "npm run build --prefix app",
     "blueprint:run:current": "node scripts/blueprint_run_current.js",
     "blueprint:run:current:bootstrap": "node scripts/blueprint_run_current.js --bootstrap-venv",
     "blueprint:run:warden": "node scripts/blueprint_warden_run_resuscitation.js --lane warden",

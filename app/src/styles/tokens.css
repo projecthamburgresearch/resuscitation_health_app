@@ -1,0 +1,26 @@
+/* === DESIGN TOKENS === */
+:root {
+    /* Geometry */
+    --wheel-diameter: 300px;
+    --wheel-radius: 150px;
+    --card-width: 180px;
+    --card-height: 210px;
+    --preview-width: 130px;
+    --preview-height: 95px;
+    --history-width: 120px;
+    --history-height: 85px;
+    --knob-size: 30px;
+
+    /* Layout */
+    --header-h: 50px;
+    --footer-h: 100px;
+    --zone-top-h: 170px;
+
+    /* Colors */
+    --primary: #1a1a1a;
+    --bg: #f5f5f5;
+    --card-bg: #d0d0d0;
+    --accent-red: #d32f2f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }

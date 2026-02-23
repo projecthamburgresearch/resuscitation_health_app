@@ -1,0 +1,222 @@
+/* === 3-DOT MENU & SETTINGS === */
+.menu-panel {
+    position: absolute;
+    top: var(--header-h);
+    right: 0;
+    width: 280px;
+    max-height: 0;
+    overflow: hidden;
+    background: white;
+    border: 2px solid var(--primary);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    z-index: 200;
+    transition: max-height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.2s ease;
+    opacity: 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.menu-panel.open {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.menu-title {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.menu-close-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 0 4px;
+    color: #666;
+}
+
+.menu-items {
+    padding: 8px 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+}
+
+.menu-item:hover {
+    background: #f0f0f0;
+}
+
+.menu-item-icon {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Protocol list */
+.protocol-list {
+    padding: 8px;
+    border-top: 1px solid #e0e0e0;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.protocol-item {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    background: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.protocol-item:hover {
+    background: #f5f5f5;
+    border-color: var(--primary);
+}
+
+.protocol-title {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.protocol-meta {
+    font-size: 11px;
+    color: #888;
+}
+
+.loading {
+    padding: 16px;
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+}
+
+/* Settings panel */
+.settings-panel-inner {
+    padding: 12px 16px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.settings-group {
+    margin-bottom: 12px;
+}
+
+.settings-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #666;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.settings-options {
+    display: flex;
+    gap: 6px;
+}
+
+.settings-btn {
+    flex: 1;
+    padding: 6px 8px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.settings-btn:hover {
+    background: #f0f0f0;
+}
+
+.settings-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* About */
+.about-content {
+    text-align: center;
+    padding: 8px 0;
+}
+
+.about-content h3 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.about-content p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.about-source {
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+}
+
+/* === THEME OVERRIDES === */
+[data-theme="dark"] {
+    --bg: #1a1a1a;
+    --primary: #e0e0e0;
+    --card-bg: #333;
+    --accent-red: #ef5350;
+}
+
+[data-theme="dark"] body {
+    background: #111;
+}
+
+[data-theme="dark"] header,
+[data-theme="dark"] footer {
+    background: #222;
+}
+
+[data-theme="dark"] .menu-panel {
+    background: #222;
+}
+
+[data-theme="dark"] .card-header,
+[data-theme="dark"] .card-body {
+    color: #ccc;
+}
+
+[data-theme="high-contrast"] {
+    --bg: #fff;
+    --primary: #000;
+    --card-bg: #ffff00;
+    --accent-red: #ff0000;
+}
+
+/* Font scale */
+.card-title { font-size: calc(15px * var(--font-scale, 1)); }
+.card-body { font-size: calc(12px * var(--font-scale, 1)); }
+.card-header { font-size: calc(10px * var(--font-scale, 1)); }

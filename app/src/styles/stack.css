@@ -1,0 +1,59 @@
+/* === ENHANCED CARD ZONES — 3D PERSPECTIVE STACK === */
+
+/* Preview Zone (Top) — Vertical Stack with Depth */
+#zone-top {
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+
+.preview-card {
+    transform: translateY(calc(var(--depth, 0) * -12px))
+               translateZ(calc(var(--depth, 0) * -60px))
+               scale(calc(1 - var(--depth, 0) * 0.06));
+    opacity: calc(1 - var(--depth, 0) * 0.15);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.4s ease;
+}
+
+/* History Zone (Bottom) — Mirror/Chirality */
+#zone-bottom {
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+
+.history-card {
+    transform: translateY(calc(var(--depth, 0) * 12px))
+               translateZ(calc(var(--depth, 0) * -60px))
+               scale(calc(1 - var(--depth, 0) * 0.06));
+    opacity: calc(0.7 - var(--depth, 0) * 0.15);
+    filter: grayscale(calc(var(--depth, 0) * 30%));
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.4s ease;
+}
+
+/* Active Card — Subtle 3D Entrance Animation */
+#active-card.card-enter {
+    animation: card-arrive 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@keyframes card-arrive {
+    from {
+        transform: rotateY(-8deg) translateZ(-20px) scale(0.95);
+        opacity: 0.7;
+    }
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+/* Decision option stacks with depth */
+.decision-option-container {
+    perspective: 600px;
+    transform-style: preserve-3d;
+}
+
+.preview-stack-card {
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.3s ease;
+}
