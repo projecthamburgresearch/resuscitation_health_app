@@ -442,7 +442,7 @@
         <div id="zone-middle">
             <div id="wheel"></div>
             <div id="active-card"></div>
-            <div id="knob"></div>
+            <div id="knob" tabindex="0" role="slider" aria-label="Navigation Control" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Start"></div>
         </div>
         <div id="zone-bottom"></div>
     </div>
@@ -1278,6 +1278,11 @@ function render() {
     renderPreviewZone(card);
     renderHistoryZone();
     renderChecklist(card);
+
+    // 4. Update ARIA
+    knob.setAttribute('aria-valuetext', card.content.title);
+    knob.setAttribute('aria-valuenow', state.anchorIndex);
+    knob.setAttribute('aria-valuemax', state.anchors.length);
 }
 
 function renderActiveCard(card) {
@@ -2139,6 +2144,55 @@ knob.addEventListener('click', (e) => {
     const card = DECK[state.currentId];
     if (!canTapAdvance(card)) return;
     advance({ source: 'knob-tap' });
+});
+
+// Keyboard Navigation
+knob.addEventListener('keydown', (e) => {
+    const card = DECK[state.currentId];
+    if (!card) return;
+
+    // Arrow Left: Rewind
+    if (e.key === 'ArrowLeft') {
+        rewind();
+        e.preventDefault();
+        return;
+    }
+
+    // Arrow Right: Advance
+    if (e.key === 'ArrowRight') {
+        if (state.wheel.mode === 'DECISION') {
+            if (!state.decisionTapped) {
+                // Select first option if none selected
+                selectDecisionOption(state.decisionIndex || 0);
+            } else {
+                // Confirm and advance
+                advance({ source: 'keyboard', splitConfirmed: true });
+            }
+        } else {
+            advance({ source: 'keyboard' });
+        }
+        e.preventDefault();
+        return;
+    }
+
+    // Up/Down: Cycle Options (Decision Mode only)
+    if (state.wheel.mode === 'DECISION') {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+             const options = card.transitions.options || [];
+             if (options.length === 0) return;
+
+             let newIndex = state.decisionIndex;
+             if (e.key === 'ArrowDown') newIndex++;
+             if (e.key === 'ArrowUp') newIndex--;
+
+             // Wrap around
+             if (newIndex >= options.length) newIndex = 0;
+             if (newIndex < 0) newIndex = options.length - 1;
+
+             selectDecisionOption(newIndex);
+             e.preventDefault();
+        }
+    }
 });
 
 initAlgorithmFromUrl();
