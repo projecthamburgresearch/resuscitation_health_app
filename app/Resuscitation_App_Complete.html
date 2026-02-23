@@ -20,6 +20,7 @@
             /* Layout */
             --header-h: 50px;
             --footer-h: 100px;
+            --zone-top-h: 170px;
             
             /* Colors */
             --primary: #1a1a1a;
@@ -33,7 +34,8 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background: #222;
-            min-height: 100vh;
+            height: 100dvh;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -41,14 +43,39 @@
         }
 
         #app {
-            width: 390px;
-            height: 844px;
+            width: 100%;
+            height: 100%;
+            max-width: 390px;
+            max-height: 844px;
             background: var(--bg);
             position: relative;
             display: flex;
             flex-direction: column;
             border: 2px solid var(--primary);
             overflow: hidden;
+        }
+
+        @media (max-width: 450px) {
+             #app {
+                 max-width: 100%;
+                 max-height: 100%;
+                 border: none;
+             }
+        }
+
+        @media (max-height: 750px) {
+            :root {
+                --wheel-diameter: 240px;
+                --wheel-radius: 120px;
+                --card-width: 144px;
+                --card-height: 168px;
+                --preview-width: 100px;
+                --preview-height: 73px;
+                --knob-size: 26px;
+                --header-h: 45px;
+                --footer-h: 80px;
+                --zone-top-h: 130px;
+            }
         }
 
         /* === HEADER === */
@@ -77,7 +104,7 @@
 
         /* === ZONE: TOP (Preview Stack) === */
         #zone-top {
-            height: 170px;
+            height: var(--zone-top-h);
             position: relative;
             display: flex;
             justify-content: center;
@@ -96,6 +123,7 @@
 
         /* The Wheel Circle */
         #wheel {
+            /* Responsive diameter */
             width: var(--wheel-diameter);
             height: var(--wheel-diameter);
             border: 1px solid var(--primary);
@@ -667,9 +695,24 @@ const modalOverlay = document.getElementById('modal-overlay');
 // ========================================
 // WHEEL PHYSICS
 // ========================================
-const WHEEL_RADIUS = 150;
-const KNOB_OFFSET = 15; // Half of knob size
+let WHEEL_RADIUS = 150;
+let KNOB_OFFSET = 15;
 const THRESHOLD_DEG = 25;
+
+function updateDimensions() {
+    const style = getComputedStyle(document.documentElement);
+    WHEEL_RADIUS = parseInt(style.getPropertyValue('--wheel-radius')) || 150;
+    const knobSize = parseInt(style.getPropertyValue('--knob-size')) || 30;
+    KNOB_OFFSET = knobSize / 2;
+
+    // Force redraw of knob
+    if (state.wheel && typeof state.wheel.angle === 'number') {
+        setKnobPosition(state.wheel.angle);
+    }
+}
+window.addEventListener('resize', updateDimensions);
+// Initial call
+updateDimensions();
 
 function degToPosition(deg) {
     const mathDeg = deg - 90; // Convert: 0° top → 0° right
@@ -683,8 +726,9 @@ function degToPosition(deg) {
 function setKnobPosition(deg) {
     const pos = degToPosition(deg);
     const zoneMiddle = document.getElementById('zone-middle');
-    const offsetX = (zoneMiddle.offsetWidth - 300) / 2;
-    const offsetY = (zoneMiddle.offsetHeight - 300) / 2;
+    const diameter = WHEEL_RADIUS * 2;
+    const offsetX = (zoneMiddle.offsetWidth - diameter) / 2;
+    const offsetY = (zoneMiddle.offsetHeight - diameter) / 2;
     knob.style.left = (offsetX + pos.x) + 'px';
     knob.style.top = (offsetY + pos.y) + 'px';
 }
