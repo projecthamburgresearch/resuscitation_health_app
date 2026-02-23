@@ -169,8 +169,11 @@
             z-index: 100;
             cursor: grab;
             box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-            transition: left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            left: 50%;
+            top: 50%;
+            margin-left: calc(var(--knob-size) / -2);
+            margin-top: calc(var(--knob-size) / -2);
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         #knob:active { cursor: grabbing; }
         #knob.dragging { transition: none; }
@@ -904,6 +907,7 @@ function applyAlgorithm(rawAlgorithm, sourceLabel) {
     }
     // Anchor angle will be set by render() → syncAnchors()
     state.wheel.angle = 330;
+    state.wheel.visualAngle = 330; // Initialize visual angle for smooth transforms
 
     resetTimerState();
     syncHeaderFromAlgorithm();
@@ -1052,13 +1056,26 @@ function degToPosition(deg) {
 }
 
 function setKnobPosition(deg) {
-    const pos = degToPosition(deg);
-    const zoneMiddle = document.getElementById('zone-middle');
-    const diameter = WHEEL_RADIUS * 2;
-    const offsetX = (zoneMiddle.offsetWidth - diameter) / 2;
-    const offsetY = (zoneMiddle.offsetHeight - diameter) / 2;
-    knob.style.left = (offsetX + pos.x) + 'px';
-    knob.style.top = (offsetY + pos.y) + 'px';
+    // Ensure we have a tracking variable for visual continuity
+    if (typeof state.wheel.visualAngle === 'undefined') {
+        state.wheel.visualAngle = deg;
+    }
+
+    const targetDeg = normalizeDegrees(deg);
+    const lastVisual = state.wheel.visualAngle;
+    const normalizedLast = normalizeDegrees(lastVisual);
+
+    let diff = targetDeg - normalizedLast;
+    // Shortest path logic
+    if (diff > 180) diff -= 360;
+    if (diff < -180) diff += 360;
+
+    const newVisual = lastVisual + diff;
+    state.wheel.visualAngle = newVisual;
+
+    // Apply transform: rotate(angle) -> move outward (Up) -> counter-rotate to keep orientation
+    // Note: 0 deg is Up (12 o'clock). translateY(-R) moves Up.
+    knob.style.transform = `rotate(${newVisual}deg) translateY(-${WHEEL_RADIUS}px) rotate(-${newVisual}deg)`;
 }
 
 // ========================================
