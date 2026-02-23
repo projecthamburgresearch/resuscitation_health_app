@@ -45,17 +45,18 @@ function normalizeSlugFromHtmlRel(relFile) {
   return noExt.replace(/^\/+/, '').replace(/\/+$/, '');
 }
 
-function discoverMainPages() {
+function discoverPages(dir, baseRelDir, fsModule = fs, skipDirs = []) {
   const pages = new Set();
 
-  function walk(dir) {
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
+  function walk(currentDir) {
+    if (!fsModule.existsSync(currentDir)) return;
+    const entries = fsModule.readdirSync(currentDir, { withFileTypes: true });
     for (const entry of entries) {
-      const abs = path.join(dir, entry.name);
+      const abs = path.join(currentDir, entry.name);
 
       if (entry.isDirectory()) {
         if (entry.name.startsWith('.')) continue;
-        if (entry.name === 'dev-mode') continue;
+        if (skipDirs.includes(entry.name)) continue;
         walk(abs);
         continue;
       }
@@ -63,47 +64,35 @@ function discoverMainPages() {
       if (!entry.isFile()) continue;
       if (!HTML_FILE_RE.test(entry.name)) continue;
 
-      const rel = path.relative(APP_DIR, abs).replace(/\\/g, '/');
+      const rel = path.relative(baseRelDir, abs).replace(/\\/g, '/');
       const slug = normalizeSlugFromHtmlRel(rel);
       pages.add(slug);
     }
   }
 
-  if (!fs.existsSync(APP_DIR)) return [];
-  walk(APP_DIR);
+  if (!fsModule.existsSync(dir)) return [];
+  walk(dir);
   return Array.from(pages).sort();
 }
 
-function discoverDevModePages() {
-  const pages = new Set();
+function calculateParity(mainPages, devPages, opts = { allowExtraDev: false }) {
+  const mainSet = new Set(mainPages);
+  const devSet = new Set(devPages);
 
-  function walk(dir) {
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
-    for (const entry of entries) {
-      const abs = path.join(dir, entry.name);
+  const missingInDev = mainPages.filter((slug) => !devSet.has(slug));
+  const extraInDev = devPages.filter((slug) => !mainSet.has(slug));
 
-      if (entry.isDirectory()) {
-        if (entry.name.startsWith('.')) continue;
-        walk(abs);
-        continue;
-      }
+  const failForMissing = missingInDev.length > 0;
+  const failForExtra = !opts.allowExtraDev && extraInDev.length > 0;
+  const failed = failForMissing || failForExtra;
 
-      if (!entry.isFile()) continue;
-      if (!HTML_FILE_RE.test(entry.name)) continue;
-
-      const rel = path.relative(DEV_MODE_DIR, abs).replace(/\\/g, '/');
-      const slug = normalizeSlugFromHtmlRel(rel);
-      pages.add(slug);
-    }
-  }
-
-  if (!fs.existsSync(DEV_MODE_DIR)) return [];
-  walk(DEV_MODE_DIR);
-  return Array.from(pages).sort();
-}
-
-function label(slug) {
-  return slug || 'home';
+  return {
+    success: !failed,
+    missingInDev,
+    extraInDev,
+    failForMissing,
+    failForExtra
+  };
 }
 
 function main() {
@@ -118,44 +107,46 @@ function main() {
     process.exit(1);
   }
 
-  const mainPages = discoverMainPages();
-  const devPages = discoverDevModePages();
+  const mainPages = discoverPages(APP_DIR, APP_DIR, fs, ['dev-mode']);
+  const devPages = discoverPages(DEV_MODE_DIR, DEV_MODE_DIR, fs, []);
 
-  const mainSet = new Set(mainPages);
-  const devSet = new Set(devPages);
-
-  const missingInDev = mainPages.filter((slug) => !devSet.has(slug));
-  const extraInDev = devPages.filter((slug) => !mainSet.has(slug));
+  const result = calculateParity(mainPages, devPages, opts);
 
   console.log('\nDev-Mode Parity Check');
   console.log(`  Main pages   : ${mainPages.length}`);
   console.log(`  Dev pages    : ${devPages.length}`);
-  console.log(`  Missing in dev-mode : ${missingInDev.length}`);
-  console.log(`  Extra in dev-mode   : ${extraInDev.length}`);
+  console.log(`  Missing in dev-mode : ${result.missingInDev.length}`);
+  console.log(`  Extra in dev-mode   : ${result.extraInDev.length}`);
 
-  if (missingInDev.length > 0) {
+  if (result.missingInDev.length > 0) {
     console.log('\nMissing in dev-mode:');
-    for (const slug of missingInDev) console.log(`  - ${label(slug)}`);
+    for (const slug of result.missingInDev) console.log(`  - ${slug || 'home'}`);
   }
 
-  if (extraInDev.length > 0) {
+  if (result.extraInDev.length > 0) {
     console.log('\nExtra in dev-mode (no matching main page):');
-    for (const slug of extraInDev) console.log(`  - ${label(slug)}`);
+    for (const slug of result.extraInDev) console.log(`  - ${slug || 'home'}`);
   }
 
-  const failForMissing = missingInDev.length > 0;
-  const failForExtra = !opts.allowExtraDev && extraInDev.length > 0;
-  const failed = failForMissing || failForExtra;
-
-  if (failed) {
+  if (!result.success) {
     console.log('\nParity status: FAIL');
-    if (failForExtra) console.log('Reason: extra dev-mode pages are not allowed in strict mode.');
+    if (result.failForExtra) console.log('Reason: extra dev-mode pages are not allowed in strict mode.');
   } else {
     console.log('\nParity status: PASS');
   }
 
   console.log('');
-  if (failed) process.exit(1);
+  if (!result.success) process.exit(1);
 }
 
-main();
+if (require.main === module) {
+  main();
+}
+
+module.exports = {
+  normalizeSlugFromHtmlRel,
+  discoverPages,
+  calculateParity,
+  APP_DIR,
+  DEV_MODE_DIR
+};
