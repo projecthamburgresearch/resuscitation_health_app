@@ -43,9 +43,18 @@ export function initMenu(): void {
   document.getElementById('app')!.appendChild(menuEl);
 
   // Wire menu button
-  const menuBtn = document.querySelector('.header-icon:last-child');
+  const menuBtn = document.getElementById('btn-menu');
   if (menuBtn) {
     menuBtn.addEventListener('click', toggleMenu);
+  }
+
+  // Wire search button
+  const searchBtn = document.getElementById('btn-search');
+  if (searchBtn) {
+    searchBtn.addEventListener('click', () => {
+      if (!menuOpen) openMenu();
+      showSearch();
+    });
   }
 
   // Wire menu actions via delegation
