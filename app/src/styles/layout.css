@@ -36,7 +36,21 @@ header {
 }
 .app-title { font-weight: 700; font-size: 14px; }
 .header-icons { display: flex; gap: 10px; align-items: center; }
-.header-icon { width: 22px; height: 22px; cursor: pointer; }
+.header-icon-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    transition: background-color 0.2s;
+}
+.header-icon-btn:hover { background-color: rgba(0,0,0,0.05); }
+.header-icon-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.header-icon { width: 22px; height: 22px; pointer-events: none; }
 
 /* === STAGE (Main Area) === */
 #stage {
