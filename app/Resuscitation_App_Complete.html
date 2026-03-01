@@ -91,7 +91,13 @@
         }
         .app-title { font-weight: 700; font-size: 14px; }
         .header-icons { display: flex; gap: 10px; align-items: center; }
-        .header-icon { width: 22px; height: 22px; cursor: pointer; }
+        .header-icon {
+            width: 22px; height: 22px; cursor: pointer;
+            background: none; border: none; padding: 0;
+            display: flex; align-items: center; justify-content: center;
+            color: inherit;
+        }
+        .header-icon svg { width: 100%; height: 100%; }
 
         /* === STAGE (Main Area) === */
         #stage {
@@ -452,12 +458,16 @@
     <header>
         <div class="app-title">Resuscitation Handbook</div>
         <div class="header-icons">
-            <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-            </svg>
-            <svg class="header-icon" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/>
-            </svg>
+            <button class="header-icon" aria-label="Search" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                </svg>
+            </button>
+            <button class="header-icon" aria-label="Menu" type="button">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/>
+                </svg>
+            </button>
         </div>
     </header>
 
