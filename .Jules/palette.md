@@ -1,0 +1,3 @@
+## 2023-10-27 - Added ARIA labels to header icons
+**Learning:** Naked SVG elements used as interactive icons are inaccessible to screen readers. They need to be wrapped in a semantic `<button>` element with an `aria-label` attribute to properly convey their purpose.
+**Action:** When implementing icon-only clickable elements, always wrap them in a `<button>` tag and provide a descriptive `aria-label`. Use CSS resets (e.g., `background: transparent; border: none; padding: 0; color: inherit;`) to maintain the intended visual design without default button styling.
