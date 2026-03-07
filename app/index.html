@@ -16,12 +16,16 @@
     <header>
         <div class="app-title">Resuscitation Handbook</div>
         <div class="header-icons">
-            <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-            </svg>
-            <svg class="header-icon" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/>
-            </svg>
+            <button class="header-icon" aria-label="Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                </svg>
+            </button>
+            <button class="header-icon" aria-label="Menu">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/>
+                </svg>
+            </button>
         </div>
     </header>
 
@@ -40,7 +44,7 @@
     <footer>
         <div class="footer-row">
             <div id="checklist-area"></div>
-            <div class="overflow-btn">&#8942;</div>
+            <button class="overflow-btn" aria-label="More options">&#8942;</button>
         </div>
         <div class="footer-row footer-bottom">
             <div id="ticker-text"></div>
