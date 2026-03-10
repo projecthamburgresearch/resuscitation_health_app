@@ -24,15 +24,6 @@ function copyStaticAssets() {
           copyFileSync(resolve(iconSrc, f), resolve(iconDest, f));
         }
       } catch { /* ignore if dirs don't exist */ }
-
-      // Dev-mode overlay: single source in app/dev-mode/ so built dist has parity
-      try {
-        mkdirSync(resolve(outDir, 'dev-mode'), { recursive: true });
-        copyFileSync(
-          resolve(root, 'dev-mode/dev-mode-overlay.js'),
-          resolve(outDir, 'dev-mode/dev-mode-overlay.js')
-        );
-      } catch { /* ignore */ }
     },
   };
 }
@@ -42,7 +33,7 @@ const base = process.env.BASE_PATH ?? '/';
 
 export default defineConfig({
   base,
-  root: '.',
+  root: resolve(__dirname),
   publicDir: 'public',
   resolve: {
     alias: {
