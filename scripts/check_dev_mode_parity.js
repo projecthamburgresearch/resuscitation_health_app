@@ -56,6 +56,7 @@ function discoverMainPages() {
       if (entry.isDirectory()) {
         if (entry.name.startsWith('.')) continue;
         if (entry.name === 'dev-mode') continue;
+        if (entry.name === 'dist') continue; // Vite/build output, not a source page to mirror
         walk(abs);
         continue;
       }

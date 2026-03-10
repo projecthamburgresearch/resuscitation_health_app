@@ -39,6 +39,24 @@
     return text;
   }
 
+  /** Base path for the main app (Vite base). e.g. '/' or '/resuscitation_health_app/' */
+  function getAppBase() {
+    const pathname = window.location.pathname || '/';
+    if (/^\/dev-mode\/?$/.test(pathname)) return '/';
+    const match = pathname.match(/^(.+)\/dev-mode\/?/);
+    if (match) {
+      const prefix = match[1];
+      return prefix.endsWith('/') ? prefix : prefix + '/';
+    }
+    return '/';
+  }
+
+  function resolveAbsolutePath(relativePath) {
+    const base = getAppBase();
+    const path = (relativePath || '/').replace(/^\//, '');
+    return base === '/' ? (path ? '/' + path : '/') : (base.replace(/\/$/, '') + (path ? '/' + path : ''));
+  }
+
   function appendAlgoParam(pathname, algoFile) {
     if (!algoFile) return pathname;
     const base = `https://devmode.local${pathname.startsWith('/') ? pathname : `/${pathname}`}`;
@@ -60,7 +78,7 @@
   }
 
   const targetSpec = resolveTargetSpec();
-  preview.src = targetSpec.targetPath;
+  preview.src = resolveAbsolutePath(targetSpec.targetPath);
   targetEl.textContent = targetSpec.algoFile
     ? `target=${targetSpec.targetPath} algo=${targetSpec.algoFile}`
     : `target=${targetSpec.targetPath}`;
@@ -521,6 +539,17 @@
     return 'default';
   }
 
+  /** Detect if the iframe document is the Vite app (module script to /src/ or /assets/) */
+  function detectFramework(doc) {
+    if (!doc || !doc.documentElement) return 'static-html-devmode';
+    const scripts = doc.querySelectorAll('script[type="module"][src]');
+    for (const s of scripts) {
+      const src = (s.getAttribute('src') || '').trim();
+      if (src.includes('/src/') || src.includes('/assets/')) return 'vite';
+    }
+    return 'static-html-devmode';
+  }
+
   function buildInventory(maxElements) {
     const ctx = getPreviewContext();
     if (!ctx) throw new Error('Preview is not ready');
@@ -558,7 +587,7 @@
         count: elements.length,
         coverage: collected.coverage,
         project: {
-          framework: 'static-html-devmode',
+          framework: detectFramework(doc),
           styling: 'css',
           themeStrategy: 'runtime-snapshot',
         },

@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Dev-mode mirror of the main Vite app: iframe loads main app; overlay provides scan/telemetry for design parity and scripts/scan.js -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#1a1a1a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Resuscitation App - Dev Mode</title>
   <style>
     :root {
@@ -140,7 +144,7 @@
   </style>
 </head>
 <body>
-  <iframe id="devmode-preview" src="/" title="App Preview"></iframe>
+  <iframe id="devmode-preview" data-initial-src="/" title="App Preview"></iframe>
 
   <div class="devmode-overlay-layer" id="devmode-overlay-layer" aria-hidden="true"></div>
 
