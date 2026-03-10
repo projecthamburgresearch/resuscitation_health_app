@@ -46,7 +46,7 @@ export function renderPreviewZone(card: Card): void {
 
       const optCard = document.createElement('div');
       optCard.className = `card decision-option-card ${isSelected ? 'selected' : ''}`;
-      optCard.style.zIndex = '10';
+      optCard.style.zIndex = '6';
       optCard.innerHTML = `
         <div class="card-header">${card.content.title}</div>
         <div class="card-body small">${card.content.body || ''}</div>
@@ -72,8 +72,14 @@ export function renderPreviewZone(card: Card): void {
     const depth = upcoming.length - 1 - i;
     const el = document.createElement('div');
     el.className = 'card preview-card';
+    el.dataset.depth = String(depth);
+    if (depth === 0) {
+      el.classList.add('preview-card-primary');
+    } else {
+      el.classList.add('preview-card-stacked');
+    }
     el.style.setProperty('--depth', String(depth));
-    el.style.zIndex = String(10 - depth);
+    el.style.zIndex = String(6 - depth);
 
     let iconHtml = '';
     if (c.type === 'decision') {

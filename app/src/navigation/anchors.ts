@@ -1,7 +1,7 @@
 // === ANCHOR-POINT NAVIGATION ENGINE ===
-import type { Anchor, Card, WheelArc } from '../types';
+import type { Anchor, Card, HistoryEntry, WheelArc } from '../types';
 import { state, DECK, RUNTIME_ALGORITHM } from '../state/store';
-import { normalizeWheelArc } from '../algorithms/loader';
+import { normalizeDegrees, normalizeWheelArc } from '../algorithms/loader';
 
 function getCurrentWheelArc(): WheelArc {
   const meta = RUNTIME_ALGORITHM && RUNTIME_ALGORITHM.algorithm_meta
@@ -102,25 +102,43 @@ export function computeForwardPath(): string[] {
 }
 
 function computeAnchors(): Anchor[] {
-  const path = computeForwardPath();
-  const arc = getCurrentWheelArc();
+  const historyTrail: HistoryEntry[] = state.history;
+  const trail = [
+    ...historyTrail,
+    {
+      card_id: state.currentId,
+      visit_key: state.currentVisitKey,
+    },
+  ];
+  if (trail.length === 0) return [];
 
-  if (path.length === 0) return [];
-  if (path.length === 1) {
-    return [{ id: path[0], angle: arc.start_degrees }];
-  }
+  return trail.map((entry) => {
+    const card = DECK[entry.card_id];
+    const explicitAngle = card && card.wheel_config && typeof card.wheel_config.position_degrees === 'number'
+      ? normalizeDegrees(card.wheel_config.position_degrees)
+      : null;
 
-  return path.map((id, i) => ({
-    id,
-    angle: angleOnArc(arc, i / (path.length - 1)),
-  }));
+    return {
+      id: entry.card_id,
+      angle: explicitAngle != null ? explicitAngle : getCurrentWheelArc().start_degrees,
+      visit_key: entry.visit_key,
+    };
+  });
 }
 
-function findAnchorIndex(cardId: string): number {
-  return state.anchors.findIndex((a) => a.id === cardId);
+function findAnchorIndex(cardId: string, visitKey: number): number {
+  return state.anchors.findIndex((a) => a.id === cardId && a.visit_key === visitKey);
 }
 
 export function currentAnchorAngle(): number {
+  const currentCard = DECK[state.currentId];
+  if (
+    currentCard
+    && currentCard.wheel_config
+    && typeof currentCard.wheel_config.position_degrees === 'number'
+  ) {
+    return normalizeDegrees(currentCard.wheel_config.position_degrees);
+  }
   if (state.anchorIndex >= 0 && state.anchorIndex < state.anchors.length) {
     return state.anchors[state.anchorIndex].angle;
   }
@@ -129,7 +147,7 @@ export function currentAnchorAngle(): number {
 
 export function syncAnchors(): void {
   state.anchors = computeAnchors();
-  const idx = findAnchorIndex(state.currentId);
+  const idx = findAnchorIndex(state.currentId, state.currentVisitKey);
   if (idx >= 0) {
     state.anchorIndex = idx;
   } else {

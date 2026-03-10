@@ -1,0 +1,880 @@
+<html lang="en" style="--font-scale: 1;"><head>
+  <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Resuscitation Handbook</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style type="text/css" data-vite-dev-id="C:/Users/Black Mamba/Desktop/Project hamburg 2026/resuscitation_health_app/app/src/styles/tokens.css">/* === DESIGN TOKENS === */
+:root {
+    /* Geometry */
+    --wheel-diameter: 300px;
+    --wheel-radius: 150px;
+    --card-width: 180px;
+    --card-height: 210px;
+    --preview-width: 130px;
+    --preview-height: 95px;
+    --history-width: 120px;
+    --history-height: 85px;
+    --knob-size: 30px;
+
+    /* Layout */
+    --header-h: 50px;
+    --footer-h: 100px;
+    --zone-top-h: 170px;
+
+    /* Colors */
+    --primary: #1a1a1a;
+    --bg: #f5f5f5;
+    --card-bg: #d0d0d0;
+    --accent-red: #d32f2f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+</style><style type="text/css" data-vite-dev-id="C:/Users/Black Mamba/Desktop/Project hamburg 2026/resuscitation_health_app/app/src/styles/layout.css">/* === APP SHELL LAYOUT === */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #222;
+    height: 100dvh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    max-width: 390px;
+    max-height: 844px;
+    background: var(--bg);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--primary);
+    overflow: hidden;
+}
+
+/* === HEADER === */
+header {
+    height: var(--header-h);
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--primary);
+    background: white;
+    flex-shrink: 0;
+}
+.app-title { font-weight: 700; font-size: 14px; }
+.header-icons { display: flex; gap: 10px; align-items: center; }
+.header-icon { width: 22px; height: 22px; cursor: pointer; }
+
+/* === STAGE (Main Area) === */
+#stage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* === ZONE: TOP (Preview Stack) === */
+#zone-top {
+    height: var(--zone-top-h);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 8px;
+}
+
+/* === ZONE: MIDDLE (Wheel + Active Card) === */
+#zone-middle {
+    height: calc(var(--wheel-diameter) + 20px);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* === ZONE: BOTTOM (History Stack) === */
+#zone-bottom {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 12px;
+}
+
+/* === FOOTER (Checklist + Timer) === */
+footer {
+    height: var(--footer-h);
+    padding: 8px 16px;
+    border-top: 2px solid var(--primary);
+    background: white;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+.footer-label { font-size: 11px; font-weight: 700; margin-bottom: 6px; color: #666; }
+.footer-row { display: flex; align-items: center; gap: 8px; flex: 1; }
+#checklist-area {
+    flex: 1;
+    border: 1px solid var(--primary);
+    padding: 6px 10px;
+    overflow-y: auto;
+    max-height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-content: flex-start;
+}
+.overflow-btn { font-size: 20px; font-weight: bold; cursor: pointer; padding: 0 5px; }
+.footer-bottom {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 4px;
+    margin-top: 4px;
+}
+#timer {
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 13px;
+    padding: 4px 8px;
+    border: 1px solid var(--primary);
+    background: white;
+    flex-shrink: 0;
+}
+
+/* === TOOLBOX MODAL === */
+#modal-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+}
+#modal-overlay.visible { display: flex; }
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+}
+.modal-title { font-weight: 700; margin-bottom: 15px; }
+.modal-close {
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/Black Mamba/Desktop/Project hamburg 2026/resuscitation_health_app/app/src/styles/wheel.css">/* === WHEEL === */
+#wheel {
+    width: var(--wheel-diameter);
+    height: var(--wheel-diameter);
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* === KNOB === */
+#knob {
+    width: var(--knob-size);
+    height: var(--knob-size);
+    background: var(--primary);
+    border-radius: 50%;
+    position: absolute;
+    z-index: 100;
+    cursor: grab;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    left: 50%;
+    top: 50%;
+    margin-left: calc(var(--knob-size) / -2);
+    margin-top: calc(var(--knob-size) / -2);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+#knob:active { cursor: grabbing; }
+#knob.dragging { transition: none; }
+</style><style type="text/css" data-vite-dev-id="C:/Users/Black Mamba/Desktop/Project hamburg 2026/resuscitation_health_app/app/src/styles/cards.css">/* === ACTIVE CARD === */
+#active-card {
+    width: var(--card-width);
+    height: var(--card-height);
+    background: var(--card-bg);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    overflow: hidden;
+}
+
+#active-card.cover-mode {
+    background: transparent;
+    border: none;
+}
+
+#active-card.loop-mode {
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+    0%, 100% { box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+    50% { box-shadow: 0 8px 35px rgba(211, 47, 47, 0.4); border-color: var(--accent-red); }
+}
+
+/* === CARD BASE === */
+.card {
+    background: var(--card-bg);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.preview-card {
+    width: var(--preview-width);
+    height: var(--preview-height);
+}
+
+.history-card {
+    width: var(--history-width);
+    height: var(--history-height);
+    opacity: 0.5;
+    filter: grayscale(80%);
+}
+
+/* === CARD CONTENT === */
+.card-header {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #666;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+.card-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    padding: 0 10px;
+}
+.card-body {
+    font-size: 12px;
+    color: #444;
+    padding: 0 10px;
+    line-height: 1.3;
+}
+
+/* === CARD ICONS === */
+.card-icon { position: absolute; width: 16px; height: 16px; opacity: 0.6; }
+.icon-tl { top: 6px; left: 6px; }
+.icon-tr { top: 6px; right: 6px; cursor: pointer; }
+.icon-bl { bottom: 6px; left: 6px; cursor: pointer; }
+.icon-br { bottom: 6px; right: 6px; }
+
+/* === DECISION INDICATOR === */
+.decision-indicator {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 14px;
+    height: 14px;
+}
+
+/* === COVER CARD === */
+.cover-content {
+    text-align: center;
+    padding: 20px;
+}
+.cover-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.cover-subtitle { font-size: 12px; color: #666; }
+
+/* === DECISION MODE === */
+#zone-top.decision-mode {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 12px;
+    padding-bottom: 8px;
+}
+
+.decision-option-container {
+    position: relative;
+    width: calc(var(--preview-width) + 20px);
+    height: calc(var(--preview-height) + 30px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.decision-option-container.selected {
+    /* Selected container is slightly larger to show stacks */
+}
+
+.preview-stack-card {
+    position: absolute;
+    width: var(--preview-width);
+    height: var(--preview-height);
+    background: #e0e0e0;
+    border: 1px solid #999;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-stack-card .card-header.small {
+    font-size: 8px;
+}
+
+.decision-option-card {
+    width: var(--preview-width);
+    height: var(--preview-height);
+    background: var(--card-bg);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: grab;
+    position: relative;
+}
+
+.decision-option-card:active { cursor: grabbing; }
+
+.decision-option-card.selected {
+    border-color: var(--accent-red);
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+    transform: scale(1.02);
+}
+
+.decision-option-card:not(.selected) {
+    opacity: 0.6;
+    transform: scale(0.92);
+}
+
+.decision-option-card .card-header {
+    font-size: 9px;
+    margin-bottom: 2px;
+}
+
+.decision-option-card .card-body.small {
+    font-size: 9px;
+    line-height: 1.2;
+    max-height: 40px;
+    overflow: hidden;
+}
+
+.option-badge {
+    position: absolute;
+    bottom: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    background: #f0f0f0;
+    padding: 2px 10px;
+    border-radius: 10px;
+}
+
+.decision-option-card.selected .option-badge {
+    background: var(--accent-red);
+    color: white;
+}
+
+/* === CHECKLIST ITEMS === */
+.check-item {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.check-item input {
+    margin-right: 4px;
+    width: 14px;
+    height: 14px;
+    accent-color: var(--primary);
+}
+.check-item.toggle-item input {
+    accent-color: var(--accent-red);
+}
+.check-item.hidden { display: none; }
+
+/* === CAROUSEL DOTS === */
+.carousel-dots {
+    display: flex;
+    gap: 4px;
+    position: absolute;
+    bottom: 8px;
+}
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid var(--primary);
+    background: transparent;
+}
+.dot.active { background: var(--primary); }
+</style><style type="text/css" data-vite-dev-id="C:/Users/Black Mamba/Desktop/Project hamburg 2026/resuscitation_health_app/app/src/styles/stack.css">/* === ENHANCED CARD ZONES — 3D PERSPECTIVE STACK === */
+
+/* Preview Zone (Top) — Vertical Stack with Depth */
+#zone-top {
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+
+.preview-card {
+    transform: translateY(calc(var(--depth, 0) * -12px))
+               translateZ(calc(var(--depth, 0) * -60px))
+               scale(calc(1 - var(--depth, 0) * 0.06));
+    opacity: calc(1 - var(--depth, 0) * 0.15);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.4s ease;
+}
+
+/* History Zone (Bottom) — Mirror/Chirality */
+#zone-bottom {
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+
+.history-card {
+    transform: translateY(calc(var(--depth, 0) * 12px))
+               translateZ(calc(var(--depth, 0) * -60px))
+               scale(calc(1 - var(--depth, 0) * 0.06));
+    opacity: calc(0.7 - var(--depth, 0) * 0.15);
+    filter: grayscale(calc(var(--depth, 0) * 30%));
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.4s ease;
+}
+
+/* Active Card — Subtle 3D Entrance Animation */
+#active-card.card-enter {
+    animation: card-arrive 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@keyframes card-arrive {
+    from {
+        transform: rotateY(-8deg) translateZ(-20px) scale(0.95);
+        opacity: 0.7;
+    }
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+/* Decision option stacks with depth */
+.decision-option-container {
+    perspective: 600px;
+    transform-style: preserve-3d;
+}
+
+.preview-stack-card {
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.3s ease;
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/Black Mamba/Desktop/Project hamburg 2026/resuscitation_health_app/app/src/styles/ticker.css">/* === FOOTER TICKER STYLING === */
+#ticker-text {
+    flex: 1;
+    font-size: 11px;
+    color: #555;
+    padding: 4px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: opacity 0.2s ease;
+}
+
+#ticker-text.ticker-fade-out {
+    opacity: 0;
+}
+
+#ticker-text.ticker-fade-in {
+    animation: ticker-appear 0.3s ease;
+}
+
+@keyframes ticker-appear {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/Black Mamba/Desktop/Project hamburg 2026/resuscitation_health_app/app/src/styles/menu.css">/* === 3-DOT MENU & SETTINGS === */
+.menu-panel {
+    position: absolute;
+    top: var(--header-h);
+    right: 0;
+    width: 280px;
+    max-height: 0;
+    overflow: hidden;
+    background: white;
+    border: 2px solid var(--primary);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    z-index: 200;
+    transition: max-height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.2s ease;
+    opacity: 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.menu-panel.open {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.menu-title {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.menu-close-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 0 4px;
+    color: #666;
+}
+
+.menu-items {
+    padding: 8px 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+}
+
+.menu-item:hover {
+    background: #f0f0f0;
+}
+
+.menu-item-icon {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Protocol list */
+.protocol-list {
+    padding: 8px;
+    border-top: 1px solid #e0e0e0;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.protocol-item {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    background: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.protocol-item:hover {
+    background: #f5f5f5;
+    border-color: var(--primary);
+}
+
+.protocol-title {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.protocol-meta {
+    font-size: 11px;
+    color: #888;
+}
+
+.loading {
+    padding: 16px;
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+}
+
+/* Settings panel */
+.settings-panel-inner {
+    padding: 12px 16px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.settings-group {
+    margin-bottom: 12px;
+}
+
+.settings-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #666;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.settings-options {
+    display: flex;
+    gap: 6px;
+}
+
+.settings-btn {
+    flex: 1;
+    padding: 6px 8px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.settings-btn:hover {
+    background: #f0f0f0;
+}
+
+.settings-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* About */
+.about-content {
+    text-align: center;
+    padding: 8px 0;
+}
+
+.about-content h3 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.about-content p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.about-source {
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+}
+
+/* === THEME OVERRIDES === */
+[data-theme="dark"] {
+    --bg: #1a1a1a;
+    --primary: #e0e0e0;
+    --card-bg: #333;
+    --accent-red: #ef5350;
+}
+
+[data-theme="dark"] body {
+    background: #111;
+}
+
+[data-theme="dark"] header,
+[data-theme="dark"] footer {
+    background: #222;
+}
+
+[data-theme="dark"] .menu-panel {
+    background: #222;
+}
+
+[data-theme="dark"] .card-header,
+[data-theme="dark"] .card-body {
+    color: #ccc;
+}
+
+[data-theme="high-contrast"] {
+    --bg: #fff;
+    --primary: #000;
+    --card-bg: #ffff00;
+    --accent-red: #ff0000;
+}
+
+/* Font scale */
+.card-title { font-size: calc(15px * var(--font-scale, 1)); }
+.card-body { font-size: calc(12px * var(--font-scale, 1)); }
+.card-header { font-size: calc(10px * var(--font-scale, 1)); }
+</style><style type="text/css" data-vite-dev-id="C:/Users/Black Mamba/Desktop/Project hamburg 2026/resuscitation_health_app/app/src/styles/responsive.css">/* === RESPONSIVE BREAKPOINTS === */
+@media (max-width: 450px) {
+    #app {
+        max-width: 100%;
+        max-height: 100%;
+        border: none;
+    }
+}
+
+@media (max-height: 750px) {
+    :root {
+        --wheel-diameter: 240px;
+        --wheel-radius: 120px;
+        --card-width: 144px;
+        --card-height: 168px;
+        --preview-width: 100px;
+        --preview-height: 73px;
+        --knob-size: 26px;
+        --header-h: 45px;
+        --footer-h: 80px;
+        --zone-top-h: 130px;
+    }
+}
+</style></head>
+<body cz-shortcut-listen="true">
+
+<div id="app">
+    <!-- Header -->
+    <header>
+        <div class="app-title">Paediatric Basic Life Support</div>
+        <div class="header-icons">
+            <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path>
+            </svg>
+            <svg class="header-icon" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="5" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="12" cy="19" r="2"></circle>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Stage -->
+    <div id="stage">
+        <div id="zone-top" style="transform: translate(10.5px, 169px) rotateX(-10deg) scale(1.03); z-index: 100; transition: none;"><div class="card preview-card" style="--depth: 2; z-index: 8;">
+      <svg class="decision-indicator"><use href="#icon-decision"></use></svg>
+      <div class="card-header">Breathing Check</div>
+    </div><div class="card preview-card" style="--depth: 1; z-index: 9;">
+      
+      <div class="card-header">Open Airway</div>
+    </div><div class="card preview-card" style="--depth: 0; z-index: 10;">
+      
+      <div class="card-header">Shout for Help</div>
+    </div></div>
+        <div id="zone-middle">
+            <div id="wheel"></div>
+            <div id="active-card" class="" style="outline: none;">
+      <svg class="card-icon icon-tr" data-action="fullscreen"><use href="#icon-fullscreen"></use></svg>
+      
+
+      <div class="card-header">standard</div>
+      <div class="card-title">Unresponsive</div>
+      <div class="card-body">Check if the child is unresponsive</div>
+
+      
+    </div>
+            <div id="knob" style="transform: rotate(300deg) translateY(-150px) rotate(-300deg);"></div>
+        </div>
+        <div id="zone-bottom"><div class="card history-card" style="--depth: 0; z-index: 10;"><div class="card-header">Paediatric Basic Life Support</div></div></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-row">
+            <div id="checklist-area"><label class="check-item "><input type="checkbox"><span>Scene is safe to approach</span></label><label class="check-item "><input type="checkbox"><span>No response to verbal/tactile stimulation</span></label></div>
+            <div class="overflow-btn">⋮</div>
+        </div>
+        <div class="footer-row footer-bottom">
+            <div id="ticker-text" class="">Reminder: Scene is safe to approach</div>
+            <div id="timer">00:00:39</div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-title">Age Calculator</div>
+            <p style="font-size:13px;color:#666;margin-bottom:10px;">Enter date of birth to determine category</p>
+            <input type="date" style="padding:8px;width:100%;margin-bottom:10px;border:1px solid #ccc;border-radius:4px;">
+            <p style="font-size:14px;"><strong>Result:</strong> Child (&gt;1yr)</p>
+            <button class="modal-close">Close</button>
+        </div>
+    </div>
+<div id="menu-panel" class="menu-panel">
+    <div class="menu-header">
+      <span class="menu-title">Menu</span>
+      <button class="menu-close-btn" data-action="close-menu">×</button>
+    </div>
+    <div class="menu-items">
+      <button class="menu-item" data-action="select-protocol">
+        <span class="menu-item-icon">☰</span>
+        Select Protocol
+      </button>
+      <button class="menu-item" data-action="search-protocol">
+        <span class="menu-item-icon">🔍</span>
+        Search
+      </button>
+      <button class="menu-item" data-action="open-settings">
+        <span class="menu-item-icon">⚙</span>
+        Settings
+      </button>
+      <button class="menu-item" data-action="about">
+        <span class="menu-item-icon">ℹ</span>
+        About
+      </button>
+    </div>
+    <div id="protocol-list" class="protocol-list" style="display:none;"></div>
+    <div id="settings-panel" class="settings-panel-inner" style="display:none;"></div>
+  </div></div>
+
+<!-- SVG Symbols -->
+<svg style="display:none">
+    <symbol id="icon-fullscreen" viewBox="0 0 24 24">
+        <path d="M4 4h4v2H6v2H4V4zm16 0h-4v2h2v2h2V4zM4 20h4v-2H6v-2H4v4zm16 0h-4v-2h2v-2h2v4z" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+    </symbol>
+    <symbol id="icon-toolbox" viewBox="0 0 24 24">
+        <rect x="4" y="8" width="16" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+        <path d="M8 8V6a2 2 0 012-2h4a2 2 0 012 2v2" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+        <path d="M12 12v4M10 14h4" stroke="currentColor" stroke-width="1.5"></path>
+    </symbol>
+    <symbol id="icon-decision" viewBox="0 0 24 24">
+        <path d="M12 4v6M12 10l-5 5M12 10l5 5" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+        <rect x="5" y="15" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1"></rect>
+        <rect x="15" y="15" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1"></rect>
+    </symbol>
+</svg>
+
+<script type="module" src="/src/main.ts"></script>
+
+
+
+<scribe-shadow id="crxjs-ext" data-crx="okfkdaglfjjjfefdcppliegebpoegaii" style="position: fixed; width: 0px; height: 0px; top: 0px; left: 0px; z-index: 2147483647; overflow: visible; visibility: visible;"></scribe-shadow></body></html>

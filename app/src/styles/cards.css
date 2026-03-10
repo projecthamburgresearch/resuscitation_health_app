@@ -43,14 +43,27 @@
 .preview-card {
     width: var(--preview-width);
     height: var(--preview-height);
+    touch-action: none;
+    pointer-events: none;
+}
+
+.preview-card.preview-card-primary {
+    pointer-events: auto;
+    cursor: grab;
+}
+
+.preview-card.preview-card-primary:active {
+    cursor: grabbing;
 }
 
 .history-card {
     width: var(--history-width);
     height: var(--history-height);
-    opacity: 0.5;
-    filter: grayscale(80%);
+    touch-action: none;
+    cursor: grab;
 }
+
+.history-card:active { cursor: grabbing; }
 
 /* === CARD CONTENT === */
 .card-header {
@@ -149,6 +162,7 @@
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: grab;
     position: relative;
+    touch-action: none;
 }
 
 .decision-option-card:active { cursor: grabbing; }
@@ -190,6 +204,18 @@
 .decision-option-card.selected .option-badge {
     background: var(--accent-red);
     color: white;
+}
+
+.decision-drag-ghost {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.zone-drag-ghost {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+}
+
+#app.drag-overlay-active #active-card {
+    z-index: 10;
 }
 
 /* === CHECKLIST ITEMS === */

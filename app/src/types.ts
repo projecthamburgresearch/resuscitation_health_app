@@ -108,6 +108,12 @@ export type WheelMode = 'COVER' | 'LINEAR' | 'DECISION' | 'LOOP' | 'TERMINAL';
 export interface Anchor {
   id: string;
   angle: number;
+  visit_key?: number;
+}
+
+export interface HistoryEntry {
+  card_id: string;
+  visit_key: number;
 }
 
 export interface WheelState {
@@ -120,7 +126,9 @@ export interface WheelState {
 
 export interface AppState {
   currentId: string;
-  history: string[];
+  history: HistoryEntry[];
+  currentVisitKey: number;
+  nextVisitKey: number;
   decisionIndex: number;
   decisionRecords: Record<string, number>;
   decisionTrail: DecisionTrailEntry[];

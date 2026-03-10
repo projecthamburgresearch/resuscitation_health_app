@@ -5,6 +5,8 @@ import type { AppState, Algorithm, DeckMap } from '../types';
 export const state: AppState = {
   currentId: 'CARD_00_START',
   history: [],
+  currentVisitKey: 0,
+  nextVisitKey: 1,
   decisionIndex: 0,
   decisionRecords: {},
   decisionTrail: [],

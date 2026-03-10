@@ -255,7 +255,8 @@
         ]
       },
       "wheel_config": {
-        "phase": "intervention"
+        "phase": "intervention",
+        "position_degrees": 240
       },
       "toolbox": [
         {
@@ -332,6 +333,7 @@
       },
       "wheel_config": {
         "phase": "loop",
+        "position_degrees": 220,
         "animation": "pulse"
       },
       "local_timer": {
@@ -362,7 +364,8 @@
         "body": "Deliver 2 effective breaths with bag-mask"
       },
       "wheel_config": {
-        "phase": "loop"
+        "phase": "loop",
+        "position_degrees": 200
       },
       "transitions": {
         "type": "linear",
@@ -380,6 +383,7 @@
       },
       "wheel_config": {
         "phase": "loop",
+        "position_degrees": 180,
         "locked": true
       },
       "transitions": {

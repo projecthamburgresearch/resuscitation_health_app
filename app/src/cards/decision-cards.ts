@@ -2,33 +2,81 @@
 import { state, DECK } from '../state/store';
 import { getDom } from '../main';
 import { advance } from '../navigation/advance';
+import { createDragOverlay } from '../ui/drag-overlay';
+import type { DragOverlaySession } from '../ui/drag-overlay';
+import { beginDrag, clearDrag, cancelAnyDrag } from '../ui/drag-lock';
+
+const DRAG_OWNER = 'decision';
 
 let isDraggingDecision = false;
-let draggedElement: HTMLElement | null = null;
+let dragOverlay: DragOverlaySession | null = null;
 let dragStartY = 0;
 let dragStartX = 0;
-let originalTransform = '';
 
 export function setupDecisionDrag(): void {
   const dom = getDom();
   const optionCards = dom.zoneTop.querySelectorAll('.decision-option-card.selected');
-  optionCards.forEach(card => {
+  optionCards.forEach((card) => {
     card.addEventListener('mousedown', startDecisionDrag as EventListener);
     card.addEventListener('touchstart', startDecisionDrag as EventListener, { passive: false });
   });
+}
+
+function removeDecisionDragListeners(): void {
+  document.removeEventListener('mousemove', onDecisionDrag as EventListener);
+  document.removeEventListener('touchmove', onDecisionDrag as EventListener);
+  document.removeEventListener('mouseup', endDecisionDrag as EventListener);
+  document.removeEventListener('touchend', endDecisionDrag as EventListener);
+  document.removeEventListener('touchcancel', cancelDecisionDrag as EventListener);
+  window.removeEventListener('blur', cancelDecisionDrag);
+}
+
+function cleanupDecisionDragVisuals(): void {
+  const dom = getDom();
+  dom.activeCard.style.outline = 'none';
+  if (dragOverlay) {
+    dragOverlay.cleanup();
+  }
+}
+
+function resetDecisionDragState(): void {
+  isDraggingDecision = false;
+  dragOverlay = null;
+  dragStartY = 0;
+  dragStartX = 0;
+}
+
+function cancelDecisionDrag(): void {
+  if (!isDraggingDecision) return;
+  removeDecisionDragListeners();
+  cleanupDecisionDragVisuals();
+  clearDrag(DRAG_OWNER);
+  resetDecisionDragState();
 }
 
 function startDecisionDrag(e: MouseEvent | TouchEvent): void {
   const card = DECK[state.currentId];
   if (!card || card.type !== 'decision') return;
 
-  isDraggingDecision = true;
-  draggedElement = e.currentTarget as HTMLElement;
-  originalTransform = draggedElement.style.transform;
+  cancelAnyDrag(DRAG_OWNER);
+  if (isDraggingDecision) cancelDecisionDrag();
+
+  const originalElement = e.currentTarget as HTMLElement | null;
+  if (!originalElement) return;
+  if (!originalElement.classList.contains('selected')) return;
 
   const touch = 'touches' in e ? e.touches[0] : e;
   dragStartY = touch.clientY;
   dragStartX = touch.clientX;
+
+  dragOverlay = createDragOverlay(originalElement, {
+    className: 'decision-drag-ghost',
+    scale: 1.05,
+    zIndex: 1650,
+  });
+
+  isDraggingDecision = true;
+  beginDrag(DRAG_OWNER, cancelDecisionDrag);
 
   e.preventDefault();
   e.stopPropagation();
@@ -37,10 +85,12 @@ function startDecisionDrag(e: MouseEvent | TouchEvent): void {
   document.addEventListener('touchmove', onDecisionDrag as EventListener, { passive: false });
   document.addEventListener('mouseup', endDecisionDrag as EventListener);
   document.addEventListener('touchend', endDecisionDrag as EventListener);
+  document.addEventListener('touchcancel', cancelDecisionDrag as EventListener);
+  window.addEventListener('blur', cancelDecisionDrag);
 }
 
 function onDecisionDrag(e: MouseEvent | TouchEvent): void {
-  if (!isDraggingDecision || !draggedElement) return;
+  if (!isDraggingDecision || !dragOverlay) return;
   e.preventDefault();
 
   const dom = getDom();
@@ -48,9 +98,7 @@ function onDecisionDrag(e: MouseEvent | TouchEvent): void {
   const dy = touch.clientY - dragStartY;
   const dx = touch.clientX - dragStartX;
 
-  draggedElement.style.transform = `translate(${dx}px, ${dy}px) scale(1.05)`;
-  draggedElement.style.zIndex = '100';
-  draggedElement.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)';
+  dragOverlay.moveBy(dx, dy);
 
   if (dy > 30) {
     dom.activeCard.style.outline = '3px dashed #666';
@@ -62,27 +110,18 @@ function onDecisionDrag(e: MouseEvent | TouchEvent): void {
 function endDecisionDrag(e: MouseEvent | TouchEvent): void {
   if (!isDraggingDecision) return;
 
-  document.removeEventListener('mousemove', onDecisionDrag as EventListener);
-  document.removeEventListener('touchmove', onDecisionDrag as EventListener);
-  document.removeEventListener('mouseup', endDecisionDrag as EventListener);
-  document.removeEventListener('touchend', endDecisionDrag as EventListener);
+  removeDecisionDragListeners();
 
-  const dom = getDom();
   const touch = 'changedTouches' in e ? e.changedTouches[0] : e;
   const dy = touch.clientY - dragStartY;
+  const shouldAdvance = dy > 60 && state.decisionTapped;
 
-  dom.activeCard.style.outline = 'none';
+  cleanupDecisionDragVisuals();
 
-  if (dy > 60 && state.decisionTapped) {
+  if (shouldAdvance) {
     advance({ source: 'decision-confirm', splitConfirmed: true });
-  } else {
-    if (draggedElement) {
-      draggedElement.style.transform = originalTransform || '';
-      draggedElement.style.zIndex = '10';
-      draggedElement.style.boxShadow = '';
-    }
   }
 
-  isDraggingDecision = false;
-  draggedElement = null;
+  clearDrag(DRAG_OWNER);
+  resetDecisionDragState();
 }

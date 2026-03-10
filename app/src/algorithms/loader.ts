@@ -113,7 +113,7 @@ const DEFAULT_ALGORITHM: Algorithm = {
       id: 'CARD_07_COMPRESSIONS',
       type: 'loop_start',
       content: { title: '30 Chest Compressions', body: 'Perform continuous chest compressions.' },
-      wheel_config: { position_degrees: 180, phase: 'cpr_loop', animation: 'pulse' },
+      wheel_config: { position_degrees: 220, phase: 'cpr_loop', animation: 'pulse' },
       local_timer: { enabled: true, type: 'metronome', bpm: 110, guidance: 'Push hard and fast' },
       checklist: [],
       transitions: { type: 'linear', next_id: 'CARD_08_LOOP_BREATHS' },
@@ -130,7 +130,7 @@ const DEFAULT_ALGORITHM: Algorithm = {
       id: 'CARD_09_LOOP_CHECK',
       type: 'decision',
       content: { title: 'Re-assess', body: 'Are there clear signs of life?' },
-      wheel_config: { position_degrees: 220, phase: 'cpr_loop' },
+      wheel_config: { position_degrees: 180, phase: 'cpr_loop' },
       checklist: [],
       transitions: {
         type: 'split',

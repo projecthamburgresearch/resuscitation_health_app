@@ -284,6 +284,7 @@
       },
       "wheel_config": {
         "phase": "check",
+        "position_degrees": 120,
         "locked": true
       },
       "checklist": [
@@ -337,6 +338,7 @@
       },
       "wheel_config": {
         "phase": "loop",
+        "position_degrees": 220,
         "animation": "pulse"
       },
       "local_timer": {
@@ -373,7 +375,8 @@
         "sub_body": "Watch for chest rise with each breath"
       },
       "wheel_config": {
-        "phase": "loop"
+        "phase": "loop",
+        "position_degrees": 200
       },
       "checklist": [
         {
@@ -398,6 +401,7 @@
       },
       "wheel_config": {
         "phase": "loop",
+        "position_degrees": 180,
         "locked": true
       },
       "checklist": [],

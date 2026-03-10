@@ -7,16 +7,17 @@ export function renderHistoryZone(): void {
   dom.zoneBottom.innerHTML = '';
 
   const recent = state.history.slice(-3);
-  recent.forEach((id, i, arr) => {
-    const c = DECK[id];
+  recent.forEach((entry, i, arr) => {
+    const c = DECK[entry.card_id];
     if (!c) return;
 
     const depth = arr.length - 1 - i;
     const el = document.createElement('div');
     el.className = 'card history-card';
     el.style.setProperty('--depth', String(depth));
-    el.style.zIndex = String(10 - depth);
+    el.style.zIndex = String(4 - depth);
     el.innerHTML = `<div class="card-header">${c.content.title}</div>`;
+    el.dataset.visitKey = String(entry.visit_key);
     dom.zoneBottom.appendChild(el);
   });
 }

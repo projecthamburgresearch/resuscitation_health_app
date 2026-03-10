@@ -36,7 +36,7 @@ function snapshotForAutomation(): AutomationSnapshot {
   return {
     currentId: state.currentId,
     algorithmSource: ACTIVE_ALGORITHM_SOURCE,
-    history: [...state.history],
+    history: state.history.map((entry) => entry.card_id),
     historySize: state.history.length,
     decisionIndex: state.decisionIndex,
     decisionRecords: { ...state.decisionRecords },
@@ -74,6 +74,8 @@ function setCurrentCardForAutomation(cardId: string) {
 
   state.currentId = card.id;
   state.history = [];
+  state.currentVisitKey = 0;
+  state.nextVisitKey = 1;
   if (isSplitDecisionCard(card)) {
     state.decisionIndex = rememberedDecisionIndexForCard(card);
   } else {

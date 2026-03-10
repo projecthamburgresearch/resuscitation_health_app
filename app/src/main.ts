@@ -81,6 +81,8 @@ export function applyAlgorithm(rawAlgorithm: unknown, sourceLabel?: string): {
   rebuildDeckMap(algo.deck);
   state.currentId = currentAlgorithmStartId() || 'CARD_00_START';
   state.history = [];
+  state.currentVisitKey = 0;
+  state.nextVisitKey = 1;
   state.decisionIndex = 0;
   state.decisionRecords = {};
   state.decisionTrail = [];

@@ -56,8 +56,8 @@ function checkDecisionAhead(card: Card): TickerMessage | null {
 // Priority 3: Loop count
 function checkLoopCount(): TickerMessage | null {
   // Count how many times loop_start cards appear in history
-  const loopCards = state.history.filter(id => {
-    const c = DECK[id];
+  const loopCards = state.history.filter((entry) => {
+    const c = DECK[entry.card_id];
     return c && (c.type === 'loop_start' || c.wheel_config.phase === 'cpr_loop');
   });
   if (loopCards.length > 0) {

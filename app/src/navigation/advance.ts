@@ -43,7 +43,12 @@ export function advance(options: AdvanceOptions = {}): boolean {
 
   if (nextId && DECK[nextId]) {
     if (nextId !== state.currentId) {
-      state.history.push(state.currentId);
+      state.history.push({
+        card_id: state.currentId,
+        visit_key: state.currentVisitKey,
+      });
+      state.currentVisitKey = state.nextVisitKey;
+      state.nextVisitKey += 1;
     }
     state.currentId = nextId;
     const nextCard = DECK[nextId];
@@ -71,8 +76,10 @@ export function advance(options: AdvanceOptions = {}): boolean {
 
 export function rewind(): boolean {
   if (state.history.length <= 0) return false;
-  const prevId = state.history.pop()!;
+  const prevEntry = state.history.pop()!;
+  const prevId = prevEntry.card_id;
   state.currentId = prevId;
+  state.currentVisitKey = prevEntry.visit_key;
   const prevCard = DECK[prevId];
   if (isSplitDecisionCard(prevCard)) {
     state.decisionIndex = rememberedDecisionIndexForCard(prevCard);
