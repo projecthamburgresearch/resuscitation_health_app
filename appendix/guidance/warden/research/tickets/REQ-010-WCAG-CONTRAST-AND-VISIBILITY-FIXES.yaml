@@ -1,0 +1,146 @@
+# ==============================================================================
+# Warden Research Ticket
+# ==============================================================================
+
+ticket_id: "REQ-010"
+date: "2026-03-11"
+status: "OPEN"
+ticket_type: "BUG"
+title: "Fix WCAG contrast failures on card-header text and knob border visibility"
+
+objective: |
+  Dev-mode parity scan (2026-03-11T17:59:44Z, 670x865 viewport) reveals two
+  accessibility failures that impact clinical readability under stress:
+
+  1. WCAG FAIL — .card-header text (#666666) on .card-bg (#d0d0d0) yields
+     contrast ratio 3.723:1. WCAG AA requires 4.5:1 minimum for normal text.
+     This affects decision-option card headers in zone-top (scan indices 10, 15)
+     and the active card header (scan index 22). In a resuscitation scenario,
+     a clinician must instantly read the card category label.
+
+  2. LOW VISIBILITY — Knob border (#cccccc) on stage background (#f5f5f5)
+     yields approximately 1.4:1 contrast. The wheel knob is the primary
+     interaction affordance; it must be clearly visible without relying on
+     the gradient fill alone.
+
+  Both fixes are CSS-only, touching tokens.css and cards.css. No JS, no
+  navigation logic, no state-machine changes.
+
+profile:
+  target_component: "app/src/styles/tokens.css, app/src/styles/cards.css, app/src/styles/wheel.css"
+  route: "home"
+  viewport: "390x844"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "ANCHOR_STATE_MACHINE_V2"
+
+state_machine_scope:
+  algorithm_source: "app/algorithms/*.json"
+  direction: "both"
+  transition_ids:
+    - "Any DECISION state (card-header visible in zone-top and zone-middle)"
+    - "All modes (knob visible in zone-middle)"
+  state_ids:
+    - "DECISION"
+    - "COVER"
+    - "LINEAR"
+    - "LOOP"
+    - "TERMINAL"
+  expected_state_contract:
+    incoming_zone: "Unchanged — layout and content unaffected"
+    current_zone: "Unchanged — only text color and border color modified"
+    previous_zone: "Unchanged — layout and content unaffected"
+
+telemetry_levers:
+  use_devmode_parity_check: true
+  use_scan_json: true
+  use_blueprint_outputs: false
+  use_static_screenshots_and_splits: true
+  use_dynamic_screenshots_and_splits: false
+  require_transition_before_after_pairs: false
+  require_behavior_contract_report: false
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: false
+  allow_web_search: false
+
+rubric_levers:
+  enforce_clear_unambiguous: true
+  enforce_self_contained: true
+  enforce_falsifiable_binary: true
+  enforce_unstacked: true
+  enforce_timeless: true
+
+deliverables:
+  require_findings_by_severity: true
+  require_code_target_map: true
+  require_regression_watchlist: true
+  require_validation_rerun_summary: true
+  require_behavior_matrix_all_algorithms: false
+  require_clinician_trust_score: false
+
+evidence_anchors:
+  scan_source: "dev-mode parity scan 2026-03-11T17:59:44Z (670x865)"
+  scan_elements_card_header: "indices 10, 15, 22 — contrast ratio 3.723:1 FAIL"
+  scan_elements_card_body: "indices 11, 16 — contrast ratio 6.315:1 AA PASS (no change needed)"
+  scan_elements_knob: "index 24 — border #ccc on #f5f5f5, ~1.4:1"
+
+implementation_directives:
+  - id: "D-01"
+    directive: >
+      In tokens.css, add --card-header-color custom property with value #555555.
+      This yields approximately 5.2:1 contrast ratio against --card-bg (#d0d0d0),
+      passing WCAG AA. Original value #666666 yielded 3.723:1 (FAIL).
+  - id: "D-02"
+    directive: >
+      In cards.css, update .card-header color declaration to use
+      var(--card-header-color) instead of the hardcoded #666.
+  - id: "D-03"
+    directive: >
+      In tokens.css, add --knob-border-color custom property with value #999999.
+      This yields approximately 3.1:1 contrast against --bg (#f5f5f5), a
+      significant improvement from #cccccc (~1.4:1).
+  - id: "D-04"
+    directive: >
+      In wheel.css, update the #knob border-color to use var(--knob-border-color)
+      instead of any hardcoded value.
+  - id: "D-05"
+    directive: >
+      No changes to JavaScript, navigation logic, state machine, or algorithm
+      JSON files. CSS-only ticket.
+
+acceptance_gates:
+  - id: "AG-01"
+    gate: >
+      .card-header text contrast ratio against .card-bg is >= 4.5:1 (WCAG AA)
+      measured in a dev-mode scan at 390x844.
+  - id: "AG-02"
+    gate: >
+      .card-header text contrast ratio against .card-bg is >= 7.0:1 (WCAG AAA)
+      OR documented rationale for AA-only target.
+  - id: "AG-03"
+    gate: >
+      #knob border contrast ratio against --bg is >= 2.5:1 measured in a
+      dev-mode scan at 390x844.
+  - id: "AG-04"
+    gate: >
+      No scan elements that previously passed WCAG now fail after changes.
+  - id: "AG-05"
+    gate: >
+      Visual regression: header, footer, zone layout, card dimensions, and
+      wheel geometry unchanged in static screenshot comparison.
+  - id: "AG-06"
+    gate: >
+      Full forward traversal (cover to terminal) completes without stuck
+      states for at least one algorithm after CSS changes.
+
+regression_watchlist:
+  - area: "Decision option cards in zone-top"
+    risk: "Card-header text may clip or wrap differently with new color token"
+    mitigation: "Visual check in static screenshot"
+  - area: "Knob drag interaction"
+    risk: "Border change could affect perceived knob size if border-width changes"
+    mitigation: "Directive D-04 changes color only, not width"
+  - area: "High-contrast theme override"
+    risk: "Existing [data-theme='high-contrast'] sets --primary:#000 but does not define --card-header-color"
+    mitigation: "Token defaults to #555; high-contrast override can be added in REQ-011"

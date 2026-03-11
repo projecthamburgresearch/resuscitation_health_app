@@ -1,0 +1,262 @@
+# ==============================================================================
+# Warden Research Ticket
+# ==============================================================================
+
+ticket_id: "REQ-011"
+date: "2026-03-11"
+status: "OPEN"
+ticket_type: "FEATURE"
+title: "Introduce semantic color tokens to enable theme-safe CSS architecture"
+
+objective: |
+  The current design token system in tokens.css defines four raw color values
+  (--primary, --bg, --card-bg, --accent-red) with no separation between surface,
+  text, and border roles. This creates three problems:
+
+  1. FRAGILE THEMING — The existing [data-theme="dark"] override in menu.css
+     remaps --primary and --card-bg, but hardcoded hex values in cards.css
+     (#666, #444, #1a1a1a) are unreachable by theme switching. A dark mode
+     toggle changes backgrounds but leaves text colors stuck in light-mode values.
+
+  2. INCONSISTENT USAGE — The scan (2026-03-11) shows at least 5 distinct text
+     colors (#000, #1a1a1a, #444, #555, #666) used without semantic meaning.
+     Some are token-referenced, others hardcoded. There is no way to know which
+     color role each serves without reading every CSS rule.
+
+  3. NO SPACING GRID — The scan's golden constants declare baseGrid:8, but
+     measured values (header 50px, footer 100px, zone-top 170px, card padding
+     10px, badge offset 6px) are off-grid. This causes fractional pixel
+     rounding issues and prevents predictable theme scaling.
+
+  This ticket introduces a semantic token layer that maps raw values to named
+  roles (surface, text, border, accent), aligns layout heights to the 8px grid,
+  and provides the foundation for dark mode and high-contrast themes.
+
+  NOTE: Per Warden Constitution, primary scope remains LIGHT_ONLY. This ticket
+  builds the token architecture; actual dark-mode activation is out of scope
+  and would require a separate ticket expanding the Constitution's theme scope.
+
+profile:
+  target_component: "app/src/styles/tokens.css, app/src/styles/cards.css, app/src/styles/layout.css, app/src/styles/wheel.css, app/src/styles/menu.css, app/src/styles/ticker.css"
+  route: "home"
+  viewport: "390x844"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "ANCHOR_STATE_MACHINE_V2"
+
+state_machine_scope:
+  algorithm_source: "app/algorithms/*.json"
+  direction: "both"
+  transition_ids:
+    - "All transitions (visual consistency check)"
+  state_ids:
+    - "COVER"
+    - "LINEAR"
+    - "DECISION"
+    - "LOOP"
+    - "TERMINAL"
+  expected_state_contract:
+    incoming_zone: "Visually identical to pre-change at LIGHT_ONLY theme"
+    current_zone: "Visually identical to pre-change at LIGHT_ONLY theme"
+    previous_zone: "Visually identical to pre-change at LIGHT_ONLY theme"
+
+telemetry_levers:
+  use_devmode_parity_check: true
+  use_scan_json: true
+  use_blueprint_outputs: true
+  use_static_screenshots_and_splits: true
+  use_dynamic_screenshots_and_splits: false
+  require_transition_before_after_pairs: false
+  require_behavior_contract_report: false
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: false
+  allow_web_search: false
+
+rubric_levers:
+  enforce_clear_unambiguous: true
+  enforce_self_contained: true
+  enforce_falsifiable_binary: true
+  enforce_unstacked: true
+  enforce_timeless: true
+
+deliverables:
+  require_findings_by_severity: true
+  require_code_target_map: true
+  require_regression_watchlist: true
+  require_validation_rerun_summary: true
+  require_behavior_matrix_all_algorithms: false
+  require_clinician_trust_score: false
+
+evidence_anchors:
+  scan_source: "dev-mode parity scan 2026-03-11T17:59:44Z (670x865)"
+  pre_change_colors: |
+    --primary: #1a1a1a (text, borders, active buttons)
+    --bg: #f5f5f5 (page background)
+    --card-bg: #d0d0d0 (card surfaces)
+    --accent-red: #d32f2f (alerts, decisions)
+    Hardcoded: #666 (card-header), #444 (card-body), #555 (checklist),
+               #e0e0e0 (borders), #f0f0f0 (hover), #ccc (knob border)
+  pre_change_spacing: |
+    --header-h: 50px (off 8px grid)
+    --footer-h: 100px (off 8px grid)
+    --zone-top-h: 170px (off 8px grid)
+    Card padding: 10px (off 8px grid)
+    Badge offset: 6px (off 8px grid)
+    Icon gap: 10px (off 8px grid)
+
+implementation_directives:
+  - id: "D-01"
+    directive: >
+      In tokens.css :root, add semantic surface tokens that resolve to current
+      raw values:
+        --color-surface: #ffffff
+        --color-surface-raised: #d0d0d0
+        --color-surface-sunken: #f5f5f5
+      Keep existing --bg and --card-bg for backward compat during migration.
+  - id: "D-02"
+    directive: >
+      In tokens.css :root, add semantic text tokens:
+        --color-text-primary: #1a1a1a
+        --color-text-secondary: #444444
+        --color-text-muted: #555555
+      Note: --color-text-muted uses #555 (not #666) per REQ-010 WCAG fix.
+  - id: "D-03"
+    directive: >
+      In tokens.css :root, add semantic border tokens:
+        --color-border: #1a1a1a
+        --color-border-subtle: #e0e0e0
+  - id: "D-04"
+    directive: >
+      In tokens.css :root, add semantic accent tokens:
+        --color-accent: #d32f2f
+        --color-accent-surface: rgba(211, 47, 47, 0.1)
+  - id: "D-05"
+    directive: >
+      In tokens.css :root, add spacing tokens aligned to 8px grid:
+        --space-xs: 4px
+        --space-sm: 8px
+        --space-md: 12px
+        --space-lg: 16px
+        --space-xl: 24px
+        --space-2xl: 32px
+  - id: "D-06"
+    directive: >
+      In tokens.css :root, update layout heights to nearest 8px-grid values:
+        --header-h: 48px (was 50px)
+        --footer-h: 96px (was 100px)
+        --zone-top-h: 168px (was 170px)
+  - id: "D-07"
+    directive: >
+      In cards.css, replace all hardcoded color hex values with semantic token
+      references: #666 → var(--color-text-muted), #444 → var(--color-text-secondary),
+      #1a1a1a → var(--color-text-primary), #e0e0e0 → var(--color-border-subtle),
+      #f0f0f0 → var(--color-surface).
+  - id: "D-08"
+    directive: >
+      In layout.css, replace hardcoded color and spacing values with semantic
+      tokens. Use --space-lg for 16px padding, --space-sm for 8px gaps,
+      --color-border for header border-bottom color.
+  - id: "D-09"
+    directive: >
+      In menu.css, update the [data-theme="dark"] block to remap semantic tokens
+      instead of raw tokens:
+        --color-surface: #1a1a1a
+        --color-surface-raised: #333333
+        --color-surface-sunken: #111111
+        --color-text-primary: #e0e0e0
+        --color-text-secondary: #b0b0b0
+        --color-text-muted: #909090
+        --color-border: #555555
+        --color-border-subtle: #333333
+        --color-accent: #ef5350
+        --color-accent-surface: rgba(239, 83, 80, 0.15)
+      Keep existing --bg/--primary/--card-bg remapping for backward compat.
+  - id: "D-10"
+    directive: >
+      In menu.css, update the [data-theme="high-contrast"] block to remap
+      semantic tokens:
+        --color-surface: #ffffff
+        --color-surface-raised: #ffff00
+        --color-surface-sunken: #ffffff
+        --color-text-primary: #000000
+        --color-text-secondary: #000000
+        --color-text-muted: #000000
+        --color-border: #000000
+        --color-border-subtle: #000000
+        --color-accent: #ff0000
+        --color-accent-surface: rgba(255, 0, 0, 0.2)
+  - id: "D-11"
+    directive: >
+      In wheel.css and ticker.css, replace hardcoded hex values with matching
+      semantic tokens following the same mapping as D-07.
+  - id: "D-12"
+    directive: >
+      No changes to JavaScript, navigation logic, state machine, or algorithm
+      JSON files. CSS-only ticket.
+  - id: "D-13"
+    directive: >
+      After all replacements, remove legacy raw tokens (--primary, --bg,
+      --card-bg, --accent-red) ONLY if zero CSS rules still reference them.
+      If any remain, keep them as aliases:
+        --primary: var(--color-text-primary)
+        --bg: var(--color-surface-sunken)
+        --card-bg: var(--color-surface-raised)
+        --accent-red: var(--color-accent)
+
+acceptance_gates:
+  - id: "AG-01"
+    gate: >
+      All semantic color tokens (--color-surface, --color-surface-raised,
+      --color-surface-sunken, --color-text-primary, --color-text-secondary,
+      --color-text-muted, --color-border, --color-border-subtle,
+      --color-accent, --color-accent-surface) are defined in tokens.css :root.
+  - id: "AG-02"
+    gate: >
+      All spacing tokens (--space-xs through --space-2xl) are defined in
+      tokens.css :root with values on 4px increments.
+  - id: "AG-03"
+    gate: >
+      Zero hardcoded color hex values remain in cards.css, layout.css,
+      wheel.css, or ticker.css (grep for #[0-9a-f]{3,6} returns no matches
+      outside tokens.css and menu.css theme blocks).
+  - id: "AG-04"
+    gate: >
+      Layout heights --header-h, --footer-h, --zone-top-h are all divisible
+      by 8 in tokens.css.
+  - id: "AG-05"
+    gate: >
+      Visual parity: dev-mode scan at 390x844 with default theme shows no
+      WCAG regressions (all elements that passed before still pass).
+  - id: "AG-06"
+    gate: >
+      [data-theme="dark"] block in menu.css remaps all semantic tokens
+      listed in D-09.
+  - id: "AG-07"
+    gate: >
+      [data-theme="high-contrast"] block in menu.css remaps all semantic
+      tokens listed in D-10.
+  - id: "AG-08"
+    gate: >
+      Full forward traversal (cover to terminal) completes without stuck
+      states for at least one algorithm after CSS changes.
+  - id: "AG-09"
+    gate: >
+      TypeScript compilation (npx tsc --noEmit) passes with zero errors.
+
+regression_watchlist:
+  - area: "Header height change (50px → 48px)"
+    risk: "Title text or icons may clip vertically with 2px less height"
+    mitigation: "Check static screenshot; title line-height 17.5px + padding fits in 48px"
+  - area: "Footer height change (100px → 96px)"
+    risk: "Checklist area or timer may clip with 4px less height"
+    mitigation: "Check static screenshot; footer content measured at ~80px internal"
+  - area: "Zone-top height change (170px → 168px)"
+    risk: "Decision option cards may clip at bottom edge"
+    mitigation: "Cards are 87.4px tall in 125px container; 2px reduction is absorbed by padding"
+  - area: "Legacy token removal"
+    risk: "Third-party or inline styles referencing --primary, --bg, --card-bg break"
+    mitigation: "D-13 keeps aliases if any references remain; search before removing"
+  - area: "Dark mode token mapping"
+    risk: "Untested dark mode may have new contrast failures"
+    mitigation: "Dark mode is documented but out of primary scope per Constitution (LIGHT_ONLY)"

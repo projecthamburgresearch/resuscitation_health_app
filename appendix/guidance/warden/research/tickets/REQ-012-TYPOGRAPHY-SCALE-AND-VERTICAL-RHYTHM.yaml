@@ -1,0 +1,253 @@
+# ==============================================================================
+# Warden Research Ticket
+# ==============================================================================
+
+ticket_id: "REQ-012"
+date: "2026-03-11"
+status: "OPEN"
+ticket_type: "FEATURE"
+title: "Establish typographic scale tokens and vertical rhythm baseline"
+
+objective: |
+  Dev-mode parity scan (2026-03-11) reveals 7 distinct font sizes with no
+  mathematical relationship (9, 10, 12, 13, 14, 15, 16px) and 6 distinct
+  line heights with no shared baseline (10.8, 11.25, 12.5, 14.4, 17.5, 20px).
+
+  Vertical rhythm scores across the interface are poor:
+    - #stage: 0.188, #zone-top: 0.188, #active-card: 0.063
+    - footer: 0.188, header: 0.438, .card-body: 0.398
+  Only #zone-middle (0.938) and .card-header (0.835) score well.
+
+  This ticket introduces:
+  1. A Minor Third (1.2x) type scale from 8px base: 8, 10, 12, 14, 17, 20px
+  2. Line height tokens on 4px multiples: 12, 16, 20, 24px
+  3. Font-size tokens (--fs-xs through --fs-2xl) applied across all CSS modules
+
+  These tokens integrate with the --font-scale accessibility multiplier already
+  referenced in menu.css, ensuring font scaling works uniformly.
+
+  Depends on: REQ-010 (contrast fix) and REQ-011 (semantic token layer).
+
+profile:
+  target_component: "app/src/styles/tokens.css, app/src/styles/cards.css, app/src/styles/layout.css, app/src/styles/menu.css, app/src/styles/ticker.css, app/src/styles/responsive.css"
+  route: "home"
+  viewport: "390x844"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "ANCHOR_STATE_MACHINE_V2"
+
+state_machine_scope:
+  algorithm_source: "app/algorithms/*.json"
+  direction: "both"
+  transition_ids:
+    - "All transitions (text rendering consistency check)"
+  state_ids:
+    - "COVER"
+    - "LINEAR"
+    - "DECISION"
+    - "LOOP"
+    - "TERMINAL"
+  expected_state_contract:
+    incoming_zone: "Text sizes may shift by 1-2px; layout structure unchanged"
+    current_zone: "Text sizes may shift by 1-2px; layout structure unchanged"
+    previous_zone: "Text sizes may shift by 1-2px; layout structure unchanged"
+
+telemetry_levers:
+  use_devmode_parity_check: true
+  use_scan_json: true
+  use_blueprint_outputs: false
+  use_static_screenshots_and_splits: true
+  use_dynamic_screenshots_and_splits: false
+  require_transition_before_after_pairs: false
+  require_behavior_contract_report: false
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: false
+  allow_web_search: false
+
+rubric_levers:
+  enforce_clear_unambiguous: true
+  enforce_self_contained: true
+  enforce_falsifiable_binary: true
+  enforce_unstacked: true
+  enforce_timeless: true
+
+deliverables:
+  require_findings_by_severity: true
+  require_code_target_map: true
+  require_regression_watchlist: true
+  require_validation_rerun_summary: true
+  require_behavior_matrix_all_algorithms: false
+  require_clinician_trust_score: false
+
+evidence_anchors:
+  scan_source: "dev-mode parity scan 2026-03-11T17:59:44Z (670x865)"
+  pre_change_font_sizes: |
+    9px: .card-header (decision options), .card-body.small (decision options)
+    10px: .card-header (active card)
+    12px: .card-body (active card), footer labels
+    13px: timer, menu items
+    14px: .app-title, .option-badge
+    15px: .card-title
+    16px: base inherited (body)
+  pre_change_line_heights: |
+    10.8px: .card-body.small (9px text)
+    11.25px: .card-header (9px text)
+    12.5px: .card-header (10px text)
+    14.4px: .card-body (12px text)
+    17.5px: .app-title, .option-badge (14px text)
+    20px: base inherited (16px text)
+  vertical_rhythm_scores: |
+    #stage: 0.188, #zone-top: 0.188, #active-card: 0.063
+    #zone-middle: 0.938, .card-header: 0.835, .card-body: 0.398
+    header: 0.438, footer: 0.188
+
+dependencies:
+  - ticket_id: "REQ-010"
+    reason: "--card-header-color token must exist before typography tokens reference it"
+  - ticket_id: "REQ-011"
+    reason: "Semantic token layer must be in place; typography tokens extend the same :root block"
+
+implementation_directives:
+  - id: "D-01"
+    directive: >
+      In tokens.css :root, add font-size tokens using Minor Third (1.2x) scale:
+        --fs-xs: 8px
+        --fs-sm: 10px
+        --fs-md: 12px
+        --fs-lg: 14px
+        --fs-xl: 17px
+        --fs-2xl: 20px
+  - id: "D-02"
+    directive: >
+      In tokens.css :root, add line-height tokens on 4px multiples:
+        --lh-tight: 12px
+        --lh-normal: 16px
+        --lh-relaxed: 20px
+        --lh-loose: 24px
+  - id: "D-03"
+    directive: >
+      In cards.css, update .card-header font-size from 10px to
+      calc(var(--fs-sm) * var(--font-scale, 1)). Update line-height to
+      var(--lh-tight).
+  - id: "D-04"
+    directive: >
+      In cards.css, update .card-title font-size from 15px to
+      calc(var(--fs-lg) * var(--font-scale, 1)). Update line-height to
+      var(--lh-relaxed). Accept 1px reduction (15→14) for scale consistency.
+  - id: "D-05"
+    directive: >
+      In cards.css, update .card-body font-size from 12px to
+      calc(var(--fs-md) * var(--font-scale, 1)). Update line-height to
+      var(--lh-normal).
+  - id: "D-06"
+    directive: >
+      In cards.css, update decision-option .card-header font-size from 9px to
+      calc(var(--fs-xs) * var(--font-scale, 1)). Update line-height to
+      var(--lh-tight).
+  - id: "D-07"
+    directive: >
+      In cards.css, update decision-option .card-body.small font-size from 9px
+      to calc(var(--fs-xs) * var(--font-scale, 1)). Update line-height to
+      var(--lh-tight).
+  - id: "D-08"
+    directive: >
+      In cards.css, update .option-badge font-size from 14px to
+      calc(var(--fs-lg) * var(--font-scale, 1)). Update line-height to
+      var(--lh-relaxed).
+  - id: "D-09"
+    directive: >
+      In layout.css, update .app-title font-size from 14px to
+      calc(var(--fs-lg) * var(--font-scale, 1)). Update line-height to
+      var(--lh-relaxed).
+  - id: "D-10"
+    directive: >
+      In layout.css, update footer label font-size from 11px to
+      calc(var(--fs-sm) * var(--font-scale, 1)). Accept 1px reduction (11→10)
+      for scale consistency.
+  - id: "D-11"
+    directive: >
+      In ticker.css, update ticker message font-size to use
+      calc(var(--fs-md) * var(--font-scale, 1)). Update line-height to
+      var(--lh-normal).
+  - id: "D-12"
+    directive: >
+      In menu.css, update menu item font-size from 13px to
+      calc(var(--fs-md) * var(--font-scale, 1)). Accept 1px reduction (13→12)
+      for scale consistency.
+  - id: "D-13"
+    directive: >
+      In menu.css, update settings button font-size from 12px to
+      calc(var(--fs-md) * var(--font-scale, 1)). Already on scale.
+  - id: "D-14"
+    directive: >
+      In responsive.css short-viewport breakpoint, scale down typography
+      tokens proportionally or add override block that reduces --fs-* values
+      by the same ratio as geometry tokens (e.g., 80% of default).
+  - id: "D-15"
+    directive: >
+      No changes to JavaScript, navigation logic, state machine, or algorithm
+      JSON files. CSS-only ticket.
+
+acceptance_gates:
+  - id: "AG-01"
+    gate: >
+      All font-size tokens (--fs-xs through --fs-2xl) are defined in
+      tokens.css :root.
+  - id: "AG-02"
+    gate: >
+      All line-height tokens (--lh-tight through --lh-loose) are defined in
+      tokens.css :root with values divisible by 4.
+  - id: "AG-03"
+    gate: >
+      Zero hardcoded font-size pixel values remain in cards.css, layout.css,
+      ticker.css, or menu.css (grep for 'font-size:\s*\d+px' returns no
+      matches outside tokens.css and responsive.css).
+  - id: "AG-04"
+    gate: >
+      Zero hardcoded line-height pixel values remain in cards.css, layout.css,
+      ticker.css, or menu.css (grep for 'line-height:\s*\d' returns no
+      matches outside tokens.css and responsive.css).
+  - id: "AG-05"
+    gate: >
+      Dev-mode scan vertical rhythm score for #active-card improves from
+      0.063 to >= 0.400.
+  - id: "AG-06"
+    gate: >
+      Dev-mode scan vertical rhythm score for footer improves from 0.188
+      to >= 0.400.
+  - id: "AG-07"
+    gate: >
+      All font-size declarations use calc(var(--fs-*) * var(--font-scale, 1))
+      pattern, ensuring --font-scale accessibility multiplier works uniformly.
+  - id: "AG-08"
+    gate: >
+      Card text does not overflow or clip in any card state (COVER, LINEAR,
+      DECISION, LOOP, TERMINAL) visible in static screenshot at 390x844.
+  - id: "AG-09"
+    gate: >
+      Full forward traversal (cover to terminal) completes without stuck
+      states for at least one algorithm after CSS changes.
+  - id: "AG-10"
+    gate: >
+      TypeScript compilation (npx tsc --noEmit) passes with zero errors.
+
+regression_watchlist:
+  - area: "Card title size reduction (15px → 14px)"
+    risk: "Longer card titles may wrap to additional line"
+    mitigation: "Check all 5 algorithm card titles in static screenshots; longest is ~25 chars"
+  - area: "Footer label size reduction (11px → 10px)"
+    risk: "Labels may appear too small on low-DPI screens"
+    mitigation: "--font-scale multiplier allows user override; 10px at 2x DPI renders as 20 physical px"
+  - area: "Menu item size reduction (13px → 12px)"
+    risk: "Touch target text may appear smaller"
+    mitigation: "Touch target size is padding-driven (10px 16px), not font-driven"
+  - area: "Decision option card text (9px → 8px)"
+    risk: "Already small text becomes harder to read"
+    mitigation: "These are preview cards in zone-top; primary reading is on the active card at 12px"
+  - area: "Responsive breakpoint"
+    risk: "Short viewport override may conflict with new token values"
+    mitigation: "D-14 explicitly addresses responsive scaling of typography tokens"
+  - area: "Line height changes"
+    risk: "Vertical spacing in cards shifts, potentially breaking 3D stack alignment"
+    mitigation: "Stack alignment is transform-based (translateY/Z), not content-flow-based"
