@@ -1,0 +1,170 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Carousel Gallery">
+  <section>
+    <header>
+      <h2>Bi-Directional Grid</h2>
+      <div class="tags">
+        <span>Scroll Buttons</span>
+        <span>Scroll Markers</span>
+        <span>Scroll Initial Target</span>
+        <span>Anchor</span>
+      </div>
+      <p>
+        Scroll buttons on all sides plus markers for each snap target. This demo
+        puts everything all together for, what no longer feels like a carousel,
+        and is instead a manifestation of scroll affordances on a grid.
+      </p>
+    </header>
+
+    <div role="region" aria-label="List carousel demo">
+      <div
+        class="carousel carousel--bidi carousel--scroll-markers carousel--scroll-buttons carousel--offscreen-inert"
+        aria-live="polite"
+      >
+        <div class="carousel__slide" data-label="Slide 1">
+          <p>1</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 2">
+          <p>2</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 3">
+          <p>3</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 4">
+          <p>4</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 5">
+          <p>5</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 6">
+          <p>6</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 7">
+          <p>7</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 8">
+          <p>8</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 9">
+          <p>9</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 10">
+          <p>10</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 11">
+          <p>11</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 12">
+          <p>12</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 13" style="scroll-initial-target: nearest">
+          <p>13</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 14">
+          <p>14</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 15">
+          <p>15</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 16">
+          <p>16</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 17">
+          <p>17</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 18">
+          <p>18</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 19">
+          <p>19</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 20">
+          <p>20</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 21">
+          <p>21</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 22">
+          <p>22</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 23">
+          <p>23</p>
+        </div>
+        <div class="carousel__slide" data-label="Slide 24">
+          <p>24</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .carousel {
+    inline-size: 60vmin;
+    aspect-ratio: 1;
+
+    display: grid;
+    grid: repeat(5, 1fr) / repeat(5, 1fr);
+    gap: var(--size-4);
+    padding: 5vmin;
+    scroll-padding: 5vmin;
+
+    place-self: center;
+    border-radius: 20px;
+
+    &::scroll-marker-group {
+      display: grid;
+      grid-auto-flow: column;
+      top: auto;
+      bottom: anchor(bottom);
+      max-inline-size: 33cqi;
+
+      border: 1px solid light-dark(var(--surface-3), #0009);
+      background: light-dark(white, #0003);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      mask: none;
+    }
+
+    @media (prefers-color-scheme: light) {
+      &::scroll-marker-group {
+        box-shadow: var(--shadow-5);
+      }
+    }
+
+    .carousel__slide {
+      scroll-snap-align: center;
+      container-type: scroll-state;
+
+      background: light-dark(white, var(--surface-2));
+      padding: 0;
+
+      display: inline-flex;
+      place-items: center;
+      place-content: center;
+
+      inline-size: 40cqi;
+      aspect-ratio: 1;
+
+      border: 1px solid var(--surface-3);
+      box-shadow: var(--shadow-2);
+      border-radius: var(--radius-2);
+
+      > p {
+        font-family: var(--font-antique);
+        font-size: var(--font-size-5);
+        transition: font-size 1s var(--ease-spring-4);
+      }
+
+      @container scroll-state(snapped: x) or scroll-state(snapped: y) {
+        > p {
+          color: var(--link);
+          font-size: var(--font-size-7);
+        }
+      }
+    }
+  }
+</style>

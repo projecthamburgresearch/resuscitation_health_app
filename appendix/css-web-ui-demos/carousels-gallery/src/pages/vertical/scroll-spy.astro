@@ -1,0 +1,251 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Carousel Gallery">
+  <section>
+    <header>
+      <h2>Scroll Spy</h2>
+      <div class="tags">
+        <span>Scroll Markers</span>
+        <span>Grid</span>
+      </div>
+      <p>
+        This scroll spy component uses scroll markers as in-page links to a
+        section of content. Scroll markers are aware and stateful to the section
+        they were generated with, and we use this to highlight the titles.
+      </p>
+      <p>
+        Check the mobile layout, it looks a lot like <a
+          href="/carousel/horizontal/tabs/">tabs</a
+        >. It's also very much a vertical variant on the <a
+          href="/carousel/horizontal/series/">TV Series</a
+        > demo, but it doesn't start you at your current episode.
+      </p>
+    </header>
+
+    <div class="scroll-spy" role="region" aria-label="Scroll spy carousel demo">
+      <!-- marker group here -->
+      <div class="carousel carousel--vertical" aria-live="polite">
+        <section aria-label="A vertical scroller">
+          <h2>A vertical scroller</h2>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+        </section>
+        <section aria-label="Markers for sections">
+          <h2>Markers for sections</h2>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+          <h4>
+            Nice long section to show the spy stays highlighted for the entirety
+            of it's section.
+          </h4>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+        </section>
+        <section aria-label="Grid to lay it all out">
+          <h2>Grid to lay it all out</h2>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            ipsam, animi, nemo eaque at dolorum ipsum cum velit error iste
+            magni. Ipsam commodi soluta corporis corrupti error eum reiciendis
+            sunt!
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .scroll-spy {
+      display: grid;
+      gap: var(--size-1);
+      grid-template-areas: "side main";
+      grid-template-columns: var(--size-content-1) 1fr;
+
+      overflow: hidden;
+      block-size: 60svh;
+      inline-size: 100cqi;
+      max-inline-size: 80ch;
+
+      container-type: size;
+
+      border: 1px solid var(--surface-3);
+
+      @container (inline-size <= 50ch) {
+        gap: 0px;
+        grid-template-areas: "side" "main";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+      }
+    }
+
+    .carousel {
+      grid-area: main;
+      scroll-snap-type: none;
+      scroll-marker-group: before;
+      display: grid;
+      row-gap: 10svh;
+      padding: var(--size-3);
+      scrollbar-width: thin;
+
+      &::scroll-marker-group {
+        grid-area: side;
+        display: grid;
+        align-content: start;
+        justify-items: start;
+        gap: var(--size-2);
+        padding: var(--size-3);
+
+        @container (inline-size <= 50ch) {
+          grid-auto-flow: column;
+          max-width: 100cqi;
+          block-size: 1.5lh;
+          overflow-x: auto;
+          margin-block-start: 0;
+          scrollbar-width: none;
+          scroll-padding: 1rem;
+        }
+      }
+
+      > section {
+        place-items: start;
+        place-content: start;
+        display: grid;
+        gap: 1rem;
+
+        @container (inline-size <= 50ch) {
+          padding: var(--size-3);
+        }
+
+        &::scroll-marker {
+          --_bg: none;
+
+          content: attr(aria-label);
+          padding-inline: 1.75ch;
+          padding-block: 1ch;
+          color: var(--text-2);
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          text-decoration: none;
+          background: var(--_bg);
+          border: 1px solid #0000;
+          border-radius: var(--radius-3);
+
+          @container (inline-size <= 50ch) {
+            white-space: nowrap;
+          }
+
+          @media (forced-colors: active) {
+            border-width: 0px;
+          }
+        }
+
+        &::scroll-marker:is(:hover, :focus-visible, :target-current) {
+          --_bg: light-dark(white, var(--surface-2));
+          color: var(--text-1);
+          box-shadow: var(--shadow-2);
+          border-color: var(--surface-2);
+
+          @media (forced-colors: active) {
+            border-width: 1px;
+          }
+        }
+
+        &::scroll-marker:hover {
+          --_bg: light-dark(white, hsl(from var(--surface-2) h s l / 0.5));
+        }
+
+        &::scroll-marker:active {
+          border-color: var(--link);
+        }
+
+        &::scroll-marker:hover:target-current {
+          border-color: var(--surface-3);
+        }
+      }
+    }
+
+    section {
+      place-items: center;
+    }
+  </style>
+</Layout>

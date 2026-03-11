@@ -1,0 +1,235 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Carousel Gallery">
+  <section>
+    <header>
+      <h2>Product Gallery</h2>
+      <div class="tags">
+        <span>Grid</span>
+        <span>Scroll Markers</span>
+        <span>Container Queries</span>
+        <span>Scroll-State Queries</span>
+      </div>
+      <p>
+        Classic product image gallery. Markers are mirrored images of the
+        products without duplicating elements. The screen reader experience when
+        navigating via the scroll markers is provided the alt text from the
+        image.
+      </p>
+    </header>
+
+    <div
+      class="product-carousel"
+      role="region"
+      aria-label="Product carousel demo"
+    >
+      <div
+        class="carousel carousel--scroll-markers carousel--unsnapped-inert"
+        aria-live="polite"
+      >
+        <div
+          class="carousel__slide"
+          style="--img: url(/carousel/fold-1.png)"
+          data-label="Device facing the camera, partially folded"
+        >
+          <picture role="tabpanel" aria-label="Slide 1">
+            <img
+              src="/carousel/fold-1.png"
+              alt="Device facing the camera, partially folded"
+              width="1243"
+              height="1554"
+              loading="lazy"
+            />
+          </picture>
+        </div>
+        <div
+          class="carousel__slide"
+          style="--img: url(/carousel/fold-2.png)"
+          data-label="Device viewed from the side"
+        >
+          <picture role="tabpanel" aria-label="Slide 2">
+            <img
+              src="/carousel/fold-2.png"
+              alt="Device viewed from the side"
+              width="1243"
+              height="1554"
+              loading="lazy"
+            />
+          </picture>
+        </div>
+        <div
+          class="carousel__slide"
+          style="--img: url(/carousel/fold-3.png)"
+          data-label="Device viewed from the back"
+        >
+          <picture role="tabpanel" aria-label="Slide 3">
+            <img
+              src="/carousel/fold-3.png"
+              alt="Device viewed from the back"
+              width="1243"
+              height="1554"
+              loading="lazy"
+            />
+          </picture>
+        </div>
+        <div
+          class="carousel__slide"
+          style="--img: url(/carousel/fold-4.png)"
+          data-label="Device unfolded in landscape mode"
+        >
+          <picture role="tabpanel" aria-label="Slide 4">
+            <img
+              src="/carousel/fold-4.png"
+              alt="Device unfolded in landscape mode"
+              width="1243"
+              height="1554"
+              loading="lazy"
+            />
+          </picture>
+        </div>
+        <div
+          class="carousel__slide"
+          style="--img: url(/carousel/fold-5.png)"
+          data-label="Device partially folder and sitting on the table with the upper screen oriented towards the camera"
+        >
+          <picture role="tabpanel" aria-label="Slide 5">
+            <img
+              src="/carousel/fold-5.png"
+              alt="Device partially folder and sitting on the table with the upper screen oriented towards the camera"
+              width="1243"
+              height="1554"
+              loading="lazy"
+            />
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .product-carousel {
+      --_marker-size: 75px;
+
+      display: grid;
+      grid-template-columns: [carousel--markers] var(--_marker-size) [carousel] 1fr;
+      max-inline-size: max-content;
+
+      > .carousel {
+        grid-area: carousel;
+
+        &::scroll-marker-group {
+          grid-area: carousel--markers;
+        }
+      }
+
+      @container (width <= 550px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: [carousel] 1fr [carousel--markers] var(
+            --_marker-size
+          );
+      }
+    }
+
+    .carousel {
+      display: grid;
+      grid-auto-columns: 100%;
+      grid-auto-flow: column;
+      gap: var(--size-5);
+      border-radius: var(--radius-4);
+
+      container-type: size scroll-state;
+      block-size: 480px;
+      aspect-ratio: 1;
+
+      list-style-type: none;
+
+      @container (width <= 550px) {
+        inline-size: 90vw;
+        block-size: auto;
+      }
+
+      .carousel__slide {
+        padding: 0;
+        border-radius: var(--radius-4);
+        background: var(--surface-2);
+
+        display: grid;
+
+        &::scroll-marker {
+          /* make the marker meaningful for screen readers */
+          content: "" / attr(data-label);
+
+          background-color: var(--surface-2);
+          background-image: var(--img);
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          border: 1px solid var(--surface-3);
+          transition:
+            transform 0.3s var(--ease-spring-2),
+            outline-offset 0.25s var(--ease-3),
+            border-color 0.3s var(--ease-3);
+        }
+
+        &::scroll-marker:target-current {
+          border-color: var(--link);
+          background-color: var(--surface-2);
+        }
+
+        &::scroll-marker:is(:hover, :focus-visible) {
+          border-color: var(--link);
+          transform: scale(1.05);
+        }
+      }
+
+      & picture {
+        transition: opacity 0.6s;
+        transition-delay: 0.1s;
+
+        @container not scroll-state(snapped: inline) {
+          opacity: 0.25;
+        }
+
+        > img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+
+      &::scroll-marker-group {
+        --padding-inline: 10px;
+
+        position: unset;
+        block-size: 100%;
+        box-sizing: border-box;
+        grid-auto-flow: row;
+        grid-auto-columns: calc(
+          var(--_marker-size) - (var(--padding-inline) * 2)
+        );
+        margin-block: auto;
+        align-content: center;
+
+        mask: none; /* todo: remove this once scroll-state() used for group overflow */
+
+        @container (width <= 550px) {
+          inline-size: 100%;
+          max-inline-size: 100%;
+          block-size: var(--_marker-size);
+          grid-auto-flow: column;
+        }
+      }
+    }
+
+    section {
+      padding-inline: 5vmin;
+
+      & > header {
+        padding-inline: 0;
+      }
+    }
+  </style>
+</Layout>

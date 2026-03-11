@@ -1,0 +1,142 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Carousel Gallery">
+  <section>
+    <header>
+      <h2>Horizontal List</h2>
+      <div class="tags">
+        <span>Scroll Buttons</span>
+        <span>Scroll Markers</span>
+        <span>Scroll State Queries</span>
+        <span>Scroll Driven Animation</span>
+        <span>interactivity: inert</span>
+        <span>Anchor</span>
+      </div>
+      <p>
+        This is a regular list of items, but they've been given <code
+          >tabindex=0</code
+        > so they can be focused. In addition, <code>interactivity: inert</code>
+        is used with scroll driven animation <code>view(x)</code> to make offscreen
+        items non-focusable. Items in this state also have reduced opacity.
+      </p>
+      <p>
+        Scroll buttons also responsively adapt to inner or outer positioning
+        based on availability!
+      </p>
+    </header>
+
+    <div role="region" aria-label="List carousel demo">
+      <div
+        class="carousel carousel--scroll-markers carousel--scroll-buttons carousel--offscreen-inert"
+        aria-live="polite"
+      >
+        <div class="carousel__slide" tabindex="0" data-label="Slide 1">
+          <p>1</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 2">
+          <p>2</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 3">
+          <p>3</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 4">
+          <p>4</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 5">
+          <p>5</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 6">
+          <p>6</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 7">
+          <p>7</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 8">
+          <p>8</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 9">
+          <p>9</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 10">
+          <p>10</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 11">
+          <p>11</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 12">
+          <p>12</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 13">
+          <p>13</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 14">
+          <p>14</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 15">
+          <p>15</p>
+        </div>
+        <div class="carousel__slide" tabindex="0" data-label="Slide 16">
+          <p>16</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .carousel {
+    inline-size: 100cqi;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: var(--size-content-1);
+    gap: var(--size-4);
+    padding-inline: 5vmin;
+    padding-block: var(--size-2);
+    scroll-padding-inline: 5vmin;
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      inline-size: 85cqi;
+    }
+
+    &::scroll-button(left),
+    &::scroll-button(right) {
+      position-area: var(--_inner);
+    }
+
+    .carousel__slide {
+      container-type: scroll-state;
+
+      background: light-dark(white, var(--surface-2));
+      padding: 0;
+
+      display: inline-flex;
+      place-items: center;
+      place-content: center;
+
+      aspect-ratio: var(--ratio-portrait);
+
+      border: 1px solid var(--surface-3);
+      box-shadow: var(--shadow-2);
+      border-radius: var(--radius-2);
+
+      > p {
+        font-family: var(--font-antique);
+        font-size: var(--font-size-5);
+        transition: font-size 1s var(--ease-spring-4);
+      }
+
+      @container scroll-state(snapped: inline) {
+        > p {
+          color: var(--link);
+          font-size: var(--font-size-7);
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,163 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Carousel Gallery">
+  <section>
+    <header>
+      <h2>Wheel</h2>
+      <div class="tags">
+        <span>Scroll Buttons</span>
+        <span>Scroll Markers</span>
+        <span>Scroll-State Queries</span>
+        <span>Scroll Driven Animation</span>
+        <span>Anchor</span>
+      </div>
+      <p>A classic vertical wheel of choices carousel.</p>
+    </header>
+
+    <div role="region" aria-label="Wheel carousel demo">
+      <div
+        class="carousel carousel--vertical carousel--scroll-markers carousel--offscreen-inert"
+        aria-live="polite"
+      >
+        <div class="carousel__slide" data-label="Super Mario Bros">
+          <h3>Super Mario Bros.</h3>
+        </div>
+        <div class="carousel__slide" data-label="The Legend of Zelda">
+          <h3>The Legend of Zelda</h3>
+        </div>
+        <div class="carousel__slide" data-label="Metroid">
+          <h3>Metroid</h3>
+        </div>
+        <div class="carousel__slide" data-label="Castlevania">
+          <h3>Castlevania</h3>
+        </div>
+        <div class="carousel__slide" data-label="Mega Man 2">
+          <h3>Mega Man 2</h3>
+        </div>
+        <div class="carousel__slide" data-label="Final Fantasy">
+          <h3>Final Fantasy</h3>
+        </div>
+        <div class="carousel__slide" data-label="Contra">
+          <h3>Contra</h3>
+        </div>
+        <div class="carousel__slide" data-label="Ninja Gaiden">
+          <h3>Ninja Gaiden</h3>
+        </div>
+        <div class="carousel__slide" data-label="Tecmo Bowl">
+          <h3>Tecmo Bowl</h3>
+        </div>
+        <div class="carousel__slide" data-label="Punch-Out">
+          <h3>Punch-Out</h3>
+        </div>
+        <div class="carousel__slide" data-label="Excitebike">
+          <h3>Excitebike</h3>
+        </div>
+        <div class="carousel__slide" data-label="Kid Icarus">
+          <h3>Kid Icarus</h3>
+        </div>
+        <div class="carousel__slide" data-label="Double Dragon">
+          <h3>Double Dragon</h3>
+        </div>
+        <div class="carousel__slide" data-label="Bubble Bobble">
+          <h3>Bubble Bobble</h3>
+        </div>
+        <div class="carousel__slide" data-label="Kirby's Adventure">
+          <h3>Kirby's Adventure</h3>
+        </div>
+        <div class="carousel__slide" data-label="Tetris">
+          <h3>Tetris</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .carousel {
+    block-size: 100svh;
+    inline-size: 100cqi;
+    overflow-x: hidden;
+
+    display: grid;
+    grid-auto-flow: row;
+    justify-content: end;
+    place-self: center end;
+    gap: var(--size-4);
+    padding-inline-end: max(5vw, var(--size-8));
+
+    &::scroll-marker-group {
+      position-area: center span-left;
+      margin: 0;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      block-size: 85cqb;
+    }
+
+    .carousel__slide {
+      padding: 0;
+      scroll-snap-align: center;
+      text-align: end;
+      block-size: 10svb;
+      container-type: scroll-state;
+
+      &:nth-of-type(9) {
+        scroll-initial-target: nearest;
+      }
+
+      > h3 {
+        white-space: nowrap;
+        font-family: var(--font-antique);
+        font-size: var(--font-size-5);
+        transition: scale 1s var(--ease-spring-4);
+
+        transform-origin: right center;
+        animation: wheel-rotate linear both;
+        animation-timeline: view();
+        animation-range: contain 0% contain 106%;
+      }
+
+      @container scroll-state(snapped: block) {
+        > h3 {
+          color: var(--link);
+          scale: 3;
+        }
+      }
+
+      /* todo: maybe remove? */
+      &:focus {
+        outline: 2px solid var(--link);
+        outline-offset: -2px;
+      }
+    }
+  }
+
+  :global(body main) > section {
+    padding: 0;
+
+    > * {
+      grid-area: 1 / 1;
+    }
+
+    > header {
+      place-self: start;
+    }
+  }
+
+  @keyframes wheel-rotate {
+    0% {
+      transform: translateX(150px) rotate(-30deg);
+    }
+    50% {
+      transform: translateX(0px) rotate(0deg);
+    }
+    100% {
+      transform: translateX(150px) rotate(30deg);
+    }
+  }
+</style>

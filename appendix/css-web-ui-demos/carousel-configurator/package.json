@@ -1,0 +1,39 @@
+{
+	"name": "carousel-configurator",
+	"version": "1.0.0",
+	"author": {
+		"name": "Adam Argyle",
+		"url": "https://nerdy.dev"
+	},
+	"description": "Build a carousel while learning the CSS to make it.",
+	"keywords": [
+		"CSS",
+		"Scroll Markers",
+		"Scroll Buttons",
+		"Columns",
+		"interactivity: inert"
+	],
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"deploy": "cp package.json build/ && gsutil -m rsync -rd build gs://chrome-dev-demos/public/carousel-configurator"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^3.3.1",
+		"@sveltejs/adapter-netlify": "^4.4.2",
+		"@sveltejs/kit": "^2.21.1",
+		"@sveltejs/vite-plugin-svelte": "^3.1.2",
+		"svelte": "^4.2.20",
+		"svelte-check": "^4.2.1",
+		"typescript": "^5.8.3",
+		"vite": "^5.4.19"
+	},
+	"type": "module",
+	"dependencies": {
+		"@sveltejs/adapter-static": "^3.0.8",
+		"open-props": "^1.7.15"
+	}
+}
