@@ -1,9 +1,9 @@
 # Resuscitation Health App Session Calibration Packet
 
-- generated_at: 2026-03-13T23:09:24.148Z
+- generated_at: 2026-03-14T04:38:18.425Z
 - reviewer: Steward
-- latest_commit: b64b9b2669a175f4464271b95b660441d83779d9
-- next_priority: none
+- latest_commit: 5da8a6e8f82df769ed01516518db86ef32485929
+- next_priority: REQ-017-DEFERRED-DIRT-RECONCILIATION
 - question_count: 14
 
 Use this packet after reading `LATEST_SESSION_REENTRY.md`.
@@ -19,7 +19,7 @@ For each calibration item:
 What role am I in for this session?
 
 ### Default Answer
-Default next-session role is `Steward` because the current queued lane is `none`.
+Default next-session role is `Warden` because the current queued lane is `REQ-017-DEFERRED-DIRT-RECONCILIATION`.
 
 ### Status
 `default-until-overridden`
@@ -37,14 +37,14 @@ If the operator explicitly assigns a different role, the operator wins.
 What is the real priority order right now?
 
 ### Default Answer
-There is no currently recorded bounded next priority. The next session should refresh the queue and cycle log before choosing a lane.
+Current default priority is `REQ-017-DEFERRED-DIRT-RECONCILIATION`, because Exit records it as the next bounded lane from the live cycle state. After that, choose the next bounded lane from the refreshed backlog rather than stale chat memory.
 
 ### Status
 `default-until-overridden`
 
 ### Basis
   - `appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md`
-  - `appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md`
+  - `appendix/guidance/switchboard/inbox/MSG-20260314-REQ017-WARDEN-DEFERRED-DIRT-RECONCILIATION.md`
 
 ### Override Rule
 If the operator reprioritizes explicitly, that override wins.

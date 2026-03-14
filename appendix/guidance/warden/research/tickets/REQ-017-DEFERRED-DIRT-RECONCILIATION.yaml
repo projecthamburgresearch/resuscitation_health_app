@@ -1,0 +1,78 @@
+ticket_id: "REQ-017-DEFERRED-DIRT-RECONCILIATION"
+date: "2026-03-14"
+status: "OPEN"
+ticket_type: "STRUCTURE"
+title: "Reconcile the deferred dirt left outside the first accepted baseline commit"
+
+objective: |
+  Clean up the two deferred categories intentionally left outside the first
+  accepted baseline commit: tracked Finder noise inside the css-web-ui-demos
+  reference corpus and the modified `.specstory` history transcript. Preserve
+  any unique historical signal that still matters, but do not let these remain
+  as unexplained worktree dirt.
+
+profile:
+  target_component: "repo-root"
+  route: "post-baseline-cleanup"
+  viewport: "N/A"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "AUTHORITY_AND_STRUCTURE"
+
+state_machine_scope:
+  algorithm_source: "app/algorithms/"
+  direction: "none"
+  transition_ids: []
+  state_ids: []
+  expected_state_contract:
+    incoming_zone: "Baseline commit is complete, but deferred dirt remains outside the accepted boundary."
+    current_zone: "Deferred dirt is either reconciled cleanly or preserved intentionally with rationale."
+    previous_zone: "Tracked Finder noise and speculative history remain as unexplained worktree modifications."
+
+telemetry_levers:
+  use_scan_json: false
+  use_blueprint_outputs: false
+  use_static_screenshots_and_splits: false
+  use_dynamic_screenshots_and_splits: false
+  require_transition_before_after_pairs: false
+  require_behavior_contract_report: false
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: false
+  allow_web_search: false
+
+rubric_levers:
+  enforce_clear_unambiguous: true
+  enforce_self_contained: true
+  enforce_falsifiable_binary: true
+  enforce_unstacked: true
+  enforce_timeless: true
+
+deliverables:
+  require_findings_by_severity: false
+  require_code_target_map: true
+  require_regression_watchlist: true
+  require_validation_rerun_summary: false
+  require_behavior_matrix_all_algorithms: false
+  require_clinician_trust_score: false
+
+acceptance_gates:
+  - id: "AG-01"
+    gate: "Tracked .DS_Store files under appendix/css-web-ui-demos are reconciled and no longer remain as unexplained tracked dirt."
+    result: "PENDING"
+  - id: "AG-02"
+    gate: "The modified .specstory history file is either preserved intentionally with rationale or restored cleanly."
+    result: "PENDING"
+  - id: "AG-03"
+    gate: "The lane records exactly what was preserved, ignored, restored, or removed so the next operator is not guessing."
+    result: "PENDING"
+
+acceptance_results: []
+checklist_outcome: "PENDING"
+checklist_notes: "Run after implementation."
+rubric_outcome: "OPEN"
+research_session: ""
+artifacts_updated: []
+recommended_warden_scope: "Remove or normalize the remaining deferred dirt without disturbing the accepted baseline commit."
+acceptance_gates_for_warden: []
+
