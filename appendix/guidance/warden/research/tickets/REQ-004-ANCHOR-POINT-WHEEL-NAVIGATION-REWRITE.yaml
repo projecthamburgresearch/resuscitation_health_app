@@ -1,0 +1,144 @@
+# ==============================================================================
+# Warden Research Ticket
+# ==============================================================================
+
+ticket_id: "REQ-004-ANCHOR-POINT-WHEEL-NAVIGATION-REWRITE"
+date: "2026-02-22"
+status: "RESOLVED" # OPEN | IN_PROGRESS | RESOLVED | BLOCKED
+ticket_type: "FEATURE" # FEATURE | BUG | VALIDATION | RESEARCH
+title: "Anchor-point wheel navigation rewrite for dynamic algorithm traversal"
+
+objective: |
+  Replace the continuous-rotation Ship's Helm Model with a discrete anchor-point
+  snap system. The wheel knob snaps between evenly-spaced positions on the arc,
+  one per algorithm step in the current path. Decision anchors lock the wheel
+  until confirmed. Progress indicator naturally shows position within the
+  algorithm from 11 o'clock (start) to 1 o'clock (end).
+
+  This resolves the fundamental tension between continuous dial input and
+  discrete card navigation, eliminates the broken degree-mapping system,
+  and works dynamically for all loaded algorithms without hardcoded card IDs.
+
+profile:
+  target_component: "app/index.html (main runtime)"
+  route: "home"
+  viewport: "390x844"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "DYNAMIC_STATE_MACHINE"
+
+state_machine_scope:
+  algorithm_source: "app/algorithms/*.json (all discoverable algorithm files via app/algorithms/index.json)"
+  direction: "both"
+  transition_ids:
+    - "All linear transitions: knob snaps to next/previous anchor"
+    - "All split transitions: knob locks at decision anchor, user confirms to advance"
+    - "All self_loop transitions: knob returns to loop-start anchor on loop-back"
+  state_ids:
+    - "All cards in all discoverable algorithms"
+  expected_state_contract:
+    incoming_zone: "Top zone previews upcoming path cards or decision option cards."
+    current_zone: "Center card is the active state. Knob is at this card's anchor angle."
+    previous_zone: "Bottom zone retains reachable history and supports meaningful rewind."
+  decision_semantics:
+    forward_requires_confirmation: true
+    reverse_requires_confirmation: false
+    reverse_passes_through_decision_states: true
+    decision_stop_is_record_of_act: true
+  algorithm_generalization:
+    apply_rules_to_all_algorithms: true
+    no_hardcoded_decision_labels: true
+    no_hardcoded_card_ids_for_core_wheel_rules: true
+  anchor_point_semantics:
+    dynamic_anchor_calculation: true
+    evenly_distributed_on_arc: true
+    snap_on_navigation: true
+    recalculate_after_decision: true
+    progress_indicator: "11 o'clock (start) to 1 o'clock (end)"
+
+telemetry_levers:
+  use_devmode_parity_check: true
+  use_scan_json: true
+  use_blueprint_outputs: true
+  use_static_screenshots_and_splits: true
+  use_dynamic_screenshots_and_splits: true
+  require_transition_before_after_pairs: true
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: true
+  allow_web_search: false
+
+rubric_levers:
+  enforce_clear_unambiguous: true
+  enforce_self_contained: true
+  enforce_falsifiable_binary: true
+  enforce_unstacked: true
+  enforce_timeless: true
+
+deliverables:
+  require_findings_by_severity: true
+  require_code_target_map: true
+  require_regression_watchlist: true
+  require_validation_rerun_summary: true
+
+request_notes:
+  notes_file: "appendix/guidance/materials/202602220047-terminal-saved-output-health-app-logs.txt"
+  operator_intent: |
+    Replace the continuous-rotation wheel with discrete anchor-point snaps.
+    Each algorithm step gets an anchor on the arc (330 deg to 30 deg).
+    Forward/backward gestures snap knob between anchors.
+    Decision anchors lock until drag-to-confirm.
+    Progress indicator naturally shows position in algorithm.
+
+evidence_anchors:
+  latest_blueprint_run: "appendix/guidance/warden/blueprint_outputs/runs/20260222-030742-warden"
+  latest_scan_run: "appendix/guidance/warden/scans_outputs/runs/20260222-030746"
+  latest_design_run: "appendix/guidance/warden/design/runs/20260222-030750__bp-20260222-030742-warden__scan-20260222-030746"
+
+implementation_directives:
+  - id: "D-01"
+    directive: "Calculate anchor points dynamically from the loaded algorithm's deck and transitions. Each card in the current forward path gets one anchor."
+  - id: "D-02"
+    directive: "Distribute anchor angles evenly across the wheel arc (330 deg to 30 deg anticlockwise). First card at arc start, last card at arc end."
+  - id: "D-03"
+    directive: "Forward gesture (anticlockwise past threshold) snaps knob to next anchor and advances to next card."
+  - id: "D-04"
+    directive: "Backward gesture (clockwise past threshold) snaps knob to previous anchor and rewinds to previous card."
+  - id: "D-05"
+    directive: "Decision anchors lock the wheel. Forward drag cycles options. Drag-to-confirm on selected option card advances and recalculates anchors for chosen branch."
+  - id: "D-06"
+    directive: "Knob always reflects current anchor angle (progress indicator). No free-floating knob position."
+  - id: "D-07"
+    directive: "Preserve decision records on reverse traversal. Rewinding into a decision card restores previously selected option."
+  - id: "D-08"
+    directive: "Terminal cards allow backward gesture to rewind to previous card."
+  - id: "D-09"
+    directive: "Works for all discoverable algorithms without algorithm-specific code or hardcoded card IDs."
+  - id: "D-10"
+    directive: "Maintain main/dev-mode parity. Dev-mode loads main app via iframe."
+
+acceptance_gates:
+  - id: "AG-01"
+    gate: "Knob snaps to discrete anchor positions on every navigation event."
+  - id: "AG-02"
+    gate: "Forward drag from any non-terminal, non-decision card advances to next card and snaps knob."
+  - id: "AG-03"
+    gate: "Backward drag from any non-cover card rewinds to previous card and snaps knob."
+  - id: "AG-04"
+    gate: "Decision cards lock wheel. Only drag-to-confirm on selected option advances."
+  - id: "AG-05"
+    gate: "After decision confirmation, anchors recalculate to include chosen branch."
+  - id: "AG-06"
+    gate: "Progress indicator shows correct proportional position (11 o'clock start, 1 o'clock end)."
+  - id: "AG-07"
+    gate: "Reverse traversal across decision nodes does not require re-confirmation."
+  - id: "AG-08"
+    gate: "Previously selected decision option is preserved when rewinding into a decision card."
+  - id: "AG-09"
+    gate: "Loop cycles (CPR loop) correctly bounce knob between loop anchor positions."
+  - id: "AG-10"
+    gate: "All discoverable algorithms navigate correctly with anchor-point system."
+  - id: "AG-11"
+    gate: "No regression in timer, checklist, carousel, or toolbox behavior."
+  - id: "AG-12"
+    gate: "Strict dev-mode parity passes after changes."

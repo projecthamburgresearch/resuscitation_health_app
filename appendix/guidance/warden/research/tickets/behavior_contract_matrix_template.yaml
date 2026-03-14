@@ -1,0 +1,270 @@
+# ==============================================================================
+# Warden Clinician Behavior Contract Matrix Template (YAML)
+# ==============================================================================
+# Purpose:
+# - Convert "what users should feel" into explicit pass/fail checks
+# - Link each check to Blueprint + Scan + Design + Parity evidence
+# - Produce one clinician_trust_score (0-100) with red/green reasons
+#
+# Usage:
+# 1) Copy this file per ticket.
+# 2) Fill scope + run ids.
+# 3) Evaluate all required scenarios.
+# 4) Keep every failed scenario with evidence refs (do not delete).
+# 5) Publish alongside ticket closure.
+# ==============================================================================
+
+matrix_id: "BCM-YYYYMMDD-REQ-XXX"
+ticket_id: "REQ-XXX"
+ticket_title: ""
+status: "DRAFT" # DRAFT | PASS | FAIL
+generated_at: "YYYY-MM-DDTHH:MM:SSZ"
+operator: "warden"
+
+evidence_bundle:
+  blueprint_run_dir: "appendix/guidance/warden/blueprint_outputs/runs/<run-id>"
+  scan_run_dir: "appendix/guidance/warden/scans_outputs/runs/<run-id>"
+  design_run_dir: "appendix/guidance/warden/design/runs/<run-id>"
+  blueprint_files_required:
+    - "run_meta.json"
+    - "llm_context.json"
+    - "xray_report.md"
+  scan_files_required:
+    - "run_manifest.json"
+    - "scan-coverage-report.json"
+    - "home-390x844-scan.json"
+  design_files_required:
+    - "bundle_manifest.json"
+    - "bundle_summary.md"
+    - "screenshots/dynamic/main/*"
+    - "splits/dynamic/main/*/regions_map.json"
+  parity:
+    command: "node scripts/check_dev_mode_parity.js"
+    status: "PENDING" # PASS | FAIL | PENDING
+    evidence_ref: ""
+
+scope:
+  route: "home"
+  mode: "main"
+  viewports:
+    - "390x844"
+  algorithms_expected_source: "app/algorithms/index.json"
+  algorithms_expected:
+    - "algo_anaphylaxis.json"
+    - "algo_newborn_ls.json"
+    - "algo_paed_bls_in.json"
+    - "algo_paed_bls_out.json"
+    - "algo_paed_fbao.json"
+  algorithms_tested: []
+  directions_required:
+    - "forward"
+    - "reverse"
+
+scoring_model:
+  score_scale: "0-100"
+  pass_threshold: 90
+  hard_fail_on_any_critical_gate: true
+  components:
+    - id: "C1_FORWARD_ONE_STEP_PER_GESTURE"
+      weight: 20
+      source: "scenario pass ratio"
+    - id: "C2_DECISION_STOP_AND_CONFIRM_ONLY"
+      weight: 25
+      source: "scenario pass ratio"
+    - id: "C3_REVERSE_ONE_STEP_WITHOUT_RECONFIRM"
+      weight: 20
+      source: "scenario pass ratio"
+    - id: "C4_ANCHOR_PROGRESS_READABILITY"
+      weight: 15
+      source: "scenario pass ratio"
+    - id: "C5_CLINICAL_CONTINUITY_TIMER_CHECKLIST"
+      weight: 10
+      source: "scenario pass ratio"
+    - id: "C6_CAPTURE_TRUST_AND_PARITY"
+      weight: 10
+      source: "run-level checks"
+  formula: "clinician_trust_score = round(sum(component.weight * component.pass_ratio), 2)"
+
+gates:
+  - id: "G-01"
+    critical: true
+    promise: "One gesture causes at most one committed transition."
+    ticket_links:
+      - "REQ-005.AG-01"
+      - "REQ-005.AG-03"
+  - id: "G-02"
+    critical: true
+    promise: "Decision nodes stop forward wheel progression until deliberate option confirm."
+    ticket_links:
+      - "REQ-005.AG-04"
+      - "REQ-005.AG-05"
+  - id: "G-03"
+    critical: true
+    promise: "Reverse traversal rewinds one step and does not require decision re-confirmation."
+    ticket_links:
+      - "REQ-005.AG-02"
+      - "REQ-005.AG-06"
+      - "REQ-005.AG-07"
+  - id: "G-04"
+    critical: true
+    promise: "Behavior rules work on all discoverable algorithms (no hardcoded flow)."
+    ticket_links:
+      - "REQ-005.AG-11"
+  - id: "G-05"
+    critical: false
+    promise: "Anchor progression remains legible (start-near-11 to end-near-1) without confusing jumps."
+    ticket_links:
+      - "REQ-005.AG-09"
+      - "REQ-005.AG-10"
+  - id: "G-06"
+    critical: false
+    promise: "Timer/checklist/footer continuity is preserved during transitions."
+    ticket_links:
+      - "REQ-005.AG-12"
+  - id: "G-07"
+    critical: true
+    promise: "Dev-mode parity check passes for touched pages."
+    ticket_links:
+      - "REQ-005.AG-13"
+  - id: "G-08"
+    critical: true
+    promise: "Evidence bundle is complete and capture has no blocking failures."
+    ticket_links:
+      - "REQ-005.AG-14"
+
+scenario_matrix:
+  # One row = one observable user behavior claim.
+  # Keep id stable for reruns.
+  - id: "S-001"
+    gate_id: "G-01"
+    algorithm: "algo_paed_bls_out.json"
+    viewport: "390x844"
+    direction: "forward"
+    from_card: "CARD_03_AIRWAY"
+    to_card_expected: "CARD_04_BREATHING"
+    user_intent: "forward wheel drag"
+    expected_behavior: "exactly one step advance"
+    observed_behavior: "PENDING"
+    pass: "PENDING" # PASS | FAIL | PENDING
+    severity_if_fail: "high"
+    evidence_refs:
+      blueprint: []
+      scan: []
+      design_before_after: []
+      split_maps: []
+    notes: ""
+
+  - id: "S-002"
+    gate_id: "G-02"
+    algorithm: "algo_paed_bls_out.json"
+    viewport: "390x844"
+    direction: "forward"
+    from_card: "CARD_04_BREATHING"
+    to_card_expected: "blocked until confirm"
+    user_intent: "forward wheel drag at decision"
+    expected_behavior: "no auto-advance; selected option must be dragged to center"
+    observed_behavior: "PENDING"
+    pass: "PENDING"
+    severity_if_fail: "critical"
+    evidence_refs:
+      blueprint: []
+      scan: []
+      design_before_after: []
+      split_maps: []
+    notes: ""
+
+  - id: "S-003"
+    gate_id: "G-03"
+    algorithm: "algo_paed_bls_out.json"
+    viewport: "390x844"
+    direction: "reverse"
+    from_card: "CARD_05_BREATHS"
+    to_card_expected: "CARD_04_BREATHING"
+    user_intent: "reverse wheel drag"
+    expected_behavior: "rewind one step; no decision reconfirm required"
+    observed_behavior: "PENDING"
+    pass: "PENDING"
+    severity_if_fail: "critical"
+    evidence_refs:
+      blueprint: []
+      scan: []
+      design_before_after: []
+      split_maps: []
+    notes: ""
+
+  - id: "S-004"
+    gate_id: "G-04"
+    algorithm: "ALL_DISCOVERABLE"
+    viewport: "390x844"
+    direction: "both"
+    from_card: "varies"
+    to_card_expected: "varies"
+    user_intent: "core wheel contract replay across all algorithms"
+    expected_behavior: "same forward/decision/reverse rules everywhere"
+    observed_behavior: "PENDING"
+    pass: "PENDING"
+    severity_if_fail: "critical"
+    evidence_refs:
+      blueprint: []
+      scan: []
+      design_before_after: []
+      split_maps: []
+    notes: ""
+
+run_level_checks:
+  scan_coverage_includeable_ratio:
+    min_required: 0.95
+    observed: null
+    pass: "PENDING"
+    evidence_ref: ""
+  scan_capped_scans:
+    max_allowed: 0
+    observed: null
+    pass: "PENDING"
+    evidence_ref: ""
+  design_dynamic_before_after_pairs:
+    min_required_pairs: 1
+    observed_pairs: null
+    pass: "PENDING"
+    evidence_ref: ""
+  design_capture_failures:
+    max_allowed: 0
+    observed: null
+    pass: "PENDING"
+    evidence_ref: ""
+  blueprint_scope_has_devmode_excluded:
+    expected: true
+    observed: null
+    pass: "PENDING"
+    evidence_ref: ""
+
+results:
+  totals:
+    scenarios_total: 0
+    scenarios_passed: 0
+    scenarios_failed: 0
+    critical_failures: 0
+  component_scores:
+    C1_FORWARD_ONE_STEP_PER_GESTURE: 0
+    C2_DECISION_STOP_AND_CONFIRM_ONLY: 0
+    C3_REVERSE_ONE_STEP_WITHOUT_RECONFIRM: 0
+    C4_ANCHOR_PROGRESS_READABILITY: 0
+    C5_CLINICAL_CONTINUITY_TIMER_CHECKLIST: 0
+    C6_CAPTURE_TRUST_AND_PARITY: 0
+  clinician_trust_score: 0
+  verdict: "PENDING" # PASS | FAIL | PENDING
+  red_reasons: []
+  green_reasons: []
+  unresolved_questions: []
+
+closure_contract:
+  required_for_ticket_resolution:
+    - "All critical gates PASS"
+    - "clinician_trust_score >= 90"
+    - "algorithm coverage includes all discoverable algorithms"
+    - "parity status PASS"
+    - "all failed scenarios listed with evidence refs and follow-up action"
+  report_paths:
+    yaml_report: "appendix/guidance/warden/research/sessions/YYYYMMDD_REQ-XXX_behavior_contract.yaml"
+    json_report: "appendix/guidance/warden/research/sessions/YYYYMMDD_REQ-XXX_behavior_contract.json"
+    summary_note: "appendix/guidance/warden/research/sessions/YYYYMMDD_REQ-XXX_session.md"

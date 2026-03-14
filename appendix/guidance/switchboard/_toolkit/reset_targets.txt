@@ -1,0 +1,5 @@
+inbox
+active
+outbox
+archive
+registry/dispatches.jsonl

@@ -1,0 +1,389 @@
+Email *
+mordecai@projecthamburg.com
+1/1
+a) To get the fastest possible response from AI.
+b) To test the limits of an AI model's reasoning and expose its failure points.
+c) To retrieve simple, verifiable facts from the AI's knowledge base.
+d) To generate creative and entertaining content.
+Feedback
+Correct answer - B) To test the limits of an AI model’s reasoning and expose its failure
+points.
+Explanation: Prompts are designed not just to get any response, but to test the limits of
+the model’s reasoning and capabilities. The other options are either incorrect or not the
+primary goal in this context.
+Rubric Academy: Prompts
+Comprehension Check
+Total points
+21/21
+What is the primary role of a prompt in the context of Mercor rubric
+projects?
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXqh…
+1/17
+
+1/1
+a) Submit the prompt and response immediately as a success.
+b) Assume the model is an expert and ask it more complex follow-up questions.
+c) Refine the prompt to make it more difficult, nuanced, or demanding.
+d) Ask a different AI model the same question.
+Feedback
+C) Refine the prompt to make it more difficult, nuanced, or demanding.
+Explanation: If the model performed well and gave a strong answer, that means the
+prompt wasn’t hard enough to expose a failure point. You’ll need to go back and refine
+your prompt, making it more difficult.
+1/1
+a) "What year was the CSDDD enacted by the EU?"
+b) "List the three main valuation methodologies in finance."
+c) "Analyze the potential impact of the CSDDD on a US-based company's supply
+chain and recommend three compliance strategies."
+d) "Define the term 'duty of care' in a legal context."
+Feedback
+C) "Analyze the potential impact of the CSDDD on a US-based company's supply chain and
+recommend three compliance strategies."
+Explanation: This requires analysis, synthesis, and recommendation—hallmarks of deep
+reasoning. The other options are examples of simple fact retrieval or definitions.
+According to the iterative testing loop, what should an expert do if the AI
+model provides a strong, correct answer to their prompt?
+*
+Which of the following is the best example of a prompt that requires deep
+reasoning, as opposed to simple recall?
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXqh…
+2/17
+
+1/1
+a) It is plagiarism.
+b) It is not representative of work you may do in your profession.
+c) It is much too vague and lacks a specific objective.
+d) It only tests for a knowledge gap.
+Feedback
+C) It is much too vague and lacks a specific objective.
+Explanation: It's too vague because it doesn't specify the kind of deal, industry, or strategy.
+1/1
+a) "Calculate the company's projected 2024 EBITDA."
+b) "Calculate the company's projected 2024 EBITDA and explain your methodology."
+c) "Using the attached financials, project the 2024 EBITDA in USD. Round to the
+nearest thousand. A result within +/- 2% of the correct value is acceptable."
+d) "Project the 2024 EBITDA and compare it to last year's performance."
+Feedback
+C) "Using the attached financials, project the 2024 EBITDA in USD. Round to the nearest
+thousand. A result within +/- 2% of the correct value is acceptable."
+Explanation: This option includes both rounding rules and a tolerance guideline ("+/- 2%"),
+which are the core components of a "clear margin of error" as described in the lesson.
+Why should the prompt "Explain how to do a deal" be rejected? *
+An expert creates a prompt with a numerical output. Which of the
+following additions best incorporates the concept of a "clear margin of
+error"?
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXqh…
+3/17
+
+1/1
+a) The AI model's areas of expertise.
+b) The reasoning failures and limits of an AI model's capabilities.
+c) Simple tasks that the AI can perform reliably.
+d) Questions that have no single correct answer.
+Feedback
+Correct answer - B) The reasoning failures and limits of an AI model's capabilities.
+Explanation: Prompts are supposed to expose the failure points of AI models, especially
+when it comes to their reasoning capabilities.
+1/1
+a) The answer is too subjective.
+b) It only tests for a knowledge gap and doesn't require reasoning.
+c) The prompt is too long and complex.
+d) The AI is not trained on art history.
+Feedback
+B) It only tests for a knowledge gap and doesn't require reasoning.
+Explanation: This is a simple fact-recall question. Prompts that can be solved by simple
+recall should be avoided in favor of reasoning gaps.
+The main purpose of designing prompts is to find... *
+A prompt asks the AI to "Name five famous impressionist painters." Why
+would this likely be rejected?
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXqh…
+4/17
+
+1/1
+a) "Draft a legal memo analyzing the CSDDD."
+b) "Calculate the Enterprise Value based on the attached spreadsheet."
+c) "Suggest a good marketing slogan for a new electric car."
+d) "Summarize the key findings of the attached scientific paper."
+Feedback
+C) "Suggest a good marketing slogan for a new electric car."
+Explanation: There are countless possible "good" slogans, making this highly subjective
+with many correct answers. The other options, given proper constraints, would lead to a
+more objective, singular output.
+1/1
+a) Including the necessary constraints.
+b) Making the prompt too vague.
+c) Introducing a knowledge gap.
+d) Creating a clear objective.
+Feedback
+A) Including necessary constraints.
+Explanation: This phrase specifies the conditions and perspective ("conservative investor,"
+"10% discount rate") the model should adopt, which is the definition of a constraint.
+Which of the following prompts would be rejected for having "Multiple
+Solutions"?
+*
+Including the phrase "Assume a conservative investor profile with a 10%
+discount rate" in a prompt is an example of:
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXqh…
+5/17
+
+1/1
+a) It makes the AI model uncomfortable.
+b) There is no clear basis for judging the quality of the answer.
+c) Subjective prompts are always too simple for the AI.
+d) The AI cannot generate subjective content.
+Feedback
+B) There is no clear basis for judging the quality of the answer.
+Explanation: For a good prompt, "here should be a clear basis for what constitutes a
+correct or superior answer. This is impossible if the answer is highly subjective.
+1/1
+a) Because they need people to test the AI's internet search capabilities.
+b) Because they cannot reliably identify expert-level points of failure without a
+professional's perspective.
+c) Because they need to build a database of simple, factual questions.
+d) Because experts are better at spotting plagiarism in AI responses.
+Feedback
+B) Because they cannot reliably identify expert-level points of failure without a
+professional's perspective.
+Explanation: Only experts in each domain can assess whether a prompt is a complex task
+within your profession and whether the AI model provided a robust response to the
+prompt.
+What is the main problem with a prompt whose answer is highly
+subjective?
+*
+Why are AI labs hiring human experts for this work? *
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXqh…
+6/17
+
+1/1
+a) Is too difficult for the AI to answer.
+b) Involves numbers, which can be hard to verify.
+c) Fails to test reasoning and can be solved with a simple web search.
+d) Is not representative of work in any professional field.
+Feedback
+C) Fails to test reasoning and can be solved with a simple web search.
+Explanation: This prompt asks a simple recall fact, not a question or task that tests the
+reasoning capabilities of the model.
+Instructions
+For each of the following questions, you will be presented with a prompt. Evaluate it based 
+on the training materials and select the best answer.
+The reason to avoid a prompt like "What is the GDP of Australia?" is that
+it:
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXqh…
+7/17
+
+1/1
+a) It is not from a real professional field.
+b) It provides too much context about the startup.
+c) The terms 'innovative' and 'impactful' are subjective and depend on personal
+taste, making it hard for experts to agree on a single 'best' answer.
+d) The prompt is too long and specific.
+Feedback
+C) The terms "innovative" and "impactful" are subjective and depend on personal taste,
+making it hard for experts to agree on a single "best" answer.
+Explanation: This prompt fails the Expert Agreement and Dependency on Taste rules. What
+one expert considers "innovative," another might find cliché. There is no objective way to
+measure "impactful" in this context.
+Prompt: "Draft the most innovative and impactful mission statement for a
+new eco-friendly fashion startup."
+Why is this prompt likely to be rejected? 
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXqh…
+8/17
+
+1/1
+a) A specific company name.
+b) A bounded scope; there are endless possible strategies and no clear limits or
+goals.
+c) An interesting topic for an AI to analyze.
+d) A clear margin of error for numerical outputs.
+Feedback
+B) A bounded scope; there are endless possible strategies and no clear limits or goals.
+Explanation: The prompt is too broad. A "comprehensive strategy" could involve thousands
+of different actions. It lacks the clear limits, steps, or goals needed for an acceptable
+prompt, making it an example of "endless brainstorming."
+Prompt: "As a consultant, develop a comprehensive strategy to improve
+employee morale at a large, multinational corporation."
+This prompt is too open and should be rejected primarily because it lacks
+what? 
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXqh…
+9/17
+
+1/1
+a) It is a very creative and open-ended task.
+b) It has a vague goal, which allows the AI to show its reasoning ability.
+c) It is a simple question that can be answered with a quick web search.
+d) It has a bounded scope, uses a provided data source, and includes
+measurable criteria.
+Feedback
+D) It has a bounded scope, uses a provided data source, and includes measurable criteria
+(word count, specific details to include).
+Explanation: This is a strong prompt because it is highly specific. It provides a data source
+(the PDF), sets clear limits (250 words), and gives measurable, factual criteria for success
+(identify top 3 products, state the net profit margin).
+Prompt: "Analyze the attached quarterly report (Q3_Report.pdf) and write
+a 250-word summary for a board of directors. The summary must identify
+the top three revenue-generating products and state the company's net
+profit margin, rounded to two decimal places."
+This prompt is strong and should be accepted because: 
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXq…
+10/17
+
+1/1
+a) The flavor of the soft drink.
+b) Specifics about the target audience, platform, budget, and what defines
+"viral."
+c) The names of competing soft drink brands.
+d) A list of potential celebrity endorsers.
+Feedback
+B) Specifics about the target audience, platform, budget, and what defines "viral" (e.g., a
+certain number of shares or views).
+Explanation: The goal "go viral" is too vague. A clear prompt needs to set clear limits and
+measurable criteria. Defining the audience, budget, and success metrics would make the
+task objective and well-defined.
+Prompt: "Create a social media campaign to make our new soft drink go
+viral."
+The primary flaw in this prompt is that it has a vague goal. What key
+information is missing to make it acceptable? 
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXq…
+11/17
+
+1/1
+a) Factual accuracy about space travel.
+b) The AI's knowledge of the planet Mars.
+c) Personal style and creative taste.
+d) The length of the story
+Feedback
+C) Personal style and creative taste.
+Explanation: The quality of a story is judged subjectively. What one person finds "exciting"
+depends entirely on their personal taste. This type of prompt is rejected because it doesn't
+rely on knowledge, reasoning, and facts.
+Prompt: "Write an exciting short story about a journey to Mars."
+This prompt should be rejected because its success depends almost
+entirely on: 
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXq…
+12/17
+
+1/1
+a) Accept the prompt because the initial goals are clear.
+b) Ask the AI to choose the best roadmap out of several options.
+c) Reject the prompt because experts could not agree on the best answer.
+d) Accept the prompt but score it with a very flexible rubric.
+Feedback
+C) Reject the prompt because experts could not agree on the best answer.
+Explanation: This scenario directly tests the second step in the decision flowchart. Even if
+the goals are clear, a prompt must be rejected if it fails the Expert Agreement test.
+An expert is given the following prompt: "Outline a 12-month product
+roadmap for a new fitness app. The plan must include features for user
+tracking, social sharing, and premium content. The target launch is Q3 of
+next year." The expert decides the goals are clear. However, they realize
+that ten different product managers would create ten vastly different
+roadmaps, with no single "best" version.
+According to the decision-making process, what should the expert do? 
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXq…
+13/17
+
+1/1
+a) The prompt is not representative of work in your field.
+b) The prompt is too vague and lacks a clear objective.
+c) The prompt is too simple and only requires factual recall.
+d) The prompt is likely plagiarized.
+e) The prompt is strong and contains no apparent errors.
+Feedback
+Correct Answer: b) The prompt is too vague and lacks a clear objective.
+Explanation: The term "good strategies" is subjective and the prompt does not define the
+deliverable, its format, or any constraints. This makes it difficult for a model to know what
+kind of output is expected. A stronger prompt would specify the goals, such as "outline
+three marketing strategies to increase foot traffic for a new downtown coffee shop."
+Prompt: "Describe some good strategies for a new coffee shop."
+Why is this prompt weak?
+*
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXq…
+14/17
+
+1/1
+a) The prompt has too many potential solutions.
+b) The prompt is too vague and lacks a clear objective.
+c) The prompt is too simple and only requires factual recall.
+d) The prompt is likely plagiarized.
+e) The prompt is strong and contains no apparent errors.
+Feedback
+Correct Answer: a) The prompt has too many potential solutions.
+Explanation: There are endless possible names for a shoe brand, and the "best" one is
+highly subjective and depends on taste. Prompts should have solutions that experts can
+generally agree on, rather than countless correct answers.
+Prompt: "Suggest a name for a new brand of athletic shoes."
+Why is this prompt weak?
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXq…
+15/17
+
+1/1
+a) The prompt has too many potential solutions.
+b) The prompt is too vague and lacks a clear objective.
+c) The prompt is too simple and only requires factual recall.
+d) The prompt is likely plagiarized.
+e) The prompt is strong and contains no apparent errors.
+Feedback
+Correct Answer: e) The prompt is strong and contains no apparent errors.
+Explanation: This prompt requires deep legal reasoning, mirrors a real professional task,
+has a clear objective (300-word memo), and includes necessary constraints (California
+law, specific statute, client context). This makes it a well-constructed, strong prompt.
+This form was created inside of Mercor. - Contact form owner
+Does this form look suspicious? Report
+Prompt: "Draft a 300-word legal memo for a senior partner analyzing
+whether a tech company's (called "Mega") non-compete clause is
+enforceable under California law, citing the California Business and
+Professions Code § 16600. The company is based in Palo Alto, and the
+employee is a software engineer."
+Why is this prompt weak?
+*
+ Forms
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXq…
+16/17
+
+12/30/25, 1:06 AM
+Rubric Academy: Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSdb_IvSEHs8BI7ealBL13_D64sEUGThKrz859b43jNkNtPAuA/viewscore?viewscore=AE0zAgAI2lj732OXsjYHlsXq…
+17/17

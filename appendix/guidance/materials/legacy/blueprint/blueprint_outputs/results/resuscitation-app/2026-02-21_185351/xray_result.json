@@ -1,0 +1,1014 @@
+{
+  "domain": "xray",
+  "version": "2.0.0",
+  "timestamp": "2026-02-21 18:53:52.546771",
+  "root_path": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app",
+  "stats": {
+    "files_scanned": 3,
+    "files_parsed": 2,
+    "files_skipped": 0,
+    "entity_count": 37,
+    "edge_count": 34,
+    "entity_types": {
+      "file": 3,
+      "variable": 28,
+      "table": 6
+    },
+    "elapsed_seconds": 0.043,
+    "error_count": 0
+  },
+  "entities": [
+    {
+      "id": "FILE::.DS_Store",
+      "type": "file",
+      "name": ".DS_Store",
+      "qualified_name": ".DS_Store",
+      "meta": {}
+    },
+    {
+      "id": "FILE::Resuscitation_App_Complete.html",
+      "type": "file",
+      "name": "Resuscitation_App_Complete.html",
+      "qualified_name": "Resuscitation_App_Complete.html",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 1,
+        "start_col": 0,
+        "end_line": 1349,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "css_classes": [
+          "${i",
+          "''}",
+          "'active'",
+          ":",
+          "===",
+          "?",
+          "app-title",
+          "card-body",
+          "card-header",
+          "card-icon",
+          "card-title",
+          "carousel-dots",
+          "cover-content",
+          "cover-subtitle",
+          "cover-title",
+          "decision-indicator",
+          "dot",
+          "footer-label",
+          "footer-row",
+          "header-icon",
+          "header-icons",
+          "icon-bl",
+          "icon-tr",
+          "modal-close",
+          "modal-content",
+          "modal-title",
+          "option-badge",
+          "overflow-btn",
+          "small",
+          "state.carouselIndex"
+        ]
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#app",
+      "type": "variable",
+      "name": "#app",
+      "qualified_name": "#app",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 422,
+        "start_col": 0,
+        "end_line": 422,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "app"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#stage",
+      "type": "variable",
+      "name": "#stage",
+      "qualified_name": "#stage",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 437,
+        "start_col": 0,
+        "end_line": 437,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "stage"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#zone-top",
+      "type": "variable",
+      "name": "#zone-top",
+      "qualified_name": "#zone-top",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 438,
+        "start_col": 0,
+        "end_line": 438,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "zone-top"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#zone-middle",
+      "type": "variable",
+      "name": "#zone-middle",
+      "qualified_name": "#zone-middle",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 439,
+        "start_col": 0,
+        "end_line": 439,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "zone-middle"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#wheel",
+      "type": "variable",
+      "name": "#wheel",
+      "qualified_name": "#wheel",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 440,
+        "start_col": 0,
+        "end_line": 440,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "wheel"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#active-card",
+      "type": "variable",
+      "name": "#active-card",
+      "qualified_name": "#active-card",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 441,
+        "start_col": 0,
+        "end_line": 441,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "active-card"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#knob",
+      "type": "variable",
+      "name": "#knob",
+      "qualified_name": "#knob",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 442,
+        "start_col": 0,
+        "end_line": 442,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "knob"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#zone-bottom",
+      "type": "variable",
+      "name": "#zone-bottom",
+      "qualified_name": "#zone-bottom",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 444,
+        "start_col": 0,
+        "end_line": 444,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "zone-bottom"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#checklist-area",
+      "type": "variable",
+      "name": "#checklist-area",
+      "qualified_name": "#checklist-area",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 451,
+        "start_col": 0,
+        "end_line": 451,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "checklist-area"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#timer",
+      "type": "variable",
+      "name": "#timer",
+      "qualified_name": "#timer",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 453,
+        "start_col": 0,
+        "end_line": 453,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "timer"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#modal-overlay",
+      "type": "variable",
+      "name": "#modal-overlay",
+      "qualified_name": "#modal-overlay",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 458,
+        "start_col": 0,
+        "end_line": 458,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "modal-overlay"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#icon-fullscreen",
+      "type": "variable",
+      "name": "#icon-fullscreen",
+      "qualified_name": "#icon-fullscreen",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 471,
+        "start_col": 0,
+        "end_line": 471,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "icon-fullscreen"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#icon-toolbox",
+      "type": "variable",
+      "name": "#icon-toolbox",
+      "qualified_name": "#icon-toolbox",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 474,
+        "start_col": 0,
+        "end_line": 474,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "icon-toolbox"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#icon-decision",
+      "type": "variable",
+      "name": "#icon-decision",
+      "qualified_name": "#icon-decision",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 479,
+        "start_col": 0,
+        "end_line": 479,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "icon-decision"
+      }
+    },
+    {
+      "id": "TABLE::Resuscitation_App_Complete.html::your",
+      "type": "table",
+      "name": "your",
+      "qualified_name": "your",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 488,
+        "start_col": 0,
+        "end_line": 488,
+        "end_col": 0
+      },
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::Resuscitation_App_Complete.html::a",
+      "type": "table",
+      "name": "a",
+      "qualified_name": "a",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 895,
+        "start_col": 0,
+        "end_line": 895,
+        "end_col": 0
+      },
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::Resuscitation_App_Complete.html::visibility",
+      "type": "table",
+      "name": "visibility",
+      "qualified_name": "visibility",
+      "location": {
+        "file": "Resuscitation_App_Complete.html",
+        "start_line": 1074,
+        "start_col": 0,
+        "end_line": 1074,
+        "end_col": 0
+      },
+      "meta": {
+        "operation": "UPDATE"
+      }
+    },
+    {
+      "id": "FILE::index.html",
+      "type": "file",
+      "name": "index.html",
+      "qualified_name": "index.html",
+      "location": {
+        "file": "index.html",
+        "start_line": 1,
+        "start_col": 0,
+        "end_line": 1349,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "css_classes": [
+          "${i",
+          "''}",
+          "'active'",
+          ":",
+          "===",
+          "?",
+          "app-title",
+          "card-body",
+          "card-header",
+          "card-icon",
+          "card-title",
+          "carousel-dots",
+          "cover-content",
+          "cover-subtitle",
+          "cover-title",
+          "decision-indicator",
+          "dot",
+          "footer-label",
+          "footer-row",
+          "header-icon",
+          "header-icons",
+          "icon-bl",
+          "icon-tr",
+          "modal-close",
+          "modal-content",
+          "modal-title",
+          "option-badge",
+          "overflow-btn",
+          "small",
+          "state.carouselIndex"
+        ]
+      }
+    },
+    {
+      "id": "VAR::index.html::#app",
+      "type": "variable",
+      "name": "#app",
+      "qualified_name": "#app",
+      "location": {
+        "file": "index.html",
+        "start_line": 422,
+        "start_col": 0,
+        "end_line": 422,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "app"
+      }
+    },
+    {
+      "id": "VAR::index.html::#stage",
+      "type": "variable",
+      "name": "#stage",
+      "qualified_name": "#stage",
+      "location": {
+        "file": "index.html",
+        "start_line": 437,
+        "start_col": 0,
+        "end_line": 437,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "stage"
+      }
+    },
+    {
+      "id": "VAR::index.html::#zone-top",
+      "type": "variable",
+      "name": "#zone-top",
+      "qualified_name": "#zone-top",
+      "location": {
+        "file": "index.html",
+        "start_line": 438,
+        "start_col": 0,
+        "end_line": 438,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "zone-top"
+      }
+    },
+    {
+      "id": "VAR::index.html::#zone-middle",
+      "type": "variable",
+      "name": "#zone-middle",
+      "qualified_name": "#zone-middle",
+      "location": {
+        "file": "index.html",
+        "start_line": 439,
+        "start_col": 0,
+        "end_line": 439,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "zone-middle"
+      }
+    },
+    {
+      "id": "VAR::index.html::#wheel",
+      "type": "variable",
+      "name": "#wheel",
+      "qualified_name": "#wheel",
+      "location": {
+        "file": "index.html",
+        "start_line": 440,
+        "start_col": 0,
+        "end_line": 440,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "wheel"
+      }
+    },
+    {
+      "id": "VAR::index.html::#active-card",
+      "type": "variable",
+      "name": "#active-card",
+      "qualified_name": "#active-card",
+      "location": {
+        "file": "index.html",
+        "start_line": 441,
+        "start_col": 0,
+        "end_line": 441,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "active-card"
+      }
+    },
+    {
+      "id": "VAR::index.html::#knob",
+      "type": "variable",
+      "name": "#knob",
+      "qualified_name": "#knob",
+      "location": {
+        "file": "index.html",
+        "start_line": 442,
+        "start_col": 0,
+        "end_line": 442,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "knob"
+      }
+    },
+    {
+      "id": "VAR::index.html::#zone-bottom",
+      "type": "variable",
+      "name": "#zone-bottom",
+      "qualified_name": "#zone-bottom",
+      "location": {
+        "file": "index.html",
+        "start_line": 444,
+        "start_col": 0,
+        "end_line": 444,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "zone-bottom"
+      }
+    },
+    {
+      "id": "VAR::index.html::#checklist-area",
+      "type": "variable",
+      "name": "#checklist-area",
+      "qualified_name": "#checklist-area",
+      "location": {
+        "file": "index.html",
+        "start_line": 451,
+        "start_col": 0,
+        "end_line": 451,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "checklist-area"
+      }
+    },
+    {
+      "id": "VAR::index.html::#timer",
+      "type": "variable",
+      "name": "#timer",
+      "qualified_name": "#timer",
+      "location": {
+        "file": "index.html",
+        "start_line": 453,
+        "start_col": 0,
+        "end_line": 453,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "timer"
+      }
+    },
+    {
+      "id": "VAR::index.html::#modal-overlay",
+      "type": "variable",
+      "name": "#modal-overlay",
+      "qualified_name": "#modal-overlay",
+      "location": {
+        "file": "index.html",
+        "start_line": 458,
+        "start_col": 0,
+        "end_line": 458,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "modal-overlay"
+      }
+    },
+    {
+      "id": "VAR::index.html::#icon-fullscreen",
+      "type": "variable",
+      "name": "#icon-fullscreen",
+      "qualified_name": "#icon-fullscreen",
+      "location": {
+        "file": "index.html",
+        "start_line": 471,
+        "start_col": 0,
+        "end_line": 471,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "icon-fullscreen"
+      }
+    },
+    {
+      "id": "VAR::index.html::#icon-toolbox",
+      "type": "variable",
+      "name": "#icon-toolbox",
+      "qualified_name": "#icon-toolbox",
+      "location": {
+        "file": "index.html",
+        "start_line": 474,
+        "start_col": 0,
+        "end_line": 474,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "icon-toolbox"
+      }
+    },
+    {
+      "id": "VAR::index.html::#icon-decision",
+      "type": "variable",
+      "name": "#icon-decision",
+      "qualified_name": "#icon-decision",
+      "location": {
+        "file": "index.html",
+        "start_line": 479,
+        "start_col": 0,
+        "end_line": 479,
+        "end_col": 0
+      },
+      "language": "html",
+      "meta": {
+        "html_id": "icon-decision"
+      }
+    },
+    {
+      "id": "TABLE::index.html::your",
+      "type": "table",
+      "name": "your",
+      "qualified_name": "your",
+      "location": {
+        "file": "index.html",
+        "start_line": 488,
+        "start_col": 0,
+        "end_line": 488,
+        "end_col": 0
+      },
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::index.html::a",
+      "type": "table",
+      "name": "a",
+      "qualified_name": "a",
+      "location": {
+        "file": "index.html",
+        "start_line": 895,
+        "start_col": 0,
+        "end_line": 895,
+        "end_col": 0
+      },
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::index.html::visibility",
+      "type": "table",
+      "name": "visibility",
+      "qualified_name": "visibility",
+      "location": {
+        "file": "index.html",
+        "start_line": 1074,
+        "start_col": 0,
+        "end_line": 1074,
+        "end_col": 0
+      },
+      "meta": {
+        "operation": "UPDATE"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#app",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#stage",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#zone-top",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#zone-middle",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#wheel",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#active-card",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#knob",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#zone-bottom",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#checklist-area",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#timer",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#modal-overlay",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#icon-fullscreen",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#icon-toolbox",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "VAR::Resuscitation_App_Complete.html::#icon-decision",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "TABLE::Resuscitation_App_Complete.html::your",
+      "relation": "touches_table",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "file": "Resuscitation_App_Complete.html",
+          "start_line": 488,
+          "end_line": 488,
+          "snippet": "From your"
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "TABLE::Resuscitation_App_Complete.html::a",
+      "relation": "touches_table",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "file": "Resuscitation_App_Complete.html",
+          "start_line": 895,
+          "end_line": 895,
+          "snippet": "FROM a"
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "source": "FILE::Resuscitation_App_Complete.html",
+      "target": "TABLE::Resuscitation_App_Complete.html::visibility",
+      "relation": "touches_table",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "file": "Resuscitation_App_Complete.html",
+          "start_line": 1074,
+          "end_line": 1074,
+          "snippet": "update visibility"
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#app",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#stage",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#zone-top",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#zone-middle",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#wheel",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#active-card",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#knob",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#zone-bottom",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#checklist-area",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#timer",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#modal-overlay",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#icon-fullscreen",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#icon-toolbox",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "VAR::index.html::#icon-decision",
+      "relation": "contains",
+      "confidence": 1.0,
+      "meta": {},
+      "evidence": null
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "TABLE::index.html::your",
+      "relation": "touches_table",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "file": "index.html",
+          "start_line": 488,
+          "end_line": 488,
+          "snippet": "From your"
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "TABLE::index.html::a",
+      "relation": "touches_table",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "file": "index.html",
+          "start_line": 895,
+          "end_line": 895,
+          "snippet": "FROM a"
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "source": "FILE::index.html",
+      "target": "TABLE::index.html::visibility",
+      "relation": "touches_table",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "file": "index.html",
+          "start_line": 1074,
+          "end_line": 1074,
+          "snippet": "update visibility"
+        }
+      ],
+      "meta": {}
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,24 @@
+{
+  "domain": "synapse",
+  "version": "0.2.0",
+  "timestamp": "2026-02-22T01:29:35.375002",
+  "root_path": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app",
+  "entities": [],
+  "edges": [],
+  "stats": {
+    "call_graphs_count": 0,
+    "entry_points_count": 0,
+    "sequences_count": 0,
+    "hotspots_count": 0,
+    "hotspots_by_type": {},
+    "hotspots_by_severity": {},
+    "max_upstream_depth": 0,
+    "max_downstream_depth": 0,
+    "max_sequence_length": 0,
+    "call_graphs": [],
+    "sequences": [],
+    "hotspots": [],
+    "entry_points": []
+  },
+  "errors": []
+}

@@ -1,0 +1,33 @@
+{
+  "domain": "registry",
+  "version": "0.2.0",
+  "timestamp": "2026-02-22T13:36:37.042628",
+  "root_path": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app",
+  "entities": [],
+  "edges": [],
+  "stats": {
+    "run_id": "8b517f4f5832",
+    "elapsed_seconds": 0.018,
+    "profile": {
+      "total_files": 11,
+      "total_size_bytes": 211084,
+      "estimated_entities": 23,
+      "directory_count": 1,
+      "languages": 3
+    },
+    "zones": {
+      "count": 2,
+      "names": [
+        "algorithms",
+        "root"
+      ]
+    },
+    "index": {
+      "total_entries": 176,
+      "total_runs": 1,
+      "version": "0.2.0"
+    },
+    "error_count": 0
+  },
+  "errors": []
+}

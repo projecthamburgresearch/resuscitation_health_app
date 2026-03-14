@@ -1,0 +1,107 @@
+{
+  "generatedAt": "2026-02-22T01:58:16.684Z",
+  "blueprintDir": "appendix/system/blueprint_outputs/current",
+  "outputDir": "appendix/system/blueprint_outputs/current",
+  "runMeta": {
+    "run_id": "2026-02-21_205813",
+    "project_name": "resuscitation-app-system",
+    "snapshot_id": "resuscitation-app-system-2026-02-21_205813",
+    "source_path": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app",
+    "domains_run": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "preset": "standard",
+    "duration_seconds": 1.815,
+    "blueprint_version": "0.2.0",
+    "bpignore_patterns": [
+      "dev-mode/"
+    ],
+    "files_scanned": 10,
+    "entities_found": 171,
+    "edges_found": 269,
+    "errors": [],
+    "is_intra_run": false
+  },
+  "totals": {
+    "entities": 171,
+    "uniqueEntityFiles": 9,
+    "llmNodes": 171,
+    "llmEdges": 269,
+    "sonarFindings": 0,
+    "synapseHotspots": 0,
+    "masterIndexZones": 2,
+    "masterIndexEntries": 171
+  },
+  "entityTypes": {
+    "variable": 148,
+    "file": 10,
+    "table": 10,
+    "network_request": 2,
+    "chunk": 1
+  },
+  "topEntityFiles": [
+    {
+      "key": "algorithms/algo_newborn_ls.json",
+      "value": 31
+    },
+    {
+      "key": "algorithms/algo_anaphylaxis.json",
+      "value": 28
+    },
+    {
+      "key": "algorithms/algo_paed_fbao.json",
+      "value": 23
+    },
+    {
+      "key": "algorithms/algo_paed_bls_in.json",
+      "value": 22
+    },
+    {
+      "key": "algorithms/algo_paed_bls_out.json",
+      "value": 22
+    },
+    {
+      "key": "index.html",
+      "value": 21
+    },
+    {
+      "key": "Resuscitation_App_Complete.html",
+      "value": 18
+    },
+    {
+      "key": "algorithms/index.json",
+      "value": 3
+    },
+    {
+      "key": ".bpignore",
+      "value": 1
+    }
+  ],
+  "topFunctionHotspots": [],
+  "llmNodeTypes": {
+    "variable": 148,
+    "file": 10,
+    "table": 10,
+    "network_request": 2,
+    "chunk": 1
+  },
+  "llmEdgeTypes": {
+    "contains": 256,
+    "touches_table": 10,
+    "contains_request": 2,
+    "links_to_file": 1
+  },
+  "sonar": {
+    "byCategory": {},
+    "byLevel": {},
+    "topFindings": []
+  },
+  "synapse": {
+    "topHotspots": []
+  }
+}

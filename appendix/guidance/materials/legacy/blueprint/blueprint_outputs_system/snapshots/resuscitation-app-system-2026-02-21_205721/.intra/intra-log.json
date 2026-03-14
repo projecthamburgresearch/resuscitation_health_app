@@ -1,0 +1,38 @@
+{
+  "snapshot_id": "resuscitation-app-system-2026-02-21_205721",
+  "created_at": "2026-02-21T20:57:21.671933",
+  "checkpoints": [
+    {
+      "checkpoint_id": "cp-001",
+      "name": "initial",
+      "created_at": "2026-02-21T20:57:21.766438",
+      "description": "Original boot state from src/",
+      "run_id": null
+    }
+  ],
+  "changes": [
+    {
+      "change_id": "ch-001",
+      "timestamp": "2026-02-21T20:57:24.576728",
+      "change_type": "parameter",
+      "description": "Run with preset=standard, domains=['xray', 'manifest', 'cortex', 'registry', 'sonar', 'synapse']",
+      "before": {},
+      "after": {
+        "preset": "standard",
+        "domains": [
+          "xray",
+          "manifest",
+          "cortex",
+          "registry",
+          "sonar",
+          "synapse"
+        ]
+      },
+      "checkpoint_ref": "cp-001",
+      "run_id": "2026-02-21_205721",
+      "outcome": "Files: 10, Entities: 171, Edges: 269",
+      "files_affected": []
+    }
+  ],
+  "current_checkpoint": "cp-001"
+}

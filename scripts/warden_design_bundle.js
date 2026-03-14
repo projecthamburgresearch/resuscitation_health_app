@@ -24,7 +24,7 @@ const SCAN_RUNS_DIR = path.resolve(
   process.env.WARDEN_SCAN_RUNS_DIR || 'appendix/guidance/warden/scans_outputs/runs',
 );
 
-const DEFAULT_BASE_URL = process.env.WARDEN_DESIGN_BASE_URL || 'http://127.0.0.1:3000';
+const DEFAULT_BASE_URL = process.env.WARDEN_DESIGN_BASE_URL || 'http://localhost:3000';
 const DEFAULT_MODE = 'main';
 const DEFAULT_TIMEOUT_SECONDS = 180;
 const DEFAULT_VIEWPORT = { width: 390, height: 844 };

@@ -1,0 +1,199 @@
+{
+  "created_at": "2026-03-13T18:26:22.606Z",
+  "last_updated_at": "2026-03-13T23:09:24.148Z",
+  "last_reviewed_at": "2026-03-13T23:09:24.148Z",
+  "last_reviewed_by": "Steward",
+  "latest_commit": "b64b9b2669a175f4464271b95b660441d83779d9",
+  "worktree_clean": false,
+  "latest_log": {
+    "name": "202602221025-terminal-saved-output-health-app-logs.txt",
+    "path": "appendix/guidance/exit/logs/raw/202602221025-terminal-saved-output-health-app-logs.txt",
+    "size_bytes": 203666,
+    "mtime": "2026-03-13T18:20:21.392Z"
+  },
+  "log_count": 8,
+  "cycle_log_path": "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md",
+  "warden_work_report_path": "appendix/guidance/warden/report/latest_analysis.md",
+  "warden_cycle_report_path": "appendix/guidance/warden/report/latest_analysis.md",
+  "switchboard": {
+    "inbox": [],
+    "active": [],
+    "outbox": []
+  },
+  "open_headmaster_tickets": [],
+  "next_priority": {
+    "ticket_id": "none",
+    "message_id": "",
+    "path": "",
+    "role": "Steward",
+    "reason": "no open Headmaster ticket currently recorded"
+  },
+  "latest_prompt_path": "appendix/guidance/exit/prompts/LATEST_SESSION_REENTRY.md",
+  "calibration": {
+    "packet_path": "appendix/guidance/exit/prompts/LATEST_SESSION_CALIBRATION.md",
+    "registry_path": "appendix/guidance/exit/registry/calibration.json",
+    "question_count": 14,
+    "default_role": "Steward",
+    "items": [
+      {
+        "id": "CAL-001",
+        "question": "What role am I in for this session?",
+        "default_answer": "Default next-session role is `Steward` because the current queued lane is `none`.",
+        "basis": [
+          "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md",
+          "appendix/guidance/exit/prompts/LATEST_SESSION_REENTRY.md"
+        ],
+        "override_rule": "If the operator explicitly assigns a different role, the operator wins.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-002",
+        "question": "What is the real priority order right now?",
+        "default_answer": "There is no currently recorded bounded next priority. The next session should refresh the queue and cycle log before choosing a lane.",
+        "basis": [
+          "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md",
+          "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md"
+        ],
+        "override_rule": "If the operator reprioritizes explicitly, that override wins.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-003",
+        "question": "Should I stay strictly in-lane or fix nearby drift?",
+        "default_answer": "Stay bounded to the named lane, but fix nearby drift when it is necessary for truth, continuity, verification, or safe closure. Do not silently expand into adjacent product work.",
+        "basis": [
+          "appendix/guidance/headmaster/research/system/TICKET_PROCESS.md",
+          "appendix/guidance/switchboard/PATHWAYS.md"
+        ],
+        "override_rule": "If the operator asks for strict narrow execution, do only the named lane.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-004",
+        "question": "What outcome would make this session successful?",
+        "default_answer": "A successful session leaves the repo in a truer and more recoverable state: the lane advances correctly, artifacts are updated on disk, review fixes are applied if needed, and the next step is clearer than before.",
+        "basis": [
+          "README.md",
+          "appendix/guidance/exit/PROTOCOL.md"
+        ],
+        "override_rule": "If the operator defines a narrower success condition for the session, that narrower condition wins.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-005",
+        "question": "How much autonomy should I use before pausing?",
+        "default_answer": "Use high autonomy inside a bounded lane. Pause only for destructive actions, ambiguous user-intent conflicts, or major cross-cutting structural changes outside the lane.",
+        "basis": [
+          "appendix/guidance/headmaster/research/system/METHODOLOGY.md",
+          "appendix/guidance/warden/research/system/METHODOLOGY.md"
+        ],
+        "override_rule": "If the operator asks for tighter checkpoints, adopt them immediately.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-006",
+        "question": "Are any areas off-limits unless explicitly approved?",
+        "default_answer": "Yes. Destructive deletes or moves of canonical materials, secret-handling changes, broad redesigns outside the lane, and sweeping unrelated work into a cycle are off-limits unless explicitly approved.",
+        "basis": [
+          "appendix/guidance/headmaster/research/system/METHODOLOGY.md",
+          "appendix/guidance/warden/research/system/CONSTITUTION.md"
+        ],
+        "override_rule": "Explicit operator approval can open a bounded exception.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-007",
+        "question": "If operator intent conflicts with docs, which wins?",
+        "default_answer": "Latest explicit operator intent wins, but the accepted repo and docs must be updated so the on-disk source of truth catches up before closure.",
+        "basis": [
+          "README.md",
+          "appendix/guidance/exit/PROTOCOL.md"
+        ],
+        "override_rule": "If there is no explicit operator direction, fall back to current on-disk doctrine.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-008",
+        "question": "Are there off-repo notes, hidden decisions, or extra contexts that matter?",
+        "default_answer": "Assume none unless explicitly given. The sanctioned extra-memory source is the raw terminal log named by Exit.",
+        "basis": [
+          "appendix/guidance/exit/README.md",
+          "appendix/guidance/exit/logs/latest_log_pointer.json"
+        ],
+        "override_rule": "If the operator names another external context, record and use it explicitly.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-009",
+        "question": "Which external projects or corpora are authoritative, and which are only inspiration?",
+        "default_answer": "Authoritative sources are live Resuscitation Health App repo state, the current Headmaster cycle log, the current Switchboard queue, the current Warden evidence, and Toolkit Librarian resources when intentionally cited. Prototype assets and css-web-ui-demos are inspiration unless promoted into a lane with evidence.",
+        "basis": [
+          "README.md",
+          "appendix/guidance/headmaster/research/system/RESOURCE_ATLAS.md"
+        ],
+        "override_rule": "If the operator elevates a source for the current lane, record that elevation explicitly.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-010",
+        "question": "Which current risks should I watch most aggressively?",
+        "default_answer": "Watch continuity drift, lane and role drift, bridge patches becoming permanent by accident, evidence overclaiming, design debt in the large HTML tool islands, and stale docs after structural changes.",
+        "basis": [
+          "appendix/guidance/headmaster/research/system/BRIDGE_PATCH_BACKLOG.md",
+          "appendix/guidance/warden/report/latest_analysis.md"
+        ],
+        "override_rule": "If the operator highlights a more urgent risk, treat that as the session's primary watchpoint.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-011",
+        "question": "May I open or update bounded tickets when I discover new needs?",
+        "default_answer": "Yes. Open or update bounded tickets when needed, but do not create sprawling new workstreams without clearly justifying them.",
+        "basis": [
+          "appendix/guidance/headmaster/research/system/TICKET_PROCESS.md",
+          "appendix/guidance/switchboard/PROTOCOL.md"
+        ],
+        "override_rule": "If the operator asks for recommendation-only behavior, recommend instead of opening or editing tickets.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-012",
+        "question": "What proof level counts as complete?",
+        "default_answer": "For research-only lanes, docs correct on disk are the minimum. For implementation lanes, completion requires local verification, review and fixes, push, green GitHub CI and Deploy, and Exit refresh for cycle closure.",
+        "basis": [
+          "appendix/guidance/headmaster/research/system/DEPLOYMENT_PROTOCOL.md",
+          "appendix/guidance/warden/research/system/METHODOLOGY.md"
+        ],
+        "override_rule": "If the operator explicitly lowers or raises the proof bar for a lane, record that as a lane-specific exception.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-013",
+        "question": "If operator contact is lost mid-lane, what default decision rule should I follow?",
+        "default_answer": "Optimize for recoverability over cleverness. Keep work bounded and prefer a durable partial state plus a clear next step over speculative expansion.",
+        "basis": [
+          "appendix/guidance/exit/PROTOCOL.md",
+          "appendix/guidance/exit/PATHWAYS.md"
+        ],
+        "override_rule": "If the operator leaves a different explicit mid-lane instruction, that instruction wins.",
+        "answer_status": "default-until-overridden"
+      },
+      {
+        "id": "CAL-014",
+        "question": "What would make it true that I really resumed from where the last session left off?",
+        "default_answer": "A true resume reads Exit, verifies live repo state, identifies the real current lane, catches drift instead of repeating it, and continues without needing a broad reorientation pass.",
+        "basis": [
+          "appendix/guidance/exit/prompts/LATEST_SESSION_REENTRY.md",
+          "appendix/guidance/exit/PROTOCOL.md"
+        ],
+        "override_rule": "If the operator defines a sharper resume standard, adopt that as the new calibration target.",
+        "answer_status": "default-until-overridden"
+      }
+    ]
+  },
+  "snapshot_path": "appendix/guidance/exit/snapshots/20260313T230924-continuity.md",
+  "live_state_guard": {
+    "rule": "If live HEAD, worktree state, or Switchboard queue differs from this continuity packet, trust the live repo state and refresh Exit as soon as practical.",
+    "checked_at_refresh": true
+  }
+}

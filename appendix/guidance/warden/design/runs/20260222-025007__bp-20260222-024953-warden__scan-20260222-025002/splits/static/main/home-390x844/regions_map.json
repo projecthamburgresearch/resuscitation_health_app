@@ -1,0 +1,285 @@
+{
+  "generatedAt": "2026-02-22T07:50:12.604Z",
+  "source": {
+    "scanRunDir": "appendix/guidance/warden/scans_outputs/runs/20260222-025002",
+    "sourceType": "app-dom",
+    "scanFile": null,
+    "page": "home",
+    "splitCategory": "static",
+    "transitionStage": "static",
+    "transition": null,
+    "stateSnapshot": null,
+    "viewport": "390x844",
+    "screenshotBounds": {
+      "pageWidth": 390,
+      "pageHeight": 964
+    }
+  },
+  "plan": {
+    "clusterSummary": [],
+    "regionCount": 11,
+    "pageSizeFromScan": {
+      "width": 390,
+      "height": 964
+    }
+  },
+  "summary": {
+    "extracted": 11,
+    "failed": 0
+  },
+  "regions": [
+    {
+      "id": "app-shell",
+      "type": "app-shell",
+      "label": "#app",
+      "selector": "#app",
+      "parentId": null,
+      "sourceIndex": 0,
+      "geometry": {
+        "x": 0,
+        "y": 60,
+        "width": 390,
+        "height": 844
+      },
+      "clippedGeometry": {
+        "x": 0,
+        "y": 60,
+        "width": 390,
+        "height": 844
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/static/main/home-390x844/images/app-shell.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "header",
+      "type": "header",
+      "label": "header",
+      "selector": "header",
+      "parentId": null,
+      "sourceIndex": 1,
+      "geometry": {
+        "x": 2,
+        "y": 62,
+        "width": 386,
+        "height": 50
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 62,
+        "width": 386,
+        "height": 50
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/static/main/home-390x844/images/header.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "incoming",
+      "type": "incoming",
+      "label": "#zone-top",
+      "selector": "#zone-top",
+      "parentId": null,
+      "sourceIndex": 2,
+      "geometry": {
+        "x": 2,
+        "y": 112,
+        "width": 386,
+        "height": 170
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 112,
+        "width": 386,
+        "height": 170
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/static/main/home-390x844/images/incoming.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-stage",
+      "type": "wheel-stage",
+      "label": "#zone-middle",
+      "selector": "#zone-middle",
+      "parentId": null,
+      "sourceIndex": 3,
+      "geometry": {
+        "x": 2,
+        "y": 282,
+        "width": 386,
+        "height": 320
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 282,
+        "width": 386,
+        "height": 320
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/static/main/home-390x844/images/wheel-stage.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-ring",
+      "type": "wheel-ring",
+      "label": "#wheel",
+      "selector": "#wheel",
+      "parentId": null,
+      "sourceIndex": 4,
+      "geometry": {
+        "x": 45,
+        "y": 292,
+        "width": 300,
+        "height": 300
+      },
+      "clippedGeometry": {
+        "x": 45,
+        "y": 292,
+        "width": 300,
+        "height": 300
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/static/main/home-390x844/images/wheel-ring.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "current-card",
+      "type": "current-card",
+      "label": "#active-card",
+      "selector": "#active-card",
+      "parentId": null,
+      "sourceIndex": 5,
+      "geometry": {
+        "x": 105,
+        "y": 337,
+        "width": 180,
+        "height": 210
+      },
+      "clippedGeometry": {
+        "x": 105,
+        "y": 337,
+        "width": 180,
+        "height": 210
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/static/main/home-390x844/images/current-card.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-knob",
+      "type": "wheel-knob",
+      "label": "#knob",
+      "selector": "#knob",
+      "parentId": null,
+      "sourceIndex": 6,
+      "geometry": {
+        "x": 105,
+        "y": 297.09375,
+        "width": 30,
+        "height": 30
+      },
+      "clippedGeometry": {
+        "x": 105,
+        "y": 297,
+        "width": 30,
+        "height": 30
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/static/main/home-390x844/images/wheel-knob.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "previous",
+      "type": "previous",
+      "label": "#zone-bottom",
+      "selector": "#zone-bottom",
+      "parentId": null,
+      "sourceIndex": 7,
+      "geometry": {
+        "x": 2,
+        "y": 602,
+        "width": 386,
+        "height": 200
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 602,
+        "width": 386,
+        "height": 200
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/static/main/home-390x844/images/previous.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "label": "footer",
+      "selector": "footer",
+      "parentId": null,
+      "sourceIndex": 8,
+      "geometry": {
+        "x": 2,
+        "y": 802,
+        "width": 386,
+        "height": 100
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 802,
+        "width": 386,
+        "height": 100
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/static/main/home-390x844/images/footer.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "checklist",
+      "type": "checklist",
+      "label": "#checklist-area",
+      "selector": "#checklist-area",
+      "parentId": null,
+      "sourceIndex": 9,
+      "geometry": {
+        "x": 18,
+        "y": 855.5,
+        "width": 231.359375,
+        "height": 14
+      },
+      "clippedGeometry": {
+        "x": 18,
+        "y": 855,
+        "width": 231,
+        "height": 14
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/static/main/home-390x844/images/checklist.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "timer",
+      "type": "timer",
+      "label": "#timer",
+      "selector": "#timer",
+      "parentId": null,
+      "sourceIndex": 10,
+      "geometry": {
+        "x": 283.578125,
+        "y": 845,
+        "width": 88.421875,
+        "height": 35
+      },
+      "clippedGeometry": {
+        "x": 283,
+        "y": 845,
+        "width": 88,
+        "height": 35
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/static/main/home-390x844/images/timer.png",
+      "ok": true,
+      "error": null
+    }
+  ]
+}

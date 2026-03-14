@@ -1,0 +1,218 @@
+{
+  "timestamp": "2026-03-13T20:23:33.023Z",
+  "totalAlgorithms": 5,
+  "passedAlgorithms": 5,
+  "failedAlgorithms": 0,
+  "results": [
+    {
+      "id": "algo_anaphylaxis_001",
+      "file": "algo_anaphylaxis.json",
+      "success": true,
+      "steps": [
+        {
+          "name": "Identify start card",
+          "result": true,
+          "message": "Anaphylaxis"
+        },
+        {
+          "name": "Forward intent advances 1 step",
+          "result": true,
+          "message": "Card changed to Anaphylaxis?"
+        },
+        {
+          "name": "Reverse intent rewinds 1 step",
+          "result": true,
+          "message": "Card changed to Anaphylaxis"
+        },
+        {
+          "name": "Reached decision state",
+          "result": true,
+          "message": "Title: Response?"
+        },
+        {
+          "name": "Decision state locks forward drag",
+          "result": true,
+          "message": ""
+        },
+        {
+          "name": "Drag-to-center advances decision",
+          "result": true,
+          "message": "Card changed to Continue Monitoring"
+        },
+        {
+          "name": "Reverse traversal past decision works",
+          "result": true,
+          "message": ""
+        }
+      ]
+    },
+    {
+      "id": "algo_newborn_ls_001",
+      "file": "algo_newborn_ls.json",
+      "success": true,
+      "steps": [
+        {
+          "name": "Identify start card",
+          "result": true,
+          "message": "Newborn Life Support"
+        },
+        {
+          "name": "Forward intent advances 1 step",
+          "result": true,
+          "message": "Card changed to Antenatal Counselling"
+        },
+        {
+          "name": "Reverse intent rewinds 1 step",
+          "result": true,
+          "message": "Card changed to Newborn Life Support"
+        },
+        {
+          "name": "Reached decision state",
+          "result": true,
+          "message": "Title: Breathing Check"
+        },
+        {
+          "name": "Decision state locks forward drag",
+          "result": true,
+          "message": ""
+        },
+        {
+          "name": "Drag-to-center advances decision",
+          "result": true,
+          "message": "Card changed to Routine Care"
+        },
+        {
+          "name": "Reverse traversal past decision works",
+          "result": true,
+          "message": ""
+        }
+      ]
+    },
+    {
+      "id": "algo_paed_bls_in_001",
+      "file": "algo_paed_bls_in.json",
+      "success": true,
+      "steps": [
+        {
+          "name": "Identify start card",
+          "result": true,
+          "message": "Paediatric Basic Life Support"
+        },
+        {
+          "name": "Forward intent advances 1 step",
+          "result": true,
+          "message": "Card changed to Unresponsive"
+        },
+        {
+          "name": "Reverse intent rewinds 1 step",
+          "result": true,
+          "message": "Card changed to Paediatric Basic Life Support"
+        },
+        {
+          "name": "Reached decision state",
+          "result": true,
+          "message": "Title: Breathing & Signs of Life"
+        },
+        {
+          "name": "Decision state locks forward drag",
+          "result": true,
+          "message": ""
+        },
+        {
+          "name": "Drag-to-center advances decision",
+          "result": true,
+          "message": "Card changed to Assess ABCDE"
+        },
+        {
+          "name": "Reverse traversal past decision works",
+          "result": true,
+          "message": ""
+        }
+      ]
+    },
+    {
+      "id": "algo_paed_bls_out_001",
+      "file": "algo_paed_bls_out.json",
+      "success": true,
+      "steps": [
+        {
+          "name": "Identify start card",
+          "result": true,
+          "message": "Paediatric Basic Life Support"
+        },
+        {
+          "name": "Forward intent advances 1 step",
+          "result": true,
+          "message": "Card changed to Unresponsive"
+        },
+        {
+          "name": "Reverse intent rewinds 1 step",
+          "result": true,
+          "message": "Card changed to Paediatric Basic Life Support"
+        },
+        {
+          "name": "Reached decision state",
+          "result": true,
+          "message": "Title: Breathing Check"
+        },
+        {
+          "name": "Decision state locks forward drag",
+          "result": true,
+          "message": ""
+        },
+        {
+          "name": "Drag-to-center advances decision",
+          "result": true,
+          "message": "Card changed to Observation"
+        },
+        {
+          "name": "Reverse traversal past decision works",
+          "result": true,
+          "message": ""
+        }
+      ]
+    },
+    {
+      "id": "algo_paed_fbao_001",
+      "file": "algo_paed_fbao.json",
+      "success": true,
+      "steps": [
+        {
+          "name": "Identify start card",
+          "result": true,
+          "message": "Paediatric Foreign Body Airway Obstruction"
+        },
+        {
+          "name": "Forward intent advances 1 step",
+          "result": true,
+          "message": "Card changed to Suspect Foreign Body"
+        },
+        {
+          "name": "Reverse intent rewinds 1 step",
+          "result": true,
+          "message": "Card changed to Paediatric Foreign Body Airway Obstruction"
+        },
+        {
+          "name": "Reached decision state",
+          "result": true,
+          "message": "Title: Cough Effective?"
+        },
+        {
+          "name": "Decision state locks forward drag",
+          "result": true,
+          "message": ""
+        },
+        {
+          "name": "Drag-to-center advances decision",
+          "result": true,
+          "message": "Card changed to Encourage Cough"
+        },
+        {
+          "name": "Reverse traversal past decision works",
+          "result": true,
+          "message": ""
+        }
+      ]
+    }
+  ]
+}

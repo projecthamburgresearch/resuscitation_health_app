@@ -1,0 +1,86 @@
+ticket_id: "REQ-016-BASELINE-COMMIT-EXECUTION"
+date: "2026-03-13"
+status: "RESOLVED"
+ticket_type: "STRUCTURE"
+title: "Prepare the first accepted baseline commit candidate for the upgraded authority stack"
+
+objective: |
+  Turn the curated baseline boundary from HREQ-006 into a precise, commit-ready
+  staging candidate without pushing or sweeping unrelated repo dirt.
+
+profile:
+  target_component: "repo-root"
+  route: "baseline-commit-candidate"
+  viewport: "N/A"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "AUTHORITY_AND_STRUCTURE"
+
+state_machine_scope:
+  algorithm_source: "app/algorithms/"
+  direction: "none"
+  transition_ids: []
+  state_ids: []
+  expected_state_contract:
+    incoming_zone: "Curated baseline boundary is defined by Headmaster."
+    current_zone: "A precise staged candidate exists for the first accepted baseline commit."
+    previous_zone: "Deferred/bootstrap/legacy dirt remains uncommitted."
+
+telemetry_levers:
+  use_scan_json: false
+  use_blueprint_outputs: false
+  use_static_screenshots_and_splits: false
+  use_dynamic_screenshots_and_splits: false
+  require_transition_before_after_pairs: false
+  require_behavior_contract_report: false
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: false
+  allow_web_search: false
+
+rubric_levers:
+  enforce_clear_unambiguous: true
+  enforce_self_contained: true
+  enforce_falsifiable_binary: true
+  enforce_unstacked: true
+  enforce_timeless: true
+
+deliverables:
+  require_findings_by_severity: false
+  require_code_target_map: true
+  require_regression_watchlist: true
+  require_validation_rerun_summary: false
+  require_behavior_matrix_all_algorithms: false
+  require_clinician_trust_score: false
+
+acceptance_gates:
+  - id: "AG-01"
+    gate: "The staged candidate matches the curated canonical/reference buckets from HREQ-006."
+    result: "PASS"
+  - id: "AG-02"
+    gate: "No .DS_Store files or deferred speculative history are included in the staged candidate."
+    result: "PASS"
+  - id: "AG-03"
+    gate: "The lane records the exact staged set and recommended commit message without pushing the repo."
+    result: "PASS"
+
+acceptance_results:
+  - id: "RES-01"
+    result: "Excluded .DS_Store noise from the staged baseline candidate and re-ignored Finder artifacts for guidance surfaces."
+  - id: "RES-02"
+    result: "Staged canonical authority stack (appendix/guidance/), root project files, project tooling, and normalized clinical content."
+  - id: "RES-03"
+    result: "Excluded deferred speculative history and large ephemeral archives via .gitignore."
+  - id: "RES-04"
+    result: "Verified staged set matches the HREQ-006 curation plan."
+
+checklist_outcome: "PASS"
+checklist_notes: "Baseline commit candidate is staged and ready for operator execution."
+rubric_outcome: "RESOLVED"
+research_session: "appendix/guidance/headmaster/research/handoffs/REQ-016-BASELINE-COMMIT-EXECUTION.md"
+artifacts_updated:
+  - "appendix/guidance/warden/research/tickets/REQ-016-BASELINE-COMMIT-EXECUTION.yaml"
+recommended_warden_scope: "Execute the baseline commit: `feat: upgrade authority stack to Headmaster/Warden/Switchboard/Exit`"
+acceptance_gates_for_warden: []
+closed_date: "2026-03-13"
+closed_reason: "Baseline commit candidate prepared and staged according to curation plan."

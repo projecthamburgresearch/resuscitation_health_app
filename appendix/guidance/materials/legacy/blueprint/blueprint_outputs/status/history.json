@@ -1,0 +1,130 @@
+[
+  {
+    "run_id": "20260221_184247_eff6a1",
+    "project_name": "resuscitation-app",
+    "started_at": "2026-02-21T18:42:47.756943",
+    "ended_at": "2026-02-21T18:42:48.611408",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260221_184310_e95656",
+    "project_name": "resuscitation-app",
+    "started_at": "2026-02-21T18:43:10.980365",
+    "ended_at": "2026-02-21T18:43:11.622216",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260221_184353_5e595b",
+    "project_name": "resuscitation-app",
+    "started_at": "2026-02-21T18:43:53.431932",
+    "ended_at": "2026-02-21T18:43:54.253988",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260221_185236_19605b",
+    "project_name": "resuscitation-app",
+    "started_at": "2026-02-21T18:52:36.420978",
+    "ended_at": "2026-02-21T18:52:37.011717",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260221_185303_af6970",
+    "project_name": "resuscitation-app",
+    "started_at": "2026-02-21T18:53:03.189411",
+    "ended_at": "2026-02-21T18:53:03.824349",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260221_185345_116505",
+    "project_name": "resuscitation-app",
+    "started_at": "2026-02-21T18:53:45.441690",
+    "ended_at": "2026-02-21T18:53:46.119067",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260221_185352_6a18ee",
+    "project_name": "resuscitation-app",
+    "started_at": "2026-02-21T18:53:52.129649",
+    "ended_at": "2026-02-21T18:53:52.744980",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260221_190801_562b1a",
+    "project_name": "resuscitation-app",
+    "started_at": "2026-02-21T19:08:01.208911",
+    "ended_at": "2026-02-21T19:08:02.249091",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  }
+]

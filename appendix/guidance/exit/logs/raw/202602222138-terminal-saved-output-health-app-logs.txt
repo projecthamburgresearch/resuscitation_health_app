@@ -1,0 +1,994 @@
+
+╭─── Claude Code v2.1.50 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting started                                                                                                                                │
+│                    Welcome back!                   │ Run /init to create a CLAUDE.md file with instructions for Claude                                                                                       │
+│                                                    │ ─────────────────────────────────────────────────────────────────                                                                                       │
+│                                                    │ Recent activity                                                                                                                                         │
+│                                                    │ No recent activity                                                                                                                                      │
+│                          ✻                         │                                                                                                                                                         │
+│                          |                         │                                                                                                                                                         │
+│                         ▟█▙                        │                                                                                                                                                         │
+│                      ▗ ▗   ▖ ▖                     │                                                                                                                                                         │
+│                                                    │                                                                                                                                                         │
+│                        ▘▘ ▝▝                       │                                                                                                                                                         │
+│   Opus 4.6 (1M context) · Claude Pro · Mordecai    │                                                                                                                                                         │
+│   Machazire                                        │                                                                                                                                                         │
+│    ~/…/local-projects/resuscitation_health_app     │                                                                                                                                                         │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Plan to implement                                                                                                                                                                                            │
+│                                                                                                                                                                                                              │
+│ REQ-008: Fix Decision Wheel Interaction & CSS Transition Jitter                                                                                                                                              │
+│                                                                                                                                                                                                              │
+│ Context                                                                                                                                                                                                      │
+│                                                                                                                                                                                                              │
+│ The wheel navigation has two bugs that make it feel broken:                                                                                                                                                  │
+│                                                                                                                                                                                                              │
+│ 1. CSS jitter after navigation: After advancing/rewinding, the knob fights between the smooth anchor snap animation and finger-following, causing visible jitter.                                            │
+│ 2. Decisions are confusing: Forward wheel drag CYCLES between YES/NO options (carousel mode) instead of confirming. The user taps an option, then expects forward drag to advance — but it switches to the   │
+│ other option instead. This is why "the wheel gets stuck at decisions."                                                                                                                                       │
+│                                                                                                                                                                                                              │
+│ The arc math, anchor system, and gesture detection are all correct (300-degree anticlockwise sweep, 11 o'clock to 1 o'clock). No changes needed there.                                                       │
+│                                                                                                                                                                                                              │
+│ What Changes                                                                                                                                                                                                 │
+│                                                                                                                                                                                                              │
+│ All changes are in app/index.html only. No algorithm JSON changes. No CSS changes. No arc math changes.                                                                                                      │
+│                                                                                                                                                                                                              │
+│ Fix 1: Stop knob jitter after navigation (lines ~1791-1797)                                                                                                                                                  │
+│                                                                                                                                                                                                              │
+│ After navConsumed = true, stop updating knob position to finger. The knob has already snapped to the new anchor via render().                                                                                │
+│                                                                                                                                                                                                              │
+│ // BEFORE (fights CSS transition):                                                                                                                                                                           │
+│ if (state.wheel.navConsumed) {                                                                                                                                                                               │
+│     if (mode !== "DECISION") {                                                                                                                                                                               │
+│         setKnobPosition(currentAngle);  // BUG                                                                                                                                                               │
+│     }                                                                                                                                                                                                        │
+│     return;                                                                                                                                                                                                  │
+│ }                                                                                                                                                                                                            │
+│                                                                                                                                                                                                              │
+│ // AFTER:                                                                                                                                                                                                    │
+│ if (state.wheel.navConsumed) {                                                                                                                                                                               │
+│     return;  // Knob already at new anchor — don't fight the transition                                                                                                                                      │
+│ }                                                                                                                                                                                                            │
+│                                                                                                                                                                                                              │
+│ Fix 2: Decision forward-drag confirms instead of cycling                                                                                                                                                     │
+│                                                                                                                                                                                                              │
+│ Add state.decisionTapped flag to track explicit option selection:                                                                                                                                            │
+│                                                                                                                                                                                                              │
+│ - Arrive at decision → both options dimmed (no pre-selection)                                                                                                                                                │
+│ - Tap an option → it highlights, decisionTapped = true                                                                                                                                                       │
+│ - Forward wheel drag → confirms selected option and advances (only if tapped)                                                                                                                                │
+│ - Card drag down 60px → also confirms (secondary method, only if tapped)                                                                                                                                     │
+│ - Backward wheel drag → rewinds (always works, no tap needed)                                                                                                                                                │
+│ - Rewind into committed decision → previous choice shown highlighted, decisionTapped = true (can re-confirm quickly or tap other option)                                                                     │
+│                                                                                                                                                                                                              │
+│ Specific edits (12 steps)                                                                                                                                                                                    │
+│                                                                                                                                                                                                              │
+│ ┌─────┬───────────────────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────┐                                                                      │
+│ │  #  │                       Location                        │                                Change                                 │                                                                      │
+│ ├─────┼───────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                      │
+│ │ 1   │ State object (~line 962)                              │ Add decisionTapped: false                                             │                                                                      │
+│ ├─────┼───────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                      │
+│ │ 2   │ applyAlgorithm() (~line 863)                          │ Reset decisionTapped = false                                          │                                                                      │
+│ ├─────┼───────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                      │
+│ │ 3   │ advance() (~line 1664)                                │ Reset decisionTapped = false after nav                                │                                                                      │
+│ ├─────┼───────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                      │
+│ │ 4   │ rewind() (~line 1690)                                 │ Set decisionTapped based on whether rewinding into committed decision │                                                                      │
+│ ├─────┼───────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                      │
+│ │ 5   │ selectDecisionOption() (~line 1698)                   │ Set decisionTapped = true                                             │                                                                      │
+│ ├─────┼───────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                      │
+│ │ 6   │ handleDecisionWheelDrag() (lines 1743-1771)           │ Forward = confirm if tapped; remove cycling logic                     │                                                                      │
+│ ├─────┼───────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                      │
+│ │ 7   │ onKnobDrag() navConsumed block (lines 1791-1797)      │ Remove setKnobPosition(currentAngle)                                  │                                                                      │
+│ ├─────┼───────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                      │
+│ │ 8   │ Constant DECISION_CYCLE_DEG (line 999)                │ Delete (now unused)                                                   │                                                                      │
+│ ├─────┼───────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                      │
+│ │ 9   │ renderPreviewZone() (line 1358) + setupDecisionDrag() │ Gate visual selection on decisionTapped                               │                                                                      │
+│ ├─────┼───────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                      │
+│ │ 10  │ setCurrentCardForAutomation()                         │ Reset decisionTapped = false                                          │                                                                      │
+│ ├─────┼───────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                      │
+│ │ 11  │ snapshotForAutomation()                               │ Expose decisionTapped in snapshot                                     │                                                                      │
+│ ├─────┼───────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────┤                                                                      │
+│ │ 12  │ __WARDEN_AUTOMATION.selectDecisionOption()            │ Set decisionTapped = true                                             │                                                                      │
+│ └─────┴───────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────┘                                                                      │
+│                                                                                                                                                                                                              │
+│ Warden ticket                                                                                                                                                                                                │
+│                                                                                                                                                                                                              │
+│ Create REQ-008-DECISION-CONFIRM-AND-NAV-CONSUMED-FIX.yaml following the ticket template.                                                                                                                     │
+│                                                                                                                                                                                                              │
+│ Verification                                                                                                                                                                                                 │
+│                                                                                                                                                                                                              │
+│ Test all 5 algorithms (16 total decision points):                                                                                                                                                            │
+│                                                                                                                                                                                                              │
+│ 1. Decision arrival: both options dimmed, forward drag blocked                                                                                                                                               │
+│ 2. Tap to select: option highlights, preview stack appears                                                                                                                                                   │
+│ 3. Forward drag confirms: advances to correct target, smooth knob snap                                                                                                                                       │
+│ 4. Forward drag without tap: nothing happens (wheel locked)                                                                                                                                                  │
+│ 5. Card drag confirms: secondary method still works                                                                                                                                                          │
+│ 6. Reverse always works: rewinds without needing tap                                                                                                                                                         │
+│ 7. No jitter: after any advance/rewind, knob smoothly snaps with no fighting                                                                                                                                 │
+│ 8. Rewind into decision: previous choice shown, can re-confirm or change                                                                                                                                     │
+│ 9. Full traversal: cover to terminal and back for each algorithm                                                                                                                                             │
+│                                                                                                                                                                                                              │
+│ Run npm run check:devmode:parity after changes.                                                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+⏺ I'll start by reading the relevant sections of the app file to understand the current code before making changes.
+
+⏺ Read 1 file (ctrl+o to expand)                                                                                                                                                                                
+                                                                                
+⏺ Now let me read more sections — the rest of onKnobDrag, setupDecisionDrag, setCurrentCardForAutomation, snapshotForAutomation, and Warden automation.                                                         
+                                                                                                                                                                                                                
+⏺ Searched for 2 patterns, read 1 file (ctrl+o to expand)                                                                                                                                                       
+                                                                                                                                                                                                                
+⏺ Now let me also check the advance() function and rememberedDecisionIndexForCard for context on decision records.                                                                                              
+                                                                                                                                                                                                                
+⏺ Searched for 2 patterns, read 1 file (ctrl+o to expand)                                                                                                                                                       
+                                                                                                                                                                                                                
+⏺ Now I also need to check isForwardGesture to understand its signature, and the warden ticket template.                                                                                                        
+                                                                                                                                                                                                                
+⏺ Searched for 2 patterns, read 1 file (ctrl+o to expand)                                                                                                                                                       
+                                                                                                                                                                                                                
+⏺ I have all the context I need. Let me implement all 12 edits now. I'll batch the independent edits together.                                                                                                  
+                                                                                                                                                                                                                
+  Edits 1, 2, 8 — State object, applyAlgorithm reset, delete DECISION_CYCLE_DEG:                                                                                                                                
+                                                                                                                                                                                                                
+⏺ Update(app/index.html)                                                                                                                                                                                        
+  ⎿  Added 1 line                                                                                                                                                                                               
+      959      decisionIndex: 0,                                                                                                                                                                                
+      960      decisionRecords: {},                                                                                                                                                                             
+      961      decisionTrail: [],                                                                                                                                                                        
+      962 +    decisionTapped: false,                                                                                                                                                                           
+      963      carouselIndex: 0,                                                                                                                                                                         
+      964      timerSeconds: 0,
+      965      timerRunning: false,
+
+⏺ Update(app/index.html)                                                
+  ⎿  Added 1 line                                                               
+      861      state.decisionIndex = 0;                                                                                                                                                                  
+      862      state.decisionRecords = {};                                                                                                                                                                      
+      863      state.decisionTrail = [];                                                                                                                                                                 
+      864 +    state.decisionTapped = false;                                                                                                                                                                    
+      865      state.carouselIndex = 0;                                                                                                                                                                  
+      866      state.checklistState = {};
+      867      state.anchors = [];
+
+⏺ Update(app/index.html)                                                
+  ⎿  Removed 1 line                                                             
+       998  const WHEEL_RADIUS = 150;                                                                                                                                                                    
+       999  const KNOB_OFFSET = 15; // Half of knob size                                                                                                                                                        
+      1000  const NAV_THRESHOLD_DEG = 10;        // Small intent → one step (forward/reverse)                                                                                                            
+      1001 -const DECISION_CYCLE_DEG = 25;       // Larger intent for cycling decision options                                                                                                                  
+      1001                                                                                                                                                                                               
+      1002  function degToPosition(deg) {
+      1003      const mathDeg = deg - 90; // Convert: 0° top → 0° right
+
+⏺ Edits 3, 4, 5 — advance() reset, rewind() set based on committed decision, selectDecisionOption() set true:
+                                                                                
+⏺ Update(app/index.html)                                                
+  ⎿  Added 1 line                                                                                                                                                                                               
+      1662          } else {                                                                                                                                                                             
+      1663              state.decisionIndex = 0;                                                                                                                                                                
+      1664          }                                                                                                                                                                                    
+      1665 +        state.decisionTapped = false;                                                                                                                                                               
+      1666          state.carouselIndex = 0;                                                                                                                                                             
+      1667  
+      1668          const autoStartCard = RUNTIME_ALGORITHM
+
+⏺ Update(app/index.html)                                                
+  ⎿  Added 2 lines                                                              
+      1686      const prevCard = DECK[prevId];                                                                                                                                                           
+      1687      if (isSplitDecisionCard(prevCard)) {                                                                                                                                                            
+      1688          state.decisionIndex = rememberedDecisionIndexForCard(prevCard);                                                                                                                      
+      1689 +        state.decisionTapped = Object.prototype.hasOwnProperty.call(state.decisionRecords, prevId);                                                                                                 
+      1690      } else {                                                                                                                                                                                 
+      1691          state.decisionIndex = 0;
+      1692 +        state.decisionTapped = false;                                                                                                                                                        
+      1693      }
+      1694      state.carouselIndex = 0;
+      1695  
+
+⏺ Update(app/index.html)                                                
+  ⎿  Added 1 line                                                               
+      1700  function selectDecisionOption(idx) {                                                                                                                                                         
+      1701      const card = DECK[state.currentId];                                                                                                                                                             
+      1702      state.decisionIndex = normalizeDecisionIndexForCard(card, idx);                                                                                                                          
+      1703 +    state.decisionTapped = true;                                                                                                                                                                    
+      1704      render();                                                                                                                                                                                
+      1705  }
+      1706  
+
+⏺ Edits 6, 7 — Rewrite handleDecisionWheelDrag (confirm instead of cycle) and fix navConsumed block:
+                                                                                
+⏺ Update(app/index.html)                                                
+  ⎿  Added 9 lines, removed 11 lines                                                                                                                                                                            
+      1750          return;                                                                                                                                                                              
+      1751      }                                                                                                                                                                                               
+      1752                                                                                                                                                                                               
+      1753 -    // Reverse gesture: rewind out of decision card                                                                                                                                                 
+      1753 +    // Reverse gesture: rewind out of decision card (always works, no tap needed)                                                                                                            
+      1754      if (isReverseGesture(delta, arc)) {
+      1755          knob.classList.remove('dragging');  // Enable transition -> smooth snap
+      1756          const moved = rewind();
+     ...
+      1761          return;
+      1762      }
+      1763  
+      1764 -    // Forward gesture (larger threshold): cycle to next decision option                                                                                                                     
+      1765 -    if (isForwardGesture(delta, arc, DECISION_CYCLE_DEG)) {                                                                                                                                  
+      1766 -        var numOptions = card.transitions.options.length;                                                                                                                                    
+      1767 -        state.decisionIndex = numOptions <= 0                                                                                                                                                
+      1768 -            ? 0                                                                                                                                                                              
+      1769 -            : ((state.decisionIndex + 1) % numOptions);                                                                                                                                      
+      1770 -                                                                                                                                                                                             
+      1771 -        state.wheel.dragOrigin = currentAngle; // Rebase for next cycle step                                                                                                                 
+      1772 -        renderPreviewZone(card);                                                                                                                                                             
+      1773 -        triggerHaptic(10);                                                                                                                                                                   
+      1764 +    // Forward gesture: confirm selected option and advance (only if tapped)                                                                                                                 
+      1765 +    if (state.decisionTapped && isForwardGesture(delta, arc)) {                                                                                                                              
+      1766 +        knob.classList.remove('dragging');  // Enable transition -> smooth snap                                                                                                              
+      1767 +        const moved = advance({ source: 'wheel-drag', splitConfirmed: true });                                                                                                               
+      1768 +        if (moved) {                                                                                                                                                                         
+      1769 +            state.wheel.navConsumed = true;                                                                                                                                                  
+      1770 +            triggerHaptic(15);                                                                                                                                                               
+      1771 +        }                                                                                                                                                                                    
+      1772      }
+      1773      // Knob stays locked at anchor position — no visual movement
+      1774  }
+
+⏺ Update(app/index.html)                                                
+  ⎿  Added 1 line, removed 3 lines                                              
+      1792      const mode = state.wheel.mode;                                                                                                                                                           
+      1793                                                                                                                                                                                                      
+      1794      // Allow only one navigation transition per knob drag.                                                                                                                                   
+      1795 +    // Knob already at new anchor — don't fight the CSS transition.                                                                                                                                 
+      1796      if (state.wheel.navConsumed) {                                                                                                                                                           
+      1797 -        if (mode !== "DECISION") {                                                                                                                                                           
+      1798 -            setKnobPosition(currentAngle);                                                                                                                                                   
+      1799 -        }                                                                                                                                                                                    
+      1797          return;
+      1798      }
+      1799  
+
+⏺ Edit 9 — Gate visual selection on decisionTapped in renderPreviewZone, and gate card drag confirm on decisionTapped in endDecisionDrag:
+                                                                                
+⏺ Update(app/index.html)                                                
+  ⎿  Added 1 line, removed 1 line                                                                                                                                                                               
+      1356          const options = card.transitions.options;                                                                                                                                            
+      1357                                                                                                                                                                                                      
+      1358          options.forEach((opt, idx) => {                                                                                                                                                      
+      1359 -            const isSelected = idx === state.decisionIndex;                                                                                                                                         
+      1359 +            const isSelected = state.decisionTapped && idx === state.decisionIndex;                                                                                                          
+      1360  
+      1361              // Create option container (holds the option card + its preview stack)
+      1362              const optContainer = document.createElement('div');
+
+⏺ Update(app/index.html)                                                
+  ⎿  Added 2 lines, removed 2 lines                                             
+      1532      // Reset middle zone highlight                                                                                                                                                           
+      1533      activeCard.style.outline = 'none';                                                                                                                                                              
+      1534                                                                                                                                                                                               
+      1535 -    // If dragged down enough, confirm the decision                                                                                                                                                 
+      1536 -    if (dy > 60) {                                                                                                                                                                           
+      1535 +    // If dragged down enough and an option was tapped, confirm the decision                                                                                                                 
+      1536 +    if (dy > 60 && state.decisionTapped) {                                                                                                                                                   
+      1537          advance({ source: 'decision-confirm', splitConfirmed: true });
+      1538      } else {
+      1539          // Snap back
+
+⏺ Edits 10, 11, 12 — setCurrentCardForAutomation reset, snapshotForAutomation expose, Warden automation set:
+                                                                                
+⏺ Update(app/index.html)                                                
+  ⎿  Added 1 line                                                                                                                                                                                               
+      2005      } else {                                                                                                                                                                                 
+      2006          state.decisionIndex = 0;                                                                                                                                                                    
+      2007      }                                                                                                                                                                                        
+      2008 +    state.decisionTapped = false;                                                                                                                                                                   
+      2009      state.carouselIndex = 0;                                                                                                                                                                 
+      2010      state.wheel.mode = computeWheelMode(card);
+      2011      state.wheel.dragOrigin = null;
+
+⏺ Update(app/index.html)                                                
+  ⎿  Added 1 line                                                               
+      1972          timerSeconds: state.timerSeconds,                                                                                                                                                    
+      1973          anchors: state.anchors.map(function (a) { return { id: a.id, angle: a.angle }; }),                                                                                                          
+      1974          anchorIndex: state.anchorIndex,                                                                                                                                                      
+      1975 +        decisionTapped: state.decisionTapped,                                                                                                                                                       
+      1976          wheel: {                                                                                                                                                                             
+      1977              mode: state.wheel.mode,
+      1978              angle: state.wheel.angle,
+
+⏺ Update(app/index.html)                                                
+  ⎿  Added 1 line                                                               
+      2083              };                                                                                                                                                                               
+      2084          }                                                                                                                                                                                           
+      2085          state.decisionIndex = normalizeDecisionIndexForCard(card, index);                                                                                                                    
+      2086 +        state.decisionTapped = true;                                                                                                                                                                
+      2087          render();                                                                                                                                                                            
+      2088          return {
+      2089              ok: true,
+
+⏺ All 12 code edits are done. Now let me verify the changes look correct and create the Warden ticket. Let me also check if dev-mode needs the same changes.
+                                                                                
+⏺ Searched for 1 pattern, read 1 file (ctrl+o to expand)                
+                                                                                                                                                                                                                
+⏺ Good — DECISION_CYCLE_DEG is fully removed. All code edits verified. Now let me check dev-mode parity and create the Warden ticket.
+                                                                                                                                                                                                                
+⏺ Searched for 2 patterns, read 1 file (ctrl+o to expand)                          
+                                                                                                                                                                                                                
+⏺ The dev-mode file doesn't contain any of the modified logic — it likely loads the main app via iframe or overlay. The parity check should be about the overlay JS, not duplicated app logic. Let me run the   
+  parity check.                                                                                                                                                                                                 
+                                                                                                                                                                                                                
+⏺ Bash(npm run check:devmode:parity 2>&1)                                                                                                                                                                       
+  ⎿  > resuscitation_health_app@0.1.0 check:devmode:parity                                                                                                                                                      
+     > node scripts/check_dev_mode_parity.js                                                                                                                                                                    
+     … +8 lines (ctrl+o to expand)                                                                                                                                                                              
+                                                                                   
+⏺ Parity passes. Now let me create the Warden ticket.                                                                                                                                                           
+                                                                                                                                                                                                                
+⏺ Write(appendix/guidance/warden/research/tickets/REQ-008-DECISION-CONFIRM-AND-NAV-CONSUMED-FIX.yaml)
+  ⎿  Wrote 139 lines to appendix/guidance/warden/research/tickets/REQ-008-DECISION-CONFIRM-AND-NAV-CONSUMED-FIX.yaml                                                                                            
+     # ==============================================================================
+     # Warden Research Ticket                                                                                                                                                                                   
+     # ==============================================================================                                                                                                                           
+                                                                                                                                                                                                                
+     ticket_id: "REQ-008-DECISION-CONFIRM-AND-NAV-CONSUMED-FIX"                                                                                                                                                 
+     date: "2026-02-22"                                                                                                                                                                                         
+     status: "RESOLVED" # OPEN | IN_PROGRESS | RESOLVED | BLOCKED                                                                                                                                               
+     ticket_type: "BUG" # FEATURE | BUG | VALIDATION | RESEARCH                                                                                                                                                 
+     title: "Fix decision wheel interaction (tap-to-select then drag-to-confirm) and CSS transition jitter after navigation"                                                                                    
+                                                                                                                                                                                                                
+     … +129 lines (ctrl+o to expand)                                                                                                                                                                            
+
+⏺ Let me do a final sanity check — verify all decisionTapped references are correct across the file.
+                                                                                
+⏺ Searched for 1 pattern (ctrl+o to expand)           
+                                                                                                                                                                                                                
+⏺ All 12 occurrences match the plan exactly:          
+                                                                                                                                                                                                                
+  ┌─────┬─────────────┬─────────────────────────────────────────────────────────────┐
+  │  #  │    Line     │                           Purpose                           │                                                                                                                           
+  ├─────┼─────────────┼─────────────────────────────────────────────────────────────┤                                                                                                                           
+  │ 1   │ 963         │ State object declaration                                    │                                                                                                                           
+  ├─────┼─────────────┼─────────────────────────────────────────────────────────────┤                                                                                                                           
+  │ 2   │ 864         │ applyAlgorithm() reset                                      │
+  ├─────┼─────────────┼─────────────────────────────────────────────────────────────┤
+  │ 3   │ 1665        │ advance() reset                                             │
+  ├─────┼─────────────┼─────────────────────────────────────────────────────────────┤
+  │ 4   │ 1689/1692   │ rewind() set based on committed decision                    │
+  ├─────┼─────────────┼─────────────────────────────────────────────────────────────┤
+  │ 5   │ 1703        │ selectDecisionOption() set true                             │
+  ├─────┼─────────────┼─────────────────────────────────────────────────────────────┤
+  │ 6   │ 1765        │ handleDecisionWheelDrag() forward = confirm if tapped       │
+  ├─────┼─────────────┼─────────────────────────────────────────────────────────────┤
+  │ 7   │ (line 1796) │ navConsumed block — removed setKnobPosition                 │
+  ├─────┼─────────────┼─────────────────────────────────────────────────────────────┤
+  │ 8   │ (deleted)   │ DECISION_CYCLE_DEG removed                                  │
+  ├─────┼─────────────┼─────────────────────────────────────────────────────────────┤
+  │ 9   │ 1359/1536   │ renderPreviewZone + endDecisionDrag gated on decisionTapped │
+  ├─────┼─────────────┼─────────────────────────────────────────────────────────────┤
+  │ 10  │ 2009        │ setCurrentCardForAutomation() reset                         │
+  ├─────┼─────────────┼─────────────────────────────────────────────────────────────┤
+  │ 11  │ 1975        │ snapshotForAutomation() exposed                             │
+  ├─────┼─────────────┼─────────────────────────────────────────────────────────────┤
+  │ 12  │ 2086        │ __WARDEN_AUTOMATION.selectDecisionOption() set true         │
+  └─────┴─────────────┴─────────────────────────────────────────────────────────────┘
+
+⏺ All done. Here's a summary of what was implemented:
+                                                                                
+  Fix 1 — CSS jitter after navigation: Removed the setKnobPosition(currentAngle) call inside the navConsumed block in onKnobDrag(). After nav, the knob has already snapped to its new anchor via render() + CSS
+   transition — continuing to update it to the finger position was fighting the animation.                                                                                                                      
+                                                                                                                                                                                                                
+  Fix 2 — Decision tap-to-select then drag-to-confirm: Added state.decisionTapped flag that tracks explicit option selection:                                                                                   
+  - Arrive at decision → both options dimmed (no pre-selection)                                                                                                                                                 
+  - Tap an option → it highlights, decisionTapped = true, preview stack appears
+  - Forward wheel drag → confirms and advances (only if tapped)
+  - Card drag down 60px → also confirms (only if tapped)
+  - Reverse drag → always rewinds, no tap needed
+  - Rewind into committed decision → previous choice shown highlighted, ready for quick re-confirm
+
+  Cleanup: Deleted DECISION_CYCLE_DEG constant (no longer used). Exposed decisionTapped in automation snapshot for test observability.
+
+  Warden ticket: Created REQ-008-DECISION-CONFIRM-AND-NAV-CONSUMED-FIX.yaml with 12 implementation directives and 10 acceptance gates.
+
+  Dev-mode parity: PASS.
+
+✻ Cooked for 3m 17s                                                                                                                                                                                             
+   
+❯ I have made some changes to main whihc you can take a lot - its built off the wonderful work you have done - I feel if all our work is in                                                                     
+  /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app/Resuscitation_App_Complete.html can we refactor is to components and elements and each role with what makes it all come    
+  togtehr this way I can say you see this file appendix/css-web-ui-demos/carousels-gallery/src/pages/vertical/stack.astro I want to improve the upper and lower cards to behavir that way and for the           
+  middle card for the extra crads c/pages/horizontal/3d.astro and for this cards we add a card that word have had the check list that is current in the footer. With that since we can navigate with the        
+  knob we and the only time we can drag a card is in a yes and no - let have the option to swipe card sin and out and the knob respond and then those footer a ticker coach with just one line (one would       
+  think its powered by AI (it can as an option but our prinary design is programmmatica such that ito comment on the decision the nurse is do mentioning how many steps left, reminder to go back and check     
+   boxes, counting loops , keeping time etc - just in one line. I say this because this is were we are going , I am ok with a full refractring that keeps true to what we have built yet knowing we now         
+  need to build a PWA mobile application with user freindly features - refactoring such that lets say you do all this and I add more json and how that should fit or i ask you to use the icons                 
+  /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app/icons for what we have or the top right corner 3 dot s to as amenu to select a new protocl or as an option use the search      
+  or to make local 3000 a table of content for the protocl to select and more- I feel you need to decide what refactoring overhaul, do we say with html or go to next js , if we go to bnext js will you be     
+   able to conver the capabilites from /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/css-web-ui-demos whihc you will use to build or do we use its languiage.. This       
+  is huge (my hope is that you are smart to se ethat for upper card the stacking to the lower cards with me chiral or mirroe reflection the recent cards being what is visible. You refracting needs to         
+  have awareness of fotns and sizze and colors etc as a global place to chaneg there or even for the user a settling to increate size or change langueage - alos update this                                    
+  /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/prototype/creator-notes/Resuscitation_App_Behavioral_Spec.md as you by now have a perfect idea of the dream and you its your       
+  turn to make it come true - good luck.                                                                                                                                                                        
+                                                                                                                                                                                                                
+⏺ This is a significant architectural overhaul. Let me explore everything you've referenced before making any decisions, so I can give you a proper plan.                                                       
+                                                                                                                                                                                                                
+⏺ Entered plan mode                                                                                                                                                                                             
+  Claude is now exploring and designing an implementation approach.
+                                                                                                                                                                                                                
+⏺ Let me explore everything you referenced in parallel to understand the full picture.
+
+⏺ 3 Explore agents finished (ctrl+o to expand)                                                                                                                                                                  
+   ├─ Explore complete HTML file · 14 tool uses · 34.4k tokens                                                                                                                                                  
+   │  ⎿  Done                                                                                                                                                                                                   
+   ├─ Explore CSS web UI demos · 21 tool uses · 47.1k tokens
+   │  ⎿  Done                                                                                                                                                                                                   
+   └─ Explore project structure and assets · 19 tool uses · 39.1k tokens
+      ⎿  Done                                                                                                                                                                                                   
+                                                                                                                                                                                                                
+⏺ Excellent — I now have a comprehensive picture. Let me design the architecture with a Plan agent.                                                                                                             
+                                                                                                                                                                                                                
+⏺ Plan(Design refactoring architecture plan)                                                                                                                                                                    
+  ⎿  Done (33 tool uses · 88.8k tokens · 4m 35s)                                                                                                                                                                
+  (ctrl+o to expand)                                                                                                                                                                                            
+                                                                                                                                                                                                                
+⏺ Read 1 file (ctrl+o to expand)                                                                                                                                                                                
+                                                                                                                                                                                                              
+⏺ Let me read the key CSS demo files directly for accurate patterns before writing the final plan.                                                                                                              
+                                                                                                                                                                                                                
+⏺ Read 2 files (ctrl+o to expand)                                                                                                                                                                               
+                                                                                                                                                                                                                
+⏺ Now let me check the user's latest changes in the Complete file and the current behavioral spec.                                                                                                              
+                                                                                                                                                                                                                
+⏺ Read 2 files (ctrl+o to expand)                                                                                                                                                                               
+                                                                                                                                                                                                                
+⏺ I now have complete context. Let me write the comprehensive plan.                                                                                                                                             
+                                                                                                                                                                                                                
+⏺ Updated plan                                                                                                                                                                                                  
+  ⎿  /plan to preview                                                                                                                                                                                           
+                                                                                                                                                                                                                
+⏺ Before I present this for approval, I have a few questions that will shape the implementation:                                                                                                                
+  ⎿  Tool use rejected with user message: The user wants to clarify these questions.                                                                                                                            
+         This means they may have additional information, context or questions for you.                                                                                                                         
+         Take their response into account and then reformulate the questions if appropriate.
+         Start by asking them what they would like to clarify.                                                                                                                                                  
+                                                                                                                                                                                                                
+         Questions asked:                                                                                                                                                                                       
+     - "Which file should be the starting point for the refactoring? The Complete file has your latest changes but uses the simpler Ship's Helm knob model. The index.html has our REQ-004 through REQ-008    
+     anchor-point system with smooth motion and tap-to-confirm decisions."                                                                                                                                      
+       Answer: Merge both                                                                                                                                                                                       
+     - "For the card swipe direction, which feels more natural for a nurse navigating through steps?"                                                                                                           
+       (No answer provided)                                                                                                                                                                                     
+     - "Should we start with Phase 1 only (scaffold + migrate to modules — same visual result, modular code), then review before building the new features? Or do you want the full plan executed in one go?"   
+       (No answer provided)                                                                                                                                                                                     
+                                                                                                                                                                                                                
+⏺ Got it — merge both files. What would you like to clarify about the swipe direction and delivery approach? Any additional context or preferences you want to share before I finalize?                         
+                                                                                                                                                                                                                
+⏺ User answered Claude's questions:                                                                                                                                                                             
+  ⎿  · You selected 'Merge both' for the base file — great. What else would you like to clarify or add before I finalize the plan? → I have other thoughts                                                      
+                                                                                                                                                                                                                
+⏺ Please share your thoughts — I'm listening.                                                                                                                                                                 
+                                                                                                                                                                                                                
+⏺ User declined to answer questions                                                                                                                                                                             
+                                                                                                                                                                                                                
+❯ the swiping is the actually swipin gof the cards so you have the top middles and lower card so if I want to start I can swipe the upper card into the middle (is more drag and drop as experince when         
+  there is a yes or no ) but the swipe is what i want as the swipe is one option and no confusion up to down to advance , down to up to rewind but you would have to interact with the card you wanna swipe     
+   back                                                                                                                                                                                                         
+                                                                                                                                                                                                                
+⏺ That makes perfect sense — it's a physical card manipulation model:                                                                                                                                           
+                                                                                                                                                                                                                
+  - Pull a preview card DOWN from the top zone into the middle = advance                                                                                                                                        
+  - Pull a history card UP from the bottom zone into the middle = rewind                                                                                                                                        
+  - The knob syncs to wherever the navigation lands                                                                                                                                                             
+  - Decision cards already work this way (drag down to confirm) — this generalizes it to ALL cards                                                                                                              
+                                                                                                                                                                                                                
+  So the three zones become truly interactive — you're literally grabbing cards from the future or pulling them back from the past. The knob is one way to navigate, swiping cards is the other, and they stay  
+  in sync.                                                                                                                                                                                                      
+                                                                                                                                                                                                                
+  Let me update the plan with this corrected swipe model.
+
+⏺ Read 1 file (ctrl+o to expand)    
+                                               
+⏺ Now let me update the Phase 3 swipe section with the correct interaction model.                                                                                                                               
+                 
+⏺ Updated plan                                                                                                                                                                                                  
+  ⎿  /plan to preview                                                                                                                                                                                           
+                                                                                                                                                                                                                
+⏺ Now let me also update the navigation module in the folder structure and the swipe.ts description to reflect this zone-to-zone drag model.                                                                    
+                                                                                                                                                                                                                
+⏺ Updated plan                                                                                                                                                                                                  
+  ⎿  /plan to preview
+                                                                                                                                                                                                                
+⏺ Good. Now let me also confirm the delivery approach — given the scope, Phase 1 first is strongly recommended. Let me finalize and present the plan.                                                         
+  ⎿  Tool use rejected with user message: The user wants to clarify these questions.                                                                                                                            
+         This means they may have additional information, context or questions for you.                                                                                                                         
+         Take their response into account and then reformulate the questions if appropriate.
+         Start by asking them what they would like to clarify.                                                                                                                                                  
+                                                                                                                                                                                                              
+         Questions asked:                                                                                                                                                                                       
+     - "Should we deliver Phase 1 first (scaffold + migrate to modules, same visual result) then review before building new features? This is the safer path for such a large refactoring."                   
+       (No answer provided)                                                                                                                                                                                     
+                                                                                                                                                                                                                
+⏺ What would you like to clarify about the delivery approach?                                                                                                                                                   
+  ⎿  Tool use rejected with user message: The user wants to clarify these questions.                                                                                                                            
+         This means they may have additional information, context or questions for you.                                                                                                                         
+         Take their response into account and then reformulate the questions if appropriate.                                                                                                                    
+         Start by asking them what they would like to clarify.                                                                                                                                                  
+                                                                                                                                                                                                                
+         Questions asked:                                                                                                                                                                                       
+     - "What's your preference for how we deliver this refactoring?"                                                                                                                                            
+       (No answer provided)                                                                                                                                                                                     
+                                                                                                                                                                                                                
+⏺ It seems you have something you want to tell me rather than pick from options. Please go ahead and share your thoughts — I'm ready to listen and adjust the plan accordingly.                                 
+                                                                                                                                                                                                                
+✻ Crunched for 1m 15s                                                                                                                                                                                           
+                                                                                                                                                                                                                
+❯ gemini jules did a good job impriving the wheel behavor and also the framing of the app in different platofrm - do read the fixes in commites and merge because I like those and I dont want you to miss      
+  out on work I did after your work --- after you confirm this I want you to do all phases                                                                                                                      
+                                                                                                                                                                                                                
+⏺ Let me read the recent commits to see what Gemini Jules added.                                                                                                                                                
+                                                                                                                                                                                                                
+⏺ Bash(git log --oneline -20)                                                                                                                                                                                   
+  ⎿  b72ee16 Merge pull request #3 from projecthamburgresearch/fix-knob-animation-9355504545845049245
+     67a2c54 Fix knob animation to follow circular path                                                                                                                                                         
+     45041aa Merge pull request #1 from projecthamburgresearch/fix-responsive-layout-12584002539695366341                                                                                                     
+     … +12 lines (ctrl+o to expand)                                                                                                                                                                             
+                                                                                                                                                                                                                
+⏺ Bash(git log --stat -p b72ee16 -1 --no-color | head -200)
+  ⎿  commit b72ee1649ad441ab8263e6d59dc67fb73dfe7542                                                                                                                                                            
+     Merge: 45041aa 67a2c54                                                                                                                                                                                     
+     Author: Project Hamburg Research <79866271+projecthamburg@users.noreply.github.com>
+     … +5 lines (ctrl+o to expand)                                                                                                                                                                              
+                                                                                                                                                                                                                
+⏺ Bash(git log --stat -p b4c00db -1 --no-color | head -200)
+  ⎿  commit b4c00dbb3a2d775b279800edb0ad33bfb01d97e8                                                                                                                                                            
+     Author: google-labs-jules[bot] <161369871+google-labs-jules[bot]@users.noreply.github.com>                                                                                                                 
+     Date:   Mon Feb 23 00:33:11 2026 +0000                
+     … +65 lines (ctrl+o to expand)                                                                                                                                                                             
+                                                                                                                                                                                                              
+⏺ Bash(git log --stat -p 750be2e -1 --no-color | head -300)
+  ⎿  commit 750be2ed914de671555cf061a211f0866817669e
+     Author: Mordecai Machazire <m1506466@sgul.ac.uk>                                                                                                                                                           
+     Date:   Sun Feb 22 18:58:48 2026 -0500
+     … +57 lines (ctrl+o to expand)                                                                                                                                                                             
+                                                                                                                                                                                                                
+⏺ Now let me see the knob animation fix from Jules.
+                                                                                                                                                                                                                
+⏺ Bash(git log --stat -p 67a2c54 -1 --no-color | head -300)                                                                                                                                                     
+  ⎿  commit 67a2c54c59f3b170b606c86110ad6dab1a7d4025
+     Author: google-labs-jules[bot] <161369871+google-labs-jules[bot]@users.noreply.github.com>                                                                                                                 
+     Date:   Mon Feb 23 01:46:15 2026 +0000                                                                                                                                                                   
+     … +51 lines (ctrl+o to expand)                                                                                                                                                                             
+                                                                                                                                                                                                                
+⏺ Let me also check the current state of the file and find the normalizeDegrees function Jules added.
+                                                                                                                                                                                                                
+⏺ Searched for 3 patterns (ctrl+o to expand)                                                                                                                                                                    
+                       
+⏺ I've read all the commits. Here's what Gemini Jules added on top of your/my work:                                                                                                                             
+                                                                                                                                                                                                              
+  1. Responsive layout fix (b4c00db):                                                                                                                                                                           
+  - 100dvh instead of fixed height (proper mobile viewport)                                                                                                                                                     
+  - Media queries to scale wheel/cards on smaller screens                                                                                                                                                       
+  - updateDimensions() reads CSS variables on resize, dynamically adjusts WHEEL_RADIUS and KNOB_OFFSET                                                                                                          
+  - Applied to both index.html and Resuscitation_App_Complete.html                                                                                                                                            
+
+  2. Knob circular-path animation (67a2c54):
+  - Knob now uses transform: rotate() translateY(-R) rotate(-R) instead of left/top positioning
+  - This means the CSS transition animates along the arc instead of cutting across the chord — much smoother
+  - Added state.wheel.visualAngle with shortest-path wrapping logic
+  - Knob CSS transitions on transform instead of left/top
+
+  Both are excellent improvements. The circular-path knob animation is particularly clever — it solves the chord-cutting problem elegantly. These are already merged into main and the current app/index.html
+  has all of this.
+
+  I'll incorporate all of this into the refactoring — the updateDimensions() pattern goes into wheel/physics.ts, the visualAngle + rotate() positioning goes into wheel/knob.ts, and the responsive CSS tokens
+  go into styles/responsive.css.
+
+  Let me update the plan to note these and then present for approval.
+
+⏺ Updated plan                   
+  ⎿  /plan to preview
+                                                                                                                                                                                                                
+⏺ Good. The plan is complete with all context incorporated. You want all phases — let me present it for approval so we can start building.
+                                                                                                                                                                                                                
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ Ready to code?
+                                                                                                                                                                                                                
+ Here is Claude's plan:                                                                                                                                                                                       
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+ REQ-009: Full Refactoring — Modular PWA with Enhanced Card Zones & Ticker Coach                                                                                                                              
+
+ Context
+
+ The app has grown from a single-file prototype (Resuscitation_App_Complete.html, 1392 lines) into a feature-rich monolith (app/index.html, 2208 lines). REQ-004 through REQ-008 delivered a solid anchor-point
+  wheel system with smooth motion and tap-to-confirm decisions.
+
+ Now the user wants the app to grow into a production PWA for nurses with:
+ - Beautiful card animations (inspired by CSS carousel demos)
+ - Swipe-to-navigate with knob sync
+ - Contextual coaching ticker in footer
+ - Protocol selection, search, settings
+ - Modular architecture that can scale
+
+ The CSS demos (Astro/Chrome) use cutting-edge Scroll Driven Animation APIs that are Chrome 135+ only — they won't work on iOS Safari. We'll extract the visual effect (stacking, 3D perspective, depth) and
+ implement it with cross-browser CSS transforms + JS.
+
+ ---
+ Framework Decision: Vite + vanilla TypeScript
+
+ Why not Next.js? Next.js is server-side rendering focused. This is a client-only offline-first PWA. No server needed.
+
+ Why not React? The wheel physics are imperative (touch tracking, angle math, CSS class toggling). React's virtual DOM reconciliation could cause jitter. The previous React attempt
+ (prototype/previous-iterations/js-1/) was abandoned.
+
+ Why Vite + vanilla TS?
+ - TypeScript adds safety for the complex state machine without framework overhead
+ - Vite gives hot reload, bundling, and vite-plugin-pwa for service worker generation
+ - ES modules give clean code splitting without a framework
+ - CSS can live in separate files with design tokens
+ - The wheel physics code ports directly (same imperative style)
+ - No learning curve — reads like the current JS but with types
+
+ ---
+ Target Folder Structure
+
+ app/
+ ├── index.html                 (shell — header, zones, footer, SVG symbols)
+ ├── manifest.webmanifest       (PWA manifest)
+ ├── vite.config.ts
+ ├── tsconfig.json
+ ├── src/
+ │   ├── main.ts                (entry — init, event wiring, render loop)
+ │   ├── types.ts               (Card, Algorithm, State, WheelMode types)
+ │   │
+ │   ├── state/
+ │   │   ├── store.ts           (state object, getState(), mutators)
+ │   │   └── decisions.ts       (decisionRecords, decisionTrail, decisionTapped)
+ │   │
+ │   ├── algorithms/
+ │   │   ├── loader.ts          (fetch JSON, normalize, build DECK)
+ │   │   └── registry.ts        (list available, index.json)
+ │   │
+ │   ├── wheel/
+ │   │   ├── physics.ts         (degToPosition, angleDelta, arc math)
+ │   │   ├── knob.ts            (drag start/move/end, setKnobPosition)
+ │   │   ├── gestures.ts        (isForwardGesture, isReverseGesture, thresholds)
+ │   │   └── fsm.ts             (computeWheelMode, mode-specific drag handlers)
+ │   │
+ │   ├── navigation/
+ │   │   ├── advance.ts         (advance logic, split confirmation)
+ │   │   ├── rewind.ts          (rewind logic, decision memory)
+ │   │   ├── zone-drag.ts       (NEW: drag preview card down=advance, drag history card up=rewind)
+ │   │   └── anchors.ts         (syncAnchors, computeForwardPath, anchor math)
+ │   │
+ │   ├── cards/
+ │   │   ├── renderer.ts        (renderActiveCard — cover, standard, decision, loop, terminal)
+ │   │   ├── preview-zone.ts    (NEW: vertical stack with depth/perspective)
+ │   │   ├── history-zone.ts    (NEW: mirror stack — chirality of preview)
+ │   │   ├── decision-cards.ts  (decision option rendering, tap-to-select, drag-to-confirm)
+ │   │   ├── checklist-card.ts  (NEW: checklist as navigable card in middle zone)
+ │   │   └── animations.ts      (3D transforms, stack offsets, transition helpers)
+ │   │
+ │   ├── ticker/
+ │   │   ├── engine.ts          (NEW: rule-based coaching message generator)
+ │   │   ├── rules.ts           (NEW: steps-left, loop-count, checklist-reminder, timer)
+ │   │   └── renderer.ts        (NEW: single-line footer ticker with marquee)
+ │   │
+ │   ├── ui/
+ │   │   ├── menu.ts            (NEW: 3-dot menu — protocol select, search, settings)
+ │   │   ├── settings.ts        (NEW: font size, language, theme — writes to localStorage)
+ │   │   ├── modal.ts           (toolbox modal, age calculator)
+ │   │   ├── timer.ts           (global timer, display, controls)
+ │   │   └── protocol-landing.ts (NEW: table-of-contents page for protocol selection)
+ │   │
+ │   ├── pwa/
+ │   │   └── register.ts        (service worker registration)
+ │   │
+ │   └── styles/
+ │       ├── tokens.css         (design tokens — colors, sizes, fonts, breakpoints)
+ │       ├── layout.css          (app shell, zones, header, footer)
+ │       ├── wheel.css          (circle, knob, dragging class, transitions)
+ │       ├── cards.css          (card faces, cover, loop pulse, decision badges)
+ │       ├── stack.css          (NEW: preview/history stack animations — 3D perspective)
+ │       ├── ticker.css         (NEW: footer ticker styling)
+ │       ├── menu.css           (NEW: 3-dot menu, settings panel)
+ │       └── responsive.css     (breakpoints, compact mode)
+ │
+ ├── algorithms/                (JSON files — unchanged)
+ │   ├── index.json
+ │   ├── algo_anaphylaxis.json
+ │   ├── algo_newborn_ls.json
+ │   ├── algo_paed_bls_in.json
+ │   ├── algo_paed_bls_out.json
+ │   └── algo_paed_fbao.json
+ │
+ ├── icons/                     (SVG/PNG — unchanged)
+ │   ├── decision-tree-svgrepo-com-upper-section.svg
+ │   ├── first-aid-kit-2-svgrepo-com.svg
+ │   ├── fullscreen-svgrepo-com.svg
+ │   ├── fullscreen-exit-svgrepo-com.svg
+ │   └── search-tool-symbol-svgrepo-com.svg
+ │
+ └── public/
+     ├── icons/                 (PWA icons — 192px, 512px)
+     └── favicon.ico
+
+ ---
+ Phased Implementation
+
+ Phase 1: Scaffold & Migrate (Working app, same features, modular code)
+
+ Goal: Get the exact same app running via npm run dev (Vite) with code split into modules. Zero visual change. Everything that works today still works.
+
+ 1. Initialize Vite project in app/ with TypeScript config
+ 2. Extract CSS from monolith into src/styles/tokens.css, layout.css, wheel.css, cards.css, responsive.css
+ 3. Extract JS into typed modules:
+   - types.ts — Card, Algorithm, State, WheelConfig, Transition interfaces
+   - state/store.ts — state object with typed mutators
+   - algorithms/loader.ts — fetch + normalize + DECK builder
+   - wheel/physics.ts — degToPosition, angleDelta, clampAngleToArc, getCurrentWheelArc
+   - wheel/knob.ts — setKnobPosition, startKnobDrag, onKnobDrag, endKnobDrag
+   - wheel/gestures.ts — isForwardGesture, isReverseGesture, handleDecisionWheelDrag
+   - wheel/fsm.ts — computeWheelMode, mode routing
+   - navigation/advance.ts — advance() with split confirmation
+   - navigation/rewind.ts — rewind() with decision memory
+   - navigation/anchors.ts — syncAnchors, computeForwardPath, currentAnchorAngle
+   - cards/renderer.ts — renderActiveCard, renderCarouselDots
+   - cards/preview-zone.ts — renderPreviewZone (current vertical stack)
+   - cards/history-zone.ts — renderHistoryZone
+   - cards/decision-cards.ts — setupDecisionDrag, decision rendering, tap-to-select
+   - ui/timer.ts — startTimer, updateTimerDisplay, resetTimer
+   - ui/modal.ts — openToolbox, closeModal
+ 4. Keep index.html as the shell (HTML structure + SVG symbols only)
+ 5. Wire main.ts to import all modules, initialize, render
+ 6. Preserve Warden automation — window.__WARDEN_AUTOMATION still works
+ 7. Preserve dev-mode parity — npm run check:devmode:parity still passes
+
+ Verification: Open in browser, navigate all 5 algorithms cover-to-terminal, decisions work, timer works, checklist works. Same behavior, modular code.
+
+ Phase 2: Enhanced Card Zones (Stack + 3D + Chirality)
+
+ Goal: Preview and history zones get depth and perspective. Active card gets subtle 3D feel.
+
+ Preview Zone (Top) — Vertical Stack with Depth:
+ Inspired by vertical/stack.astro but implemented cross-browser:
+ /* stack.css */
+ .preview-zone {
+   perspective: 800px;
+   transform-style: preserve-3d;
+ }
+ .preview-card {
+   /* JS sets these based on depth index */
+   /* depth 0 (nearest) = front, depth 2 (furthest) = back */
+   transform: translateY(calc(var(--depth) * -12px))
+              translateZ(calc(var(--depth) * -60px))
+              scale(calc(1 - var(--depth) * 0.06));
+   opacity: calc(1 - var(--depth) * 0.15);
+   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+               opacity 0.4s ease;
+ }
+
+ History Zone (Bottom) — Mirror/Chirality:
+ Mirror reflection of preview zone. Most recent card on top, older cards fade into depth:
+ .history-card {
+   transform: translateY(calc(var(--depth) * 12px))   /* mirror: downward */
+              translateZ(calc(var(--depth) * -60px))
+              scale(calc(1 - var(--depth) * 0.06));
+   opacity: calc(0.7 - var(--depth) * 0.15);
+   filter: grayscale(calc(var(--depth) * 30%));
+   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+               opacity 0.4s ease;
+ }
+
+ Active Card — Subtle 3D on Enter:
+ Inspired by horizontal/3d.astro — card enters with slight rotateY, settles to flat:
+ .active-card-enter {
+   animation: card-arrive 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+ }
+ @keyframes card-arrive {
+   from { transform: rotateY(-8deg) translateZ(-20px) scale(0.95); opacity: 0.7; }
+   to   { transform: none; opacity: 1; }
+ }
+
+ Verification: Navigate through algorithms. Cards should stack with visible depth, history mirrors preview, active card has subtle entrance animation.
+
+ Phase 3: Checklist Card & Card Swiping
+
+ Checklist Card (moves from footer to middle zone):
+ - When a card has checklist items, a "checklist card" is inserted as the next navigable step
+ - The checklist card renders checkboxes/toggles in the middle zone (same card styling)
+ - User must check required items before advancing (or can skip with forward drag)
+ - Algorithm JSON unchanged — checklist data stays on the parent card, renderer creates the card view
+
+ Card Swipe-to-Navigate (drag between zones):
+
+ The three zones are now interactive — you grab cards from the future or pull them back from the past:
+
+ ┌──────────────────────────────────────────────────┬─────────────────┬───────────────────────────────────────────────────┐
+ │                     Gesture                      │    Direction    │                      Result                       │
+ ├──────────────────────────────────────────────────┼─────────────────┼───────────────────────────────────────────────────┤
+ │ Drag preview card (top zone) down into middle    │ Top → Middle    │ ADVANCE to that card                              │
+ ├──────────────────────────────────────────────────┼─────────────────┼───────────────────────────────────────────────────┤
+ │ Drag history card (bottom zone) up into middle   │ Bottom → Middle │ REWIND to that card                               │
+ ├──────────────────────────────────────────────────┼─────────────────┼───────────────────────────────────────────────────┤
+ │ Drag decision option (top zone) down into middle │ Top → Middle    │ CONFIRM decision (existing behavior, generalized) │
+ └──────────────────────────────────────────────────┴─────────────────┴───────────────────────────────────────────────────┘
+
+ How it works:
+ - touchstart on a preview card or history card begins the drag
+ - Card follows finger with slight perspective tilt (rotateX proportional to dy)
+ - Cross the zone boundary threshold (~40% of zone height) = commit the navigation
+ - Release before threshold = card snaps back to its zone (rubber-band)
+ - Knob syncs automatically — smooth CSS transition to new anchor position
+ - Haptic feedback on commit (15ms vibrate)
+
+ Decision cards already use drag-down-to-confirm — this is the same pattern generalized. On decision cards, preview zone shows the two options; dragging an option down confirms it (no change from REQ-008).
+
+ Knob remains the primary nav — swiping cards is the secondary, more visual method. Both produce the same advance()/rewind() calls and stay perfectly in sync.
+
+ Verification: Drag preview cards down to advance through full algorithm. Drag history cards up to rewind. Knob follows smoothly. Decisions still require tap + drag-down confirm. Rubber-band snap on
+ incomplete drags.
+
+ Phase 4: Footer Ticker Coach
+
+ Replace footer checklist area with single-line contextual ticker.
+
+ The ticker engine evaluates rules on every render() and picks the highest-priority message:
+
+ ┌──────────┬──────────────────────────┬────────────────────────────────────────────┐
+ │ Priority │           Rule           │              Example Message               │
+ ├──────────┼──────────────────────────┼────────────────────────────────────────────┤
+ │ 1        │ Unchecked required items │ "Reminder: confirm airway is clear"        │
+ ├──────────┼──────────────────────────┼────────────────────────────────────────────┤
+ │ 2        │ Decision point ahead     │ "Decision ahead: breathing assessment"     │
+ ├──────────┼──────────────────────────┼────────────────────────────────────────────┤
+ │ 3        │ Loop count               │ "CPR cycle 4 — continue compressions"      │
+ ├──────────┼──────────────────────────┼────────────────────────────────────────────┤
+ │ 4        │ Steps remaining          │ "3 steps to next decision point"           │
+ ├──────────┼──────────────────────────┼────────────────────────────────────────────┤
+ │ 5        │ Timer milestone          │ "2 minutes elapsed — reassess"             │
+ ├──────────┼──────────────────────────┼────────────────────────────────────────────┤
+ │ 6        │ Idle/default             │ "Follow the protocol — you're doing great" │
+ └──────────┴──────────────────────────┴────────────────────────────────────────────┘
+
+ Rendering:
+ - Single line, max ~50 chars, subtle fade-in/out on message change
+ - Timer stays in bottom-right corner (always visible)
+ - Ticker text uses algorithm color_theme for accent
+
+ Future: AI-powered ticker messages as optional enhancement (API call with context).
+
+ Phase 5: PWA + Menu + Settings
+
+ PWA Setup:
+ - manifest.webmanifest — name, icons, theme_color, display: standalone, start_url
+ - vite-plugin-pwa generates service worker with precache of HTML, CSS, JS, JSON algorithms
+ - Offline-first: all algorithms cached, works without internet
+ - Install prompt on compatible browsers
+
+ 3-Dot Menu (top-right corner, replaces current header icons):
+ - Tap opens slide-down panel with:
+   - Select Protocol — list from algorithms/index.json, tap to load
+   - Search — filter protocols by keyword
+   - Settings — opens settings panel
+   - About — version, source attribution
+
+ Settings Panel:
+ - Font Size: Small / Medium / Large (sets --font-scale CSS variable)
+ - Language: English (default), expandable later
+ - Theme: Light / Dark / High Contrast (sets color token overrides)
+ - All saved to localStorage, applied on load
+
+ Protocol Landing Page:
+ - At localhost:3000/ (Vite dev) or app root
+ - Table of contents listing all algorithms with title, context, version
+ - Tap to load and start
+ - Replaces the need to hardcode a default algorithm
+
+ Icons Integration:
+ - Use SVG icons from app/icons/ as inline SVGs (for color theming)
+ - Decision tree icon on preview cards showing upcoming decisions
+ - First-aid kit icon for toolbox
+ - Fullscreen/exit icons for card expansion
+ - Search icon in menu
+
+ Phase 6: Update Behavioral Spec
+
+ Update prototype/creator-notes/Resuscitation_App_Behavioral_Spec.md to reflect:
+ - New modular architecture (Vite + TS modules)
+ - Enhanced card zones with 3D perspective
+ - Mirror/chirality between preview and history
+ - Checklist-as-card pattern
+ - Swipe navigation with knob sync
+ - Footer ticker coach (rules engine)
+ - PWA manifest and offline capability
+ - 3-dot menu system
+ - Settings (font size, theme, language)
+ - Protocol selection landing page
+ - Updated state object with new fields
+
+ ---
+ Critical Files to Modify/Create
+
+ ┌──────────────────────────────────────────────────────────────┬─────────┬───────────────────────────────────────────────┐
+ │                             File                             │ Action  │                     Notes                     │
+ ├──────────────────────────────────────────────────────────────┼─────────┼───────────────────────────────────────────────┤
+ │ app/vite.config.ts                                           │ CREATE  │ Vite config with PWA plugin                   │
+ ├──────────────────────────────────────────────────────────────┼─────────┼───────────────────────────────────────────────┤
+ │ app/tsconfig.json                                            │ CREATE  │ TypeScript config                             │
+ ├──────────────────────────────────────────────────────────────┼─────────┼───────────────────────────────────────────────┤
+ │ app/package.json                                             │ MODIFY  │ Add vite, typescript, vite-plugin-pwa deps    │
+ ├──────────────────────────────────────────────────────────────┼─────────┼───────────────────────────────────────────────┤
+ │ app/index.html                                               │ REWRITE │ Shell only — CSS/JS extracted to modules      │
+ ├──────────────────────────────────────────────────────────────┼─────────┼───────────────────────────────────────────────┤
+ │ app/src/**/*.ts                                              │ CREATE  │ ~20 TypeScript modules (see folder structure) │
+ ├──────────────────────────────────────────────────────────────┼─────────┼───────────────────────────────────────────────┤
+ │ app/src/styles/*.css                                         │ CREATE  │ ~8 CSS files extracted from monolith          │
+ ├──────────────────────────────────────────────────────────────┼─────────┼───────────────────────────────────────────────┤
+ │ app/manifest.webmanifest                                     │ CREATE  │ PWA manifest                                  │
+ ├──────────────────────────────────────────────────────────────┼─────────┼───────────────────────────────────────────────┤
+ │ prototype/creator-notes/Resuscitation_App_Behavioral_Spec.md │ REWRITE │ Updated spec                                  │
+ └──────────────────────────────────────────────────────────────┴─────────┴───────────────────────────────────────────────┘
+
+ Existing Code to Preserve (port 1:1 into modules)
+
+ - Anchor-point system (REQ-004): syncAnchors(), computeForwardPath(), currentAnchorAngle()
+ - Wheel FSM (REQ-005): mode routing, threshold logic, decision handling
+ - Smooth motion (REQ-006): .dragging class, CSS transitions, finger-following
+ - Decision tap-to-confirm (REQ-008): decisionTapped flag, all 12 edit points
+ - Circular-path knob animation (Jules PR #3): rotate()/translateY() positioning, state.wheel.visualAngle with shortest-path logic — knob animates along the arc instead of chord-cutting. Goes into
+ wheel/knob.ts.
+ - Responsive dimensions (Jules PR #1): updateDimensions() reads CSS variables on resize, 100dvh, media queries for compact screens. Goes into wheel/physics.ts + styles/responsive.css.
+ - Algorithm loader: normalizeAlgorithm(), rebuildDeckMap(), discoverAvailableAlgorithmFiles()
+ - Warden automation: window.__WARDEN_AUTOMATION API surface
+
+ Source of Truth
+
+ app/index.html on current main branch (commit b72ee16) is the base. It merges:
+ - Claude's REQ-004 through REQ-008 work (anchor points, smooth motion, tap-to-confirm)
+ - Your commit 750be2e (decisionTapped from our REQ-008 session)
+ - Jules PR #1: responsive layout + updateDimensions() + 100dvh
+ - Jules PR #3: circular-path knob animation via transform: rotate()
+
+ All improvements from all contributors are preserved.
+
+ What the CSS Demos Inspire (but we implement cross-browser)
+
+ ┌──────────────────────┬────────────────────────────────────┬───────────────────────────────────────────────────────────┐
+ │         Demo         │           Visual Effect            │                    Our Implementation                     │
+ ├──────────────────────┼────────────────────────────────────┼───────────────────────────────────────────────────────────┤
+ │ vertical/stack.astro │ Cards pile up with depth on scroll │ JS-driven translateZ + scale on navigate, CSS transitions │
+ ├──────────────────────┼────────────────────────────────────┼───────────────────────────────────────────────────────────┤
+ │ horizontal/3d.astro  │ Cards rotate in 3D perspective     │ rotateY entrance animation on active card, CSS keyframes  │
+ ├──────────────────────┼────────────────────────────────────┼───────────────────────────────────────────────────────────┤
+ │ Both                 │ perspective: 1000px, preserve-3d   │ Same — these are standard CSS, fully cross-browser        │
+ └──────────────────────┴────────────────────────────────────┴───────────────────────────────────────────────────────────┘
+
+ ---
+ Verification Plan
+
+ After each phase:
+ 1. npm run dev — app loads at localhost:3000
+ 2. Navigate all 5 algorithms cover → terminal → back to cover
+ 3. All 16 decision points: tap-to-select, drag-to-confirm, reverse
+ 4. Timer starts on first advance, never resets
+ 5. Checklist items render and persist
+ 6. npm run check:devmode:parity passes (Phase 1)
+ 7. npm run test:behavior passes if behavior contracts exist
+
+ After Phase 5 (PWA):
+ 8. lighthouse --preset=pwa scores > 90
+ 9. App installs on iOS Safari + Chrome Android
+ 10. Works offline after first load
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+ Claude has written up a plan and is ready to execute. Would you like to proceed?
+
+ ❯ 1. Yes, clear context (11% used) and auto-accept edits (shift+tab)
+   2. Yes, auto-accept edits
+   3. Yes, manually approve edits
+   4. Type here to tell Claude what to change
+
+ ctrl-g to edit in Vim · ~/.claude/plans/wobbly-orbiting-ritchie.md
+

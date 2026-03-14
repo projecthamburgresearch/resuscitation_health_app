@@ -1,0 +1,38 @@
+{
+  "snapshot_id": "resuscitation-app-warden-2026-03-13_142956",
+  "created_at": "2026-03-13T14:29:56.839968",
+  "checkpoints": [
+    {
+      "checkpoint_id": "cp-001",
+      "name": "initial",
+      "created_at": "2026-03-13T14:29:56.954557",
+      "description": "Original boot state from src/",
+      "run_id": null
+    }
+  ],
+  "changes": [
+    {
+      "change_id": "ch-001",
+      "timestamp": "2026-03-13T14:30:03.201872",
+      "change_type": "parameter",
+      "description": "Run with preset=standard, domains=['xray', 'manifest', 'cortex', 'registry', 'sonar', 'synapse']",
+      "before": {},
+      "after": {
+        "preset": "standard",
+        "domains": [
+          "xray",
+          "manifest",
+          "cortex",
+          "registry",
+          "sonar",
+          "synapse"
+        ]
+      },
+      "checkpoint_ref": "cp-001",
+      "run_id": "2026-03-13_142956",
+      "outcome": "Files: 55, Entities: 1578, Edges: 3171",
+      "files_affected": []
+    }
+  ],
+  "current_checkpoint": "cp-001"
+}

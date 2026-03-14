@@ -1,0 +1,25 @@
+{
+  "run_id": "2026-02-22_133634",
+  "project_name": "resuscitation-app-warden",
+  "snapshot_id": "resuscitation-app-warden-2026-02-22_133634",
+  "source_path": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app",
+  "domains_run": [
+    "xray",
+    "manifest",
+    "cortex",
+    "registry",
+    "sonar",
+    "synapse"
+  ],
+  "preset": "standard",
+  "duration_seconds": 0.849,
+  "blueprint_version": "0.2.0",
+  "bpignore_patterns": [
+    "dev-mode/"
+  ],
+  "files_scanned": 11,
+  "entities_found": 176,
+  "edges_found": 273,
+  "errors": [],
+  "is_intra_run": false
+}

@@ -1,0 +1,400 @@
+{
+  "generatedAt": "2026-02-22T18:34:24.488Z",
+  "source": {
+    "scanRunDir": "appendix/guidance/warden/scans_outputs/runs/20260222-123533",
+    "sourceType": "app-dom",
+    "scanFile": null,
+    "page": "home",
+    "splitCategory": "dynamic",
+    "transitionStage": "before",
+    "transition": {
+      "type": "split",
+      "fromId": "CARD_06_SIGNS_OF_LIFE",
+      "toId": "CARD_07_COMPRESSIONS",
+      "optionIndex": 1,
+      "optionLabel": "NO",
+      "slug": "card-06-signs-of-life-to-card-07-compressions-opt-2-no"
+    },
+    "stateSnapshot": {
+      "currentId": "CARD_06_SIGNS_OF_LIFE",
+      "algorithmSource": "algo_paed_bls_out.json",
+      "history": [],
+      "historySize": 0,
+      "decisionIndex": 1,
+      "decisionRecords": {
+        "CARD_04_BREATHING": 1,
+        "CARD_06_SIGNS_OF_LIFE": 0
+      },
+      "decisionTrail": [
+        {
+          "card_id": "CARD_04_BREATHING",
+          "option_index": 0,
+          "option_label": "YES",
+          "target_id": "CARD_END_OBSERVE",
+          "interaction": "forward-decision-confirm",
+          "source": "automation",
+          "timestamp": "2026-02-22T18:34:16.787Z"
+        },
+        {
+          "card_id": "CARD_04_BREATHING",
+          "option_index": 1,
+          "option_label": "NO",
+          "target_id": "CARD_05_BREATHS",
+          "interaction": "forward-decision-confirm",
+          "source": "automation",
+          "timestamp": "2026-02-22T18:34:18.637Z"
+        },
+        {
+          "card_id": "CARD_06_SIGNS_OF_LIFE",
+          "option_index": 0,
+          "option_label": "YES",
+          "target_id": "CARD_END_RECOVERY",
+          "interaction": "forward-decision-confirm",
+          "source": "automation",
+          "timestamp": "2026-02-22T18:34:22.476Z"
+        }
+      ],
+      "carouselIndex": 0,
+      "timerSeconds": 0,
+      "anchors": [
+        {
+          "id": "CARD_00_START",
+          "angle": 330
+        },
+        {
+          "id": "CARD_01_UNRESPONSIVE",
+          "angle": 287.14285714285717
+        },
+        {
+          "id": "CARD_02_SHOUT",
+          "angle": 244.28571428571428
+        },
+        {
+          "id": "CARD_03_AIRWAY",
+          "angle": 201.42857142857144
+        },
+        {
+          "id": "CARD_04_BREATHING",
+          "angle": 158.57142857142858
+        },
+        {
+          "id": "CARD_05_BREATHS",
+          "angle": 115.71428571428572
+        },
+        {
+          "id": "CARD_06_SIGNS_OF_LIFE",
+          "angle": 72.85714285714289
+        },
+        {
+          "id": "CARD_END_RECOVERY",
+          "angle": 30
+        }
+      ],
+      "anchorIndex": 6,
+      "wheel": {
+        "mode": "DECISION",
+        "angle": 72.85714285714289
+      },
+      "card": {
+        "id": "CARD_06_SIGNS_OF_LIFE",
+        "type": "decision",
+        "status": null,
+        "title": "Signs of Life?",
+        "phase": "check",
+        "canonicalAngle": 102,
+        "transitions": {
+          "type": "split",
+          "next_id": null,
+          "options": [
+            {
+              "index": 0,
+              "label": "YES",
+              "sub_label": null,
+              "target_id": "CARD_END_RECOVERY",
+              "preview_card_title": "Recovery Position"
+            },
+            {
+              "index": 1,
+              "label": "NO",
+              "sub_label": "No signs of life",
+              "target_id": "CARD_07_COMPRESSIONS",
+              "preview_card_title": "Start CPR"
+            }
+          ]
+        }
+      }
+    },
+    "viewport": "390x844",
+    "screenshotBounds": {
+      "pageWidth": 390,
+      "pageHeight": 2884
+    }
+  },
+  "plan": {
+    "clusterSummary": [],
+    "regionCount": 11,
+    "pageSizeFromScan": {
+      "width": 390,
+      "height": 2884
+    }
+  },
+  "summary": {
+    "extracted": 11,
+    "failed": 0
+  },
+  "regions": [
+    {
+      "id": "app-shell",
+      "type": "app-shell",
+      "label": "#app",
+      "selector": "#app",
+      "parentId": null,
+      "sourceIndex": 0,
+      "geometry": {
+        "x": 0,
+        "y": 1020,
+        "width": 390,
+        "height": 844
+      },
+      "clippedGeometry": {
+        "x": 0,
+        "y": 1020,
+        "width": 390,
+        "height": 844
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-133358__bp-20260222-123522-warden__scan-20260222-123533/splits/dynamic/main/home-390x844-edge-009-card-06-signs-of-life-to-card-07-compressions-opt-2-no-before/images/app-shell.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "header",
+      "type": "header",
+      "label": "header",
+      "selector": "header",
+      "parentId": null,
+      "sourceIndex": 1,
+      "geometry": {
+        "x": 2,
+        "y": 1022,
+        "width": 386,
+        "height": 50
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 1022,
+        "width": 386,
+        "height": 50
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-133358__bp-20260222-123522-warden__scan-20260222-123533/splits/dynamic/main/home-390x844-edge-009-card-06-signs-of-life-to-card-07-compressions-opt-2-no-before/images/header.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "incoming",
+      "type": "incoming",
+      "label": "#zone-top",
+      "selector": "#zone-top",
+      "parentId": null,
+      "sourceIndex": 2,
+      "geometry": {
+        "x": 2,
+        "y": 1072,
+        "width": 386,
+        "height": 170
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 1072,
+        "width": 386,
+        "height": 170
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-133358__bp-20260222-123522-warden__scan-20260222-123533/splits/dynamic/main/home-390x844-edge-009-card-06-signs-of-life-to-card-07-compressions-opt-2-no-before/images/incoming.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-stage",
+      "type": "wheel-stage",
+      "label": "#zone-middle",
+      "selector": "#zone-middle",
+      "parentId": null,
+      "sourceIndex": 3,
+      "geometry": {
+        "x": 2,
+        "y": 1242,
+        "width": 386,
+        "height": 320
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 1242,
+        "width": 386,
+        "height": 320
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-133358__bp-20260222-123522-warden__scan-20260222-123533/splits/dynamic/main/home-390x844-edge-009-card-06-signs-of-life-to-card-07-compressions-opt-2-no-before/images/wheel-stage.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-ring",
+      "type": "wheel-ring",
+      "label": "#wheel",
+      "selector": "#wheel",
+      "parentId": null,
+      "sourceIndex": 4,
+      "geometry": {
+        "x": 45,
+        "y": 1252,
+        "width": 300,
+        "height": 300
+      },
+      "clippedGeometry": {
+        "x": 45,
+        "y": 1252,
+        "width": 300,
+        "height": 300
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-133358__bp-20260222-123522-warden__scan-20260222-123533/splits/dynamic/main/home-390x844-edge-009-card-06-signs-of-life-to-card-07-compressions-opt-2-no-before/images/wheel-ring.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "current-card",
+      "type": "current-card",
+      "label": "#active-card",
+      "selector": "#active-card",
+      "parentId": null,
+      "sourceIndex": 5,
+      "geometry": {
+        "x": 105,
+        "y": 1297,
+        "width": 180,
+        "height": 210
+      },
+      "clippedGeometry": {
+        "x": 105,
+        "y": 1297,
+        "width": 180,
+        "height": 210
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-133358__bp-20260222-123522-warden__scan-20260222-123533/splits/dynamic/main/home-390x844-edge-009-card-06-signs-of-life-to-card-07-compressions-opt-2-no-before/images/current-card.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-knob",
+      "type": "wheel-knob",
+      "label": "#knob",
+      "selector": "#knob",
+      "parentId": null,
+      "sourceIndex": 6,
+      "geometry": {
+        "x": 323.328125,
+        "y": 1342.78125,
+        "width": 30,
+        "height": 30
+      },
+      "clippedGeometry": {
+        "x": 323,
+        "y": 1342,
+        "width": 30,
+        "height": 30
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-133358__bp-20260222-123522-warden__scan-20260222-123533/splits/dynamic/main/home-390x844-edge-009-card-06-signs-of-life-to-card-07-compressions-opt-2-no-before/images/wheel-knob.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "previous",
+      "type": "previous",
+      "label": "#zone-bottom",
+      "selector": "#zone-bottom",
+      "parentId": null,
+      "sourceIndex": 7,
+      "geometry": {
+        "x": 2,
+        "y": 1562,
+        "width": 386,
+        "height": 200
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 1562,
+        "width": 386,
+        "height": 200
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-133358__bp-20260222-123522-warden__scan-20260222-123533/splits/dynamic/main/home-390x844-edge-009-card-06-signs-of-life-to-card-07-compressions-opt-2-no-before/images/previous.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "label": "footer",
+      "selector": "footer",
+      "parentId": null,
+      "sourceIndex": 8,
+      "geometry": {
+        "x": 2,
+        "y": 1762,
+        "width": 386,
+        "height": 100
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 1762,
+        "width": 386,
+        "height": 100
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-133358__bp-20260222-123522-warden__scan-20260222-123533/splits/dynamic/main/home-390x844-edge-009-card-06-signs-of-life-to-card-07-compressions-opt-2-no-before/images/footer.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "checklist",
+      "type": "checklist",
+      "label": "#checklist-area",
+      "selector": "#checklist-area",
+      "parentId": null,
+      "sourceIndex": 9,
+      "geometry": {
+        "x": 18,
+        "y": 1808,
+        "width": 231.359375,
+        "height": 29
+      },
+      "clippedGeometry": {
+        "x": 18,
+        "y": 1808,
+        "width": 231,
+        "height": 29
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-133358__bp-20260222-123522-warden__scan-20260222-123533/splits/dynamic/main/home-390x844-edge-009-card-06-signs-of-life-to-card-07-compressions-opt-2-no-before/images/checklist.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "timer",
+      "type": "timer",
+      "label": "#timer",
+      "selector": "#timer",
+      "parentId": null,
+      "sourceIndex": 10,
+      "geometry": {
+        "x": 283.578125,
+        "y": 1805,
+        "width": 88.421875,
+        "height": 35
+      },
+      "clippedGeometry": {
+        "x": 283,
+        "y": 1805,
+        "width": 88,
+        "height": 35
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-133358__bp-20260222-123522-warden__scan-20260222-123533/splits/dynamic/main/home-390x844-edge-009-card-06-signs-of-life-to-card-07-compressions-opt-2-no-before/images/timer.png",
+      "ok": true,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+# ==============================================================================
+# Warden Research Ticket Template (Resuscitation Health App)
+# ==============================================================================
+# Instructions:
+# 1. Copy this template for each new ticket.
+# 2. Fill all required fields.
+# 3. Execute the ticket with Blueprint + Scan + Design Bundle evidence.
+# 4. Log outputs in research/sessions/ and close with acceptance-gate evidence.
+# ==============================================================================
+
+ticket_id: "REQ-XXX"
+date: "YYYY-MM-DD"
+status: "OPEN" # OPEN | IN_PROGRESS | RESOLVED | BLOCKED
+ticket_type: "FEATURE" # FEATURE | BUG | VALIDATION | RESEARCH
+title: ""
+
+objective: |
+  State the exact problem and expected outcome.
+
+profile:
+  target_component: "app/index.html"
+  route: "home"
+  viewport: "390x844"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "DYNAMIC_STATE_MACHINE"
+
+state_machine_scope:
+  algorithm_source: "prototype/<json-file>.json"
+  direction: "both" # forward | backward | both
+  transition_ids: []
+  state_ids: []
+  expected_state_contract:
+    incoming_zone: "Top stack shows upcoming cards"
+    current_zone: "Active card is centered inside the wheel"
+    previous_zone: "Bottom stack preserves reachable history"
+
+telemetry_levers:
+  use_scan_json: true
+  use_blueprint_outputs: true
+  use_static_screenshots_and_splits: true
+  use_dynamic_screenshots_and_splits: true
+  require_transition_before_after_pairs: true
+  require_behavior_contract_report: true
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: true
+  allow_web_search: false
+
+rubric_levers:
+  enforce_clear_unambiguous: true
+  enforce_self_contained: true
+  enforce_falsifiable_binary: true
+  enforce_unstacked: true
+  enforce_timeless: true
+
+deliverables:
+  require_findings_by_severity: true
+  require_code_target_map: true
+  require_regression_watchlist: true
+  require_validation_rerun_summary: true
+  require_behavior_matrix_all_algorithms: true
+  require_clinician_trust_score: true
+
+behavior_contract_artifact:
+  template_yaml: "appendix/guidance/warden/research/tickets/behavior_contract_matrix_template.yaml"
+  template_json: "appendix/guidance/warden/research/tickets/behavior_contract_matrix_template.json"
+  output_yaml: "appendix/guidance/warden/research/sessions/YYYYMMDD_REQ-XXX_behavior_contract.yaml"
+  output_json: "appendix/guidance/warden/research/sessions/YYYYMMDD_REQ-XXX_behavior_contract.json"
+  score_threshold: 90
+  hard_fail_on_critical_gate: true
+
+acceptance_gates:
+  - id: "AG-01"
+    gate: "Transition evidence exists for all in-scope edges (before + after)."
+  - id: "AG-02"
+    gate: "Incoming/current/previous contract holds for in-scope states."
+  - id: "AG-03"
+    gate: "Forward and backward navigation behavior matches ticket direction scope."
+  - id: "AG-04"
+    gate: "No regressions in timer/checklist/notes continuity for touched paths."
+  - id: "AG-05"
+    gate: "Behavior contract matrix is generated for all discoverable algorithms and includes explicit pass/fail by scenario."
+  - id: "AG-06"
+    gate: "Clinician trust score meets threshold and no critical behavior gate fails."

@@ -1,0 +1,53 @@
+ticket_id: "HREQ-001-HEADMASTER-BOOTSTRAP-AND-ETHOS-MAP"
+date: "2026-03-13"
+status: "HEADMASTER_COMPLETE"
+authority: "headmaster"
+title: "Bootstrap Headmaster, Switchboard, and Exit around the existing Warden-centered project"
+objective: |
+  Establish the missing authority stack around the existing Resuscitation Health App repository without erasing its current Warden lineage, state-machine ethos, or clinician-facing product constraints.
+scope: |
+  Now: create Headmaster, Switchboard, and Exit; move raw logs into Exit; normalize project-facing toolkit/librarian assumptions.
+  Next: refresh the source map and authority-surface record through a bounded Headmaster maintenance lane.
+  Later: open implementation lanes only when the current authority surfaces are understood cleanly.
+source_pack:
+  - "appendix/guidance/warden/research/system/CONSTITUTION.md"
+  - "appendix/guidance/warden/research/system/METHODOLOGY.md"
+  - "appendix/guidance/materials/README.md"
+  - "appendix/guidance/exit/logs/raw/"
+  - "package.json"
+  - ".gitignore"
+acceptance_criteria:
+  - "Headmaster, Switchboard, and Exit exist as durable guidance surfaces."
+  - "The existing Warden lineage remains canonical and unrenamed."
+  - "Raw terminal logs are now canonical under Exit."
+  - "Project-facing Toolkit references no longer depend on embedded appendix copies or library-era naming."
+acceptance_results:
+  - criterion: "Headmaster, Switchboard, and Exit exist as durable guidance surfaces."
+    result: "PASS"
+    evidence: "README plus new guidance workspaces created under appendix/guidance/headmaster, switchboard, and exit."
+  - criterion: "The existing Warden lineage remains canonical and unrenamed."
+    result: "PASS"
+    evidence: "Warden `REQ-*` ticket surface preserved and documented in appendix/guidance/warden/README.md."
+  - criterion: "Raw terminal logs are now canonical under Exit."
+    result: "PASS"
+    evidence: "Historical logs moved from appendix/guidance/materials/ to appendix/guidance/exit/logs/raw/."
+  - criterion: "Project-facing Toolkit references no longer depend on embedded appendix copies or library-era naming."
+    result: "PASS"
+    evidence: "package.json and integrations/access surface updated to call the external Toolkit and Librarian model."
+checklist_outcome: "PASS"
+checklist_notes: |
+  This bootstrap created the missing authority stack while preserving the existing project-specific Warden surface and product law.
+rubric_outcome: "HEADMASTER_COMPLETE"
+research_session: "appendix/guidance/headmaster/research/sessions/HREQ-001-HEADMASTER-BOOTSTRAP-AND-ETHOS-MAP.md"
+artifacts_updated:
+  - "README.md"
+  - "appendix/guidance/headmaster/"
+  - "appendix/guidance/switchboard/"
+  - "appendix/guidance/exit/"
+  - "appendix/guidance/materials/README.md"
+  - "package.json"
+recommended_warden_scope: "none (bootstrap authority work only)"
+acceptance_gates_for_warden: []
+closed_date: "2026-03-13"
+closed_reason: |
+  The missing authority stack has been established. Future work should continue from HREQ-002 and bounded Warden lanes rather than reopening the bootstrap lane.

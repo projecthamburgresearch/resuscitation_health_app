@@ -1,0 +1,6 @@
+inbox
+active
+outbox
+archive
+registry
+templates

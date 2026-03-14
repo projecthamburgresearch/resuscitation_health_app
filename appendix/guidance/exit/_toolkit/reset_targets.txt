@@ -1,0 +1,5 @@
+logs/log_catalog.json
+logs/latest_log_pointer.json
+registry/state.json
+prompts/LATEST_SESSION_REENTRY.md
+snapshots

@@ -1,0 +1,162 @@
+{
+  "generatedAt": "2026-02-21T23:46:51.454Z",
+  "runDir": "appendix/guidance/warden/design/runs/20260221-184428__bp-20260221-184351-warden__scan-20260221-184354",
+  "linkedAt": {
+    "blueprintRunDir": "appendix/blueprint_outputs/runs/20260221-184351-warden",
+    "scanRunDir": "appendix/scans_outputs/runs/20260221-184354"
+  },
+  "links": {
+    "blueprintSymlinkCreated": true,
+    "blueprintFallbackFile": null,
+    "scanSymlinkCreated": true,
+    "scanFallbackFile": null
+  },
+  "capture": {
+    "baseUrl": "http://127.0.0.1:3000",
+    "mode": "main",
+    "pages": [
+      ""
+    ],
+    "viewports": [
+      "1440x900"
+    ],
+    "devServerStartedByScript": false,
+    "captureAttempts": 3,
+    "stabilizeMs": 1800,
+    "warmupRounds": 2,
+    "splitMain": true,
+    "splitSubcolumns": 3
+  },
+  "blueprint": {
+    "runDir": "appendix/blueprint_outputs/runs/20260221-184351-warden",
+    "runName": "20260221-184351-warden",
+    "fileCount": 10,
+    "files": [
+      "cortex_report.json",
+      "llm_context.json",
+      "manifest.yaml",
+      "master_index.json",
+      "registry_report.json",
+      "run_meta.json",
+      "sonar_report.json",
+      "synapse_report.json",
+      "xray_report.md",
+      "xray_result.json"
+    ],
+    "runMeta": {
+      "run_id": "2026-02-21_184352",
+      "project_name": "resuscitation-app",
+      "snapshot_id": "resuscitation-app-2026-02-21_184352",
+      "source_path": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app",
+      "domains_run": [
+        "xray",
+        "manifest",
+        "cortex",
+        "registry",
+        "sonar",
+        "synapse"
+      ],
+      "preset": "standard",
+      "duration_seconds": 0.821,
+      "blueprint_version": "0.2.0",
+      "bpignore_patterns": [],
+      "files_scanned": 3,
+      "entities_found": 37,
+      "edges_found": 34,
+      "errors": [],
+      "is_intra_run": false
+    }
+  },
+  "scan": {
+    "runDir": "appendix/scans_outputs/runs/20260221-184354",
+    "runName": "20260221-184354",
+    "fileCount": 3,
+    "files": [
+      "home-scan.json",
+      "run_manifest.json",
+      "scan-coverage-report.json"
+    ],
+    "runManifest": {
+      "generatedAt": "2026-02-21T23:44:03.410Z",
+      "runStamp": "20260221-184354",
+      "baseUrl": "http://127.0.0.1:3000",
+      "rootDir": "appendix/scans_outputs",
+      "runDir": "appendix/scans_outputs/runs/20260221-184354",
+      "currentDir": "appendix/scans_outputs/current",
+      "options": {
+        "diff": true,
+        "coverageReport": true,
+        "multiViewport": false,
+        "viewportSpecs": [],
+        "scanAll": true,
+        "pageArg": null,
+        "archivedCurrentDir": null
+      },
+      "scans": [
+        {
+          "page": "home",
+          "viewport": "1440x900",
+          "elements": 24,
+          "scanFile": "home-scan.json",
+          "diffFile": null,
+          "coverage": {
+            "mode": "static-dom",
+            "selectorCandidateCount": 24,
+            "uniqueCandidateCount": 24,
+            "includeableCount": 24,
+            "scannedCount": 24,
+            "scanCap": 450,
+            "capped": false,
+            "dropped": {
+              "too-small": 0,
+              "hidden": 0,
+              "offscreen": 0,
+              "no-signal": 0,
+              "cap-reached": 0
+            },
+            "scannedRatioOfUnique": 1,
+            "scannedRatioOfIncludeable": 1
+          },
+          "attempts": 1,
+          "attemptErrors": []
+        }
+      ]
+    },
+    "coverageSummary": {
+      "runStamp": "20260221-184354",
+      "scans": 1,
+      "cappedScans": 0,
+      "totalScannedElements": 24,
+      "totalIncludeableElements": 24,
+      "totalUniqueCandidates": 24,
+      "scannedRatioOfIncludeable": 1,
+      "scannedRatioOfUnique": 1
+    }
+  },
+  "screenshots": [
+    {
+      "mode": "main",
+      "page": "home",
+      "slug": "",
+      "viewport": "1440x900",
+      "url": "http://127.0.0.1:3000/",
+      "status": null,
+      "ok": false,
+      "error": "page.waitForSelector: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('header') to be visible\u001b[22m\n",
+      "file": null,
+      "attempts": 3,
+      "attemptErrors": [
+        "page.waitForSelector: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('header') to be visible\u001b[22m\n",
+        "page.waitForSelector: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('header') to be visible\u001b[22m\n",
+        "page.waitForSelector: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('header') to be visible\u001b[22m\n"
+      ],
+      "split": null
+    }
+  ],
+  "splitArtifacts": [],
+  "splitSummary": {
+    "bundles": 0,
+    "extracted": 0,
+    "failed": 0
+  }
+}

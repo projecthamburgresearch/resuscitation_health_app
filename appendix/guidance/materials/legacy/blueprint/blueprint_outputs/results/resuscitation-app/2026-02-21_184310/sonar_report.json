@@ -1,0 +1,44 @@
+{
+  "domain": "sonar",
+  "version": "0.2.0",
+  "timestamp": "2026-02-21T18:43:11.600564",
+  "root_path": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app",
+  "entities": [],
+  "edges": [],
+  "stats": {
+    "total_findings": 2,
+    "findings_by_category": {
+      "naming": 2
+    },
+    "findings_by_level": {
+      "warning": 2
+    },
+    "file_count": 2,
+    "entity_count": 2,
+    "elapsed_seconds": 0.0,
+    "error_count": 0,
+    "findings": [
+      {
+        "finding_id": "naming-c78d51f5",
+        "category": "naming",
+        "level": "warning",
+        "message": "Single-character name 'a' is not descriptive.",
+        "file_path": "Resuscitation_App_Complete.html",
+        "line": 895,
+        "entity_id": "TABLE::Resuscitation_App_Complete.html::a",
+        "suggestion": "Use a more descriptive name that conveys intent."
+      },
+      {
+        "finding_id": "naming-409160c8",
+        "category": "naming",
+        "level": "warning",
+        "message": "Single-character name 'a' is not descriptive.",
+        "file_path": "index.html",
+        "line": 895,
+        "entity_id": "TABLE::index.html::a",
+        "suggestion": "Use a more descriptive name that conveys intent."
+      }
+    ]
+  },
+  "errors": []
+}

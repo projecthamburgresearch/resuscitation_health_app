@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-02-22T01:30:19.825Z",
+  "runStamp": "20260221-203015",
+  "baseUrl": "http://127.0.0.1:3000",
+  "rootDir": "appendix/system/scans_outputs",
+  "runDir": "appendix/system/scans_outputs/runs/20260221-203015",
+  "currentDir": "appendix/system/scans_outputs/current",
+  "options": {
+    "diff": true,
+    "coverageReport": true,
+    "multiViewport": false,
+    "viewportSpecs": [],
+    "scanAll": true,
+    "pageArg": null,
+    "archivedCurrentDir": null
+  },
+  "scans": [
+    {
+      "page": "home",
+      "viewport": "1440x900",
+      "elements": 28,
+      "scanFile": "home-scan.json",
+      "diffFile": null,
+      "coverage": {
+        "mode": "devmode-overlay",
+        "selectorCandidateCount": 36,
+        "uniqueCandidateCount": 36,
+        "includeableCount": 28,
+        "scannedCount": 28,
+        "scanCap": 450,
+        "capped": false,
+        "dropped": {
+          "too-small": 8,
+          "hidden": 0,
+          "offscreen": 0,
+          "no-signal": 0,
+          "cap-reached": 0
+        },
+        "scannedRatioOfUnique": 0.778,
+        "scannedRatioOfIncludeable": 1
+      },
+      "attempts": 1,
+      "attemptErrors": []
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-02-22T18:33:52.425Z",
+  "blueprintRoot": "appendix/blueprint",
+  "projectRoot": "app",
+  "runDir": "appendix/blueprint_outputs/runs/20260222-133350",
+  "currentDir": "appendix/blueprint_outputs/current",
+  "archivedCurrentDir": "appendix/blueprint_outputs/archive/current-20260222-133350",
+  "preset": "standard",
+  "excludeDevMode": false,
+  "filesSynced": [
+    "chronicle.json",
+    "llm_context.json",
+    "manifest.yaml",
+    "master_index.json",
+    "xray_report.md",
+    "xray_result.json"
+  ]
+}

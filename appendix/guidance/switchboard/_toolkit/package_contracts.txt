@@ -1,0 +1,4 @@
+- routing layer: bounded filesystem-based assignments for external delegates
+- registry layer: durable dispatch ledger with create/claim/close/review/archive events
+- review layer: Steward fixes, verdicts, and lessons capture
+- boundary rule: real outputs still belong in Headmaster, Warden, or materials

@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-02-22T00:58:54.962Z",
+  "algorithms": [
+    {
+      "file": "algo_anaphylaxis.json",
+      "id": "algo_anaphylaxis_001",
+      "title": "Anaphylaxis",
+      "context": "universal",
+      "version": "1.0.0"
+    },
+    {
+      "file": "algo_newborn_ls.json",
+      "id": "algo_newborn_ls_001",
+      "title": "Newborn Life Support",
+      "context": "delivery-suite",
+      "version": "1.0.0"
+    },
+    {
+      "file": "algo_paed_bls_in.json",
+      "id": "algo_paed_bls_in_001",
+      "title": "Paediatric Basic Life Support",
+      "context": "in-hospital",
+      "version": "1.0.0"
+    },
+    {
+      "file": "algo_paed_bls_out.json",
+      "id": "algo_paed_bls_out_001",
+      "title": "Paediatric Basic Life Support",
+      "context": "out-of-hospital",
+      "version": "2.0.0"
+    },
+    {
+      "file": "algo_paed_fbao.json",
+      "id": "algo_paed_fbao_001",
+      "title": "Paediatric Foreign Body Airway Obstruction",
+      "context": "universal",
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "snapshot_id": "resuscitation-app-2026-02-21_184352",
+  "project_name": "resuscitation-app",
+  "created_at": "2026-02-21T18:43:52.852941",
+  "blueprint_version": "0.2.0",
+  "source_commit": "046a7fe921421e76244caf19399fea06ba3c5182",
+  "status": "completed",
+  "patches": [],
+  "runs": [
+    {
+      "run_id": "2026-02-21_184352",
+      "timestamp": "2026-02-21T18:43:54.260603",
+      "success": true,
+      "summary": {
+        "files_scanned": 3,
+        "entities_found": 37,
+        "edges_found": 34,
+        "errors": 0,
+        "duration_seconds": 0.821
+      }
+    }
+  ],
+  "notes": ""
+}

@@ -1,0 +1,97 @@
+ticket_id: "REQ-014-BEHAVIOR-TEST-REFRESH"
+date: "2026-03-13"
+status: "RESOLVED"
+ticket_type: "VALIDATION"
+title: "Refresh the behavior-contract validator for the tap-before-confirm decision flow"
+
+objective: |
+  Update the behavior-contract validator so it matches the current decision-option tap requirement introduced by REQ-008 without changing runtime behavior.
+
+profile:
+  target_component: "scripts/test_behavior.js"
+  route: "behavior-contract-validator"
+  viewport: "390x844"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "DYNAMIC_STATE_MACHINE"
+
+state_machine_scope:
+  algorithm_source: "app/algorithms/"
+  direction: "both"
+  transition_ids: []
+  state_ids: []
+  expected_state_contract:
+    incoming_zone: "Top stack shows upcoming cards"
+    current_zone: "Active card is centered inside the wheel"
+    previous_zone: "Bottom stack preserves reachable history"
+
+telemetry_levers:
+  use_scan_json: true
+  use_blueprint_outputs: false
+  use_static_screenshots_and_splits: false
+  use_dynamic_screenshots_and_splits: false
+  require_transition_before_after_pairs: false
+  require_behavior_contract_report: true
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: true
+  allow_web_search: false
+
+rubric_levers:
+  enforce_clear_unambiguous: true
+  enforce_self_contained: true
+  enforce_falsifiable_binary: true
+  enforce_unstacked: true
+  enforce_timeless: true
+
+deliverables:
+  require_findings_by_severity: true
+  require_code_target_map: true
+  require_regression_watchlist: true
+  require_validation_rerun_summary: true
+  require_behavior_matrix_all_algorithms: false
+  require_clinician_trust_score: true
+
+behavior_contract_artifact:
+  template_yaml: "appendix/guidance/warden/research/tickets/behavior_contract_matrix_template.yaml"
+  template_json: "appendix/guidance/warden/research/tickets/behavior_contract_matrix_template.json"
+  output_yaml: "appendix/guidance/warden/research/sessions/20260313_REQ-014_behavior_contract.yaml"
+  output_json: "appendix/guidance/warden/research/sessions/20260313_REQ-014_behavior_contract.json"
+  score_threshold: 90
+  hard_fail_on_critical_gate: true
+
+acceptance_gates:
+  - id: "AG-01"
+    gate: "`scripts/test_behavior.js` explicitly taps a decision option before asserting `.selected`."
+    result: "PASS"
+  - id: "AG-02"
+    gate: "The refreshed behavior-contract validation passes for all five sampled algorithms."
+    result: "PASS"
+  - id: "AG-03"
+    gate: "No clinician-facing runtime files change in this lane unless a blocker proves they must."
+    result: "PASS"
+  - id: "AG-04"
+    gate: "Updated validation evidence and any blockers are recorded explicitly."
+    result: "PASS"
+
+acceptance_results:
+  - id: "RES-01"
+    result: "Modified `scripts/test_behavior.js` to include the mandatory decision-option tap."
+  - id: "RES-02"
+    result: "Standardized drag amounts (-60 forward, 60/90 reverse) and increased steps (30) for reliability."
+  - id: "RES-03"
+    result: "Added animation settle timeouts (1000ms) before critical reverse traversal gestures."
+  - id: "RES-04"
+    result: "Verified all five sampled algorithms pass the behavior contract with the refreshed validator."
+
+checklist_outcome: "PASS"
+checklist_notes: "Validator is now synchronized with REQ-008 'tap-before-confirm' workflow."
+rubric_outcome: "PASS"
+research_session: "appendix/guidance/warden/research/sessions/20260313_REQ-014_behavior_contract.yaml"
+artifacts_updated:
+  - "scripts/test_behavior.js"
+  - "appendix/guidance/warden/research/reports/behavior_report.json"
+recommended_warden_scope: "Continue using the refreshed validator for all clinical logic changes."
+acceptance_gates_for_warden: []
+closed_date: "2026-03-13"
+closed_reason: "Behavior-contract validator refreshed to match the tap-before-confirm workflow; all five sampled algorithms now pass without changing clinician-facing runtime behavior."

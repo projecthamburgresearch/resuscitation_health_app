@@ -1,0 +1,4 @@
+- raw provenance: canonical session or terminal transcripts stored under `appendix/guidance/exit/logs/raw/`
+- continuity registry: machine-readable state with created, updated, and reviewed timestamps
+- re-entry prompt: generated session bootstrap under `appendix/guidance/exit/prompts/`
+- continuity snapshots: dated recovery capsules under `appendix/guidance/exit/snapshots/`

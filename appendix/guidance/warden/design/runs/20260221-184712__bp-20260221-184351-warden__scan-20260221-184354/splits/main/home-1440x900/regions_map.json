@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-02-21T23:47:17.621Z",
+  "source": {
+    "scanRunDir": "appendix/scans_outputs/runs/20260221-184354",
+    "scanFile": "appendix/scans_outputs/runs/20260221-184354/home-scan.json",
+    "page": "home",
+    "viewport": "1440x900",
+    "screenshotBounds": {
+      "pageWidth": 1440,
+      "pageHeight": 1020
+    }
+  },
+  "plan": {
+    "clusterSummary": [],
+    "regionCount": 1,
+    "pageSizeFromScan": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "summary": {
+    "extracted": 1,
+    "failed": 0
+  },
+  "regions": [
+    {
+      "id": "content",
+      "type": "content",
+      "label": "content-region",
+      "parentId": null,
+      "sourceIndex": null,
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "clippedGeometry": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "file": "appendix/guidance/warden/design/runs/20260221-184712__bp-20260221-184351-warden__scan-20260221-184354/splits/main/home-1440x900/images/content.png",
+      "ok": true,
+      "error": null
+    }
+  ]
+}

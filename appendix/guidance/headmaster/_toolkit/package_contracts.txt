@@ -1,0 +1,4 @@
+- directive layer: Headmaster owns future-state research, bounded `REQ-*` tickets, and `WDN-*` handoffs
+- evidence-reading layer: Headmaster consumes Warden/package/material outputs and translates them into direction
+- routing bridge: projects may connect Headmaster to Switchboard for delegated or self-assigned work
+- continuity bridge: projects may connect Headmaster to Exit so accepted state survives thread loss

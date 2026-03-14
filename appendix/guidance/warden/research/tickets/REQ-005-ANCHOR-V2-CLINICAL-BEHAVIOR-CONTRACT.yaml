@@ -1,0 +1,162 @@
+# ==============================================================================
+# Warden Research Ticket
+# ==============================================================================
+
+ticket_id: "REQ-005-ANCHOR-V2-CLINICAL-BEHAVIOR-CONTRACT"
+date: "2026-02-22"
+status: "IN_PROGRESS" # OPEN | IN_PROGRESS | RESOLVED | BLOCKED
+ticket_type: "FEATURE" # FEATURE | BUG | VALIDATION | RESEARCH
+title: "Anchor V2 rewrite: clinician-first wheel behavior contract for all algorithms"
+
+objective: |
+  Deliver a clinician-reliable wheel interaction model that is simple, predictable,
+  and consistent across all loaded algorithm JSON files.
+
+  Core product intent to enforce:
+  - Forward wheel intent (anticlockwise) advances exactly one step.
+  - Decision states are explicit stop-points; wheel does not auto-advance through them.
+  - Only deliberate option selection + drag-to-center confirms a decision and advances.
+  - Reverse wheel intent rewinds exactly one step, including across decision states.
+  - Knob is an anchor-based progress indicator from ~11 o'clock (start) to ~1 o'clock (end).
+  - Main app is the clinician product; dev-mode is telemetry/support and must remain in parity.
+
+profile:
+  target_component: "app/index.html (runtime behavior), app/dev-mode/* (telemetry parity), scripts/* (warden validation integration)"
+  route: "home"
+  viewport: "390x844"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "ANCHOR_STATE_MACHINE_V2"
+
+state_machine_scope:
+  algorithm_source: "app/algorithms/*.json (all discoverable files in app/algorithms/index.json)"
+  direction: "both" # forward | backward | both
+  transition_ids:
+    - "All linear transitions"
+    - "All split transitions (decision stops)"
+    - "All loop/self-loop transitions"
+    - "Reverse traversal across decision nodes"
+  state_ids:
+    - "All cards in all discoverable algorithms"
+  expected_state_contract:
+    incoming_zone: "Top zone previews forward context and branch options without forcing transition."
+    current_zone: "Center card is the sole active state and decision context."
+    previous_zone: "Bottom zone reflects reachable rewind history."
+  decision_semantics:
+    forward_requires_confirmation: true
+    reverse_requires_confirmation: false
+    reverse_passes_through_decision_states: true
+    decision_stop_is_record_of_act: true
+  anchor_semantics:
+    one_anchor_per_active_step: true
+    snap_after_each_committed_transition: true
+    no_free_floating_knob_after_release: true
+    one_transition_per_gesture: true
+    progress_arc: "330 -> 30 anticlockwise"
+  algorithm_generalization:
+    apply_rules_to_all_algorithms: true
+    no_hardcoded_decision_labels: true
+    no_hardcoded_card_ids_for_core_wheel_rules: true
+
+telemetry_levers:
+  use_devmode_parity_check: true
+  use_scan_json: true
+  use_blueprint_outputs: true
+  use_static_screenshots_and_splits: true
+  use_dynamic_screenshots_and_splits: true
+  require_transition_before_after_pairs: true
+  require_behavior_contract_report: true
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: true
+  allow_web_search: false
+
+rubric_levers:
+  enforce_clear_unambiguous: true
+  enforce_self_contained: true
+  enforce_falsifiable_binary: true
+  enforce_unstacked: true
+  enforce_timeless: true
+
+deliverables:
+  require_findings_by_severity: true
+  require_code_target_map: true
+  require_regression_watchlist: true
+  require_validation_rerun_summary: true
+  require_behavior_matrix_all_algorithms: true
+
+request_notes:
+  notes_file: "appendix/guidance/materials/202602221025-terminal-saved-output-health-app-logs.txt"
+  operator_intent: |
+    Simplify interaction for clinical use:
+    - forward intent = move one step
+    - decision = deliberate stop + deliberate commit
+    - reverse = retrace without friction
+    - progress remains visually understandable for all algorithm paths.
+
+evidence_anchors:
+  latest_blueprint_run: "appendix/guidance/warden/blueprint_outputs/runs/20260222-102318-warden"
+  latest_scan_run: "appendix/guidance/warden/scans_outputs/runs/20260222-102331"
+  latest_design_run: "appendix/guidance/warden/design/runs/20260222-102338__bp-20260222-102318-warden__scan-20260222-102331"
+
+implementation_directives:
+  - id: "D-01"
+    directive: "Create a single transition-intent reducer for wheel gestures: classify gesture as forward/reverse/none once, then commit at most one transition per gesture."
+  - id: "D-02"
+    directive: "Apply one-transition-per-gesture globally (cover, linear, loop, decision, terminal) with explicit consume/reset lifecycle."
+  - id: "D-03"
+    directive: "Make forward intent in non-decision states commit exactly one step and snap to the next anchor on release."
+  - id: "D-04"
+    directive: "Decision states must lock navigation; wheel gestures cannot advance through split transitions."
+  - id: "D-05"
+    directive: "Decision advance requires selected option + drag-to-center confirmation only."
+  - id: "D-06"
+    directive: "Reverse intent rewinds exactly one step from any non-cover state, including decision and terminal states, without decision reconfirm."
+  - id: "D-07"
+    directive: "Preserve and restore decision choice memory on rewind into decision cards."
+  - id: "D-08"
+    directive: "Keep decision confirmation as auditable trail data (who/what/when/source) in state telemetry."
+  - id: "D-09"
+    directive: "Rework anchor generation to remain clinically readable across branch changes (no confusing position jumps that break user mental model)."
+  - id: "D-10"
+    directive: "Retain dynamic algorithm compatibility for every discoverable algorithm file without algorithm-specific branching code."
+  - id: "D-11"
+    directive: "Add a behavior-contract validation runner that executes forward/reverse/decision scenarios across all algorithms and emits a machine-readable report."
+  - id: "D-12"
+    directive: "Integrate behavior-contract validation into Warden pipeline evidence (alongside blueprint/scan/design bundle) so failures are surfaced before closure."
+  - id: "D-13"
+    directive: "Maintain strict dev-mode parity and mirror any behavior-facing observability changes required for diagnosis."
+  - id: "D-14"
+    directive: "Document final nurse-facing A->Z flow and failure-mode handling for decisions, loops, and rewinds."
+
+acceptance_gates:
+  - id: "AG-01"
+    gate: "In COVER/LINEAR/LOOP modes, one forward gesture commits exactly one advance transition."
+  - id: "AG-02"
+    gate: "In non-cover modes, one reverse gesture commits exactly one rewind transition."
+  - id: "AG-03"
+    gate: "No gesture can commit both rewind and advance in the same drag lifecycle."
+  - id: "AG-04"
+    gate: "At split decision states, wheel drag and wheel/knob taps do not advance card state."
+  - id: "AG-05"
+    gate: "At split decision states, only selected-option drag-to-center confirmation advances state."
+  - id: "AG-06"
+    gate: "Reverse traversal across decision states requires no reconfirmation and does not dead-end."
+  - id: "AG-07"
+    gate: "Terminal states allow reverse rewind."
+  - id: "AG-08"
+    gate: "Decision selection memory is restored when rewinding into prior decision cards."
+  - id: "AG-09"
+    gate: "Knob snaps to an anchor after every committed transition and after drag release."
+  - id: "AG-10"
+    gate: "Progress indication remains consistent with start-near-11 and end-near-1 semantics."
+  - id: "AG-11"
+    gate: "Behavior-contract test matrix passes for every discoverable algorithm under app/algorithms."
+  - id: "AG-12"
+    gate: "No regression in timer, checklist, carousel, toolbox, and transition previews."
+  - id: "AG-13"
+    gate: "Strict dev-mode parity check passes."
+  - id: "AG-14"
+    gate: "Unified Warden analysis completes with blueprint + scan + screenshots + splits and no capture failures."
+  - id: "AG-15"
+    gate: "Ticket closure includes run IDs, behavior report path, and explicit pass/fail table by algorithm."

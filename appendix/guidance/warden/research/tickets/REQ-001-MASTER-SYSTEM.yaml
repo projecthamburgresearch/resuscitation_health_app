@@ -1,0 +1,22 @@
+# ==============================================================================
+# Legacy Imported Master Ticket (Archive)
+# ==============================================================================
+# Imported during initial nonprofit-to-health-app adoption.
+# Superseded by REQ-002-MASTER-SYSTEM for this project.
+# Keep for historical traceability only.
+# ==============================================================================
+
+ticket_id: "REQ-001-MASTER-SYSTEM"
+date: "2026-02-21"
+status: "RESOLVED"
+legacy_ticket: true
+superseded_by: "REQ-002-MASTER-SYSTEM"
+
+notes: |
+  This ticket represented the first generic bootstrap import.
+  It is no longer the active system definition for this repository.
+  Do not use this file as a starting template for new work.
+
+replacement_policy: |
+  - One-time system bootstrap reference: REQ-002-MASTER-SYSTEM.yaml
+  - All new tickets: research_ticket_template.yaml

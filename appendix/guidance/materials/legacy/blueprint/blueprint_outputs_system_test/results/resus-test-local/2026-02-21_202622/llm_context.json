@@ -1,0 +1,360 @@
+{
+  "scope": {
+    "domain": "xray",
+    "version": "2.0.0",
+    "root": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app"
+  },
+  "stats": {
+    "files_scanned": 10,
+    "files_parsed": 0,
+    "files_skipped": 0,
+    "entity_count": 23,
+    "edge_count": 13,
+    "entity_types": {
+      "file": 10,
+      "table": 10,
+      "network_request": 2,
+      "chunk": 1
+    },
+    "elapsed_seconds": 0.07,
+    "error_count": 0
+  },
+  "nodes": [
+    {
+      "id": "REF::index.html::file:/algorithms/index.json",
+      "type": "chunk",
+      "name": "/algorithms/index.json",
+      "file": "index.html",
+      "line": 892,
+      "meta": {
+        "ref_type": "file_path",
+        "value": "/algorithms/index.json"
+      }
+    },
+    {
+      "id": "FILE::.DS_Store",
+      "type": "file",
+      "name": ".DS_Store"
+    },
+    {
+      "id": "FILE::.bpignore",
+      "type": "file",
+      "name": ".bpignore"
+    },
+    {
+      "id": "FILE::Resuscitation_App_Complete.html",
+      "type": "file",
+      "name": "Resuscitation_App_Complete.html"
+    },
+    {
+      "id": "FILE::algorithms/algo_anaphylaxis.json",
+      "type": "file",
+      "name": "algo_anaphylaxis.json"
+    },
+    {
+      "id": "FILE::algorithms/algo_newborn_ls.json",
+      "type": "file",
+      "name": "algo_newborn_ls.json"
+    },
+    {
+      "id": "FILE::algorithms/algo_paed_bls_in.json",
+      "type": "file",
+      "name": "algo_paed_bls_in.json"
+    },
+    {
+      "id": "FILE::algorithms/algo_paed_bls_out.json",
+      "type": "file",
+      "name": "algo_paed_bls_out.json"
+    },
+    {
+      "id": "FILE::algorithms/algo_paed_fbao.json",
+      "type": "file",
+      "name": "algo_paed_fbao.json"
+    },
+    {
+      "id": "FILE::index.html",
+      "type": "file",
+      "name": "index.html"
+    },
+    {
+      "id": "FILE::algorithms/index.json",
+      "type": "file",
+      "name": "index.json"
+    },
+    {
+      "id": "REQ::index.html::GET:/algorithms/${safe}",
+      "type": "network_request",
+      "name": "GET /algorithms/${safe}",
+      "file": "index.html",
+      "line": 909,
+      "meta": {
+        "method": "GET",
+        "url": "/algorithms/${safe}",
+        "library": "fetch"
+      }
+    },
+    {
+      "id": "REQ::index.html::GET:/algorithms/index.json",
+      "type": "network_request",
+      "name": "GET /algorithms/index.json",
+      "file": "index.html",
+      "line": 892,
+      "meta": {
+        "method": "GET",
+        "url": "/algorithms/index.json",
+        "library": "fetch"
+      }
+    },
+    {
+      "id": "TABLE::.bpignore::Blueprint",
+      "type": "table",
+      "name": "Blueprint",
+      "file": ".bpignore",
+      "line": 1,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::Resuscitation_App_Complete.html::a",
+      "type": "table",
+      "name": "a",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 895,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::index.html::a",
+      "type": "table",
+      "name": "a",
+      "file": "index.html",
+      "line": 1192,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::algorithms/algo_anaphylaxis.json::anterolateral",
+      "type": "table",
+      "name": "anterolateral",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 283,
+      "meta": {
+        "operation": "INTO"
+      }
+    },
+    {
+      "id": "TABLE::algorithms/algo_newborn_ls.json::parents",
+      "type": "table",
+      "name": "parents",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 800,
+      "meta": {
+        "operation": "UPDATE"
+      }
+    },
+    {
+      "id": "TABLE::algorithms/algo_paed_fbao.json::signs",
+      "type": "table",
+      "name": "signs",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 318,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::Resuscitation_App_Complete.html::visibility",
+      "type": "table",
+      "name": "visibility",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 1074,
+      "meta": {
+        "operation": "UPDATE"
+      }
+    },
+    {
+      "id": "TABLE::index.html::visibility",
+      "type": "table",
+      "name": "visibility",
+      "file": "index.html",
+      "line": 1371,
+      "meta": {
+        "operation": "UPDATE"
+      }
+    },
+    {
+      "id": "TABLE::Resuscitation_App_Complete.html::your",
+      "type": "table",
+      "name": "your",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 488,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::index.html::your",
+      "type": "table",
+      "name": "your",
+      "file": "index.html",
+      "line": 488,
+      "meta": {
+        "operation": "FROM"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "FILE::.bpignore",
+      "tgt": "TABLE::.bpignore::Blueprint",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": ".bpignore",
+          "line": 1,
+          "snip": "from Blueprint"
+        }
+      ]
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "TABLE::Resuscitation_App_Complete.html::your",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "Resuscitation_App_Complete.html",
+          "line": 488,
+          "snip": "From your"
+        }
+      ]
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "TABLE::Resuscitation_App_Complete.html::a",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "Resuscitation_App_Complete.html",
+          "line": 895,
+          "snip": "FROM a"
+        }
+      ]
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "TABLE::Resuscitation_App_Complete.html::visibility",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "Resuscitation_App_Complete.html",
+          "line": 1074,
+          "snip": "update visibility"
+        }
+      ]
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "TABLE::algorithms/algo_anaphylaxis.json::anterolateral",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "algorithms/algo_anaphylaxis.json",
+          "line": 283,
+          "snip": "into anterolateral"
+        }
+      ]
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "TABLE::algorithms/algo_newborn_ls.json::parents",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "algorithms/algo_newborn_ls.json",
+          "line": 800,
+          "snip": "Update parents"
+        }
+      ]
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "TABLE::algorithms/algo_paed_fbao.json::signs",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "algorithms/algo_paed_fbao.json",
+          "line": 318,
+          "snip": "from signs"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "REQ::index.html::GET:/algorithms/index.json",
+      "rel": "contains_request",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 892,
+          "snip": "fetch('/algorithms/index.json'"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "REQ::index.html::GET:/algorithms/${safe}",
+      "rel": "contains_request",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 909,
+          "snip": "fetch(`/algorithms/${safe}`"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "TABLE::index.html::your",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 488,
+          "snip": "From your"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "TABLE::index.html::a",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 1192,
+          "snip": "FROM a"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "TABLE::index.html::visibility",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 1371,
+          "snip": "update visibility"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "REF::index.html::file:/algorithms/index.json",
+      "rel": "links_to_file"
+    }
+  ]
+}

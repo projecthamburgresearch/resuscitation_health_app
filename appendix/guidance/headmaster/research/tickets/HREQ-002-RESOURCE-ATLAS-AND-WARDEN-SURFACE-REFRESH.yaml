@@ -1,0 +1,59 @@
+ticket_id: "HREQ-002-RESOURCE-ATLAS-AND-WARDEN-SURFACE-REFRESH"
+date: "2026-03-13"
+status: "HEADMASTER_COMPLETE"
+authority: "headmaster"
+title: "Refresh the Resource Atlas and current authority-surface map after bootstrap"
+objective: |
+  Update the new Headmaster source map so it reflects the live Resuscitation Health App repo accurately, including the existing Warden surfaces, raw-log continuity, runtime/prototype boundaries, operator surfaces, and external Toolkit Librarian references.
+scope: |
+  Now: refresh the Resource Atlas and cycle state against the live repo.
+  Next: choose the next bounded Headmaster lane from the refreshed source map.
+  Later: reopen this maintenance lane only when major source surfaces change again.
+source_pack:
+  - "README.md"
+  - "appendix/guidance/headmaster/README.md"
+  - "appendix/guidance/headmaster/research/system/RESOURCE_ATLAS.md"
+  - "appendix/guidance/headmaster/research/system/ARTIFACT_READING_GUIDE.md"
+  - "appendix/guidance/headmaster/research/system/SYLLABUS.md"
+  - "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md"
+  - "appendix/guidance/headmaster/report/latest_analysis.md"
+  - "appendix/guidance/warden/README.md"
+  - "appendix/guidance/warden/research/system/CONSTITUTION.md"
+  - "appendix/guidance/exit/prompts/LATEST_SESSION_REENTRY.md"
+  - "appendix/guidance/switchboard/README.md"
+  - "app/algorithms/"
+  - "prototype/json-algorithms/"
+destructive_change_plan:
+  requires_explicit_human_approval: false
+  tracked_paths_to_delete: []
+  tracked_paths_to_move: []
+  rollback_note: "HREQ-002 is a Headmaster-only source-map refresh. It should not delete canonical files, move authority roots, or modify runtime behavior."
+acceptance_criteria:
+  - "Resource Atlas matches the live repo surfaces."
+  - "Authority boundaries are clearer than before the lane started."
+  - "The next bounded lane is easier to choose from the refreshed atlas and cycle state."
+acceptance_results:
+  - criterion: "Resource Atlas matches the live repo surfaces."
+    result: "PASS"
+    evidence: "RESOURCE_ATLAS.md now groups product runtime, current-state authority, future-state authority, integrations, external Toolkit Librarian corpus, and documentation/tooling surfaces against the live repo."
+  - criterion: "Authority boundaries are clearer than before the lane started."
+    result: "PASS"
+    evidence: "The atlas and cycle log now explicitly treat Warden as current-state authority, Headmaster as future-state authority, and Exit/Switchboard as continuity and delegate-routing surfaces."
+  - criterion: "The next bounded lane is easier to choose from the refreshed atlas and cycle state."
+    result: "PASS"
+    evidence: "The atlas refresh isolated the runtime-vs-prototype architecture question and enabled creation of HREQ-003-ARCHITECTURE-TARGET-REFINEMENT as the next bounded lane."
+checklist_outcome: "PASS"
+checklist_notes: |
+  This was a Headmaster-only atlas maintenance pass. It refreshed the source map, clarified authority boundaries, and did not require a Warden handoff itself.
+rubric_outcome: "HEADMASTER_COMPLETE"
+research_session: "appendix/guidance/headmaster/research/sessions/HREQ-002-RESOURCE-ATLAS-AND-WARDEN-SURFACE-REFRESH.md"
+artifacts_updated:
+  - "appendix/guidance/headmaster/research/system/RESOURCE_ATLAS.md"
+  - "appendix/guidance/headmaster/research/sessions/HREQ-002-RESOURCE-ATLAS-AND-WARDEN-SURFACE-REFRESH.md"
+  - "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md"
+  - "appendix/guidance/headmaster/report/latest_analysis.md"
+recommended_warden_scope: "none (Headmaster-only source-map refresh)"
+acceptance_gates_for_warden: []
+closed_date: "2026-03-13"
+closed_reason: |
+  The Resource Atlas and authority-surface map were refreshed against the live repo, the source boundaries are clearer, and the next bounded Headmaster lane is now HREQ-003-ARCHITECTURE-TARGET-REFINEMENT.

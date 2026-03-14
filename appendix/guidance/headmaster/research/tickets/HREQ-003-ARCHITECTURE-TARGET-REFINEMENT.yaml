@@ -1,0 +1,58 @@
+ticket_id: "HREQ-003-ARCHITECTURE-TARGET-REFINEMENT"
+date: "2026-03-13"
+status: "CLOSED"
+authority: "headmaster"
+title: "Refine the future-state architecture target around the state machine and algorithm-source boundaries"
+objective: |
+  Define the next future-state structural target for Resuscitation Health App without destabilizing the live state-machine interface or erasing existing Warden lineage.
+scope: |
+  Now: study the current architecture target, runtime/prototype split, and authority surfaces.
+  Next: decide what structural clarifications belong in Headmaster direction versus future Warden implementation.
+  Later: let Warden normalize the algorithm source boundary only after the handoff preserves the current clinician behavior contract.
+source_pack:
+  - "README.md"
+  - "appendix/guidance/headmaster/README.md"
+  - "appendix/guidance/headmaster/research/system/ARCHITECTURE_TARGET.md"
+  - "appendix/guidance/headmaster/research/system/RESOURCE_ATLAS.md"
+  - "appendix/guidance/headmaster/research/system/SYLLABUS.md"
+  - "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md"
+  - "appendix/guidance/warden/research/system/CONSTITUTION.md"
+  - "app/algorithms/"
+  - "prototype/json-algorithms/"
+destructive_change_plan:
+  requires_explicit_human_approval: false
+  tracked_paths_to_delete: []
+  tracked_paths_to_move: []
+  rollback_note: "HREQ-003 is a research/design-direction lane. It should not change runtime behavior or move canonical roots."
+acceptance_criteria:
+  - "The architecture target is more specific about the next structural modernization boundary."
+  - "The runtime/prototype algorithm split is explained with a clear next-step recommendation."
+  - "The lane ends in a bounded Warden handoff rather than an invented future lane."
+acceptance_results:
+  - criterion: "The architecture target is more specific about the next structural modernization boundary."
+    result: "PASS"
+    evidence: "ARCHITECTURE_TARGET.md now defines clinical-vs-visual metadata separation, runtime normalization migration, and a dev-mode pilot boundary for future state-machine modernization."
+  - criterion: "The runtime/prototype algorithm split is explained with a clear next-step recommendation."
+    result: "PASS"
+    evidence: "The research session identifies app/algorithms as canonical runtime authority and prototype/json-algorithms as drifted design-source material requiring bounded normalization."
+  - criterion: "The lane ends in a bounded Warden handoff rather than an invented future lane."
+    result: "PASS"
+    evidence: "REQ-013-ALGORITHM-SOURCE-NORMALIZATION handoff and Warden ticket seed created under headmaster/research/handoffs/ and warden/research/tickets/."
+checklist_outcome: "PASS"
+checklist_notes: |
+  HREQ-003 clarified the future-state architecture target and converted the concrete implementation need into a bounded Warden follow-on instead of a speculative new Headmaster lane.
+rubric_outcome: "CLOSED_AFTER_WARDEN"
+research_session: "appendix/guidance/headmaster/research/sessions/HREQ-003-ARCHITECTURE-TARGET-REFINEMENT.md"
+artifacts_updated:
+  - "appendix/guidance/headmaster/research/system/ARCHITECTURE_TARGET.md"
+  - "appendix/guidance/headmaster/research/system/SYLLABUS.md"
+  - "appendix/guidance/headmaster/research/sessions/HREQ-003-ARCHITECTURE-TARGET-REFINEMENT.md"
+  - "appendix/guidance/headmaster/research/handoffs/REQ-013-ALGORITHM-SOURCE-NORMALIZATION.md"
+recommended_warden_scope: "REQ-013-ALGORITHM-SOURCE-NORMALIZATION"
+acceptance_gates_for_warden:
+  - "app/algorithms/ remains the canonical runtime authority unless explicitly re-planned."
+  - "Any prototype synchronization preserves the current clinician behavior contract and state-machine semantics."
+  - "No runtime algorithm change ships without evidence that dev-mode behavior still matches expected flow."
+closed_date: "2026-03-13"
+closed_reason: |
+  HREQ-003 is now complete. The bounded Warden follow-on `REQ-013-ALGORITHM-SOURCE-NORMALIZATION` was accepted with fixes, preserving `app/algorithms/` as the canonical runtime authority and normalizing the prototype design surface without changing clinician-facing behavior.

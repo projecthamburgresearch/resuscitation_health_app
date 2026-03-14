@@ -1,0 +1,317 @@
+{
+  "generatedAt": "2026-02-22T07:50:27.124Z",
+  "source": {
+    "scanRunDir": "appendix/guidance/warden/scans_outputs/runs/20260222-025002",
+    "sourceType": "app-dom",
+    "scanFile": null,
+    "page": "home",
+    "splitCategory": "dynamic",
+    "transitionStage": "before",
+    "transition": {
+      "type": "linear",
+      "fromId": "CARD_05_BREATHS",
+      "toId": "CARD_06_CHECK_LIFE_PRE_CPR",
+      "optionIndex": null,
+      "optionLabel": null,
+      "slug": "card-05-breaths-to-card-06-check-life-pre-cpr"
+    },
+    "stateSnapshot": {
+      "currentId": "CARD_05_BREATHS",
+      "history": [],
+      "historySize": 0,
+      "decisionIndex": 0,
+      "carouselIndex": 0,
+      "timerSeconds": 0,
+      "wheel": {
+        "mode": "LINEAR",
+        "angle": 90,
+        "dragOrigin": null
+      },
+      "card": {
+        "id": "CARD_05_BREATHS",
+        "type": "carousel_action",
+        "status": null,
+        "title": "5 Rescue Breaths",
+        "phase": "intervention",
+        "canonicalAngle": 90,
+        "transitions": {
+          "type": "linear",
+          "next_id": "CARD_06_CHECK_LIFE_PRE_CPR",
+          "options": []
+        }
+      }
+    },
+    "viewport": "390x844",
+    "screenshotBounds": {
+      "pageWidth": 390,
+      "pageHeight": 2404
+    }
+  },
+  "plan": {
+    "clusterSummary": [],
+    "regionCount": 11,
+    "pageSizeFromScan": {
+      "width": 390,
+      "height": 2404
+    }
+  },
+  "summary": {
+    "extracted": 11,
+    "failed": 0
+  },
+  "regions": [
+    {
+      "id": "app-shell",
+      "type": "app-shell",
+      "label": "#app",
+      "selector": "#app",
+      "parentId": null,
+      "sourceIndex": 0,
+      "geometry": {
+        "x": 0,
+        "y": 780,
+        "width": 390,
+        "height": 844
+      },
+      "clippedGeometry": {
+        "x": 0,
+        "y": 780,
+        "width": 390,
+        "height": 844
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/dynamic/main/home-390x844-edge-007-card-05-breaths-to-card-06-check-life-pre-cpr-before/images/app-shell.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "header",
+      "type": "header",
+      "label": "header",
+      "selector": "header",
+      "parentId": null,
+      "sourceIndex": 1,
+      "geometry": {
+        "x": 2,
+        "y": 782,
+        "width": 386,
+        "height": 50
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 782,
+        "width": 386,
+        "height": 50
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/dynamic/main/home-390x844-edge-007-card-05-breaths-to-card-06-check-life-pre-cpr-before/images/header.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "incoming",
+      "type": "incoming",
+      "label": "#zone-top",
+      "selector": "#zone-top",
+      "parentId": null,
+      "sourceIndex": 2,
+      "geometry": {
+        "x": 2,
+        "y": 832,
+        "width": 386,
+        "height": 170
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 832,
+        "width": 386,
+        "height": 170
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/dynamic/main/home-390x844-edge-007-card-05-breaths-to-card-06-check-life-pre-cpr-before/images/incoming.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-stage",
+      "type": "wheel-stage",
+      "label": "#zone-middle",
+      "selector": "#zone-middle",
+      "parentId": null,
+      "sourceIndex": 3,
+      "geometry": {
+        "x": 2,
+        "y": 1002,
+        "width": 386,
+        "height": 320
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 1002,
+        "width": 386,
+        "height": 320
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/dynamic/main/home-390x844-edge-007-card-05-breaths-to-card-06-check-life-pre-cpr-before/images/wheel-stage.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-ring",
+      "type": "wheel-ring",
+      "label": "#wheel",
+      "selector": "#wheel",
+      "parentId": null,
+      "sourceIndex": 4,
+      "geometry": {
+        "x": 45,
+        "y": 1012,
+        "width": 300,
+        "height": 300
+      },
+      "clippedGeometry": {
+        "x": 45,
+        "y": 1012,
+        "width": 300,
+        "height": 300
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/dynamic/main/home-390x844-edge-007-card-05-breaths-to-card-06-check-life-pre-cpr-before/images/wheel-ring.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "current-card",
+      "type": "current-card",
+      "label": "#active-card",
+      "selector": "#active-card",
+      "parentId": null,
+      "sourceIndex": 5,
+      "geometry": {
+        "x": 105,
+        "y": 1057,
+        "width": 180,
+        "height": 210
+      },
+      "clippedGeometry": {
+        "x": 105,
+        "y": 1057,
+        "width": 180,
+        "height": 210
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/dynamic/main/home-390x844-edge-007-card-05-breaths-to-card-06-check-life-pre-cpr-before/images/current-card.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-knob",
+      "type": "wheel-knob",
+      "label": "#knob",
+      "selector": "#knob",
+      "parentId": null,
+      "sourceIndex": 6,
+      "geometry": {
+        "x": 330,
+        "y": 1147,
+        "width": 30,
+        "height": 30
+      },
+      "clippedGeometry": {
+        "x": 330,
+        "y": 1147,
+        "width": 30,
+        "height": 30
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/dynamic/main/home-390x844-edge-007-card-05-breaths-to-card-06-check-life-pre-cpr-before/images/wheel-knob.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "previous",
+      "type": "previous",
+      "label": "#zone-bottom",
+      "selector": "#zone-bottom",
+      "parentId": null,
+      "sourceIndex": 7,
+      "geometry": {
+        "x": 2,
+        "y": 1322,
+        "width": 386,
+        "height": 200
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 1322,
+        "width": 386,
+        "height": 200
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/dynamic/main/home-390x844-edge-007-card-05-breaths-to-card-06-check-life-pre-cpr-before/images/previous.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "label": "footer",
+      "selector": "footer",
+      "parentId": null,
+      "sourceIndex": 8,
+      "geometry": {
+        "x": 2,
+        "y": 1522,
+        "width": 386,
+        "height": 100
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 1522,
+        "width": 386,
+        "height": 100
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/dynamic/main/home-390x844-edge-007-card-05-breaths-to-card-06-check-life-pre-cpr-before/images/footer.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "checklist",
+      "type": "checklist",
+      "label": "#checklist-area",
+      "selector": "#checklist-area",
+      "parentId": null,
+      "sourceIndex": 9,
+      "geometry": {
+        "x": 18,
+        "y": 1568,
+        "width": 231.359375,
+        "height": 29
+      },
+      "clippedGeometry": {
+        "x": 18,
+        "y": 1568,
+        "width": 231,
+        "height": 29
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/dynamic/main/home-390x844-edge-007-card-05-breaths-to-card-06-check-life-pre-cpr-before/images/checklist.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "timer",
+      "type": "timer",
+      "label": "#timer",
+      "selector": "#timer",
+      "parentId": null,
+      "sourceIndex": 10,
+      "geometry": {
+        "x": 283.578125,
+        "y": 1565,
+        "width": 88.421875,
+        "height": 35
+      },
+      "clippedGeometry": {
+        "x": 283,
+        "y": 1565,
+        "width": 88,
+        "height": 35
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025007__bp-20260222-024953-warden__scan-20260222-025002/splits/dynamic/main/home-390x844-edge-007-card-05-breaths-to-card-06-check-life-pre-cpr-before/images/timer.png",
+      "ok": true,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+ticket_id: "HREQ-006-FIRST-ACCEPTED-BASELINE-COMMIT-CURATION"
+status: "CLOSED"
+authority: "headmaster"
+title: "Define the first accepted baseline commit boundary for the upgraded authority stack"
+objective: |
+  Turn the current upgraded-but-dirty repo into a deliberately curated first accepted
+  baseline commit plan by separating canonical authority/runtime files from deferred
+  bootstrap dirt, preserved legacy/reference material, and pre-existing unrelated
+  modifications.
+scope: |
+  Now: review the live repo surfaces after REQ-015 and classify what belongs in the
+  first accepted baseline commit versus what should remain deferred.
+  Next: produce a bounded follow-on for the actual staging/commit implementation if
+  needed.
+  Later: use that bounded plan to make the first trustworthy baseline commit without
+  flattening project-specific history.
+source_pack:
+  - "README.md"
+  - ".gitignore"
+  - "appendix/guidance/headmaster/README.md"
+  - "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md"
+  - "appendix/guidance/headmaster/research/system/RESOURCE_ATLAS.md"
+  - "appendix/guidance/headmaster/report/latest_analysis.md"
+  - "appendix/guidance/headmaster/research/tickets/HREQ-005-CANONICAL-ROOTS-AND-STAGING-PLAN.yaml"
+  - "appendix/guidance/warden/research/tickets/REQ-015-ROOT-NORMALIZATION-AND-BASELINE.yaml"
+  - "appendix/guidance/switchboard/README.md"
+  - "appendix/guidance/exit/prompts/LATEST_SESSION_REENTRY.md"
+destructive_change_plan:
+  requires_explicit_human_approval: false
+  tracked_paths_to_delete: []
+  tracked_paths_to_move: []
+  rollback_note: "Headmaster-only planning lane. No runtime changes, destructive cleanup, or commit execution should happen here."
+acceptance_criteria:
+  - "The first accepted baseline commit boundary is explicitly classified."
+  - "Deferred/bootstrap/legacy surfaces are distinguished from canonical accepted surfaces."
+  - "The lane leaves a bounded next implementation or operator step instead of a vague recommendation."
+acceptance_results:
+  - "Classified the authority stack, project tooling, and clinical content as mandatory for the baseline commit."
+  - "Identified .DS_Store and speculative history as deferred."
+  - "Produced implementation plan REQ-016-BASELINE-COMMIT-EXECUTION for Warden."
+checklist_outcome: "PASS"
+checklist_notes: "Curation plan complete."
+rubric_outcome: "READY_FOR_WARDEN"
+research_session: "appendix/guidance/headmaster/research/sessions/HREQ-006-FIRST-ACCEPTED-BASELINE-COMMIT-CURATION.md"
+artifacts_updated:
+  - "appendix/guidance/headmaster/research/sessions/HREQ-006-FIRST-ACCEPTED-BASELINE-COMMIT-CURATION.md"
+  - "appendix/guidance/headmaster/research/handoffs/REQ-016-BASELINE-COMMIT-EXECUTION.md"
+recommended_warden_scope: "REQ-016-BASELINE-COMMIT-EXECUTION"
+acceptance_gates_for_warden:
+  - "The curated canonical/reference buckets are stageable without sweeping deferred bootstrap or legacy bulk."
+  - "No .DS_Store files are staged in the candidate baseline set."
+  - "The lane leaves a precise staging report and recommends the final commit message, without auto-pushing."
+closed_date: "2026-03-13"
+closed_reason: "First accepted baseline commit boundary curated and handed off to Warden."

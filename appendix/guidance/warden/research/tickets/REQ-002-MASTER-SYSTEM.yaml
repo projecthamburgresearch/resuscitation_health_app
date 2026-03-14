@@ -1,0 +1,73 @@
+# ==============================================================================
+# Warden Master Bootstrap Ticket (One-Time Seed)
+# ==============================================================================
+# This ticket defines the project-specific Warden operating model.
+# It is a historical bootstrap artifact and must not be reused for normal work.
+# ==============================================================================
+
+ticket_id: "REQ-002-MASTER-SYSTEM"
+date: "2026-02-22"
+status: "RESOLVED" # RESOLVED | LOCKED_SEED
+ticket_type: "BOOTSTRAP"
+locked_seed: true
+do_not_reuse: true
+
+objective: |
+  Establish and lock a Warden operating system tailored to the Resuscitation Health App.
+
+  The system must:
+  - enforce light-only, mobile-portrait analysis defaults
+  - prioritize dynamic transition evidence over static assumptions
+  - formalize ticketing for state-machine work (incoming/current/previous contract)
+  - define rubric standards for objective, binary, source-linked criteria
+  - support dual execution lanes (warden and system) while keeping warden outputs in warden roots
+
+profile:
+  target_component: "Global Warden process architecture"
+  route: "home"
+  viewport: "390x844"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "DYNAMIC_STATE_MACHINE"
+
+state_machine_scope:
+  algorithm_source: "app/prototype/*.json"
+  direction: "both"
+  transition_ids: []
+  state_ids: []
+  expected_state_contract:
+    incoming_zone: "Top stack models queued upcoming decisions"
+    current_zone: "Wheel center card models current clinician decision state"
+    previous_zone: "Bottom stack models reachable prior states"
+
+telemetry_levers:
+  use_scan_json: true
+  use_blueprint_outputs: true
+  use_static_screenshots_and_splits: true
+  use_dynamic_screenshots_and_splits: true
+  require_transition_before_after_pairs: true
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: true
+  allow_web_search: false
+
+deliverables:
+  constitution_revamp: true
+  methodology_revamp: true
+  rubric_framework_revamp: true
+  ticket_template_revamp: true
+  qa_matrix_revamp: true
+  workflow_docs_revamp: true
+  pipeline_default_revamp_mobile_portrait: true
+
+acceptance_gates:
+  - id: "MS-01"
+    gate: "Constitution explicitly encodes light-only and mobile-portrait constraints."
+  - id: "MS-02"
+    gate: "Ticket template encodes dynamic state-machine scope and contract fields."
+  - id: "MS-03"
+    gate: "Rubric framework enforces clear/self-contained/falsifiable/unstacked/timeless criteria."
+  - id: "MS-04"
+    gate: "Analyze pipeline defaults produce scan/design artifacts at 390x844."
+  - id: "MS-05"
+    gate: "Research docs define bootstrap-ticket policy and ongoing template workflow."

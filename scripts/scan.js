@@ -254,24 +254,24 @@ function devModeFileToRoute(relFile) {
 
   // Canonical /dev-mode home aliases.
   if (normalized.toLowerCase() === 'index.html') {
-    return { slug: '', urlPath: '/dev-mode' };
+    return { slug: '', urlPath: '/dev-mode/' };
   }
   if (normalized.toLowerCase() === 'resuscitation_app_complete.html') {
-    return { slug: '', urlPath: '/dev-mode' };
+    return { slug: '', urlPath: '/dev-mode/' };
   }
 
   if (/\/index$/i.test(noExt)) {
     const slug = noExt.replace(/\/index$/i, '').replace(/^\/+/, '').replace(/\/+$/, '');
     return {
       slug,
-      urlPath: slug ? `/dev-mode/${slug}` : '/dev-mode',
+      urlPath: slug ? `/dev-mode/${slug}` : '/dev-mode/',
     };
   }
 
   const slug = noExt.replace(/^\/+/, '').replace(/\/+$/, '');
   return {
     slug,
-    urlPath: slug ? `/dev-mode/${slug}` : '/dev-mode',
+    urlPath: slug ? `/dev-mode/${slug}` : '/dev-mode/',
   };
 }
 
@@ -382,7 +382,7 @@ function resolveTargets(rawPageArg, scanAll, discoveredPages) {
   }
 
   const fallbackSlug = normalized;
-  const fallbackPath = fallbackSlug ? `/dev-mode/${fallbackSlug}` : '/dev-mode';
+  const fallbackPath = fallbackSlug ? `/dev-mode/${fallbackSlug}` : '/dev-mode/';
   return [{
     name: pageNameFromSlug(fallbackSlug),
     slug: fallbackSlug,

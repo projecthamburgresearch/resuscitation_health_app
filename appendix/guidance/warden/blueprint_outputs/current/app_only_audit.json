@@ -1,0 +1,370 @@
+{
+  "generatedAt": "2026-03-13T18:56:24.809Z",
+  "blueprintDir": "appendix/guidance/warden/blueprint_outputs/current",
+  "outputDir": "appendix/guidance/warden/blueprint_outputs/current",
+  "runMeta": {
+    "run_id": "2026-03-13_145615",
+    "project_name": "resuscitation-app-warden",
+    "snapshot_id": "resuscitation-app-warden-2026-03-13_145615",
+    "source_path": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app",
+    "domains_run": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "preset": "standard",
+    "duration_seconds": 7.092,
+    "blueprint_version": "0.2.0",
+    "bpignore_patterns": [
+      "dev-mode/"
+    ],
+    "files_scanned": 55,
+    "entities_found": 1578,
+    "edges_found": 3171,
+    "errors": [],
+    "is_intra_run": false
+  },
+  "totals": {
+    "entities": 1578,
+    "uniqueEntityFiles": 51,
+    "llmNodes": 600,
+    "llmEdges": 1200,
+    "sonarFindings": 0,
+    "synapseHotspots": 0,
+    "masterIndexZones": 4,
+    "masterIndexEntries": 1578
+  },
+  "entityTypes": {
+    "variable": 1143,
+    "function": 128,
+    "import": 111,
+    "chunk": 76,
+    "file": 55,
+    "interface": 28,
+    "constant": 14,
+    "table": 10,
+    "type_alias": 5,
+    "network_request": 3,
+    "endpoint": 3,
+    "export": 2
+  },
+  "topEntityFiles": [
+    {
+      "key": "package-lock.json",
+      "value": 811
+    },
+    {
+      "key": "src/styles/cards.css",
+      "value": 53
+    },
+    {
+      "key": "src/styles/menu.css",
+      "value": 51
+    },
+    {
+      "key": "src/main.ts",
+      "value": 44
+    },
+    {
+      "key": "algorithms/algo_newborn_ls.json",
+      "value": 31
+    },
+    {
+      "key": "algorithms/algo_anaphylaxis.json",
+      "value": 28
+    },
+    {
+      "key": "src/types.ts",
+      "value": 27
+    },
+    {
+      "key": "src/ui/menu.ts",
+      "value": 25
+    },
+    {
+      "key": "algorithms/algo_paed_fbao.json",
+      "value": 23
+    },
+    {
+      "key": "src/algorithms/loader.ts",
+      "value": 23
+    },
+    {
+      "key": "src/styles/layout.css",
+      "value": 23
+    },
+    {
+      "key": "algorithms/algo_paed_bls_in.json",
+      "value": 22
+    },
+    {
+      "key": "algorithms/algo_paed_bls_out.json",
+      "value": 22
+    },
+    {
+      "key": "src/navigation/zone-drag.ts",
+      "value": 21
+    },
+    {
+      "key": "src/styles/tokens.css",
+      "value": 21
+    },
+    {
+      "key": "index.html",
+      "value": 20
+    },
+    {
+      "key": "src/cards/decision-cards.ts",
+      "value": 19
+    },
+    {
+      "key": "src/cards/renderer.ts",
+      "value": 19
+    },
+    {
+      "key": "Resuscitation_App_Complete.html",
+      "value": 18
+    },
+    {
+      "key": "src/styles/stack.css",
+      "value": 18
+    },
+    {
+      "key": "src/wheel/physics.ts",
+      "value": 18
+    },
+    {
+      "key": "tsconfig.json",
+      "value": 18
+    },
+    {
+      "key": "src/automation.ts",
+      "value": 15
+    },
+    {
+      "key": "src/wheel/knob.ts",
+      "value": 15
+    },
+    {
+      "key": "src/navigation/anchors.ts",
+      "value": 14
+    }
+  ],
+  "topFunctionHotspots": [
+    {
+      "name": "advance",
+      "file": "src/navigation/advance.ts",
+      "line": 9,
+      "cyclomatic": 29,
+      "cognitive": 37,
+      "locCode": 60,
+      "fanOut": 9
+    },
+    {
+      "name": "normalizeTransitions",
+      "file": "src/algorithms/loader.ts",
+      "line": 244,
+      "cyclomatic": 22,
+      "cognitive": 15,
+      "locCode": 36,
+      "fanOut": 4
+    },
+    {
+      "name": "showSettings",
+      "file": "src/ui/menu.ts",
+      "line": 130,
+      "cyclomatic": 16,
+      "cognitive": 20,
+      "locCode": 43,
+      "fanOut": 11
+    },
+    {
+      "name": "renderActiveCard",
+      "file": "src/cards/renderer.ts",
+      "line": 38,
+      "cyclomatic": 14,
+      "cognitive": 12,
+      "locCode": 44,
+      "fanOut": 8
+    },
+    {
+      "name": "renderPreviewZone",
+      "file": "src/cards/preview-zone.ts",
+      "line": 14,
+      "cyclomatic": 13,
+      "cognitive": 20,
+      "locCode": 67,
+      "fanOut": 14
+    },
+    {
+      "name": "normalizeAlgorithm",
+      "file": "src/algorithms/loader.ts",
+      "line": 327,
+      "cyclomatic": 13,
+      "cognitive": 9,
+      "locCode": 27,
+      "fanOut": 10
+    },
+    {
+      "name": "setupWardenAutomation",
+      "file": "src/automation.ts",
+      "line": 99,
+      "cyclomatic": 13,
+      "cognitive": 7,
+      "locCode": 94,
+      "fanOut": 13
+    },
+    {
+      "name": "init",
+      "file": "src/main.ts",
+      "line": 149,
+      "cyclomatic": 12,
+      "cognitive": 21,
+      "locCode": 47,
+      "fanOut": 19
+    },
+    {
+      "name": "onKnobDrag",
+      "file": "src/wheel/knob.ts",
+      "line": 63,
+      "cyclomatic": 12,
+      "cognitive": 19,
+      "locCode": 56,
+      "fanOut": 14
+    },
+    {
+      "name": "checkStepsRemaining",
+      "file": "src/ticker/rules.ts",
+      "line": 74,
+      "cyclomatic": 12,
+      "cognitive": 15,
+      "locCode": 23,
+      "fanOut": 0
+    },
+    {
+      "name": "inferPhase",
+      "file": "src/algorithms/loader.ts",
+      "line": 227,
+      "cyclomatic": 12,
+      "cognitive": 9,
+      "locCode": 15,
+      "fanOut": 2
+    },
+    {
+      "name": "summarizeTransition",
+      "file": "src/automation.ts",
+      "line": 13,
+      "cyclomatic": 12,
+      "cognitive": 4,
+      "locCode": 18,
+      "fanOut": 2
+    },
+    {
+      "name": "computeForwardPath",
+      "file": "src/navigation/anchors.ts",
+      "line": 70,
+      "cyclomatic": 11,
+      "cognitive": 43,
+      "locCode": 29,
+      "fanOut": 6
+    },
+    {
+      "name": "getCardBodyContent",
+      "file": "src/cards/renderer.ts",
+      "line": 97,
+      "cyclomatic": 11,
+      "cognitive": 9,
+      "locCode": 12,
+      "fanOut": 0
+    },
+    {
+      "name": "countPathLength",
+      "file": "src/navigation/anchors.ts",
+      "line": 31,
+      "cyclomatic": 10,
+      "cognitive": 33,
+      "locCode": 22,
+      "fanOut": 2
+    },
+    {
+      "name": "derivePositionDegrees",
+      "file": "src/algorithms/loader.ts",
+      "line": 287,
+      "cyclomatic": 10,
+      "cognitive": 13,
+      "locCode": 35,
+      "fanOut": 6
+    },
+    {
+      "name": "longestBranchTarget",
+      "file": "src/navigation/anchors.ts",
+      "line": 54,
+      "cyclomatic": 10,
+      "cognitive": 9,
+      "locCode": 15,
+      "fanOut": 2
+    },
+    {
+      "name": "handleDecisionWheelDrag",
+      "file": "src/wheel/knob.ts",
+      "line": 37,
+      "cyclomatic": 9,
+      "cognitive": 7,
+      "locCode": 23,
+      "fanOut": 8
+    },
+    {
+      "name": "initMenu",
+      "file": "src/ui/menu.ts",
+      "line": 41,
+      "cyclomatic": 8,
+      "cognitive": 41,
+      "locCode": 18,
+      "fanOut": 11
+    },
+    {
+      "name": "getUpcomingCardsFrom",
+      "file": "src/cards/preview-zone.ts",
+      "line": 106,
+      "cyclomatic": 8,
+      "cognitive": 22,
+      "locCode": 20,
+      "fanOut": 1
+    }
+  ],
+  "llmNodeTypes": {
+    "variable": 165,
+    "function": 128,
+    "import": 111,
+    "chunk": 76,
+    "file": 55,
+    "interface": 28,
+    "constant": 14,
+    "table": 10,
+    "type_alias": 5,
+    "endpoint": 3,
+    "network_request": 3,
+    "export": 2
+  },
+  "llmEdgeTypes": {
+    "contains": 962,
+    "calls": 152,
+    "links_to_file": 60,
+    "imports": 15,
+    "touches_table": 7,
+    "contains_request": 2,
+    "exports": 1,
+    "declares_endpoint": 1
+  },
+  "sonar": {
+    "byCategory": {},
+    "byLevel": {},
+    "topFindings": []
+  },
+  "synapse": {
+    "topHotspots": []
+  }
+}

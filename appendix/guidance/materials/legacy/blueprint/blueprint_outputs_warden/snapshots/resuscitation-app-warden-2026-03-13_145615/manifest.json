@@ -1,0 +1,24 @@
+{
+  "snapshot_id": "resuscitation-app-warden-2026-03-13_145615",
+  "project_name": "resuscitation-app-warden",
+  "created_at": "2026-03-13T14:56:15.693744",
+  "blueprint_version": "0.2.0",
+  "source_commit": "b64b9b2669a175f4464271b95b660441d83779d9",
+  "status": "completed",
+  "patches": [],
+  "runs": [
+    {
+      "run_id": "2026-03-13_145615",
+      "timestamp": "2026-03-13T14:56:23.806039",
+      "success": true,
+      "summary": {
+        "files_scanned": 55,
+        "entities_found": 1578,
+        "edges_found": 3171,
+        "errors": 0,
+        "duration_seconds": 7.092
+      }
+    }
+  ],
+  "notes": ""
+}

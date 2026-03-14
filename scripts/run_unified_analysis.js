@@ -8,7 +8,7 @@ const { URL } = require('url');
 const { spawn, spawnSync } = require('child_process');
 
 const ROOT = process.cwd();
-const DEFAULT_BASE_URL = process.env.ANALYZE_BASE_URL || 'http://127.0.0.1:3000';
+const DEFAULT_BASE_URL = process.env.ANALYZE_BASE_URL || 'http://localhost:3000';
 const DEFAULT_PROJECT_ROOT = path.join(ROOT, 'app');
 const DEFAULT_GITHUB_REF = 'main';
 const DEFAULT_VIEWPORT_SPEC = process.env.ANALYZE_VIEWPORT || '390x844';
@@ -340,15 +340,21 @@ function requestUrl(urlStr, timeoutMs = 3000) {
 }
 
 async function isDevReady(baseUrl) {
-  const checks = [
-    `${baseUrl.replace(/\/+$/, '')}/`,
-    `${baseUrl.replace(/\/+$/, '')}/dev-mode`,
+  const normalized = baseUrl.replace(/\/+$/, '');
+  const rootCheck = await requestUrl(`${normalized}/`);
+  if (!rootCheck.ok) return false;
+
+  const devModeCandidates = [
+    `${normalized}/dev-mode`,
+    `${normalized}/dev-mode/`,
+    `${normalized}/dev-mode/index.html`,
   ];
-  for (const url of checks) {
+
+  for (const url of devModeCandidates) {
     const res = await requestUrl(url);
-    if (!res.ok) return false;
+    if (res.ok) return true;
   }
-  return true;
+  return false;
 }
 
 function parsePort(baseUrl) {

@@ -1,0 +1,354 @@
+{
+  "generatedAt": "2026-03-13T18:57:03.584Z",
+  "source": {
+    "scanRunDir": "appendix/guidance/warden/scans_outputs/runs/20260313-145632",
+    "sourceType": "app-dom",
+    "scanFile": null,
+    "page": "home",
+    "splitCategory": "dynamic",
+    "transitionStage": "after",
+    "transition": {
+      "type": "split",
+      "fromId": "CARD_04_BREATHING",
+      "toId": "CARD_05_BREATHS",
+      "optionIndex": 1,
+      "optionLabel": "NO",
+      "slug": "card-04-breathing-to-card-05-breaths-opt-2-no"
+    },
+    "stateSnapshot": {
+      "currentId": "CARD_05_BREATHS",
+      "algorithmSource": "algo_paed_bls_out.json",
+      "history": [
+        "CARD_04_BREATHING"
+      ],
+      "historySize": 1,
+      "decisionIndex": 0,
+      "decisionRecords": {
+        "CARD_04_BREATHING": 1
+      },
+      "decisionTrail": [
+        {
+          "card_id": "CARD_04_BREATHING",
+          "option_index": 0,
+          "option_label": "YES",
+          "target_id": "CARD_END_OBSERVE",
+          "interaction": "forward-decision-confirm",
+          "source": "automation",
+          "timestamp": "2026-03-13T18:57:00.581Z"
+        },
+        {
+          "card_id": "CARD_04_BREATHING",
+          "option_index": 1,
+          "option_label": "NO",
+          "target_id": "CARD_05_BREATHS",
+          "interaction": "forward-decision-confirm",
+          "source": "automation",
+          "timestamp": "2026-03-13T18:57:02.500Z"
+        }
+      ],
+      "carouselIndex": 0,
+      "timerSeconds": 0,
+      "anchors": [
+        {
+          "id": "CARD_04_BREATHING",
+          "angle": 195
+        },
+        {
+          "id": "CARD_05_BREATHS",
+          "angle": 144
+        }
+      ],
+      "anchorIndex": 1,
+      "decisionTapped": false,
+      "wheel": {
+        "mode": "LINEAR",
+        "angle": 144
+      },
+      "card": {
+        "id": "CARD_05_BREATHS",
+        "type": "carousel_action",
+        "status": null,
+        "title": "5 Rescue Breaths",
+        "phase": "intervention",
+        "canonicalAngle": 144,
+        "transitions": {
+          "type": "linear",
+          "next_id": "CARD_06_SIGNS_OF_LIFE",
+          "options": []
+        }
+      }
+    },
+    "viewport": "390x844",
+    "screenshotBounds": {
+      "pageWidth": 390,
+      "pageHeight": 2284
+    }
+  },
+  "plan": {
+    "clusterSummary": [],
+    "regionCount": 11,
+    "pageSizeFromScan": {
+      "width": 390,
+      "height": 2284
+    }
+  },
+  "summary": {
+    "extracted": 11,
+    "failed": 0
+  },
+  "regions": [
+    {
+      "id": "app-shell",
+      "type": "app-shell",
+      "label": "#app",
+      "selector": "#app",
+      "parentId": null,
+      "sourceIndex": 0,
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 2284
+      },
+      "clippedGeometry": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 2284
+      },
+      "file": "appendix/guidance/warden/design/runs/20260313-145641__bp-20260313-145611-warden__scan-20260313-145632/splits/dynamic/main/home-390x844-edge-006-card-04-breathing-to-card-05-breaths-opt-2-no-after/images/app-shell.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "header",
+      "type": "header",
+      "label": "header",
+      "selector": "header",
+      "parentId": null,
+      "sourceIndex": 1,
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 50
+      },
+      "clippedGeometry": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 50
+      },
+      "file": "appendix/guidance/warden/design/runs/20260313-145641__bp-20260313-145611-warden__scan-20260313-145632/splits/dynamic/main/home-390x844-edge-006-card-04-breathing-to-card-05-breaths-opt-2-no-after/images/header.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "incoming",
+      "type": "incoming",
+      "label": "#zone-top",
+      "selector": "#zone-top",
+      "parentId": null,
+      "sourceIndex": 2,
+      "geometry": {
+        "x": 0,
+        "y": 50,
+        "width": 390,
+        "height": 170
+      },
+      "clippedGeometry": {
+        "x": 0,
+        "y": 50,
+        "width": 390,
+        "height": 170
+      },
+      "file": "appendix/guidance/warden/design/runs/20260313-145641__bp-20260313-145611-warden__scan-20260313-145632/splits/dynamic/main/home-390x844-edge-006-card-04-breathing-to-card-05-breaths-opt-2-no-after/images/incoming.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-stage",
+      "type": "wheel-stage",
+      "label": "#zone-middle",
+      "selector": "#zone-middle",
+      "parentId": null,
+      "sourceIndex": 3,
+      "geometry": {
+        "x": 0,
+        "y": 220,
+        "width": 390,
+        "height": 320
+      },
+      "clippedGeometry": {
+        "x": 0,
+        "y": 220,
+        "width": 390,
+        "height": 320
+      },
+      "file": "appendix/guidance/warden/design/runs/20260313-145641__bp-20260313-145611-warden__scan-20260313-145632/splits/dynamic/main/home-390x844-edge-006-card-04-breathing-to-card-05-breaths-opt-2-no-after/images/wheel-stage.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-ring",
+      "type": "wheel-ring",
+      "label": "#wheel",
+      "selector": "#wheel",
+      "parentId": null,
+      "sourceIndex": 4,
+      "geometry": {
+        "x": 45,
+        "y": 230,
+        "width": 300,
+        "height": 300
+      },
+      "clippedGeometry": {
+        "x": 45,
+        "y": 230,
+        "width": 300,
+        "height": 300
+      },
+      "file": "appendix/guidance/warden/design/runs/20260313-145641__bp-20260313-145611-warden__scan-20260313-145632/splits/dynamic/main/home-390x844-edge-006-card-04-breathing-to-card-05-breaths-opt-2-no-after/images/wheel-ring.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "current-card",
+      "type": "current-card",
+      "label": "#active-card",
+      "selector": "#active-card",
+      "parentId": null,
+      "sourceIndex": 5,
+      "geometry": {
+        "x": 105,
+        "y": 275,
+        "width": 180,
+        "height": 210
+      },
+      "clippedGeometry": {
+        "x": 105,
+        "y": 275,
+        "width": 180,
+        "height": 210
+      },
+      "file": "appendix/guidance/warden/design/runs/20260313-145641__bp-20260313-145611-warden__scan-20260313-145632/splits/dynamic/main/home-390x844-edge-006-card-04-breathing-to-card-05-breaths-opt-2-no-after/images/current-card.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-knob",
+      "type": "wheel-knob",
+      "label": "#knob",
+      "selector": "#knob",
+      "parentId": null,
+      "sourceIndex": 6,
+      "geometry": {
+        "x": 268.16778564453125,
+        "y": 486.3525390625,
+        "width": 30,
+        "height": 30
+      },
+      "clippedGeometry": {
+        "x": 268,
+        "y": 486,
+        "width": 30,
+        "height": 30
+      },
+      "file": "appendix/guidance/warden/design/runs/20260313-145641__bp-20260313-145611-warden__scan-20260313-145632/splits/dynamic/main/home-390x844-edge-006-card-04-breathing-to-card-05-breaths-opt-2-no-after/images/wheel-knob.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "previous",
+      "type": "previous",
+      "label": "#zone-bottom",
+      "selector": "#zone-bottom",
+      "parentId": null,
+      "sourceIndex": 7,
+      "geometry": {
+        "x": 0,
+        "y": 540,
+        "width": 390,
+        "height": 1644
+      },
+      "clippedGeometry": {
+        "x": 0,
+        "y": 540,
+        "width": 390,
+        "height": 1644
+      },
+      "file": "appendix/guidance/warden/design/runs/20260313-145641__bp-20260313-145611-warden__scan-20260313-145632/splits/dynamic/main/home-390x844-edge-006-card-04-breathing-to-card-05-breaths-opt-2-no-after/images/previous.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "label": "footer",
+      "selector": "footer",
+      "parentId": null,
+      "sourceIndex": 8,
+      "geometry": {
+        "x": 0,
+        "y": 2184,
+        "width": 390,
+        "height": 100
+      },
+      "clippedGeometry": {
+        "x": 0,
+        "y": 2184,
+        "width": 390,
+        "height": 100
+      },
+      "file": "appendix/guidance/warden/design/runs/20260313-145641__bp-20260313-145611-warden__scan-20260313-145632/splits/dynamic/main/home-390x844-edge-006-card-04-breathing-to-card-05-breaths-opt-2-no-after/images/footer.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "checklist",
+      "type": "checklist",
+      "label": "#checklist-area",
+      "selector": "#checklist-area",
+      "parentId": null,
+      "sourceIndex": 9,
+      "geometry": {
+        "x": 16,
+        "y": 2194,
+        "width": 331.78125,
+        "height": 50
+      },
+      "clippedGeometry": {
+        "x": 16,
+        "y": 2194,
+        "width": 331,
+        "height": 50
+      },
+      "file": "appendix/guidance/warden/design/runs/20260313-145641__bp-20260313-145611-warden__scan-20260313-145632/splits/dynamic/main/home-390x844-edge-006-card-04-breathing-to-card-05-breaths-opt-2-no-after/images/checklist.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "timer",
+      "type": "timer",
+      "label": "#timer",
+      "selector": "#timer",
+      "parentId": null,
+      "sourceIndex": 10,
+      "geometry": {
+        "x": 293.578125,
+        "y": 2253,
+        "width": 80.421875,
+        "height": 27
+      },
+      "clippedGeometry": {
+        "x": 293,
+        "y": 2253,
+        "width": 80,
+        "height": 27
+      },
+      "file": "appendix/guidance/warden/design/runs/20260313-145641__bp-20260313-145611-warden__scan-20260313-145632/splits/dynamic/main/home-390x844-edge-006-card-04-breathing-to-card-05-breaths-opt-2-no-after/images/timer.png",
+      "ok": true,
+      "error": null
+    }
+  ]
+}

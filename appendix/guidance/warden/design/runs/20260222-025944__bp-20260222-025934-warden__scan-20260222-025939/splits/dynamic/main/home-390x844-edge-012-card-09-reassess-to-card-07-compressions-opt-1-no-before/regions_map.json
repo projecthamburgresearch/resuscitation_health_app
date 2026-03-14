@@ -1,0 +1,375 @@
+{
+  "generatedAt": "2026-02-22T08:00:15.898Z",
+  "source": {
+    "scanRunDir": "appendix/guidance/warden/scans_outputs/runs/20260222-025939",
+    "sourceType": "app-dom",
+    "scanFile": null,
+    "page": "home",
+    "splitCategory": "dynamic",
+    "transitionStage": "before",
+    "transition": {
+      "type": "split",
+      "fromId": "CARD_09_REASSESS",
+      "toId": "CARD_07_COMPRESSIONS",
+      "optionIndex": 0,
+      "optionLabel": "NO",
+      "slug": "card-09-reassess-to-card-07-compressions-opt-1-no"
+    },
+    "stateSnapshot": {
+      "currentId": "CARD_09_REASSESS",
+      "algorithmSource": "algo_paed_bls_out.json",
+      "history": [],
+      "historySize": 0,
+      "decisionIndex": 0,
+      "decisionRecords": {
+        "CARD_04_BREATHING": 1,
+        "CARD_06_SIGNS_OF_LIFE": 1
+      },
+      "decisionTrail": [
+        {
+          "card_id": "CARD_04_BREATHING",
+          "option_index": 0,
+          "option_label": "YES",
+          "target_id": "CARD_END_OBSERVE",
+          "interaction": "forward-decision-confirm",
+          "source": "automation",
+          "timestamp": "2026-02-22T08:00:01.865Z"
+        },
+        {
+          "card_id": "CARD_04_BREATHING",
+          "option_index": 1,
+          "option_label": "NO",
+          "target_id": "CARD_05_BREATHS",
+          "interaction": "forward-decision-confirm",
+          "source": "automation",
+          "timestamp": "2026-02-22T08:00:03.915Z"
+        },
+        {
+          "card_id": "CARD_06_SIGNS_OF_LIFE",
+          "option_index": 0,
+          "option_label": "YES",
+          "target_id": "CARD_END_RECOVERY",
+          "interaction": "forward-decision-confirm",
+          "source": "automation",
+          "timestamp": "2026-02-22T08:00:07.850Z"
+        },
+        {
+          "card_id": "CARD_06_SIGNS_OF_LIFE",
+          "option_index": 1,
+          "option_label": "NO",
+          "target_id": "CARD_07_COMPRESSIONS",
+          "interaction": "forward-decision-confirm",
+          "source": "automation",
+          "timestamp": "2026-02-22T08:00:09.847Z"
+        }
+      ],
+      "carouselIndex": 0,
+      "timerSeconds": 0,
+      "wheel": {
+        "mode": "DECISION",
+        "angle": 24.80000000000001,
+        "dragOrigin": null
+      },
+      "card": {
+        "id": "CARD_09_REASSESS",
+        "type": "decision",
+        "status": null,
+        "title": "Re-assess",
+        "phase": "loop",
+        "canonicalAngle": 24.80000000000001,
+        "transitions": {
+          "type": "split",
+          "next_id": null,
+          "options": [
+            {
+              "index": 0,
+              "label": "NO",
+              "sub_label": "Continue CPR",
+              "target_id": "CARD_07_COMPRESSIONS",
+              "preview_card_title": "30 Compressions"
+            },
+            {
+              "index": 1,
+              "label": "YES",
+              "sub_label": "Signs of life",
+              "target_id": "CARD_END_RECOVERY",
+              "preview_card_title": "Recovery"
+            }
+          ]
+        }
+      }
+    },
+    "viewport": "390x844",
+    "screenshotBounds": {
+      "pageWidth": 390,
+      "pageHeight": 3604
+    }
+  },
+  "plan": {
+    "clusterSummary": [],
+    "regionCount": 11,
+    "pageSizeFromScan": {
+      "width": 390,
+      "height": 3604
+    }
+  },
+  "summary": {
+    "extracted": 11,
+    "failed": 0
+  },
+  "regions": [
+    {
+      "id": "app-shell",
+      "type": "app-shell",
+      "label": "#app",
+      "selector": "#app",
+      "parentId": null,
+      "sourceIndex": 0,
+      "geometry": {
+        "x": 0,
+        "y": 1380,
+        "width": 390,
+        "height": 844
+      },
+      "clippedGeometry": {
+        "x": 0,
+        "y": 1380,
+        "width": 390,
+        "height": 844
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025944__bp-20260222-025934-warden__scan-20260222-025939/splits/dynamic/main/home-390x844-edge-012-card-09-reassess-to-card-07-compressions-opt-1-no-before/images/app-shell.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "header",
+      "type": "header",
+      "label": "header",
+      "selector": "header",
+      "parentId": null,
+      "sourceIndex": 1,
+      "geometry": {
+        "x": 2,
+        "y": 1382,
+        "width": 386,
+        "height": 50
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 1382,
+        "width": 386,
+        "height": 50
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025944__bp-20260222-025934-warden__scan-20260222-025939/splits/dynamic/main/home-390x844-edge-012-card-09-reassess-to-card-07-compressions-opt-1-no-before/images/header.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "incoming",
+      "type": "incoming",
+      "label": "#zone-top",
+      "selector": "#zone-top",
+      "parentId": null,
+      "sourceIndex": 2,
+      "geometry": {
+        "x": 2,
+        "y": 1432,
+        "width": 386,
+        "height": 170
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 1432,
+        "width": 386,
+        "height": 170
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025944__bp-20260222-025934-warden__scan-20260222-025939/splits/dynamic/main/home-390x844-edge-012-card-09-reassess-to-card-07-compressions-opt-1-no-before/images/incoming.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-stage",
+      "type": "wheel-stage",
+      "label": "#zone-middle",
+      "selector": "#zone-middle",
+      "parentId": null,
+      "sourceIndex": 3,
+      "geometry": {
+        "x": 2,
+        "y": 1602,
+        "width": 386,
+        "height": 320
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 1602,
+        "width": 386,
+        "height": 320
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025944__bp-20260222-025934-warden__scan-20260222-025939/splits/dynamic/main/home-390x844-edge-012-card-09-reassess-to-card-07-compressions-opt-1-no-before/images/wheel-stage.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-ring",
+      "type": "wheel-ring",
+      "label": "#wheel",
+      "selector": "#wheel",
+      "parentId": null,
+      "sourceIndex": 4,
+      "geometry": {
+        "x": 45,
+        "y": 1612,
+        "width": 300,
+        "height": 300
+      },
+      "clippedGeometry": {
+        "x": 45,
+        "y": 1612,
+        "width": 300,
+        "height": 300
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025944__bp-20260222-025934-warden__scan-20260222-025939/splits/dynamic/main/home-390x844-edge-012-card-09-reassess-to-card-07-compressions-opt-1-no-before/images/wheel-ring.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "current-card",
+      "type": "current-card",
+      "label": "#active-card",
+      "selector": "#active-card",
+      "parentId": null,
+      "sourceIndex": 5,
+      "geometry": {
+        "x": 105,
+        "y": 1657,
+        "width": 180,
+        "height": 210
+      },
+      "clippedGeometry": {
+        "x": 105,
+        "y": 1657,
+        "width": 180,
+        "height": 210
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025944__bp-20260222-025934-warden__scan-20260222-025939/splits/dynamic/main/home-390x844-edge-012-card-09-reassess-to-card-07-compressions-opt-1-no-before/images/current-card.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "wheel-knob",
+      "type": "wheel-knob",
+      "label": "#knob",
+      "selector": "#knob",
+      "parentId": null,
+      "sourceIndex": 6,
+      "geometry": {
+        "x": 242.90625,
+        "y": 1610.828125,
+        "width": 30,
+        "height": 30
+      },
+      "clippedGeometry": {
+        "x": 242,
+        "y": 1610,
+        "width": 30,
+        "height": 30
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025944__bp-20260222-025934-warden__scan-20260222-025939/splits/dynamic/main/home-390x844-edge-012-card-09-reassess-to-card-07-compressions-opt-1-no-before/images/wheel-knob.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "previous",
+      "type": "previous",
+      "label": "#zone-bottom",
+      "selector": "#zone-bottom",
+      "parentId": null,
+      "sourceIndex": 7,
+      "geometry": {
+        "x": 2,
+        "y": 1922,
+        "width": 386,
+        "height": 200
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 1922,
+        "width": 386,
+        "height": 200
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025944__bp-20260222-025934-warden__scan-20260222-025939/splits/dynamic/main/home-390x844-edge-012-card-09-reassess-to-card-07-compressions-opt-1-no-before/images/previous.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "label": "footer",
+      "selector": "footer",
+      "parentId": null,
+      "sourceIndex": 8,
+      "geometry": {
+        "x": 2,
+        "y": 2122,
+        "width": 386,
+        "height": 100
+      },
+      "clippedGeometry": {
+        "x": 2,
+        "y": 2122,
+        "width": 386,
+        "height": 100
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025944__bp-20260222-025934-warden__scan-20260222-025939/splits/dynamic/main/home-390x844-edge-012-card-09-reassess-to-card-07-compressions-opt-1-no-before/images/footer.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "checklist",
+      "type": "checklist",
+      "label": "#checklist-area",
+      "selector": "#checklist-area",
+      "parentId": null,
+      "sourceIndex": 9,
+      "geometry": {
+        "x": 18,
+        "y": 2175.5,
+        "width": 231.359375,
+        "height": 14
+      },
+      "clippedGeometry": {
+        "x": 18,
+        "y": 2175,
+        "width": 231,
+        "height": 14
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025944__bp-20260222-025934-warden__scan-20260222-025939/splits/dynamic/main/home-390x844-edge-012-card-09-reassess-to-card-07-compressions-opt-1-no-before/images/checklist.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "timer",
+      "type": "timer",
+      "label": "#timer",
+      "selector": "#timer",
+      "parentId": null,
+      "sourceIndex": 10,
+      "geometry": {
+        "x": 283.578125,
+        "y": 2165,
+        "width": 88.421875,
+        "height": 35
+      },
+      "clippedGeometry": {
+        "x": 283,
+        "y": 2165,
+        "width": 88,
+        "height": 35
+      },
+      "file": "appendix/guidance/warden/design/runs/20260222-025944__bp-20260222-025934-warden__scan-20260222-025939/splits/dynamic/main/home-390x844-edge-012-card-09-reassess-to-card-07-compressions-opt-1-no-before/images/timer.png",
+      "ok": true,
+      "error": null
+    }
+  ]
+}

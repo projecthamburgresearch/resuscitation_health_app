@@ -1,0 +1,49 @@
+ticket_id: "HREQ-004-BEHAVIOR-CONTRACT-FAILURE-TRIAGE"
+date: "2026-03-13"
+status: "CLOSED"
+authority: "headmaster"
+title: "Triage the current behavior-contract validation failures before further runtime modernization"
+objective: |
+  Determine whether the current behavior-contract failures reflect real product regressions, stale validator assumptions, or bootstrap-era path drift, and convert the result into the correct bounded follow-on.
+scope: |
+  Now: inspect the current behavior report, the validator assumptions, and the touched runtime surfaces.
+  Next: classify the failures as product debt, tooling drift, or both.
+  Later: hand off a bounded Warden or offgrid implementation lane rather than letting behavior-contract failures remain a background unknown.
+source_pack:
+  - "README.md"
+  - "appendix/guidance/headmaster/README.md"
+  - "appendix/guidance/headmaster/research/system/ARCHITECTURE_TARGET.md"
+  - "appendix/guidance/headmaster/research/system/RESOURCE_ATLAS.md"
+  - "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md"
+  - "appendix/guidance/headmaster/report/latest_analysis.md"
+  - "appendix/guidance/warden/research/reports/behavior_report.json"
+  - "appendix/guidance/warden/research/system/CONSTITUTION.md"
+  - "app/"
+  - "prototype/json-algorithms/"
+destructive_change_plan:
+  requires_explicit_human_approval: false
+  tracked_paths_to_delete: []
+  tracked_paths_to_move: []
+  rollback_note: "HREQ-004 is a Headmaster-only triage lane. It should not change runtime behavior or move canonical roots."
+acceptance_criteria:
+  - "The behavior-contract failure surface is classified clearly as product debt, tooling drift, or mixed."
+  - "The next bounded lane is explicit and correctly assigned."
+  - "The lane leaves the queue in a more recoverable state than it found it."
+acceptance_results:
+  - "The failure is classified as Tooling Drift (Stale Validator Assumption)."
+  - "The next bounded lane is REQ-014-BEHAVIOR-TEST-REFRESH (Warden)."
+  - "The triage report provides clear evidence linking the failure to the intentional REQ-008 'tap-before-confirm' feature."
+checklist_outcome: "PASS"
+checklist_notes: "Triage complete. No product regression found."
+rubric_outcome: "READY_FOR_WARDEN"
+research_session: "appendix/guidance/headmaster/research/sessions/HREQ-004-BEHAVIOR-CONTRACT-FAILURE-TRIAGE.md"
+artifacts_updated:
+  - "appendix/guidance/headmaster/research/sessions/HREQ-004-BEHAVIOR-CONTRACT-FAILURE-TRIAGE.md"
+recommended_warden_scope: "REQ-014-BEHAVIOR-TEST-REFRESH"
+acceptance_gates_for_warden:
+  - "`scripts/test_behavior.js` explicitly performs the required decision-option tap before asserting `.decision-option-card.selected`."
+  - "Behavior-contract validation passes for all five sampled algorithms after the tooling refresh."
+  - "The lane updates validator logic only; it does not change clinician-facing runtime behavior."
+closed_date: "2026-03-13"
+closed_reason: |
+  The triage was accepted and converted into the bounded Warden follow-on REQ-014. REQ-014 is now resolved, confirming the failure was tooling drift rather than product regression."

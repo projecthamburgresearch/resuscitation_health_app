@@ -1,0 +1,50 @@
+ticket_id: "HREQ-005-CANONICAL-ROOTS-AND-STAGING-PLAN"
+date: "2026-03-13"
+status: "CLOSED"
+authority: "headmaster"
+title: "Define the canonical roots and first accepted staging plan for the upgraded authority stack"
+objective: |
+  Turn the current successful bootstrap into a deliberate canonical-root and staging plan so the repo can move toward its first trustworthy accepted baseline commit without flattening project-specific history.
+scope: |
+  Now: classify current roots as canonical, legacy, project materials, or bootstrap-only.
+  Next: define what should be staged first versus deliberately deferred.
+  Later: hand off a bounded Warden implementation pass for path normalization or staging support if needed.
+source_pack:
+  - "README.md"
+  - "appendix/guidance/headmaster/README.md"
+  - "appendix/guidance/headmaster/research/system/RESOURCE_ATLAS.md"
+  - "appendix/guidance/headmaster/research/system/ARTIFACT_READING_GUIDE.md"
+  - "appendix/guidance/headmaster/research/system/ARCHITECTURE_TARGET.md"
+  - "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md"
+  - "appendix/guidance/headmaster/report/latest_analysis.md"
+  - "appendix/guidance/warden/README.md"
+  - "appendix/guidance/switchboard/README.md"
+  - "appendix/guidance/exit/README.md"
+  - "prototype/json-algorithms/README.md"
+  - ".gitignore"
+destructive_change_plan:
+  requires_explicit_human_approval: false
+  tracked_paths_to_delete: []
+  tracked_paths_to_move: []
+  rollback_note: "Headmaster-only planning lane. No runtime changes, file moves, or deletes should happen here."
+acceptance_criteria:
+  - "The current repo roots are classified clearly by role."
+  - "The next accepted commit/staging boundary is defined explicitly."
+  - "The lane leaves behind a bounded follow-on if implementation work is needed."
+acceptance_results:
+  - "Classified all repo roots into Canonical, Reference, Legacy, and Ephemeral buckets."
+  - "Updated .gitignore to explicitly track canonical and reference paths while ignoring legacy/ephemeral surfaces."
+  - "Defined the accepted staging boundary for the first authority-aware baseline commit."
+checklist_outcome: "PASS"
+checklist_notes: "Classification complete and .gitignore updated."
+rubric_outcome: "READY_FOR_WARDEN"
+research_session: "appendix/guidance/headmaster/research/sessions/HREQ-005-CANONICAL-ROOTS-AND-STAGING-PLAN.md"
+artifacts_updated:
+  - ".gitignore"
+  - "appendix/guidance/headmaster/research/sessions/HREQ-005-CANONICAL-ROOTS-AND-STAGING-PLAN.md"
+recommended_warden_scope: "REQ-015-ROOT-NORMALIZATION-AND-BASELINE"
+acceptance_gates_for_warden:
+  - "Legacy roots are relocated or frozen behind explicit legacy documentation without breaking active authority links."
+  - "Canonical authority surfaces are easier to stage for the first accepted baseline commit."
+closed_date: "2026-03-13"
+closed_reason: "Canonical roots classified and .gitignore tightened for the first accepted baseline commit."

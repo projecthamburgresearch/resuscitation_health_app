@@ -1,0 +1,87 @@
+ticket_id: "REQ-015-ROOT-NORMALIZATION-AND-BASELINE"
+date: "2026-03-13"
+status: "RESOLVED"
+ticket_type: "STRUCTURE"
+title: "Normalize canonical vs legacy roots for the first accepted baseline commit"
+
+objective: |
+  Normalize the repo root surfaces so canonical authority paths are distinct from preserved legacy roots, improving the project's first accepted baseline commit boundary without deleting project-specific history.
+
+profile:
+  target_component: "repo-root"
+  route: "authority-surfaces"
+  viewport: "N/A"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "AUTHORITY_AND_STRUCTURE"
+
+state_machine_scope:
+  algorithm_source: "app/algorithms/"
+  direction: "none"
+  transition_ids: []
+  state_ids: []
+  expected_state_contract:
+    incoming_zone: "N/A"
+    current_zone: "Canonical authority and runtime roots remain clear."
+    previous_zone: "Legacy roots remain preserved and traceable."
+
+telemetry_levers:
+  use_scan_json: false
+  use_blueprint_outputs: false
+  use_static_screenshots_and_splits: false
+  use_dynamic_screenshots_and_splits: false
+  require_transition_before_after_pairs: false
+  require_behavior_contract_report: false
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: false
+  allow_web_search: false
+
+rubric_levers:
+  enforce_clear_unambiguous: true
+  enforce_self_contained: true
+  enforce_falsifiable_binary: true
+  enforce_unstacked: true
+  enforce_timeless: true
+
+deliverables:
+  require_findings_by_severity: false
+  require_code_target_map: true
+  require_regression_watchlist: true
+  require_validation_rerun_summary: true
+  require_behavior_matrix_all_algorithms: false
+  require_clinician_trust_score: false
+
+acceptance_gates:
+  - id: "AG-01"
+    gate: "Canonical authority and reference surfaces are explicitly distinguishable from legacy roots."
+    result: "PASS"
+  - id: "AG-02"
+    gate: "Legacy roots are relocated or frozen behind explicit legacy documentation without destructive loss."
+    result: "PASS"
+  - id: "AG-03"
+    gate: "Repo documentation reflects the normalized canonical vs legacy split."
+    result: "PASS"
+
+acceptance_results:
+  - id: "RES-01"
+    result: "Relocated legacy roots (blueprint, blueprint_outputs, scans_outputs, system) to `appendix/guidance/materials/legacy/`."
+  - id: "RES-02"
+    result: "Created `appendix/guidance/materials/legacy/README.md` to document frozen historical materials."
+  - id: "RES-03"
+    result: "Normalized `.gitignore` to explicitly track canonical guidance/reference paths while ignoring legacy/ephemeral bulk."
+  - id: "RES-04"
+    result: "Updated root `README.md` to reflect the canonical vs legacy surface split."
+
+checklist_outcome: "PASS"
+checklist_notes: "Root surfaces normalized and legacy roots are preserved behind explicit legacy documentation."
+rubric_outcome: "PASS"
+research_session: "appendix/guidance/headmaster/research/handoffs/REQ-015-ROOT-NORMALIZATION-AND-BASELINE.md"
+artifacts_updated:
+  - ".gitignore"
+  - "README.md"
+  - "appendix/guidance/materials/legacy/README.md"
+recommended_warden_scope: "none (REQ-015 is the completed Warden implementation lane for HREQ-005)"
+acceptance_gates_for_warden: []
+closed_date: "2026-03-13"
+closed_reason: "Root normalization complete. Canonical authority stack is now easier to distinguish from preserved legacy roots and the repo is ready for a deliberate baseline-commit curation pass."

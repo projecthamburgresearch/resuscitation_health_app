@@ -1,0 +1,568 @@
+{
+  "domain": "sonar",
+  "version": "0.2.0",
+  "timestamp": "2026-03-13T14:28:04.796061",
+  "root_path": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app",
+  "entities": [],
+  "edges": [],
+  "stats": {
+    "total_findings": 54,
+    "findings_by_category": {
+      "naming": 1,
+      "complexity": 37,
+      "dead_code": 16
+    },
+    "findings_by_level": {
+      "warning": 35,
+      "error": 3,
+      "info": 16
+    },
+    "file_count": 19,
+    "entity_count": 36,
+    "elapsed_seconds": 0.011,
+    "error_count": 0,
+    "findings": [
+      {
+        "finding_id": "naming-90643c25",
+        "category": "naming",
+        "level": "warning",
+        "message": "Single-character name 'a' is not descriptive.",
+        "file_path": "Resuscitation_App_Complete.html",
+        "line": 939,
+        "entity_id": "TABLE::Resuscitation_App_Complete.html::a",
+        "suggestion": "Use a more descriptive name that conveys intent."
+      },
+      {
+        "finding_id": "complexity-51320b61",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Cyclomatic complexity of 'inferPhase' is 12 (threshold: 10).",
+        "file_path": "src/algorithms/loader.ts",
+        "line": 227,
+        "entity_id": "FUNC::src/algorithms/loader.ts::inferPhase",
+        "suggestion": "Consider breaking this function into smaller, single-responsibility helpers."
+      },
+      {
+        "finding_id": "complexity-10174673",
+        "category": "complexity",
+        "level": "error",
+        "message": "Cyclomatic complexity of 'normalizeTransitions' is 22 (threshold: 20).",
+        "file_path": "src/algorithms/loader.ts",
+        "line": 244,
+        "entity_id": "FUNC::src/algorithms/loader.ts::normalizeTransitions",
+        "suggestion": "Refactor into smaller functions. Extract conditional branches into helper methods or use a strategy pattern."
+      },
+      {
+        "finding_id": "complexity-a94a10c0",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Cyclomatic complexity of 'normalizeAlgorithm' is 13 (threshold: 10).",
+        "file_path": "src/algorithms/loader.ts",
+        "line": 327,
+        "entity_id": "FUNC::src/algorithms/loader.ts::normalizeAlgorithm",
+        "suggestion": "Consider breaking this function into smaller, single-responsibility helpers."
+      },
+      {
+        "finding_id": "complexity-efaf4dea",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Cyclomatic complexity of 'summarizeTransition' is 12 (threshold: 10).",
+        "file_path": "src/automation.ts",
+        "line": 13,
+        "entity_id": "FUNC::src/automation.ts::summarizeTransition",
+        "suggestion": "Consider breaking this function into smaller, single-responsibility helpers."
+      },
+      {
+        "finding_id": "complexity-acb073a0",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Cyclomatic complexity of 'setupWardenAutomation' is 13 (threshold: 10).",
+        "file_path": "src/automation.ts",
+        "line": 99,
+        "entity_id": "FUNC::src/automation.ts::setupWardenAutomation",
+        "suggestion": "Consider breaking this function into smaller, single-responsibility helpers."
+      },
+      {
+        "finding_id": "complexity-005798f5",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'setupWardenAutomation' has 94 lines (threshold: 50).",
+        "file_path": "src/automation.ts",
+        "line": 99,
+        "entity_id": "FUNC::src/automation.ts::setupWardenAutomation",
+        "suggestion": "Consider extracting logical sections into separate helper functions for better readability."
+      },
+      {
+        "finding_id": "complexity-6da70916",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'setupWardenAutomation' depends on 13 other entities (fan-out threshold: 10).",
+        "file_path": "src/automation.ts",
+        "line": 99,
+        "entity_id": "FUNC::src/automation.ts::setupWardenAutomation",
+        "suggestion": "High fan-out indicates excessive coupling. Consider introducing an intermediary layer or breaking the function into smaller units with fewer dependencies."
+      },
+      {
+        "finding_id": "complexity-93f66605",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Cyclomatic complexity of 'renderPreviewZone' is 13 (threshold: 10).",
+        "file_path": "src/cards/preview-zone.ts",
+        "line": 14,
+        "entity_id": "FUNC::src/cards/preview-zone.ts::renderPreviewZone",
+        "suggestion": "Consider breaking this function into smaller, single-responsibility helpers."
+      },
+      {
+        "finding_id": "complexity-bb4adb5b",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'renderPreviewZone' has 83 lines (threshold: 50).",
+        "file_path": "src/cards/preview-zone.ts",
+        "line": 14,
+        "entity_id": "FUNC::src/cards/preview-zone.ts::renderPreviewZone",
+        "suggestion": "Consider extracting logical sections into separate helper functions for better readability."
+      },
+      {
+        "finding_id": "complexity-fdb32da7",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Max nesting depth of 'renderPreviewZone' is 5 (threshold: 4).",
+        "file_path": "src/cards/preview-zone.ts",
+        "line": 14,
+        "entity_id": "FUNC::src/cards/preview-zone.ts::renderPreviewZone",
+        "suggestion": "Consider using guard clauses or extracting deeply nested blocks into helper functions."
+      },
+      {
+        "finding_id": "complexity-b14a0c14",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'renderPreviewZone' depends on 14 other entities (fan-out threshold: 10).",
+        "file_path": "src/cards/preview-zone.ts",
+        "line": 14,
+        "entity_id": "FUNC::src/cards/preview-zone.ts::renderPreviewZone",
+        "suggestion": "High fan-out indicates excessive coupling. Consider introducing an intermediary layer or breaking the function into smaller units with fewer dependencies."
+      },
+      {
+        "finding_id": "complexity-6ad22b9f",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Max nesting depth of 'getUpcomingCardsFrom' is 5 (threshold: 4).",
+        "file_path": "src/cards/preview-zone.ts",
+        "line": 106,
+        "entity_id": "FUNC::src/cards/preview-zone.ts::getUpcomingCardsFrom",
+        "suggestion": "Consider using guard clauses or extracting deeply nested blocks into helper functions."
+      },
+      {
+        "finding_id": "complexity-cc22742d",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Cyclomatic complexity of 'renderActiveCard' is 14 (threshold: 10).",
+        "file_path": "src/cards/renderer.ts",
+        "line": 38,
+        "entity_id": "FUNC::src/cards/renderer.ts::renderActiveCard",
+        "suggestion": "Consider breaking this function into smaller, single-responsibility helpers."
+      },
+      {
+        "finding_id": "complexity-b9717a59",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'renderActiveCard' has 58 lines (threshold: 50).",
+        "file_path": "src/cards/renderer.ts",
+        "line": 38,
+        "entity_id": "FUNC::src/cards/renderer.ts::renderActiveCard",
+        "suggestion": "Consider extracting logical sections into separate helper functions for better readability."
+      },
+      {
+        "finding_id": "complexity-5460896b",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Cyclomatic complexity of 'getCardBodyContent' is 11 (threshold: 10).",
+        "file_path": "src/cards/renderer.ts",
+        "line": 97,
+        "entity_id": "FUNC::src/cards/renderer.ts::getCardBodyContent",
+        "suggestion": "Consider breaking this function into smaller, single-responsibility helpers."
+      },
+      {
+        "finding_id": "complexity-71387bf8",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Cyclomatic complexity of 'init' is 12 (threshold: 10).",
+        "file_path": "src/main.ts",
+        "line": 149,
+        "entity_id": "FUNC::src/main.ts::init",
+        "suggestion": "Consider breaking this function into smaller, single-responsibility helpers."
+      },
+      {
+        "finding_id": "complexity-7d9df8a1",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'init' has 80 lines (threshold: 50).",
+        "file_path": "src/main.ts",
+        "line": 149,
+        "entity_id": "FUNC::src/main.ts::init",
+        "suggestion": "Consider extracting logical sections into separate helper functions for better readability."
+      },
+      {
+        "finding_id": "complexity-f7c8b2bf",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'init' depends on 19 other entities (fan-out threshold: 10).",
+        "file_path": "src/main.ts",
+        "line": 149,
+        "entity_id": "FUNC::src/main.ts::init",
+        "suggestion": "High fan-out indicates excessive coupling. Consider introducing an intermediary layer or breaking the function into smaller units with fewer dependencies."
+      },
+      {
+        "finding_id": "complexity-4a5f65bc",
+        "category": "complexity",
+        "level": "error",
+        "message": "Cyclomatic complexity of 'advance' is 29 (threshold: 20).",
+        "file_path": "src/navigation/advance.ts",
+        "line": 9,
+        "entity_id": "FUNC::src/navigation/advance.ts::advance",
+        "suggestion": "Refactor into smaller functions. Extract conditional branches into helper methods or use a strategy pattern."
+      },
+      {
+        "finding_id": "complexity-ce0acace",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'advance' has 67 lines (threshold: 50).",
+        "file_path": "src/navigation/advance.ts",
+        "line": 9,
+        "entity_id": "FUNC::src/navigation/advance.ts::advance",
+        "suggestion": "Consider extracting logical sections into separate helper functions for better readability."
+      },
+      {
+        "finding_id": "complexity-d0e03a40",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Max nesting depth of 'countPathLength' is 6 (threshold: 4).",
+        "file_path": "src/navigation/anchors.ts",
+        "line": 31,
+        "entity_id": "FUNC::src/navigation/anchors.ts::countPathLength",
+        "suggestion": "Consider using guard clauses or extracting deeply nested blocks into helper functions."
+      },
+      {
+        "finding_id": "complexity-c59e6c6c",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Cyclomatic complexity of 'computeForwardPath' is 11 (threshold: 10).",
+        "file_path": "src/navigation/anchors.ts",
+        "line": 70,
+        "entity_id": "FUNC::src/navigation/anchors.ts::computeForwardPath",
+        "suggestion": "Consider breaking this function into smaller, single-responsibility helpers."
+      },
+      {
+        "finding_id": "complexity-d67bfe55",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Max nesting depth of 'computeForwardPath' is 6 (threshold: 4).",
+        "file_path": "src/navigation/anchors.ts",
+        "line": 70,
+        "entity_id": "FUNC::src/navigation/anchors.ts::computeForwardPath",
+        "suggestion": "Consider using guard clauses or extracting deeply nested blocks into helper functions."
+      },
+      {
+        "finding_id": "complexity-f7e4bbae",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Max nesting depth of 'updateTicker' is 5 (threshold: 4).",
+        "file_path": "src/ticker/engine.ts",
+        "line": 11,
+        "entity_id": "FUNC::src/ticker/engine.ts::updateTicker",
+        "suggestion": "Consider using guard clauses or extracting deeply nested blocks into helper functions."
+      },
+      {
+        "finding_id": "complexity-f92b2f11",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Max nesting depth of 'checkUncheckedItems' is 5 (threshold: 4).",
+        "file_path": "src/ticker/rules.ts",
+        "line": 11,
+        "entity_id": "FUNC::src/ticker/rules.ts::checkUncheckedItems",
+        "suggestion": "Consider using guard clauses or extracting deeply nested blocks into helper functions."
+      },
+      {
+        "finding_id": "complexity-e2932d68",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Cyclomatic complexity of 'checkStepsRemaining' is 12 (threshold: 10).",
+        "file_path": "src/ticker/rules.ts",
+        "line": 74,
+        "entity_id": "FUNC::src/ticker/rules.ts::checkStepsRemaining",
+        "suggestion": "Consider breaking this function into smaller, single-responsibility helpers."
+      },
+      {
+        "finding_id": "complexity-39db32e0",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'createDragOverlay' has 54 lines (threshold: 50).",
+        "file_path": "src/ui/drag-overlay.ts",
+        "line": 20,
+        "entity_id": "FUNC::src/ui/drag-overlay.ts::createDragOverlay",
+        "suggestion": "Consider extracting logical sections into separate helper functions for better readability."
+      },
+      {
+        "finding_id": "complexity-06fc46fb",
+        "category": "complexity",
+        "level": "error",
+        "message": "Max nesting depth of 'initMenu' is 7 (threshold: 6).",
+        "file_path": "src/ui/menu.ts",
+        "line": 41,
+        "entity_id": "FUNC::src/ui/menu.ts::initMenu",
+        "suggestion": "Reduce nesting by using early returns (guard clauses), extracting inner blocks into functions, or flattening conditional logic."
+      },
+      {
+        "finding_id": "complexity-1597fccb",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'initMenu' depends on 11 other entities (fan-out threshold: 10).",
+        "file_path": "src/ui/menu.ts",
+        "line": 41,
+        "entity_id": "FUNC::src/ui/menu.ts::initMenu",
+        "suggestion": "High fan-out indicates excessive coupling. Consider introducing an intermediary layer or breaking the function into smaller units with fewer dependencies."
+      },
+      {
+        "finding_id": "complexity-829a6109",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'showProtocolList' depends on 11 other entities (fan-out threshold: 10).",
+        "file_path": "src/ui/menu.ts",
+        "line": 87,
+        "entity_id": "FUNC::src/ui/menu.ts::showProtocolList",
+        "suggestion": "High fan-out indicates excessive coupling. Consider introducing an intermediary layer or breaking the function into smaller units with fewer dependencies."
+      },
+      {
+        "finding_id": "complexity-1ee6a0fc",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Cyclomatic complexity of 'showSettings' is 16 (threshold: 10).",
+        "file_path": "src/ui/menu.ts",
+        "line": 130,
+        "entity_id": "FUNC::src/ui/menu.ts::showSettings",
+        "suggestion": "Consider breaking this function into smaller, single-responsibility helpers."
+      },
+      {
+        "finding_id": "complexity-99c80452",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'showSettings' depends on 11 other entities (fan-out threshold: 10).",
+        "file_path": "src/ui/menu.ts",
+        "line": 130,
+        "entity_id": "FUNC::src/ui/menu.ts::showSettings",
+        "suggestion": "High fan-out indicates excessive coupling. Consider introducing an intermediary layer or breaking the function into smaller units with fewer dependencies."
+      },
+      {
+        "finding_id": "complexity-96eaf2d6",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'showProtocolLanding' has 55 lines (threshold: 50).",
+        "file_path": "src/ui/protocol-landing.ts",
+        "line": 7,
+        "entity_id": "FUNC::src/ui/protocol-landing.ts::showProtocolLanding",
+        "suggestion": "Consider extracting logical sections into separate helper functions for better readability."
+      },
+      {
+        "finding_id": "complexity-460e84df",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'showProtocolLanding' depends on 14 other entities (fan-out threshold: 10).",
+        "file_path": "src/ui/protocol-landing.ts",
+        "line": 7,
+        "entity_id": "FUNC::src/ui/protocol-landing.ts::showProtocolLanding",
+        "suggestion": "High fan-out indicates excessive coupling. Consider introducing an intermediary layer or breaking the function into smaller units with fewer dependencies."
+      },
+      {
+        "finding_id": "complexity-5c92b394",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Cyclomatic complexity of 'onKnobDrag' is 12 (threshold: 10).",
+        "file_path": "src/wheel/knob.ts",
+        "line": 63,
+        "entity_id": "FUNC::src/wheel/knob.ts::onKnobDrag",
+        "suggestion": "Consider breaking this function into smaller, single-responsibility helpers."
+      },
+      {
+        "finding_id": "complexity-7aac8d77",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'onKnobDrag' has 69 lines (threshold: 50).",
+        "file_path": "src/wheel/knob.ts",
+        "line": 63,
+        "entity_id": "FUNC::src/wheel/knob.ts::onKnobDrag",
+        "suggestion": "Consider extracting logical sections into separate helper functions for better readability."
+      },
+      {
+        "finding_id": "complexity-05c5e193",
+        "category": "complexity",
+        "level": "warning",
+        "message": "Function 'onKnobDrag' depends on 14 other entities (fan-out threshold: 10).",
+        "file_path": "src/wheel/knob.ts",
+        "line": 63,
+        "entity_id": "FUNC::src/wheel/knob.ts::onKnobDrag",
+        "suggestion": "High fan-out indicates excessive coupling. Consider introducing an intermediary layer or breaking the function into smaller units with fewer dependencies."
+      },
+      {
+        "finding_id": "dead_code-396c2569",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'hasChecklistItems' appears to have no callers.",
+        "file_path": "src/cards/checklist-card.ts",
+        "line": 7,
+        "entity_id": "FUNC::src/cards/checklist-card.ts::hasChecklistItems",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-748aaf38",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'renderChecklistCardContent' appears to have no callers.",
+        "file_path": "src/cards/checklist-card.ts",
+        "line": 11,
+        "entity_id": "FUNC::src/cards/checklist-card.ts::renderChecklistCardContent",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-7506475d",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'startDecisionDrag' appears to have no callers.",
+        "file_path": "src/cards/decision-cards.ts",
+        "line": 57,
+        "entity_id": "FUNC::src/cards/decision-cards.ts::startDecisionDrag",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-d347644c",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'onDecisionDrag' appears to have no callers.",
+        "file_path": "src/cards/decision-cards.ts",
+        "line": 92,
+        "entity_id": "FUNC::src/cards/decision-cards.ts::onDecisionDrag",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-7aa2d989",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'endDecisionDrag' appears to have no callers.",
+        "file_path": "src/cards/decision-cards.ts",
+        "line": 110,
+        "entity_id": "FUNC::src/cards/decision-cards.ts::endDecisionDrag",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-1f1ed17c",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'computeForwardPath' appears to have no callers.",
+        "file_path": "src/navigation/anchors.ts",
+        "line": 70,
+        "entity_id": "FUNC::src/navigation/anchors.ts::computeForwardPath",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-978b5ffa",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'onPointerMove' appears to have no callers.",
+        "file_path": "src/navigation/zone-drag.ts",
+        "line": 120,
+        "entity_id": "FUNC::src/navigation/zone-drag.ts::onPointerMove",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-95568084",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'onPointerUp' appears to have no callers.",
+        "file_path": "src/navigation/zone-drag.ts",
+        "line": 142,
+        "entity_id": "FUNC::src/navigation/zone-drag.ts::onPointerUp",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-45eb5a01",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'toggleMenu' appears to have no callers.",
+        "file_path": "src/ui/menu.ts",
+        "line": 65,
+        "entity_id": "FUNC::src/ui/menu.ts::toggleMenu",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-55e56833",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'openToolbox' appears to have no callers.",
+        "file_path": "src/ui/modal.ts",
+        "line": 4,
+        "entity_id": "FUNC::src/ui/modal.ts::openToolbox",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-d8615de9",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'openFullscreen' appears to have no callers.",
+        "file_path": "src/ui/modal.ts",
+        "line": 14,
+        "entity_id": "FUNC::src/ui/modal.ts::openFullscreen",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-89bedc3f",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'showProtocolLanding' appears to have no callers.",
+        "file_path": "src/ui/protocol-landing.ts",
+        "line": 7,
+        "entity_id": "FUNC::src/ui/protocol-landing.ts::showProtocolLanding",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-dc592581",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'startKnobDrag' appears to have no callers.",
+        "file_path": "src/wheel/knob.ts",
+        "line": 24,
+        "entity_id": "FUNC::src/wheel/knob.ts::startKnobDrag",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-f73b1920",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'onKnobDrag' appears to have no callers.",
+        "file_path": "src/wheel/knob.ts",
+        "line": 63,
+        "entity_id": "FUNC::src/wheel/knob.ts::onKnobDrag",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-e1ae0ada",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'endKnobDrag' appears to have no callers.",
+        "file_path": "src/wheel/knob.ts",
+        "line": 133,
+        "entity_id": "FUNC::src/wheel/knob.ts::endKnobDrag",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      },
+      {
+        "finding_id": "dead_code-0173f6a0",
+        "category": "dead_code",
+        "level": "info",
+        "message": "Function/method 'degToPosition' appears to have no callers.",
+        "file_path": "src/wheel/physics.ts",
+        "line": 22,
+        "entity_id": "FUNC::src/wheel/physics.ts::degToPosition",
+        "suggestion": "Verify whether this function is still needed. If it is an entry point or callback, consider adding a decorator or comment to mark it as intentionally uncalled."
+      }
+    ]
+  },
+  "errors": []
+}

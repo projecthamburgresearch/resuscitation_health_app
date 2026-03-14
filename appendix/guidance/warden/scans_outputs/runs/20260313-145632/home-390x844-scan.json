@@ -1,0 +1,3336 @@
+{
+  "meta": {
+    "url": "http://localhost:3000/",
+    "timestamp": "2026-03-13T18:56:40.624Z",
+    "theme": "default",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "pageSize": {
+      "width": 390,
+      "height": 844
+    },
+    "count": 35,
+    "coverage": {
+      "mode": "devmode-overlay",
+      "selectorCandidateCount": 47,
+      "uniqueCandidateCount": 47,
+      "includeableCount": 35,
+      "scannedCount": 35,
+      "scanCap": 450,
+      "capped": false,
+      "dropped": {
+        "too-small": 12,
+        "hidden": 0,
+        "offscreen": 0,
+        "no-signal": 0,
+        "cap-reached": 0
+      },
+      "scannedRatioOfUnique": 0.745,
+      "scannedRatioOfIncludeable": 1
+    },
+    "project": {
+      "framework": "vite",
+      "styling": "css",
+      "themeStrategy": "runtime-snapshot"
+    },
+    "goldenConstants": {
+      "phi": 1.618,
+      "baseUnit": 8,
+      "baseGrid": 8
+    }
+  },
+  "elements": [
+    {
+      "index": 0,
+      "sourceIndex": 0,
+      "id": "app",
+      "tag": "div",
+      "label": "div#app",
+      "semanticRole": "generic",
+      "content": {
+        "text": "Paediatric Basic Life Support OPEN AIRWAY SHOUT FOR HELP UNRESPONSIVE Paediatric Basic Life Support ⋮ 4 steps to next decision 00:00:00 Menu × ☰ Select Protocol 🔍 Search ⚙ Settings ℹ About"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "left": 0,
+        "top": 0,
+        "right": 390,
+        "bottom": 844
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "relative",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "body",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "e3577e70"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 189,
+          "status": "long"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 1.156,
+        "verticalRhythm": {
+          "score": 1
+        }
+      }
+    },
+    {
+      "index": 1,
+      "sourceIndex": 1,
+      "id": null,
+      "tag": "header",
+      "label": "header",
+      "semanticRole": "banner",
+      "content": {
+        "text": "Paediatric Basic Life Support"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 50
+      },
+      "box": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 50,
+        "left": 0,
+        "top": 0,
+        "right": 390,
+        "bottom": 50
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#app",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "71b7b864"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 29,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 6.182,
+        "verticalRhythm": {
+          "score": 1
+        }
+      }
+    },
+    {
+      "index": 2,
+      "sourceIndex": 2,
+      "id": null,
+      "tag": "div",
+      "label": "div.app-title",
+      "semanticRole": "generic",
+      "content": {
+        "text": "Paediatric Basic Life Support"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 14,
+        "fontWeight": 700,
+        "lineHeightPx": 17.5,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 16,
+        "y": 15.5,
+        "width": 199.23,
+        "height": 17
+      },
+      "box": {
+        "x": 16,
+        "y": 15.5,
+        "width": 199.23,
+        "height": 17,
+        "left": 16,
+        "top": 15.5,
+        "right": 215.23,
+        "bottom": 32.5
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "header",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "811bd3f"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 29,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 10.101,
+        "verticalRhythm": {
+          "score": 0.063
+        }
+      }
+    },
+    {
+      "index": 3,
+      "sourceIndex": 3,
+      "id": null,
+      "tag": "div",
+      "label": "div.header-icons",
+      "semanticRole": "generic",
+      "content": {
+        "text": ""
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 320,
+        "y": 13,
+        "width": 54,
+        "height": 22
+      },
+      "box": {
+        "x": 320,
+        "y": 13,
+        "width": 54,
+        "height": 22,
+        "left": 320,
+        "top": 13,
+        "right": 374,
+        "bottom": 35
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "header",
+        "localLayerIndex": 1
+      },
+      "componentIdentity": {
+        "hash": "df9589c8"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 0,
+          "status": "na"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.837,
+        "verticalRhythm": {
+          "score": 0.375
+        }
+      }
+    },
+    {
+      "index": 4,
+      "sourceIndex": 4,
+      "id": null,
+      "tag": "svg",
+      "label": "svg.header-icon",
+      "semanticRole": "generic",
+      "content": {
+        "text": ""
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 320,
+        "y": 13,
+        "width": 22,
+        "height": 22
+      },
+      "box": {
+        "x": 320,
+        "y": 13,
+        "width": 22,
+        "height": 22,
+        "left": 320,
+        "top": 13,
+        "right": 342,
+        "bottom": 35
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "9969fa8"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 0,
+          "status": "na"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.618,
+        "verticalRhythm": {
+          "score": 0.375
+        }
+      }
+    },
+    {
+      "index": 5,
+      "sourceIndex": 5,
+      "id": null,
+      "tag": "svg",
+      "label": "svg.header-icon",
+      "semanticRole": "generic",
+      "content": {
+        "text": ""
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 352,
+        "y": 13,
+        "width": 22,
+        "height": 22
+      },
+      "box": {
+        "x": 352,
+        "y": 13,
+        "width": 22,
+        "height": 22,
+        "left": 352,
+        "top": 13,
+        "right": 374,
+        "bottom": 35
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 1
+      },
+      "componentIdentity": {
+        "hash": "9969fa8"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 0,
+          "status": "na"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.618,
+        "verticalRhythm": {
+          "score": 0.375
+        }
+      }
+    },
+    {
+      "index": 6,
+      "sourceIndex": 6,
+      "id": "stage",
+      "tag": "div",
+      "label": "div#stage",
+      "semanticRole": "generic",
+      "content": {
+        "text": "OPEN AIRWAY SHOUT FOR HELP UNRESPONSIVE Paediatric Basic Life Support"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 0,
+        "y": 50,
+        "width": 390,
+        "height": 694
+      },
+      "box": {
+        "x": 0,
+        "y": 50,
+        "width": 390,
+        "height": 694,
+        "left": 0,
+        "top": 50,
+        "right": 390,
+        "bottom": 744
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "relative",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#app",
+        "localLayerIndex": 1
+      },
+      "componentIdentity": {
+        "hash": "1b3373dc"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 69,
+          "status": "optimal"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 1.056,
+        "verticalRhythm": {
+          "score": 0.75
+        }
+      }
+    },
+    {
+      "index": 7,
+      "sourceIndex": 7,
+      "id": "zone-top",
+      "tag": "div",
+      "label": "div#zone-top",
+      "semanticRole": "generic",
+      "content": {
+        "text": "OPEN AIRWAY SHOUT FOR HELP UNRESPONSIVE"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 0,
+        "y": 50,
+        "width": 390,
+        "height": 170
+      },
+      "box": {
+        "x": 0,
+        "y": 50,
+        "width": 390,
+        "height": 170,
+        "left": 0,
+        "top": 50,
+        "right": 390,
+        "bottom": 220
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "relative",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#stage",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "75b64da8"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 39,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.676,
+        "verticalRhythm": {
+          "score": 0.75
+        }
+      }
+    },
+    {
+      "index": 8,
+      "sourceIndex": 8,
+      "id": null,
+      "tag": "div",
+      "label": "div.card.preview-card.preview-card-stacked",
+      "semanticRole": "generic",
+      "content": {
+        "text": "OPEN AIRWAY"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 145.26,
+        "y": 103.43,
+        "width": 99.48,
+        "height": 72.7
+      },
+      "box": {
+        "x": 145.26,
+        "y": 103.43,
+        "width": 99.48,
+        "height": 72.7,
+        "left": 145.26,
+        "top": 103.43,
+        "right": 244.74,
+        "bottom": 176.13
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "absolute",
+        "alignment": "center",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#zone-top",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "c32fc800"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#d0d0d0",
+            "rgba": "rgba(208, 208, 208, 1)"
+          },
+          "contrast": {
+            "ratio": 13.615,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#d0d0d0",
+            "rgba": "rgba(208, 208, 208, 1)"
+          },
+          "contrast": {
+            "ratio": 13.615,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 11,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.25,
+        "verticalRhythm": {
+          "score": 0.071
+        }
+      }
+    },
+    {
+      "index": 9,
+      "sourceIndex": 9,
+      "id": null,
+      "tag": "div",
+      "label": "div.card-header",
+      "semanticRole": "generic",
+      "content": {
+        "text": "OPEN AIRWAY"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 10,
+        "fontWeight": 400,
+        "lineHeightPx": 12.5,
+        "letterSpacingPx": 0.5
+      },
+      "geometry": {
+        "x": 166.47,
+        "y": 133.66,
+        "width": 57.06,
+        "height": 9.18
+      },
+      "box": {
+        "x": 166.47,
+        "y": 133.66,
+        "width": 57.06,
+        "height": 9.18,
+        "left": 166.47,
+        "top": 133.66,
+        "right": 223.53,
+        "bottom": 142.84
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "center",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "d407c4e8"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#666666",
+            "rgba": "rgba(102, 102, 102, 1)"
+          },
+          "background": {
+            "hex": "#d0d0d0",
+            "rgba": "rgba(208, 208, 208, 1)"
+          },
+          "contrast": {
+            "ratio": 3.723,
+            "wcag": "FAIL"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#666666",
+            "rgba": "rgba(102, 102, 102, 1)"
+          },
+          "background": {
+            "hex": "#d0d0d0",
+            "rgba": "rgba(208, 208, 208, 1)"
+          },
+          "contrast": {
+            "ratio": 3.723,
+            "wcag": "FAIL"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 11,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 4.598,
+        "verticalRhythm": {
+          "score": 0.293
+        }
+      }
+    },
+    {
+      "index": 10,
+      "sourceIndex": 10,
+      "id": null,
+      "tag": "div",
+      "label": "div.card.preview-card.preview-card-stacked",
+      "semanticRole": "generic",
+      "content": {
+        "text": "SHOUT FOR HELP"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 138.16,
+        "y": 109.74,
+        "width": 113.67,
+        "height": 83.07
+      },
+      "box": {
+        "x": 138.16,
+        "y": 109.74,
+        "width": 113.67,
+        "height": 83.07,
+        "left": 138.16,
+        "top": 109.74,
+        "right": 251.84,
+        "bottom": 192.81
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "absolute",
+        "alignment": "center",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#zone-top",
+        "localLayerIndex": 1
+      },
+      "componentIdentity": {
+        "hash": "c32fc800"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#d0d0d0",
+            "rgba": "rgba(208, 208, 208, 1)"
+          },
+          "contrast": {
+            "ratio": 13.615,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#d0d0d0",
+            "rgba": "rgba(208, 208, 208, 1)"
+          },
+          "contrast": {
+            "ratio": 13.615,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 14,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.25,
+        "verticalRhythm": {
+          "score": 0.283
+        }
+      }
+    },
+    {
+      "index": 11,
+      "sourceIndex": 11,
+      "id": null,
+      "tag": "div",
+      "label": "div.card-header",
+      "semanticRole": "generic",
+      "content": {
+        "text": "SHOUT FOR HELP"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 10,
+        "fontWeight": 400,
+        "lineHeightPx": 12.5,
+        "letterSpacingPx": 0.5
+      },
+      "geometry": {
+        "x": 153.52,
+        "y": 144.28,
+        "width": 82.96,
+        "height": 10.49
+      },
+      "box": {
+        "x": 153.52,
+        "y": 144.28,
+        "width": 82.96,
+        "height": 10.49,
+        "left": 153.52,
+        "top": 144.28,
+        "right": 236.48,
+        "bottom": 154.78
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "center",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "d407c4e8"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#666666",
+            "rgba": "rgba(102, 102, 102, 1)"
+          },
+          "background": {
+            "hex": "#d0d0d0",
+            "rgba": "rgba(208, 208, 208, 1)"
+          },
+          "contrast": {
+            "ratio": 3.723,
+            "wcag": "FAIL"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#666666",
+            "rgba": "rgba(102, 102, 102, 1)"
+          },
+          "background": {
+            "hex": "#d0d0d0",
+            "rgba": "rgba(208, 208, 208, 1)"
+          },
+          "contrast": {
+            "ratio": 3.723,
+            "wcag": "FAIL"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 14,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 6.29,
+        "verticalRhythm": {
+          "score": 0.965
+        }
+      }
+    },
+    {
+      "index": 12,
+      "sourceIndex": 12,
+      "id": null,
+      "tag": "div",
+      "label": "div.card.preview-card.preview-card-primary",
+      "semanticRole": "generic",
+      "content": {
+        "text": "UNRESPONSIVE"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 130,
+        "y": 117,
+        "width": 130,
+        "height": 95
+      },
+      "box": {
+        "x": 130,
+        "y": 117,
+        "width": 130,
+        "height": 95,
+        "left": 130,
+        "top": 117,
+        "right": 260,
+        "bottom": 212
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "absolute",
+        "alignment": "center",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#zone-top",
+        "localLayerIndex": 2
+      },
+      "componentIdentity": {
+        "hash": "7b14b14"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#d0d0d0",
+            "rgba": "rgba(208, 208, 208, 1)"
+          },
+          "contrast": {
+            "ratio": 13.615,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#d0d0d0",
+            "rgba": "rgba(208, 208, 208, 1)"
+          },
+          "contrast": {
+            "ratio": 13.615,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 12,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.25,
+        "verticalRhythm": {
+          "score": 0.375
+        }
+      }
+    },
+    {
+      "index": 13,
+      "sourceIndex": 13,
+      "id": null,
+      "tag": "div",
+      "label": "div.card-header",
+      "semanticRole": "generic",
+      "content": {
+        "text": "UNRESPONSIVE"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 10,
+        "fontWeight": 400,
+        "lineHeightPx": 12.5,
+        "letterSpacingPx": 0.5
+      },
+      "geometry": {
+        "x": 152.84,
+        "y": 156.5,
+        "width": 84.3,
+        "height": 12
+      },
+      "box": {
+        "x": 152.84,
+        "y": 156.5,
+        "width": 84.3,
+        "height": 12,
+        "left": 152.84,
+        "top": 156.5,
+        "right": 237.14,
+        "bottom": 168.5
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "center",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "d407c4e8"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#666666",
+            "rgba": "rgba(102, 102, 102, 1)"
+          },
+          "background": {
+            "hex": "#d0d0d0",
+            "rgba": "rgba(208, 208, 208, 1)"
+          },
+          "contrast": {
+            "ratio": 3.723,
+            "wcag": "FAIL"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#666666",
+            "rgba": "rgba(102, 102, 102, 1)"
+          },
+          "background": {
+            "hex": "#d0d0d0",
+            "rgba": "rgba(208, 208, 208, 1)"
+          },
+          "contrast": {
+            "ratio": 3.723,
+            "wcag": "FAIL"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 12,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 5.407,
+        "verticalRhythm": {
+          "score": 0.438
+        }
+      }
+    },
+    {
+      "index": 14,
+      "sourceIndex": 14,
+      "id": "zone-middle",
+      "tag": "div",
+      "label": "div#zone-middle",
+      "semanticRole": "generic",
+      "content": {
+        "text": "Paediatric Basic Life Support"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 0,
+        "y": 220,
+        "width": 390,
+        "height": 320
+      },
+      "box": {
+        "x": 0,
+        "y": 220,
+        "width": 390,
+        "height": 320,
+        "left": 0,
+        "top": 220,
+        "right": 390,
+        "bottom": 540
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "relative",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#stage",
+        "localLayerIndex": 1
+      },
+      "componentIdentity": {
+        "hash": "2cf60d0"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 29,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.399,
+        "verticalRhythm": {
+          "score": 0.5
+        }
+      }
+    },
+    {
+      "index": 15,
+      "sourceIndex": 15,
+      "id": "wheel",
+      "tag": "div",
+      "label": "div#wheel",
+      "semanticRole": "generic",
+      "content": {
+        "text": ""
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 45,
+        "y": 230,
+        "width": 300,
+        "height": 300
+      },
+      "box": {
+        "x": 45,
+        "y": 230,
+        "width": 300,
+        "height": 300,
+        "left": 45,
+        "top": 230,
+        "right": 345,
+        "bottom": 530
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "absolute",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#zone-middle",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "b15973f4"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 0,
+          "status": "na"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.618,
+        "verticalRhythm": {
+          "score": 0.25
+        }
+      }
+    },
+    {
+      "index": 16,
+      "sourceIndex": 16,
+      "id": "active-card",
+      "tag": "div",
+      "label": "div#active-card.cover-mode",
+      "semanticRole": "generic",
+      "content": {
+        "text": "Paediatric Basic Life Support"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 105,
+        "y": 275,
+        "width": 180,
+        "height": 210
+      },
+      "box": {
+        "x": 105,
+        "y": 275,
+        "width": 180,
+        "height": 210,
+        "left": 105,
+        "top": 275,
+        "right": 285,
+        "bottom": 485
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "absolute",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#zone-middle",
+        "localLayerIndex": 1
+      },
+      "componentIdentity": {
+        "hash": "203c0d00"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 29,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.761,
+        "verticalRhythm": {
+          "score": 0.625
+        }
+      }
+    },
+    {
+      "index": 17,
+      "sourceIndex": 17,
+      "id": null,
+      "tag": "div",
+      "label": "div.cover-content",
+      "semanticRole": "generic",
+      "content": {
+        "text": "Paediatric Basic Life Support"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 105,
+        "y": 275,
+        "width": 180,
+        "height": 90
+      },
+      "box": {
+        "x": 105,
+        "y": 275,
+        "width": 180,
+        "height": 90,
+        "left": 105,
+        "top": 275,
+        "right": 285,
+        "bottom": 365
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "center",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#active-card",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "942bb574"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 29,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.382,
+        "verticalRhythm": {
+          "score": 0.625
+        }
+      }
+    },
+    {
+      "index": 18,
+      "sourceIndex": 18,
+      "id": null,
+      "tag": "div",
+      "label": "div.cover-title",
+      "semanticRole": "generic",
+      "content": {
+        "text": "Paediatric Basic Life Support"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 18,
+        "fontWeight": 700,
+        "lineHeightPx": 22.5,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 125,
+        "y": 295,
+        "width": 140,
+        "height": 42
+      },
+      "box": {
+        "x": 125,
+        "y": 295,
+        "width": 140,
+        "height": 42,
+        "left": 125,
+        "top": 295,
+        "right": 265,
+        "bottom": 337
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "center",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "2ff5ce7c"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 29,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 1.715,
+        "verticalRhythm": {
+          "score": 0.125
+        }
+      }
+    },
+    {
+      "index": 19,
+      "sourceIndex": 19,
+      "id": "knob",
+      "tag": "div",
+      "label": "div#knob",
+      "semanticRole": "generic",
+      "content": {
+        "text": ""
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 105,
+        "y": 235.1,
+        "width": 30,
+        "height": 30
+      },
+      "box": {
+        "x": 105,
+        "y": 235.1,
+        "width": 30,
+        "height": 30,
+        "left": 105,
+        "top": 235.1,
+        "right": 135,
+        "bottom": 265.1
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "absolute",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#zone-middle",
+        "localLayerIndex": 2
+      },
+      "componentIdentity": {
+        "hash": "a667c12c"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#1a1a1a",
+            "rgba": "rgba(26, 26, 26, 1)"
+          },
+          "contrast": {
+            "ratio": 1.207,
+            "wcag": "FAIL"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#1a1a1a",
+            "rgba": "rgba(26, 26, 26, 1)"
+          },
+          "contrast": {
+            "ratio": 1.207,
+            "wcag": "FAIL"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 0,
+          "status": "na"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.618,
+        "verticalRhythm": {
+          "score": 0.613
+        }
+      }
+    },
+    {
+      "index": 20,
+      "sourceIndex": 20,
+      "id": "zone-bottom",
+      "tag": "div",
+      "label": "div#zone-bottom",
+      "semanticRole": "generic",
+      "content": {
+        "text": ""
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 0,
+        "y": 540,
+        "width": 390,
+        "height": 204
+      },
+      "box": {
+        "x": 0,
+        "y": 540,
+        "width": 390,
+        "height": 204,
+        "left": 0,
+        "top": 540,
+        "right": 390,
+        "bottom": 744
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "relative",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#stage",
+        "localLayerIndex": 2
+      },
+      "componentIdentity": {
+        "hash": "dba9c488"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#f5f5f5",
+            "rgba": "rgba(245, 245, 245, 1)"
+          },
+          "contrast": {
+            "ratio": 19.262,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 0,
+          "status": "na"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.294,
+        "verticalRhythm": {
+          "score": 0.5
+        }
+      }
+    },
+    {
+      "index": 21,
+      "sourceIndex": 21,
+      "id": null,
+      "tag": "footer",
+      "label": "footer",
+      "semanticRole": "contentinfo",
+      "content": {
+        "text": "⋮ 4 steps to next decision 00:00:00"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 0,
+        "y": 744,
+        "width": 390,
+        "height": 100
+      },
+      "box": {
+        "x": 0,
+        "y": 744,
+        "width": 390,
+        "height": 100,
+        "left": 0,
+        "top": 744,
+        "right": 390,
+        "bottom": 844
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#app",
+        "localLayerIndex": 2
+      },
+      "componentIdentity": {
+        "hash": "4180a2d0"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 35,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 2.282,
+        "verticalRhythm": {
+          "score": 1
+        }
+      }
+    },
+    {
+      "index": 22,
+      "sourceIndex": 22,
+      "id": null,
+      "tag": "div",
+      "label": "div.footer-row",
+      "semanticRole": "generic",
+      "content": {
+        "text": "⋮"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 16,
+        "y": 754,
+        "width": 358,
+        "height": 36.5
+      },
+      "box": {
+        "x": 16,
+        "y": 754,
+        "width": 358,
+        "height": 36.5,
+        "left": 16,
+        "top": 754,
+        "right": 374,
+        "bottom": 790.5
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "footer",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "d66ef7fc"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 1,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 8.19,
+        "verticalRhythm": {
+          "score": 0.75
+        }
+      }
+    },
+    {
+      "index": 23,
+      "sourceIndex": 23,
+      "id": "checklist-area",
+      "tag": "div",
+      "label": "div#checklist-area",
+      "semanticRole": "generic",
+      "content": {
+        "text": ""
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 16,
+        "y": 765.25,
+        "width": 331.78,
+        "height": 14
+      },
+      "box": {
+        "x": 16,
+        "y": 765.25,
+        "width": 331.78,
+        "height": 14,
+        "left": 16,
+        "top": 765.25,
+        "right": 347.78,
+        "bottom": 779.25
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "66ebd960"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 0,
+          "status": "na"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 22.081,
+        "verticalRhythm": {
+          "score": 0.344
+        }
+      }
+    },
+    {
+      "index": 24,
+      "sourceIndex": 24,
+      "id": null,
+      "tag": "div",
+      "label": "div.overflow-btn",
+      "semanticRole": "generic",
+      "content": {
+        "text": "⋮"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 20,
+        "fontWeight": 700,
+        "lineHeightPx": 25,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 355.78,
+        "y": 759.75,
+        "width": 18.22,
+        "height": 25
+      },
+      "box": {
+        "x": 355.78,
+        "y": 759.75,
+        "width": 18.22,
+        "height": 25,
+        "left": 355.78,
+        "top": 759.75,
+        "right": 374,
+        "bottom": 784.75
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 1
+      },
+      "componentIdentity": {
+        "hash": "5613b228"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 1,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.889,
+        "verticalRhythm": {
+          "score": 0.031
+        }
+      }
+    },
+    {
+      "index": 25,
+      "sourceIndex": 25,
+      "id": null,
+      "tag": "div",
+      "label": "div.footer-row.footer-bottom",
+      "semanticRole": "generic",
+      "content": {
+        "text": "4 steps to next decision 00:00:00"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 16,
+        "y": 794.5,
+        "width": 358,
+        "height": 41.5
+      },
+      "box": {
+        "x": 16,
+        "y": 794.5,
+        "width": 358,
+        "height": 41.5,
+        "left": 16,
+        "top": 794.5,
+        "right": 374,
+        "bottom": 836
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "footer",
+        "localLayerIndex": 1
+      },
+      "componentIdentity": {
+        "hash": "ebe4159c"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 33,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 7.009,
+        "verticalRhythm": {
+          "score": 0.688
+        }
+      }
+    },
+    {
+      "index": 26,
+      "sourceIndex": 26,
+      "id": "ticker-text",
+      "tag": "div",
+      "label": "div#ticker-text",
+      "semanticRole": "generic",
+      "content": {
+        "text": "4 steps to next decision"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 11,
+        "fontWeight": 400,
+        "lineHeightPx": 13.75,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 16,
+        "y": 807.25,
+        "width": 269.58,
+        "height": 21
+      },
+      "box": {
+        "x": 16,
+        "y": 807.25,
+        "width": 269.58,
+        "height": 21,
+        "left": 16,
+        "top": 807.25,
+        "right": 285.58,
+        "bottom": 828.25
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "92cfb13c"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#555555",
+            "rgba": "rgba(85, 85, 85, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 7.455,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#555555",
+            "rgba": "rgba(85, 85, 85, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 7.455,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 24,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 11.219,
+        "verticalRhythm": {
+          "score": 0.094
+        }
+      }
+    },
+    {
+      "index": 27,
+      "sourceIndex": 27,
+      "id": "timer",
+      "tag": "div",
+      "label": "div#timer",
+      "semanticRole": "generic",
+      "content": {
+        "text": "00:00:00"
+      },
+      "typography": {
+        "fontFamily": "\"SF Mono\", Monaco, monospace",
+        "fontSizePx": 13,
+        "fontWeight": 400,
+        "lineHeightPx": 16.25,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 293.58,
+        "y": 804.25,
+        "width": 80.42,
+        "height": 27
+      },
+      "box": {
+        "x": 293.58,
+        "y": 804.25,
+        "width": 80.42,
+        "height": 27,
+        "left": 293.58,
+        "top": 804.25,
+        "right": 374,
+        "bottom": 831.25
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 1
+      },
+      "componentIdentity": {
+        "hash": "3693b8c"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 8,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 1.361,
+        "verticalRhythm": {
+          "score": 0.469
+        }
+      }
+    },
+    {
+      "index": 28,
+      "sourceIndex": 28,
+      "id": null,
+      "tag": "div",
+      "label": "div.menu-header",
+      "semanticRole": "generic",
+      "content": {
+        "text": "Menu ×"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 112,
+        "y": 50,
+        "width": 276,
+        "height": 51
+      },
+      "box": {
+        "x": 112,
+        "y": 50,
+        "width": 276,
+        "height": 51,
+        "left": 112,
+        "top": 50,
+        "right": 388,
+        "bottom": 101
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#menu-panel",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "82e0da24"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 6,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 3.794,
+        "verticalRhythm": {
+          "score": 0.75
+        }
+      }
+    },
+    {
+      "index": 29,
+      "sourceIndex": 29,
+      "id": null,
+      "tag": "button",
+      "label": "button.menu-close-btn",
+      "semanticRole": "button",
+      "content": {
+        "text": "×"
+      },
+      "typography": {
+        "fontFamily": "Arial",
+        "fontSizePx": 22,
+        "fontWeight": 400,
+        "lineHeightPx": 27.5,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 351.14,
+        "y": 62,
+        "width": 20.86,
+        "height": 26
+      },
+      "box": {
+        "x": 351.14,
+        "y": 62,
+        "width": 20.86,
+        "height": 26,
+        "left": 351.14,
+        "top": 62,
+        "right": 372,
+        "bottom": 88
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "center",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 1
+      },
+      "componentIdentity": {
+        "hash": "840fb700"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#666666",
+            "rgba": "rgba(102, 102, 102, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 5.742,
+            "wcag": "AA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#666666",
+            "rgba": "rgba(102, 102, 102, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 5.742,
+            "wcag": "AA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 1,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 0.816,
+        "verticalRhythm": {
+          "score": 0.25
+        }
+      }
+    },
+    {
+      "index": 30,
+      "sourceIndex": 30,
+      "id": null,
+      "tag": "div",
+      "label": "div.menu-items",
+      "semanticRole": "generic",
+      "content": {
+        "text": "☰ Select Protocol 🔍 Search ⚙ Settings ℹ About"
+      },
+      "typography": {
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "fontSizePx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 20,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 112,
+        "y": 101,
+        "width": 276,
+        "height": 179
+      },
+      "box": {
+        "x": 112,
+        "y": 101,
+        "width": 276,
+        "height": 179,
+        "left": 112,
+        "top": 101,
+        "right": 388,
+        "bottom": 280
+      },
+      "layoutContext": {
+        "display": "block",
+        "position": "static",
+        "alignment": "start",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flow"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div#menu-panel",
+        "localLayerIndex": 1
+      },
+      "componentIdentity": {
+        "hash": "bde99698"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 46,
+          "status": "optimal"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "near",
+        "phiDeviation": 0.076,
+        "verticalRhythm": {
+          "score": 0.375
+        }
+      }
+    },
+    {
+      "index": 31,
+      "sourceIndex": 31,
+      "id": null,
+      "tag": "button",
+      "label": "button.menu-item",
+      "semanticRole": "button",
+      "content": {
+        "text": "☰ Select Protocol"
+      },
+      "typography": {
+        "fontFamily": "Arial",
+        "fontSizePx": 13,
+        "fontWeight": 400,
+        "lineHeightPx": 16.25,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 112,
+        "y": 109,
+        "width": 276,
+        "height": 39
+      },
+      "box": {
+        "x": 112,
+        "y": 109,
+        "width": 276,
+        "height": 39,
+        "left": 112,
+        "top": 109,
+        "right": 388,
+        "bottom": 148
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "static",
+        "alignment": "left",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 0
+      },
+      "componentIdentity": {
+        "hash": "9127e2d4"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 17,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 5.459,
+        "verticalRhythm": {
+          "score": 0.375
+        }
+      }
+    },
+    {
+      "index": 32,
+      "sourceIndex": 32,
+      "id": null,
+      "tag": "button",
+      "label": "button.menu-item",
+      "semanticRole": "button",
+      "content": {
+        "text": "🔍 Search"
+      },
+      "typography": {
+        "fontFamily": "Arial",
+        "fontSizePx": 13,
+        "fontWeight": 400,
+        "lineHeightPx": 16.25,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 112,
+        "y": 148,
+        "width": 276,
+        "height": 46
+      },
+      "box": {
+        "x": 112,
+        "y": 148,
+        "width": 276,
+        "height": 46,
+        "left": 112,
+        "top": 148,
+        "right": 388,
+        "bottom": 194
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "static",
+        "alignment": "left",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 1
+      },
+      "componentIdentity": {
+        "hash": "9127e2d4"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 9,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 4.382,
+        "verticalRhythm": {
+          "score": 0.5
+        }
+      }
+    },
+    {
+      "index": 33,
+      "sourceIndex": 33,
+      "id": null,
+      "tag": "button",
+      "label": "button.menu-item",
+      "semanticRole": "button",
+      "content": {
+        "text": "⚙ Settings"
+      },
+      "typography": {
+        "fontFamily": "Arial",
+        "fontSizePx": 13,
+        "fontWeight": 400,
+        "lineHeightPx": 16.25,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 112,
+        "y": 194,
+        "width": 276,
+        "height": 39
+      },
+      "box": {
+        "x": 112,
+        "y": 194,
+        "width": 276,
+        "height": 39,
+        "left": 112,
+        "top": 194,
+        "right": 388,
+        "bottom": 233
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "static",
+        "alignment": "left",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 2
+      },
+      "componentIdentity": {
+        "hash": "9127e2d4"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 10,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 5.459,
+        "verticalRhythm": {
+          "score": 0.75
+        }
+      }
+    },
+    {
+      "index": 34,
+      "sourceIndex": 34,
+      "id": null,
+      "tag": "button",
+      "label": "button.menu-item",
+      "semanticRole": "button",
+      "content": {
+        "text": "ℹ About"
+      },
+      "typography": {
+        "fontFamily": "Arial",
+        "fontSizePx": 13,
+        "fontWeight": 400,
+        "lineHeightPx": 16.25,
+        "letterSpacingPx": 0
+      },
+      "geometry": {
+        "x": 112,
+        "y": 233,
+        "width": 276,
+        "height": 39
+      },
+      "box": {
+        "x": 112,
+        "y": 233,
+        "width": 276,
+        "height": 39,
+        "left": 112,
+        "top": 233,
+        "right": 388,
+        "bottom": 272
+      },
+      "layoutContext": {
+        "display": "flex",
+        "position": "static",
+        "alignment": "left",
+        "gridColumnStart": "auto",
+        "gridColumnSpan": "auto"
+      },
+      "composition": {
+        "type": "flex"
+      },
+      "planarPhysics": {
+        "parentFrameId": "div",
+        "localLayerIndex": 3
+      },
+      "componentIdentity": {
+        "hash": "9127e2d4"
+      },
+      "colorPhysics": {
+        "dark": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        },
+        "light": {
+          "text": {
+            "hex": "#000000",
+            "rgba": "rgba(0, 0, 0, 1)"
+          },
+          "background": {
+            "hex": "#ffffff",
+            "rgba": "rgba(255, 255, 255, 1)"
+          },
+          "contrast": {
+            "ratio": 21,
+            "wcag": "AAA"
+          }
+        }
+      },
+      "paragraphPhysics": {
+        "measure": {
+          "characters": 7,
+          "status": "short"
+        }
+      },
+      "goldenRatio": {
+        "compliance": "off",
+        "phiDeviation": 5.459,
+        "verticalRhythm": {
+          "score": 0.875
+        }
+      }
+    }
+  ]
+}

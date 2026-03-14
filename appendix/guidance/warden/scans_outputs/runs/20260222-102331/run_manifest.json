@@ -1,0 +1,48 @@
+{
+  "generatedAt": "2026-02-22T15:23:38.216Z",
+  "runStamp": "20260222-102331",
+  "baseUrl": "http://127.0.0.1:3000",
+  "rootDir": "appendix/guidance/warden/scans_outputs",
+  "runDir": "appendix/guidance/warden/scans_outputs/runs/20260222-102331",
+  "currentDir": "appendix/guidance/warden/scans_outputs/current",
+  "options": {
+    "diff": true,
+    "coverageReport": true,
+    "multiViewport": false,
+    "viewportSpecs": [
+      "390x844"
+    ],
+    "scanAll": true,
+    "pageArg": null,
+    "archivedCurrentDir": "appendix/guidance/warden/scans_outputs/archive/current-20260222-102331"
+  },
+  "scans": [
+    {
+      "page": "home",
+      "viewport": "390x844",
+      "elements": 27,
+      "scanFile": "home-390x844-scan.json",
+      "diffFile": null,
+      "coverage": {
+        "mode": "devmode-overlay",
+        "selectorCandidateCount": 36,
+        "uniqueCandidateCount": 36,
+        "includeableCount": 27,
+        "scannedCount": 27,
+        "scanCap": 450,
+        "capped": false,
+        "dropped": {
+          "too-small": 9,
+          "hidden": 0,
+          "offscreen": 0,
+          "no-signal": 0,
+          "cap-reached": 0
+        },
+        "scannedRatioOfUnique": 0.75,
+        "scannedRatioOfIncludeable": 1
+      },
+      "attempts": 1,
+      "attemptErrors": []
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+ticket_id: "HREQ-XXX"
+date: "YYYY-MM-DD"
+status: "OPEN"
+authority: "headmaster"
+title: ""
+objective: |
+  State the exact future-state or source-map problem being resolved.
+scope: |
+  Now:
+  Next:
+  Later:
+source_pack: []
+destructive_change_plan:
+  requires_explicit_human_approval: false
+  tracked_paths_to_delete: []
+  tracked_paths_to_move: []
+  rollback_note: ""
+acceptance_criteria: []
+acceptance_results: []
+checklist_outcome: "PENDING"
+checklist_notes: ""
+rubric_outcome: "PENDING"
+research_session: ""
+artifacts_updated: []
+recommended_warden_scope: ""
+acceptance_gates_for_warden: []
+closed_date: ""
+closed_reason: ""

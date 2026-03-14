@@ -1,0 +1,32 @@
+version: "1.0"
+purpose: "Resuscitation app structural and quality analysis via Blueprint workspace snapshot mode"
+
+targets:
+  - type: github
+    name: "resus-gh-test"
+    repo: "projecthamburgresearch/resuscitation_health_app"
+    ref: "main"
+    bpignore: true
+
+domains:
+  - xray
+  - manifest
+  - cortex
+  - registry
+  - sonar
+  - synapse
+
+preset: "standard"
+
+output:
+  formats:
+    - json
+    - markdown
+  manifest_format: "yaml"
+  git_analysis: false
+
+warden:
+  auto_recover: true
+  checkpoint_before_changes: true
+  sync_after_run: true
+  max_retries: 3

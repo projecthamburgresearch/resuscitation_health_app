@@ -1,0 +1,139 @@
+# ==============================================================================
+# Warden Research Ticket
+# ==============================================================================
+
+ticket_id: "REQ-008-DECISION-CONFIRM-AND-NAV-CONSUMED-FIX"
+date: "2026-02-22"
+status: "RESOLVED" # OPEN | IN_PROGRESS | RESOLVED | BLOCKED
+ticket_type: "BUG" # FEATURE | BUG | VALIDATION | RESEARCH
+title: "Fix decision wheel interaction (tap-to-select then drag-to-confirm) and CSS transition jitter after navigation"
+
+objective: |
+  Two bugs make the wheel feel broken:
+  1. After advancing/rewinding, the knob fights between the smooth anchor snap
+     CSS transition and ongoing finger-following in onKnobDrag, causing visible
+     jitter. Root cause: setKnobPosition(currentAngle) was called even after
+     navConsumed=true, overriding the CSS-animated snap.
+  2. Forward wheel drag on decision cards CYCLES between YES/NO options
+     (carousel mode) instead of confirming. Users tap an option expecting
+     forward drag to advance, but it switches to the other option. This is
+     why "the wheel gets stuck at decisions."
+
+  Fix: (1) Stop updating knob after navConsumed. (2) Replace cycling with
+  explicit tap-to-select + drag-to-confirm flow.
+
+profile:
+  target_component: "app/index.html (JS logic only)"
+  route: "home"
+  viewport: "390x844"
+  theme: "LIGHT_ONLY"
+  interaction_mode: "ANCHOR_STATE_MACHINE_V2"
+
+state_machine_scope:
+  algorithm_source: "app/algorithms/*.json"
+  direction: "both"
+  transition_ids:
+    - "DECISION forward (confirm after tap)"
+    - "DECISION reverse (always rewind)"
+    - "All modes (navConsumed jitter fix)"
+  state_ids:
+    - "DECISION"
+    - "COVER"
+    - "LINEAR"
+    - "LOOP"
+    - "TERMINAL"
+  expected_state_contract:
+    incoming_zone: "Unchanged"
+    current_zone: "Unchanged"
+    previous_zone: "Unchanged"
+  decision_semantics:
+    forward_requires_tap_then_drag: true
+    forward_requires_confirmation: true
+    reverse_requires_confirmation: false
+    both_options_dimmed_on_arrival: true
+    rewind_into_committed_shows_previous_choice: true
+  anchor_semantics:
+    knob_follows_finger_during_drag: true
+    smooth_snap_to_anchor_on_navigation: true
+    smooth_snap_back_on_release: true
+    decision_knob_locked_at_anchor: true
+    no_knob_update_after_navConsumed: true
+
+telemetry_levers:
+  use_devmode_parity_check: true
+  use_scan_json: true
+  use_blueprint_outputs: true
+  use_static_screenshots_and_splits: true
+  use_dynamic_screenshots_and_splits: true
+  require_transition_before_after_pairs: true
+
+heuristic_levers:
+  use_local_rubric_guide: true
+  use_local_reference_algorithms: true
+  allow_web_search: false
+
+rubric_levers:
+  enforce_clear_unambiguous: true
+  enforce_self_contained: true
+  enforce_falsifiable_binary: true
+  enforce_unstacked: true
+  enforce_timeless: true
+
+deliverables:
+  require_findings_by_severity: true
+  require_code_target_map: true
+  require_regression_watchlist: true
+  require_validation_rerun_summary: true
+
+evidence_anchors:
+  latest_blueprint_run: "appendix/guidance/warden/blueprint_outputs/runs/20260222-123522-warden"
+  latest_scan_run: "appendix/guidance/warden/scans_outputs/runs/20260222-123533"
+  latest_design_run: "appendix/guidance/warden/design/runs/20260222-123540__bp-20260222-123522-warden__scan-20260222-123533"
+
+implementation_directives:
+  - id: "D-01"
+    directive: "Add state.decisionTapped flag (boolean, default false) to track explicit option selection."
+  - id: "D-02"
+    directive: "Reset decisionTapped=false in applyAlgorithm(), advance(), and setCurrentCardForAutomation()."
+  - id: "D-03"
+    directive: "In rewind(), set decisionTapped=true only when rewinding into a card with a committed decision record."
+  - id: "D-04"
+    directive: "In selectDecisionOption(), set decisionTapped=true."
+  - id: "D-05"
+    directive: "In handleDecisionWheelDrag(), replace cycling logic with: forward drag confirms if decisionTapped, using standard NAV_THRESHOLD_DEG."
+  - id: "D-06"
+    directive: "In onKnobDrag() navConsumed block, remove setKnobPosition(currentAngle) — return immediately so CSS transition is not fought."
+  - id: "D-07"
+    directive: "Delete DECISION_CYCLE_DEG constant (now unused)."
+  - id: "D-08"
+    directive: "In renderPreviewZone(), gate isSelected on decisionTapped so both options appear dimmed on arrival."
+  - id: "D-09"
+    directive: "In endDecisionDrag(), gate card-drag confirm on state.decisionTapped."
+  - id: "D-10"
+    directive: "In snapshotForAutomation(), expose decisionTapped for test observability."
+  - id: "D-11"
+    directive: "In __WARDEN_AUTOMATION.selectDecisionOption(), set decisionTapped=true to mirror user tap."
+  - id: "D-12"
+    directive: "No changes to arc math, CSS, anchor calculation, or algorithm JSON files."
+
+acceptance_gates:
+  - id: "AG-01"
+    gate: "Decision arrival: both options dimmed (no pre-selection), forward drag blocked."
+  - id: "AG-02"
+    gate: "Tap to select: option highlights, preview stack appears for selected path."
+  - id: "AG-03"
+    gate: "Forward drag confirms: advances to correct target with smooth knob snap (only after tap)."
+  - id: "AG-04"
+    gate: "Forward drag without tap: nothing happens, wheel stays locked."
+  - id: "AG-05"
+    gate: "Card drag-down confirms: secondary method still works (only after tap)."
+  - id: "AG-06"
+    gate: "Reverse always works: rewinds without needing tap."
+  - id: "AG-07"
+    gate: "No jitter: after any advance/rewind, knob smoothly snaps with no fighting."
+  - id: "AG-08"
+    gate: "Rewind into committed decision: previous choice shown highlighted, can re-confirm or change."
+  - id: "AG-09"
+    gate: "Full traversal: cover to terminal and back for each of 5 algorithms without stuck states."
+  - id: "AG-10"
+    gate: "Dev-mode parity passes."

@@ -1,0 +1,490 @@
+﻿🔎 Anchor Example 1
+Plastic Bottles Anchor Example
+without Golden Response (Prompt, Sources, & Rubric only)
+Prompt
+Your client recently started working on a business idea to reduce the number of plastic bottles that are not recycled. The idea is to commercialize a feedstock recycling solution for PET plastic, which is the most common plastic used in plastic bottles. Feedstock recycling is a way of breaking down PET back into its building blocks (monomers) using either chemical or biological methods. The big advantage is that new, high-quality PET can be created from these recovered building blocks. Your client would like an estimation of the world’s consumption of PET plastic bottles from January 2024 through December 2030. Assume that the average weight of an empty PET bottle is 10 grams.
+
+
+Task Objectives:
+1. Estimate the number of plastic bottles consumed from January 2024 through December 2030 using the following process:
+   1. Using the files “828 - Important Plastic Water Bottle Stats.pdf” and “828 - Worldbank Population - Original.csv”, determine the average consumption of plastic water bottles per person per year based on global daily consumption and the world population in 2023. Round to the nearest whole number. Assume the figure has remained constant since 2023, and will remain constant through 2030.
+   2. Using the file “828 - Worldbank Population - Original.csv”, determine the 2019 and 2023 World population and 2019-2023 compound annual growth rate (CAGR), rounded to two decimal places. Then forecast the World population in 2024-2030 using rounded CAGR, rounding the population to the nearest whole number.
+   3. Using the calculations in 1a and 1b, determine the projected number of plastic bottles in 2024-2030, rounded to the nearest whole number.
+
+
+2. Global annual demand for PET plastic bottles:
+   1. Using the file “828 - Percent of Plastic Water Bottles.pdf”, determine the % of bottles that are made from PET, assuming the figure is for 2024. The % made from PET is expected to increase by 1 percent every year, compounded (i.e., each year’s value is 1.01× the prior year), until 2030 (e.g., 50% would grow to 50.5% in one year). Round answer to one decimal place when displayed in % (e.g., 50.51% would round to 50.5%).
+   2. Using the calculation in 2a, determine the global annual demand for PET plastic bottles from 2024-2030 in metric tons, rounded to the nearest whole number. This will serve as a proxy for the total volume of PET potentially available for recycling.
+Sources
+Consulting 828
+Rubric
+Criterion 1
+Description: Identifies the World population in 2023 as 8,061,876,001.
+Weight: Major
+Sources: "Worldbank Population" file.
+Rationale: Found the value 8,061,876,001 for the World population in 2023 in the "Worldbank Population" file, under Column BP, Row 265.
+Dependent Criteria: N/A
+
+
+Criterion 2
+Description: Identifies the average consumption of bottles per person per year as 59.
+Weight: Major
+Sources: “Important Plastic Water Bottle Stats _ Aquasana" and “Worldbank Population” files.
+Rationale: Found the value 1.3 billion for the average daily global consumption of plastic water bottles in the "Important Plastic Water Bottle Stats _ Aquasana" file. Multiplied by 365 to get annual consumption. Divided by 2023 world population found in “Worldbank Population” file to get average number of plastic water bottles consumed per person per year: (1,300,000,000*365)/8,061,876,001 = 58.87, rounded to the nearest whole number = 59. The file also states this figure remains constant until 2030.
+Dependent Criteria: 1
+
+Criterion 3
+Description: Identifies the World population in 2019 as 7,776,892,015.
+Weight: Major
+Sources: "Worldbank Population" file.
+Rationale: Found the value 7,776,892,015 for the World population in 2019 in the "Worldbank Population" file, under Column BL, Row 265.
+Dependent Criteria: N/A
+
+Criterion 4
+Description: Calculates the 2019-2023 World population CAGR as 0.90%.
+Weight: Major
+Sources: "Worldbank Population" file. 
+Rationale: Formula: CAGR=((End Population/Start Population)^(1/Number of Years))−1.  
+CAGR = ((8,061,876,001 [from Criterion #1] / 7,776,892,015 [from Criterion #3])^(1/4 [Number of years from 2019 to 2023, derived from information in Criterion #3 and Criterion #1])) − 1 = 0.90%.
+Dependent Criteria: 1, 3
+
+Criterion 5
+Description: Forecasts the World population in 2024 as 8,134,432,885.
+Weight: Major
+Sources: "Worldbank Population" file.
+Rationale: Formula: Forecast Population = Previous Year Population * (1 + CAGR). 
+2024 Population = 8,061,876,001 [from Criterion #1] * (1 + 0.90% [from Criterion #4]) = 8,134,432,885.
+Dependent Criteria: 1, 4, 3
+
+Criterion 6
+Description: Forecasts the World population in 2025 as 8,207,642,781.
+Weight: Major
+Sources: "Worldbank Population" file.
+Rationale: Formula: Forecast Population = Previous Year Population * (1 + CAGR). 
+2025 Population = 8,134,432,885 [from Criterion #5] * (1 + 0.90% [from Criterion #4]) = 8,207,642,781.
+Dependent Criteria: 4, 5, 3, 1
+
+Criterion 7
+Description: Forecasts the World population in 2026 as 8,281,511,566.
+Weight: Major
+Sources: "Worldbank Population" file.
+Rationale: Formula: Forecast Population = Previous Year Population * (1 + CAGR). 
+2026 Population = 8,207,642,781 [from Criterion #6] * (1 + 0.90% [from Criterion #4]) = 8,281,511,566.00, rounded to the nearest whole number per prompt instructions as 8,281,511,566.
+Dependent Criteria: 4, 6, 3, 1, 5
+
+Criterion 8
+Description: Forecasts the World population in 2027 as 8,356,045,170.
+Weight: Major
+Sources: "Worldbank Population" file.
+Rationale: Formula: Forecast Population = Previous Year Population * (1 + CAGR). 
+2027 Population = 8,281,511,566 [from Criterion #7] * (1 + 0.90% [from Criterion #4]) = 8,356,045,170.10, rounded to the nearest whole number per prompt instructions as 8,356,045,170. 
+Dependent Criteria: 4, 7, 3, 1, 5, 6
+
+Criterion 9
+Description: Forecasts the World population in 2028 as 8,431,249,577.
+Weight: Major
+Sources: "Worldbank Population" file.
+Rationale: Formula: Forecast Population = Previous Year Population * (1 + CAGR). 
+2028 Population = 8,356,045,170 [from Criterion #8] * (1 + 0.90% [from Criterion #4]) = 8,431,249,576.63, rounded to the nearest whole number per prompt instructions as 8,431,249,577. 
+Dependent Criteria: 4, 8, 3, 1, 5, 6, 7
+
+Criterion 10
+Description: Forecasts the World population in 2029 as 8,507,130,823.
+Weight: Major
+Sources: "Worldbank Population" file.
+Rationale: Formula: Forecast Population = Previous Year Population * (1 + CAGR). 
+2029 Population = 8,431,249,577 [from Criterion #9] * (1 + 0.90% [from Criterion #4]) = 8,507,130,822.82, rounded to the nearest whole number per prompt instructions as 8,507,130,823. 
+Dependent Criteria: 4, 9, 3, 1, 5, 6, 7, 8
+
+Criterion 11
+Description: Forecasts the World population in 2030 as 8,583,695,000.
+Weight: Major
+Sources: "Worldbank Population" file.
+Rationale: Formula: Forecast Population = Previous Year Population * (1 + CAGR).  
+2030 Population = 8,507,130,823 [from Criterion #10] * (1 + 0.90% [from Criterion #4]) = 8,583,695,000.22, rounded to the nearest whole number per prompt instructions as 8,583,695,000. 
+Dependent Criteria: 4, 10, 3, 1, 5, 6, 7, 8, 9
+
+Criterion 12
+Description: Calculates the number of plastic bottles in 2024 as 479,931,540,215.
+Weight: Major
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file.
+Rationale: Formula: Number of bottles = Population * Average consumption per person. 
+2024 Bottles = 8,134,432,885 [from Criterion #5] * 59 [from Criterion #2] = 479,931,540,215. 
+Dependent Criteria: 2, 5, 3, 1, 4
+
+Criterion 13
+Description: Calculates the number of plastic bottles in 2025 as 484,250,924,079.
+Weight: Major
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file.
+Rationale: Formula: Number of bottles = Population * Average consumption per person. 
+2025 Bottles = 8,207,642,781 [from Criterion #6] * 59 [from Criterion #2] = 484,250,924,079.
+Dependent Criteria: 2, 6, 3, 1, 4, 5
+
+Criterion 14
+Description: Calculates the number of plastic bottles in 2026 as 488,609,182,394.
+Weight: Major
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file.
+Rationale: Formula: Number of bottles = Population * Average consumption per person.  
+2026 Bottles = 8,281,511,566 [from Criterion #7] * 59  [from Criterion #2] = 488,609,182,394.
+Dependent Criteria: 2, 7, 3, 1, 4, 5, 6
+
+Criterion 15
+Description: Calculates the number of plastic bottles in 2027 as 493,006,665,030.
+Weight: Major
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file.
+Rationale: Formula: Number of bottles = Population * Average consumption per person.  
+2027 Bottles = 8,356,045,170 [from Criterion #8] * 59 [from Criterion #2] = 493,006,665,030. 
+Dependent Criteria: 2, 8, 3, 1, 4, 5, 6, 7
+
+Criterion 16
+Description: Calculates the number of plastic bottles in 2028 as 497,443,725,043.
+Weight: Major
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file.
+Rationale: Formula: Number of bottles = Population * Average consumption per person.  
+2028 Bottles = 8,431,249,577 [from Criterion #9] * 59  [from Criterion #2] = 497,443,725,043. 
+Dependent Criteria: 2, 9, 3, 1, 4, 5, 6, 7, 8
+
+Criterion 17
+Description: Calculates the number of plastic bottles in 2029 as 501,920,718,557.
+Weight: Major
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file.
+Rationale: Formula: Number of bottles = Population * Average consumption per person.  
+2029 Bottles = 8,507,130,823 [from Criterion #10] * 59  [from Criterion #2] = 501,920,718,557.
+Dependent Criteria: 2, 10, 3, 1, 4, 5, 6, 7, 8, 9
+
+Criterion 18
+Description: Calculates the number of plastic bottles in 2030 as 506,438,005,000.
+Weight: Major
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file.
+Rationale: Formula: Number of bottles = Population * Average consumption per person. 
+2030 Bottles = 8,583,695,000 [from Criterion #11] * 59 [from Criterion #2] = 506,438,005,000.
+Dependent Criteria: 2, 11, 3, 1, 4, 5, 6, 7, 8, 9, 10
+
+Criterion 19
+Description: Identifies the % of bottles made from PET in 2024 as 78.8%.
+Weight: Major
+Sources:  "Per cent of plastic water bottles" file.
+Rationale: Found the value 78.8% for the % of bottles made from PET in 2024 in the sentence "PET accounts for 78.8 percent of plastic water bottles"
+Dependent Criteria: N/A
+
+Criterion 20
+Description: Calculates the % of bottles made from PET in 2025 as 79.6%.
+Weight: Major
+Sources: "Per cent of plastic water bottles" file
+Rationale: Formula: % PET for Year N = % PET for Year (N-1) * 101.0% [from Prompt assumptions].  
+% of bottles made from PET in 2025 = 78.8% [from Criterion #19] * 101.0% [from Prompt assumptions] = 79.6%. 
+Dependent Criteria: 19
+
+Criterion 21
+Description: Calculates the % of bottles made from PET in 2026 as 80.4%.
+Weight: Major
+Sources: "Per cent of plastic water bottles" file
+Rationale: Formula: % PET for Year N = % PET for Year (N-1) * 101.0% [from Prompt assumptions]. 
+% of bottles made from PET in 2026 = 79.6% [from Criterion #20] * 101.0% [from Prompt assumptions] = 80.4%. 
+Dependent Criteria: 20, 19
+
+Criterion 22
+Description: Calculates the % of bottles made from PET in 2027 as 81.2%.
+Weight: Major
+Sources: "Per cent of plastic water bottles" file
+Rationale: Formula: % PET for Year N = % PET for Year (N-1) * 101.0% [from Prompt assumptions]. 
+% of bottles made from PET in 2027 = 80.4% [from Criterion #21] * 101.0% [from Prompt assumptions] = 81.2%. 
+Dependent Criteria: 21, 19, 20
+
+Criterion 23
+Description: Calculates the % of bottles made from PET in 2028 as 82.0%.
+Weight: Major
+Sources: "Per cent of plastic water bottles" file
+Rationale: Formula: % PET for Year N = % PET for Year (N-1) * 101.0% [from Prompt assumptions]. 
+% of bottles made from PET in 2028 = 81.2% [from Criterion #22] * 101.0% [from Prompt assumptions] = 82.0%. 
+Dependent Criteria: 22, 19, 20, 21
+
+Criterion 24
+Description: Calculates the % of bottles made from PET in 2029 as 82.8%.
+Weight: Major
+Sources: "Per cent of plastic water bottles" file
+Rationale: Formula: % PET for Year N = % PET for Year (N-1) * 101.0% [from Prompt assumptions]. 
+% of bottles made from PET in 2029 = 82% [from Criterion #23] * 101.0% [from Prompt assumptions] = 82.8%. 
+Dependent Criteria: 23, 19, 20, 21, 22
+
+Criterion 25
+Description: Calculates the % of bottles made from PET in 2030 as 83.6%.
+Weight: Major
+Sources: "Per cent of plastic water bottles" file
+Rationale: Formula: % PET for Year N = % PET for Year (N-1) * 101.0% [from Prompt assumptions]. 
+% of bottles made from PET in 2030 = 82.8% [from Criterion #24] * 101.0% [from Prompt assumptions] = 83.6%. 
+Dependent Criteria: 24, 19, 21, 22, 23
+
+Criterion 26
+Description: Calculates the global annual demand for PET plastic bottles in 2024 as 3,781,861 metric tons.
+Weight: Critical
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file, "Per cent of plastic water bottles" file
+Rationale: Formula: Demand (metric tons) = (Number of bottles * % PET * Bottle weight in kg) / 1000. (Bottle weight of 0.01kg from Prompt assumptions). 
+2024 Demand (metric tons) = (479,931,540,215 [from Criterion #12] * 0.788 [from Criterion #19] * 0.01 [Bottle weight in kg from Prompt assumptions]) / 1000 = 3781860.54 metric tons, rounded to the nearest whole number per prompt instructions as 3,781,861 metric tons. 
+Dependent Criteria: 12, 19, 1, 2, 3, 4, 5
+
+Criterion 27
+Description: Calculates the global annual demand for PET plastic bottles in 2025 as 3,854,637 metric tons.
+Weight: Critical
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file, "Per cent of plastic water bottles" file
+Rationale: Formula: Demand (metric tons) = (Number of bottles * % PET * Bottle weight in kg) / 1000. (Bottle weight of 0.01kg from Prompt assumptions ). 
+2025 Demand (metric tons) = (484,250,924,079. [from Criterion #13] * 0.796 [from Criterion #20] * 0.01 [Bottle weight in kg from Prompt assumptions]) / 1000 = 3854637.36 metric tons, rounded to the nearest whole number as per prompt instructions as  3,854,637 metric tons. 
+Dependent Criteria: 13, 20, 1, 2, 3, 4, 5, 6, 19
+
+Criterion 28
+Description: Calculates the global annual demand for PET plastic bottles in 2026 as 3,928,418 metric tons.
+Weight: Critical
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file, "Per cent of plastic water bottles" file
+Rationale: Formula: Demand (metric tons) = (Number of bottles * % PET * Bottle weight in kg) / 1000. (Bottle weight of 0.01kg from Prompt assumptions). 
+2026 Demand (metric tons) = (488,609,182,394 [from Criterion #14] * 0.804 [from Criterion #21] * 0.01 [Bottle weight in kg from Prompt assumptions]) / 1000 = 3928417.83 metric tons, rounded to the nearest whole number as per prompt instructions as 3,928,418 metric tons. 
+Dependent Criteria: 14, 21, 1, 2, 3, 4, 5, 6, 7, 19, 20
+
+Criterion 29
+Description: Calculates the global annual demand for PET plastic bottles in 2027 as 4,003,214 metric tons.
+Weight: Critical
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file, "Per cent of plastic water bottles" file
+Rationale: Formula: Demand (metric tons) = (Number of bottles * % PET * Bottle weight in kg) / 1000. (Bottle weight of 0.01kg from Prompt assumptions ). 
+2027 Demand (metric tons) = (493,006,665,030 [from Criterion #15] * 0.812 [from Criterion #22] * 0.01 [Bottle weight in kg from Prompt assumptions]) / 1000 = 4003214.12 metric tons, rounded to the nearest whole number as per prompt instructions as 4,003,214 metric tons. 
+Dependent Criteria: 15, 22, 1, 2, 3, 4, 5, 6, 7, 8, 19, 20, 21
+
+Criterion 30
+Description: Calculates the global annual demand for PET plastic bottles in 2028 as 4,079,039 metric tons.
+Weight: Critical
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file, "Per cent of plastic water bottles" file
+Rationale: Formula: Demand (metric tons) = (Number of bottles * % PET * Bottle weight in kg) / 1000. (Bottle weight of 0.01kg from Prompt assumptions ). 
+2028 Demand (metric tons) = (497,443,725,043 [from Criterion #16] * 0.82 [from Criterion #23] * 0.01 [Bottle weight in kg from Prompt assumptions]) / 1000 = 4079038.55 metric tons, rounded to the nearest whole number as per prompt instructions as 4,079,039 metric tons. 
+Dependent Criteria: 16, 23, 1, 2, 3, 4, 5, 6, 7, 8, 9, 19, 20, 21, 22
+
+Criterion 31
+Description: Calculates the global annual demand for PET plastic bottles in 2029 as 4,155,904 metric tons.
+Weight: Critical
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file, "Per cent of plastic water bottles" file
+Rationale: Formula: Demand (metric tons) = (Number of bottles * % PET * Bottle weight in kg) / 1000. (Bottle weight of 0.01kg from Prompt assumptions ). 
+2029 Demand (metric tons) = (501,920,718,557 [from Criterion #17] * 0.828 [from Criterion #24] * 0.01 [Bottle weight in kg from Prompt assumptions]) / 1000 = 4155903.55 metric tons, rounded to the nearest whole number as per prompt instructions as 4,155,904 metric tons. 
+Dependent Criteria: 17, 24, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 19, 20, 21, 22, 23
+
+Criterion 32
+Description: Calculates the global annual demand for PET plastic bottles in 2030 as 4,233,822 metric tons.
+Weight: Critical
+Sources: "Important Plastic Water Bottle Stats _ Aquasana" file, "Worldbank Population" file, "Per cent of plastic water bottles" file
+Rationale: Formula: Demand (metric tons) = (Number of bottles * % PET * Bottle weight in kg) / 1000. (Bottle weight of 0.01kg from Prompt assumptions ). 
+2030 Demand (metric tons) = (506,438,005,000 [from Criterion #18] * 0.836 [from Criterion #25] * 0.01 [Bottle weight in kg from Prompt assumptions]) / 1000 = 4233821.72 metric tons, rounded to the nearest whole number as per prompt instructions as 4,233,822 metric tons. 
+Dependent Criteria: 18, 25, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 19, 20, 21, 22, 23, 24
+
+
+
+
+
+
+
+
+
+
+🍶 Anchor Example 2
+Flavored Water Market Entry Anchor Example
+with Golden Response (Prompt, Sources, Golden Response, Rubric)
+
+
+Prompt
+FrancyBev is one of the top three vertically-integrated American soft-drink manufacturers.
+FrancyBev is thinking of launching a new flavored water product. The company has requested advice on whether they should do it, and if so, how they should do it.
+
+
+Review the market research provided by the company in source customersurvey.csv and identify an insight that FrancyBev should consider in their decision.
+
+
+Next, FrancyBev wants to understand the potential opportunity and has requested an estimate of market size for sparkling bottled water. Use the sparkling water market by volume from 2011 to 2016 in source USAtoday.pdf as a proxy for growth through to 2026. State the CAGR and inputs and then estimate the number of 16-oz bottles of sparkling water that will be sold in the US in 2026, as an integer value.
+
+
+FrancyBev estimates that the start-up launch costs (R&D, marketing) will be $4,750,000 and production costs are $0.90 per bottle. Assuming the retail price would be $1 per bottle, how many bottles would FrancyBev have to sell in order to break even? If FrancyBev was able to sell this amount in 2026, what would be FrancyBev's market share as a percentage, rounded to one decimal place?
+
+
+To support production, FrancyBev is considering opening a new site for the new product. The company wants the new site to be as close as possible to their headquarters in Eastern Pennsylvania (near Philadelphia) and anticipates the facility would be 238,000 sq. ft. Assuming the costs scale proportionally, calculate the likely total annual operating costs based on the information in the Boyd report, as an integer value. How many bottles would FrancyBev have to sell in order to break even with the new site? If FrancyBev was able to sell this amount in 2026, what would be FrancyBev's market share as a percentage, rounded to one decimal place?
+
+
+Sources
+Bodyreport.pdf
+Consumersurvey.csv
+USAtoday.pdf
+
+
+Golden Response
+Key insights that FrancyBev should consider in their decision to enter the flavored water market:
+1. There is a slight preference towards sparkling (57% of survey respondents' preference) vs. flat (43%) flavored water
+2. There is room in the competitive landscape as 49% of the market is fragmented; 49% of survey respondents cited "another brand" as their preferred flavored water brand. 26% of respondents named Butters and 25% of respondents named Applelite.
+
+
+Estimate the number of 16-oz bottles of sparkling water that will be sold in the US in 2026:
+1. Identify the sparkling water market volume figures for 2011 and 2016
+- 2011: 263m
+- 2016: 574m
+
+
+2. Calculate the CAGR of the sparkling water market by volume from 2011 to 2016:
+(574,000,000 / 263,000,000) ^ (1/5) -1 = 16.9%
+
+
+3. Calculate the sparkling water market volume in 2026:
+574,000,000 ^ ((1 + 16.9%)^10)) = 2,735,627,772
+
+
+4. Convert the 2026 volume from gallons to 16-oz bottles to find the number of 16-oz bottles of sparkling water that will be sold in the US in 2026:
+2,735,627,772 * 128 oz/gal = 350,160,354,808
+350,160,354,808 / 16 = 21,885,022,176
+
+
+Number of bottles FrancyBev would have to sell in order to break even:
+$4,750,000 / ($1 - $0.90) = 47,500,000
+
+
+If FrancyBev were to sell this amount in 2026, FrancyBev's market share would be 47,500,000 / 21,885,022,176 = 0.2%
+
+
+Calculate the likely total annual operating costs based on the information in the Boyd report:
+1. Choose the benchmark as Camden NJ, as this is the closest site to Philadelphia
+2. Calculate the scaling factor. 238,000 / 300,000 = 79%
+3. Total annual operating cost is estimated as 79% * $43,082,181 = $34,178,530
+
+
+Number of bottles FrancyBev would have to sell in order to break even with the new site:
+($34,178,530 + $4,750,000) / ($1 - $0.90) = 389,285,303
+
+
+This number of bottles represents 1.8% of 2026 market share (389,285,303 / 21,885,022,176)
+
+
+Rubric
+
+
+Description
+	Weight
+	Criterion type
+	Sources
+	Rationale
+	Dependent Criteria
+	Criterion ID
+	Identifies as a key insight that a slight preference exists for sparkling water, with 57% (acceptable range is 56% to 58%) of survey respondents indicating this preference.
+	Primary objective(s)
+	Extraction (recall), Reasoning
+	consumer survey.csv
+	Percent of respondents preferring sparkling:
+1311 / 2315 = 57%
+
+
+Percent of respondents preferring flat:
+1004 / 2315 = 43%
+
+
+More respondents prefer sparkling to flat
+	
+
+	21797
+	Identifies as a key insight that the competitive landscape is fragmented, allowing for a new entrant.
+	Primary objective(s)
+	Extraction (recall), Reasoning
+	consumer survey.csv
+	There is room in the competitive landscape as 49% of the market is fragmented; 49% of survey respondents (1142 / 2315) cited "another brand" as their preferred flavored water brand. 26% (592 / 2315) of respondents named Butters and 25% (581 / 2315) of respondents named Applelite.
+	21799
+	21798
+	States that 49% (acceptable range is 48% to 50%) of survey respondents cited 'another brand' as their preferred flavored water brand.
+	Not primary objective
+	Extraction (recall), Reasoning
+	consumer survey.csv
+	49% of survey respondents (1142 / 2315) cited "another brand" as their preferred flavored water brand.
+	
+
+	21799
+	Identifies the 2011 sparkling water market volume as 263 million gallons (acceptable value is 263 million)
+	Not primary objective
+	Extraction (recall)
+	USA today.pdf
+	Article states 263m gallons of sparkling water were sold in the US in 2011
+	
+
+	21800
+	Identifies the 2016 sparkling water market volume as 574 million gallons (acceptable value is 574 million)
+	Not primary objective
+	Extraction (recall)
+	USA today.pdf
+	Article states 574m gallons of sparkling water were sold in the US in 2016
+	
+
+	21802
+	Calculates the Compound Annual Growth Rate (CAGR) for sparkling water volume from 2011 to 2016 to be 16.9% (acceptable range is 16.8% to 17.0%.)
+	Not primary objective
+	Reasoning
+	
+
+	(574,000,000 / 263,000,000) ^ (1/5) -1 = 16.9%
+	21800, 21802
+	21803
+	Calculates the projected 2026 sparkling water market volume in gallons to be 2,735,627,772 (acceptable range is 2,735,617,772 to 2,735,67,772)
+	Not primary objective
+	Reasoning
+	
+
+	574,000,000 * ((1 + 16.9%)^10)) = 2,735,627,772
+	21802, 21803
+	21804
+	Calculates the projected number of 16-oz bottles of sparkling water to be sold in the US in 2026 as 21,885,022,176 (acceptable range is 21,885,000,000 to 21,886,000,000)
+	Primary objective(s)
+	Reasoning
+	
+
+	Convert the 2026 volume from gallons to 16-oz bottles to find the number of 16-oz bottles of sparkling water that will be sold in the US in 2026
+2,735,627,772 * 128 oz/gal = 350,160,354,808
+350,160,354,808 / 16 = 21,885,022,176
+	21804
+	21805
+	Calculates the number of bottles FrancyBev must sell to break even, without a new site, as 47,500,000 (acceptable range is 47,400,000 to 48,000,000)
+	Primary objective(s)
+	Reasoning
+	
+
+	Number of bottles FrancyBev would have to sell in order to break even
+$4,750,000 / ($1 - $0.90) = 47,500,000
+	
+
+	21809
+	Calculates FrancyBev's market share in 2026 at the initial break-even volume to be 0.2% (acceptable range is 0.1% to 0.3%.)
+	Primary objective(s)
+	Reasoning
+	
+
+	If FrancyBev were to sell this amount in 2026, FrancyBev's market share would be 47,500,000 / 21,885,022,176 = 0.2%
+	21809, 21805
+	21810
+	Selects Camden, NJ as the benchmark location for calculating new site operating costs.
+	Not primary objective
+	Reasoning, Extraction (recall)
+	Boyd report.pdf
+	Prompt specifies that the new site should be located as close as possible to Philadelphia. Of the sites in the Boyd report, Camden NJ is the closest to Philadelphia
+	
+
+	21811
+	Calculates the total annual operating cost for a 238,000 sq. ft. facility to be $34,178,530 (acceptable range is $34,178,000 to $34,179,000)
+	Primary objective(s)
+	Reasoning, Extraction (recall)
+	Boyd report.pdf
+	1. Choose the benchmark as Camden NJ, as this is the closest site to Philadelphia
+2. Calculate the scaling factor. 238,000 / 300,000 = 79%
+3. Total annual operating cost is estimated as 79% * $43,082,181 = $34,178,530
+	21811
+	21812
+	Calculates the number of bottles FrancyBev must sell to break even with the new site as 389,285,303 (acceptable range is 389,285,000 to 389,286,000)
+	Primary objective(s)
+	Reasoning
+	
+
+	Number of bottles FrancyBev would have to sell in order to break even with the new site
+($34,178,530 + $4,750,000) / ($1 - $0.90) = 389,285,303
+	21812, 21809
+	21813
+	Calculates FrancyBev's market share in 2026 at the break-even volume with the new site to be between 1.8% (acceptable range is 1.7% to 1.9%)
+	Primary objective(s)
+	Reasoning
+	
+
+	This number of bottles represents 1.8% of 2026 market share (389,285,303 / 21,885,022,176)
+	21813, 21805
+	21815

@@ -1,0 +1,122 @@
+Email *
+mordecai@projecthamburg.com
+1/1
+a) To confirm that AI models are already performing well in professional fields.
+b) To find where AI models fail and create rubrics to help improve them.
+c) To create a library of prompts that anyone can use for daily tasks.
+d) To show how useless AI is for various industries.
+Feedback
+Correct Answer: b) To find where AI models fail and create rubrics to help improve them.
+Explanation: All rubric projects share the goal of creating a prompt that identifies where AI
+models fail and create a rubric that provides all the component parts of an ideal golden
+response to that prompt to help improve the model.
+Rubric Academy: What You're Doing and
+Why It Matters
+Total points
+7/7
+What's the main goal of a Mercor rubrics project? *
+12/30/25, 1:07 AM
+Rubric Academy: What You're Doing and Why It Matters
+https://docs.google.com/forms/d/e/1FAIpQLSdifh3loCIxfBpsTyhBB9hDlSK-6W59gzE4Fq-JLdvEdNsN9Q/viewscore?viewscore=AE0zAgA_B5CSWt3HA-CHWhJ…
+1/6
+
+1/1
+a) AI tools are too expensive to provide to every expert.
+b) AI-generated content is not professional enough for the clients.
+c) The project's goal is to test an expert's memory without outside help.
+d) Using AI would cover up the model's failure points, which defeats the
+project's purpose.
+Feedback
+Correct Answer: b) Using AI would cover up the model's failure points, which defeats the
+project's purpose.
+Explanation: Using AI would mean you’re not identifying failure points – you’re covering
+them up. This would make the data useless for improving the models.
+1/1
+a) Research → (Write) → Edit
+b) Prompt → (Golden Response) → Rubric
+c) Idea → (Draft) → Final Version
+d) Test → (Evaluate) → Report
+Feedback
+Correct Answer: b) Prompt → Golden Response → Rubric
+Why are you not allowed to use AI tools to complete your work on these
+projects?
+*
+What's the three-step workflow that forms the core of every rubrics
+project?
+*
+12/30/25, 1:07 AM
+Rubric Academy: What You're Doing and Why It Matters
+https://docs.google.com/forms/d/e/1FAIpQLSdifh3loCIxfBpsTyhBB9hDlSK-6W59gzE4Fq-JLdvEdNsN9Q/viewscore?viewscore=AE0zAgA_B5CSWt3HA-CHWhJ…
+2/6
+
+1/1
+a) It's just a different name for the prompt.
+b) It's a personal checklist for the expert to use.
+c) It's a final report submitted to the project manager.
+d) It turns your expertise into a structured, repeatable tool to evaluate and train
+AI models.
+Feedback
+Correct Answer: d) It turns your expertise into a structured, repeatable training tool for the
+AI.
+Explanation: A rubric turns your expertise into a training tool: a repeatable, measurable
+evaluation tool that ensures AI models can be systematically improved.
+1/1
+a) Making it as simple as possible so the AI can answer it correctly.
+b) Using your professional expertise to create prompts that expose the failure
+points of AI models.
+c) Finding a question that has already been answered correctly by other AI models.
+d) Writing a prompt that is vague and open to many interpretations.
+Feedback
+Correct Answer: b) Using your professional expertise to create prompts that expose the
+failure points of AI models.
+Explanation: The lesson emphasizes leveraging your expertise to identify scenarios where
+real professionals would expect high-quality output, but where AI falls short.
+What's the main function of a rubric in this process? *
+What's the key to designing a good prompt? *
+12/30/25, 1:07 AM
+Rubric Academy: What You're Doing and Why It Matters
+https://docs.google.com/forms/d/e/1FAIpQLSdifh3loCIxfBpsTyhBB9hDlSK-6W59gzE4Fq-JLdvEdNsN9Q/viewscore?viewscore=AE0zAgA_B5CSWt3HA-CHWhJ…
+3/6
+
+1/1
+a) It helps AI models reason and perform like real experts in professional fields.
+b) It slows down AI development by focusing only on failures.
+c) It ensures AI will only be used for simple, everyday tasks.
+d) It provides a large volume of data without focusing on quality.
+Feedback
+Correct Answer: a) It helps AI models reason and perform like real experts in professional
+fields.
+Explanation: Your contributions will help train AI models to reason and perform like real
+experts in fields where precision, insight, and sound judgment matter.
+How does your work on these projects contribute to the future of AI? *
+12/30/25, 1:07 AM
+Rubric Academy: What You're Doing and Why It Matters
+https://docs.google.com/forms/d/e/1FAIpQLSdifh3loCIxfBpsTyhBB9hDlSK-6W59gzE4Fq-JLdvEdNsN9Q/viewscore?viewscore=AE0zAgA_B5CSWt3HA-CHWhJ…
+4/6
+
+1/1
+a) It's valuable because using AI is too expensive for these tasks.
+b) It's mainly used to correct AI hallucinations and mistakes with grammar and
+spelling.
+c) It's the key to identifying AI failures and creating correct answers, which can't
+be done by the AI itself.
+d) It's only important for the initial onboarding phase.
+Feedback
+Correct Answer: c) It's the key to identifying AI failures and creating correct answers,
+which can't be done by the AI itself.
+Explanation: Your real-world expertise is what makes these projects valuable. This is
+because you can spot inaccurate responses and provide the correct ones, a skill the AI
+we're trying to improve doesn't yet have.
+This form was created inside of Mercor. - Contact form owner
+Does this form look suspicious? Report
+What's the most important takeaway about your expertise in this context? *
+ Forms
+12/30/25, 1:07 AM
+Rubric Academy: What You're Doing and Why It Matters
+https://docs.google.com/forms/d/e/1FAIpQLSdifh3loCIxfBpsTyhBB9hDlSK-6W59gzE4Fq-JLdvEdNsN9Q/viewscore?viewscore=AE0zAgA_B5CSWt3HA-CHWhJ…
+5/6
+
+12/30/25, 1:07 AM
+Rubric Academy: What You're Doing and Why It Matters
+https://docs.google.com/forms/d/e/1FAIpQLSdifh3loCIxfBpsTyhBB9hDlSK-6W59gzE4Fq-JLdvEdNsN9Q/viewscore?viewscore=AE0zAgA_B5CSWt3HA-CHWhJ…
+6/6

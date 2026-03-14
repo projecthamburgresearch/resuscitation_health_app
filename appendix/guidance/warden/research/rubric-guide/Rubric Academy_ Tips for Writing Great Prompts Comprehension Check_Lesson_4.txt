@@ -1,0 +1,200 @@
+Email *
+mordecai@projecthamburg.com
+1/1
+a) It makes the prompt shorter and easier for the model to understand.
+b) It guarantees the model will only use qualitative reasoning.
+c) It tests the model's ability to maintain context and use earlier results to
+inform later steps.
+d) It focuses the model on a single, isolated calculation.
+Feedback
+Correct Answer: c) It tests the model's ability to maintain context and use earlier results to
+inform later steps.
+Explanation: Tip 3, "Scaffold Tasks to Test Sequential Reasoning," explains that creating a
+chain of related tasks is crucial. This method directly tests whether the model can
+maintain the context from one step to the next and use the output from an earlier step
+(like a calculation) to inform a later step (like a recommendation).
+Rubric Academy: Tips for Writing Great
+Prompts Comprehension Check
+Total points
+9/9
+What is the primary benefit of scaffolding a prompt by building it as a
+chain of related tasks?
+*
+12/30/25, 1:06 AM
+Rubric Academy: Tips for Writing Great Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSebsdLsJaEI3OCeuLVQVDMm6tQOz086x4myxJwZUrATCaPEAg/viewscore?viewscore=AE0zAgAsdeQBp3Rpmh_s…
+1/10
+
+1/1
+a) It encourages the model to provide generic, high-level answers.
+b) It forces the model into detailed, verifiable reasoning based on the provided
+source.
+c) It simplifies the task by removing the need for any complex analysis.
+d) It is only useful for prompts that ask the model to simply extract information.
+Feedback
+Correct Answer: b) It forces the model into detailed, verifiable reasoning based on the
+provided source.
+Explanation: According to Tip 4, "Ground Prompts in Real Data," providing a specific
+dataset or document prevents the model from giving generic, high-level answers. It
+compels the model to base its analysis and conclusions on the evidence provided, leading
+to more detailed and verifiable outputs.
+Why is it often beneficial to ground a prompt in real data, such as a CSV
+file or an interview transcript?
+*
+12/30/25, 1:06 AM
+Rubric Academy: Tips for Writing Great Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSebsdLsJaEI3OCeuLVQVDMm6tQOz086x4myxJwZUrATCaPEAg/viewscore?viewscore=AE0zAgAsdeQBp3Rpmh_s…
+2/10
+
+1/1
+a) To make the prompt more difficult for the model to follow.
+b) To allow for more creative and varied responses from the model.
+c) To eliminate ambiguity and create objective benchmarks for grading the
+output.
+d) To test the model's general knowledge outside of the prompt's core subject.
+Feedback
+Correct Answer: c) To eliminate ambiguity and create objective benchmarks for grading
+the output.
+Explanation: Tip 5, "Define Success with Specific Constraints," highlights that detailed
+instructions on formatting, rounding, and methodologies are not meant to make the task
+harder. Instead, they remove ambiguity and establish clear, objective standards, making it
+much easier to evaluate the model's performance accurately.
+What is the main purpose of including specific constraints like "Provide a
+five-bullet-point memo" or "Round final answers to integers"?
+*
+12/30/25, 1:06 AM
+Rubric Academy: Tips for Writing Great Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSebsdLsJaEI3OCeuLVQVDMm6tQOz086x4myxJwZUrATCaPEAg/viewscore?viewscore=AE0zAgAsdeQBp3Rpmh_s…
+3/10
+
+1/1
+a) Simply repeat the result of a calculation in a different format.
+b) Forget the initial analysis and answer an unrelated question.
+c) Interpret what the numbers mean for a strategy or decision, answering the
+"so what?" question and showing deeper reasoning.
+d) Come to a conclusion based on subjective opinion.
+Feedback
+Correct Answer: c) Interpret what the numbers mean for a strategy or decision, answering
+the "so what?" question.
+Explanation: As described in Tip 7, "End with a Synthesis Step," the most effective prompts
+don't just ask for a calculation ("what"); they also ask for the implication of that calculation
+("so what?"). This synthesis step requires the model to perform higher-order reasoning by
+connecting its analysis to a final recommendation or conclusion.
+A strong prompt often combines quantitative and qualitative reasoning.
+What does a "synthesis step" typically require the model to do?
+*
+12/30/25, 1:06 AM
+Rubric Academy: Tips for Writing Great Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSebsdLsJaEI3OCeuLVQVDMm6tQOz086x4myxJwZUrATCaPEAg/viewscore?viewscore=AE0zAgAsdeQBp3Rpmh_s…
+4/10
+
+1/1
+a) A single numerical answer.
+b) A list of facts extracted from a document.
+c) A short, generic paragraph.
+d) A policy brief addressed to a specific committee summarizing findings and
+recommendations.
+Feedback
+Correct Answer: d) A policy brief addressed to a specific committee summarizing findings
+and recommendations.
+Explanation: Tip 8, "Make Deliverables Mirror Real Work Artifacts," encourages framing the
+final output as a concrete product a professional would actually create. A detailed policy
+brief is a perfect example of a professional artifact, unlike a simple number or a generic
+list of facts.
+One of the suggested tips is that the final deliverable should mirror a "real
+work artifact." Which of the following is the best example of this concept?
+*
+12/30/25, 1:06 AM
+Rubric Academy: Tips for Writing Great Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSebsdLsJaEI3OCeuLVQVDMm6tQOz086x4myxJwZUrATCaPEAg/viewscore?viewscore=AE0zAgAsdeQBp3Rpmh_s…
+5/10
+
+1/1
+a) To confuse the AI model with unnecessary details.
+b) To make the prompt applicable to any industry, not just one.
+c) To ensure the prompt reflects how real professionals reason and prevent the
+model from giving generic answers.
+d) To test the model's ability to ignore irrelevant information.
+Feedback
+Correct Answer: c) To ensure the prompt reflects how real professionals reason and
+prevent the model from giving generic answers.
+Explanation: According to Tip 9, "Use Industry-Specific Assumptions," including standard
+professional assumptions makes the prompt more authentic. It grounds the model in a
+realistic context, guiding it to reason in the same way a professional in that field would and
+preventing it from defaulting to generic knowledge.
+What is the key advantage of including industry-specific assumptions,
+such as a "10% discount rate" in a finance prompt?
+*
+12/30/25, 1:06 AM
+Rubric Academy: Tips for Writing Great Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSebsdLsJaEI3OCeuLVQVDMm6tQOz086x4myxJwZUrATCaPEAg/viewscore?viewscore=AE0zAgAsdeQBp3Rpmh_s…
+6/10
+
+1/1
+a) It is only useful for creative writing prompts.
+b) It forces the model to demonstrate audience-awareness, shaping the tone
+and level of detail appropriately.
+c) It makes the prompt longer without adding any value to the task.
+d) It limits the model's response to a single, predetermined writing style.
+Feedback
+Correct Answer: b) It forces the model to demonstrate audience-awareness, shaping the
+tone and level of detail appropriately.
+Explanation: Tip 10, "Define the Audience Explicitly," states that knowing who the answer is
+for is a critical professional skill. Defining the audience forces the model to tailor its
+communication style, tone, and level of detail to meet the specific needs and expectations
+of that audience.
+Why is it often important to explicitly define the audience for the prompt's
+response (e.g., "Write a memo to the executive team")?
+*
+12/30/25, 1:06 AM
+Rubric Academy: Tips for Writing Great Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSebsdLsJaEI3OCeuLVQVDMm6tQOz086x4myxJwZUrATCaPEAg/viewscore?viewscore=AE0zAgAsdeQBp3Rpmh_s…
+7/10
+
+1/1
+a) Identifying complex, high-stakes professional tasks that current AI models
+cannot reliably handle.
+b) Looking for simple tasks that AI can already perform perfectly.
+c) Finding a task that requires only a single step of reasoning.
+d) Choosing a topic that requires no specific professional expertise.
+Feedback
+Correct Answer: a) Identifying complex, high-stakes professional tasks that current AI
+cannot reliably handle.
+Explanation: Tip 1, "Identify High-Value, High-Difficulty Tasks in Your Profession,"
+recommends this as the ideal starting point. By focusing on tasks that are challenging for
+current AI, you ensure your prompt targets real-world needs and pushes the model toward
+expert-level performance.
+When brainstorming a new prompt, what is a great starting point? *
+12/30/25, 1:06 AM
+Rubric Academy: Tips for Writing Great Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSebsdLsJaEI3OCeuLVQVDMm6tQOz086x4myxJwZUrATCaPEAg/viewscore?viewscore=AE0zAgAsdeQBp3Rpmh_s…
+8/10
+
+1/1
+a) It makes the prompt more abstract and theoretical.
+b) It ensures the model's reasoning and tone are tailored to a plausible, real-
+world context.
+c) It prevents the model from needing any specific data or documents.
+d) It forces the model to provide an answer that is intentionally vague.
+Feedback
+Correct Answer: b) It ensures the model's reasoning and tone are tailored to a plausible,
+real-world context.
+Explanation: As mentioned in Tip 6, "Anchor in a Realistic Scenario with Stakeholders,"
+prompts shouldn't exist in a vacuum. Creating a plausible professional context with
+specific stakeholders ensures the model's response is relevant, practical, and tailored to a
+situation that mirrors the real world.
+This form was created inside of Mercor. - Contact form owner
+Does this form look suspicious? Report
+How does anchoring a prompt in a realistic scenario with stakeholders,
+such as a fictional client, improve its quality?
+*
+ Forms
+12/30/25, 1:06 AM
+Rubric Academy: Tips for Writing Great Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSebsdLsJaEI3OCeuLVQVDMm6tQOz086x4myxJwZUrATCaPEAg/viewscore?viewscore=AE0zAgAsdeQBp3Rpmh_s…
+9/10
+
+12/30/25, 1:06 AM
+Rubric Academy: Tips for Writing Great Prompts Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSebsdLsJaEI3OCeuLVQVDMm6tQOz086x4myxJwZUrATCaPEAg/viewscore?viewscore=AE0zAgAsdeQBp3Rpmh_…
+10/10

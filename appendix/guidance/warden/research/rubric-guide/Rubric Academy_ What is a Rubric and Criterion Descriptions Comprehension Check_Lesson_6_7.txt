@@ -1,0 +1,535 @@
+Email *
+mordecai@projecthamburg.com
+1/1
+a) To provide a creative writing prompt for the AI.
+b) To serve as a precise, objective scoring guide for evaluating an AI's response.
+c) To summarize the AI's final answer for a project manager.
+d) To help experts brainstorm a golden response.
+Feedback
+A rubric is a list of precise, yes-or-no, true-false criteria that lets a human reviewer score an
+AI's response objectively and consistently.
+Rubric Academy: What is a Rubric and
+Criterion Descriptions Comprehension
+Check
+Total points
+27/27
+What is the primary function of a rubric in the context of AI model
+training?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJSB…
+1/26
+
+1/1
+a) Weight
+b) Rationale
+c) Criterion Description
+d) Criterion Type
+1/1
+a) open to expert interpretation.
+b) at least 50 words long.
+c) gradable as true or false.
+d) easy for the AI to answer.
+Feedback
+A strong criterion description must always be gradable as a true-or-false statement –
+there can be no middle ground or guesswork. This is the foundation of fair evaluation.
+What is the most important and universally applied component of a
+rubric?
+*
+The foundational principle of a strong criterion description is that it must
+be:
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJSB…
+2/26
+
+1/1
+a) States the correct closing price for the Dow Jones Industrial Average.
+b) Provides a strong analysis of recent stock market trends.
+c) Lists the stock's ticker symbol as 'AAPL' and its sector as 'Technology.'
+d) States that the Dow Jones Industrial Average closed at 38,852.27 on May 15,
+2024.
+Feedback
+Answer: a) States the correct closing price for the Dow Jones Industrial Average.
+Explanation: This criterion is not self-contained because a reviewer has no way of knowing
+the "correct" closing price without looking it up. The information needed to grade it is not
+included in the criterion itself. Option (d) is a strong, self-contained criterion because it
+provides the specific value to be checked. Option (b) is weak because it's ambiguous, and
+option (c) is weak because it's stacked.
+Which of the following is the clearest example of a criterion that is not
+self-contained?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJSB…
+3/26
+
+1/1
+a) The response is formatted as a three-paragraph memo.
+b) Includes an appropriate amount of technical detail for the intended audience.
+c) States that the project's budget is $50,000 USD.
+d) Recommends investing $40,000 in Bitcoin.
+Feedback
+Answer: b) Includes an appropriate amount of technical detail for the intended audience.
+Explanation: This criterion is not clear and unambiguous because the word "appropriate" is
+subjective and vague. Different reviewers could easily disagree on what level of detail is
+"appropriate," leading to inconsistent scoring. Option (a), (c), and (d) are strong,
+unambiguous criteria.
+Which of the following is the clearest example of a criterion that is not
+clear and unambiguous?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJSB…
+4/26
+
+1/1
+a) The legal analysis provides a convincing and insightful argument.
+b) The response cites the landmark case Marbury v. Madison.
+c) States the name of the presiding judge in the case.
+d) The final document is under the 1,000-word count limit.
+Feedback
+Answer: a) The legal analysis provides a convincing and insightful argument.
+Explanation: This criterion is not gradable as true or false because "convincing" and
+"insightful" are subjective qualities, not objective facts. There is no clear, binary line to
+determine if the argument meets this standard; it's a matter of opinion. Options (b) and (d)
+are clear, checkable (yes/no) criteria. Option (c) is not self-contained, but once the
+information is known, it is easily gradable as true or false.
+Which of the following is the clearest example of a criterion that is not
+strong unambiguous, falsifiable statements?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJSB…
+5/26
+
+1/1
+a) Calculates the 2024 projected revenue in USD.
+b) Recommends metformin as a first-line treatment, in accordance with ADA
+guidelines.
+c) Identifies Germany's 2022 renewable energy share and states that it is higher
+than France's.
+d) The model's response is formatted as a five-bullet-point memo.
+Feedback
+Correct answer - C) Identifies Germany's 2022 renewable energy share and states that it is
+higher than France's.
+Why it's correct: This clearly bundles two distinct checks: 1) identifying a specific number
+and 2) performing a comparison. A model could get the number right but the comparison
+wrong, unfairly failing the entire criterion.
+Why others are incorrect: The other options each check for a single condition.
+Which of the following is the clearest example of a stacked criterion? *
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJSB…
+6/26
+
+1/1
+a) Recommends an initial treatment of metformin for a patient with Type 2
+diabetes, per ADA guidelines.
+b) The patient's treatment plan is formatted as a one-page summary.
+c) Proposes the most innovative and effective treatment plan for the patient's
+condition.
+d) The treatment plan sufficiently addresses the patient's primary symptoms.
+Feedback
+Answer: c) Proposes the most innovative and effective treatment plan for the patient's
+condition.
+Explanation: This criterion lacks universal expert agreement because what constitutes the
+"most innovative" or "most effective" plan is often debatable among medical
+professionals. Different experts could have valid, differing opinions on the best approach,
+making an objective score impossible. Option (a) is strong because it is grounded in an
+objective professional standard (ADA guidelines). Option (b) is a clear formatting check,
+and option (d) is weak because it's ambiguous.
+Which of the following is the clearest example of a criterion that lacks
+universal expert agreement?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJSB…
+7/26
+
+1/1
+a) Identifies the monarch of the United Kingdom on January 1, 1985, as Queen
+Elizabeth II.
+b) States the current population of Tokyo.
+c) The response correctly identifies the capital of Japan as Tokyo in 2015.
+d) Explains the historical significance of the Meiji Restoration in Japan.
+Feedback
+Answer: b) States the current population of Tokyo.
+Explanation: This criterion is not timeless because the "current" population is constantly
+changing. A correct answer today would be incorrect next year, making the criterion
+unstable and unscorable over time. Option (a) is strong because it is anchored to a
+specific date. Options (c) and (d) refer to stable, historical facts that will not change.
+Which of the following is the clearest example of a criterion that is not
+timeless?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJSB…
+8/26
+
+1/1
+a) clear and unambiguous.
+b) timeless.
+c) self-contained.
+d) unstacked.
+Feedback
+Correct answer - C) Self-contained.
+Why it's correct: The definition of a self-contained criterion in the lesson is that it "includes
+all of the information needed for a reviewer to evaluate the model’s response without
+looking anything up or relying on outside context."
+Why others are incorrect: The other principles address different potential flaws (vague
+wording, bundling checks, or becoming outdated).
+Instructions
+For the following questions, evaluate the provided criterion description and identify the 
+primary principle it violates or the reason it is considered strong.
+If a criterion requires a reviewer to do their own research or calculations
+to verify it, that criterion has failed to be:
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJSB…
+9/26
+
+1/1
+a) It is not timeless.
+b) It is not a clear and unambiguous falsifiable statement.
+c) It is a stacked criterion.
+d) It has a prompt-rubric mismatch.
+e) It is a strong criterion description.
+Feedback
+The phrase "provides a thorough analysis" is a weak because it is too vague and
+subjective, leaving too much room for interpretation and preventing a clear yes/no answer.
+Criterion description: "The model provides a thorough analysis of the
+company's financial health." Why isn’t this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+10/26
+
+1/1
+a) It is not self-contained.
+b) It is not timeless.
+c) It is a stacked criterion.
+d) It is not clear and unambiguous.
+e) It is a strong criterion description.
+Feedback
+A self-contained criterion must include all information needed for a reviewer to evaluate it.
+As written, a reviewer would have to look up Canada's GDP. If a reviewer has to look
+something up, the criterion is not self-contained.
+Why the others are incorrect: B) Canada's GDP for a specific year is a fixed value, so it is
+timeless. C) It only asks for one piece of information. D) The request itself is clear; the
+issue is the missing information needed for verification.
+Criterion description: "States the correct gross domestic product (GDP)
+of Canada."  
+Why isn’t this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+11/26
+
+1/1
+a) It is not self-contained.
+b) It lacks universal expert agreement.
+c) It is not clear and unambiguous.
+d) It is a stacked criterion.
+e) It is a strong criterion description.
+Feedback
+Stacking criterion happens when multiple requirements are bundled into a single criterion.
+This criterion incorrectly combines two separate checks: identifying the character and
+identifying the publication year.
+Why others are incorrect: A) The information is missing, but the core structural flaw is
+bundling two questions. B) Experts would agree on the answers; the problem is asking for
+them together. C) The components are clear, unambiguous, falsifiable statements.
+Criterion description: "Identifies the main character of the novel as Jay
+Gatsby and the year it was published as 1925."  
+Why isn’t this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+12/26
+
+1/1
+a) It is not self-contained.
+b) It is not timeless.
+c) It is not clear or unambiguous.
+d) It lacks universal expert agreement.
+e) It is a strong criterion description.
+Feedback
+The criterion is strong – it is self-contained (provides the exact number), timeless (no
+numbers that could change over time), unambiguous (no vague terms), and references an
+objective professional standard (ADA guidelines) to ensure universal expert agreement.
+Criterion: "Identifies that the attached patient's lab report shows a blood
+glucose level of 126 mg/dL, consistent with prediabetes according to
+ADA guidelines."
+Why isn't this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+13/26
+
+1/1
+a) It is not self-contained.
+b) It lacks universal expert agreement.
+c) It is not timeless.
+d) It is a stacked criterion.
+e) It is a strong rubric criterion.
+Feedback
+The terms "best" and "most creative" are subjective. Criteria should be grounded in
+objective standards so that any competent professional in the field should reach the same
+judgment. This criterion relies on opinion, violating that principle.
+Why others are incorrect: A) The information needed for evaluation is missing, but the
+bigger issue is the subjectivity. C) This doesn't relate to time. D) The root cause of the
+weakness is the lack of objectivity, not bundling multiple qualities together.
+Criterion description: "Recommends the most creative marketing strategy
+for the new product."  
+Why isn’t this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+14/26
+
+1/1
+a) It is not self-contained.
+b) It is not falsifiable (gradable as true-or-false).
+c) It is not timeless.
+d) It is a stacked criterion.
+e) It is a strong criterion description.
+Feedback
+A timeless criterion is one with a stable evaluation that doesn’t change with time. The
+"current" Secretary of State will change, making this criterion unscorable in the future.
+Why others are incorrect: A) A reviewer could look up the answer, but the primary flaw is
+that the correct answer is a moving target. B) At any given moment, the statement is true
+or false. D) It asks for a single piece of information.
+Criterion description: "States the name of the current United States
+Secretary of State as Marco Rubio."
+Why isn’t this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+15/26
+
+1/1
+a) It is not self-contained.
+b) It is not clear and unambiguous.
+c) It is not timeless.
+d) It is a stacked criterion.
+e) It is a strong criterion description.
+Feedback
+Why it's correct: Ambiguous phrases like "sufficient detail" or "relevant details" are weak
+because what is reasonable or sufficient can vary from person to person. A criterion must
+be explicit to be unambiguous.
+Why others are incorrect: A) Self-containment is about including the answer, not the clarity
+of the wording. C) The criterion doesn't depend on time. D) It only checks for one thing
+(number of sources), so it is not stacked.
+Criterion: "The response includes a reasonable number of sources."
+Why isn’t this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+16/26
+
+1/1
+a) It is a stacked criterion.
+b) It is not self-contained.
+c) It is not clear and unambiguous.
+d) It is not timeless.
+e) It is a strong criterion description.
+Feedback
+This is a strong criterion description – its strength lies in its atomic nature. It has a single,
+verifiable focus (is the name "John Smith"?), which is the opposite of a stacked criterion. It
+is fully self-contained, clear, and has no numbers of variables that could change over time.
+Criterion: "Correctly identifies the defendant's name as 'John Smith'."
+Why isn't this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+17/26
+
+1/1
+a) It is not timeless.
+b) It is not self-contained.
+c) It is a stacked criterion.
+d) It is not clear, unambiguous, and falsifiable.
+e) It is a strong criterion description.
+Feedback
+Similar to "thorough," the word "adequate" is subjective, ambiguous, and not binary.
+Different reviewers would have different thresholds for what qualifies as adequate, making
+scoring inconsistent.
+Why others are incorrect: A) The quality of the explanation doesn't change over time. B)
+The flaw is in the vague wording, not missing information. D) It evaluates a single quality
+(adequacy), so it is not stacked.
+Criterion: "The model’s explanation of the legal precedent is adequate."
+Why isn’t this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+18/26
+
+1/1
+a) It is not timeless.
+b) It is not self-contained.
+c) It is a stacked criterion.
+d) It lacks universal expert agreement.
+e) It is a strong criterion description.
+Feedback
+This is a strong criterion description – it is a self-contained criterion that includes all of the
+information needed without needing to look anything up. By providing the exact value and
+the acceptable range, a reviewer needs no outside context. It similarly has no information
+that would change over time, it does not bundle together multiple requirements into a
+single criteria, and there is nothing experts would disagree about here.
+Criterion: "States the company's Q1 2024 revenue was $15.2M."
+Why isn't this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+19/26
+
+1/1
+a) It is not self-contained.
+b) It is a stacked criterion.
+c) It is not timeless.
+d) It is not clear and unambiguous.
+e) It is a strong criterion description.
+Feedback
+It is a stacked criterion because it bundles two distinct checks: 1) calculating the budget
+and 2) confirming it's under a limit. If the AI calculates the budget correctly as €35,000, it
+would fail both parts of the criterion, which is unfair.
+Why others are incorrect: A) It is not self-contained as it doesn't state the correct budget.
+C) It is timeless. D) The request is clear.
+Criterion: "Calculates the final project budget as €35,000 and confirms it
+is under the €50,000 limit."
+Why isn’t this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+20/26
+
+1/1
+a) It lacks universal expert agreement.
+b) It is not timeless.
+c) It is not self-contained.
+d) It is a stacked criterion.
+e) It is a strong criterion description.
+Feedback
+This lacks universal expert agreement – "compelling" and "persuasive" are subjective
+qualities. Experts in law could easily disagree on whether an argument meets these
+stylistic standards, violating the principle that all experts should reach the same
+conclusion.
+Why others are incorrect: B) We don't have the prompt to know this. C) The quality of the
+argument doesn't change over time. D) The information is not self-contained, but the
+primary flaw is the subjectivity.
+Criterion: "Writes a compelling and persuasive argument for the defense."
+Why isn’t this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+21/26
+
+1/1
+a) It is not timeless.
+b) It is not clear and unambiguous.
+c) It is a stacked criterion.
+d) It is not self-contained.
+e) It is a strong criterion description.
+Feedback
+It is a strong rubric criterion – By anchoring the data to a specific date ("January 1, 2025")
+and providing the expected value, the criterion's correctness will not change over time. It is
+also self-contained, unambiguous, and not stacked.
+Instructions
+For each question, read the prompt and the accompanying criterion description. Decide 
+whether the criterion aligns with the prompt's request ("No mismatch") or if it evaluates 
+something not requested by the prompt ("Prompt-rubric mismatch").
+Criterion: "States the U.S. population on January 1, 2025 as 336,548,210."
+Why isn't this a strong criterion description?
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+22/26
+
+1/1
+a) Prompt-rubric mismatch
+b) No mismatch
+Feedback
+a) Mismatch
+Explanation: The prompt only asks for a calculation (total revenue). The criterion evaluates
+an explanation for why the revenue is what it is, which was not requested.
+1/1
+a) Prompt-rubric mismatch
+b) No mismatch
+Feedback
+b) No Mismatch
+Explanation: The prompt asks the model to identify a specific fact from a source. The
+criterion checks whether the model identified that exact fact. This is directly aligned.
+Prompt: "Using the attached financial statement, calculate the company's
+total revenue for fiscal year 2023."
+Criterion: "Explains that the primary driver for the 2023 revenue was a
+15% growth in the North American market."
+*
+Prompt: "From the attached 'Global Market Report.pdf', identify the
+company with the largest market share in the European semiconductor
+industry in 2022."
+Criterion: "Identifies 'ChipCorp' as the company with the largest market
+share in the European semiconductor industry in 2022."
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+23/26
+
+1/1
+a) Prompt-rubric mismatch
+b) No mismatch
+Feedback
+a) Mismatch
+Explanation: The prompt asks the model to list information. The criterion evaluates a
+recommendation, which requires a much higher level of reasoning that was not requested.
+1/1
+a) Prompt-rubric mismatch
+b) No mismatch
+Feedback
+a) Mismatch
+Explanation: The prompt asks the model to list specifications for a single product. The
+criterion evaluates a comparison between that product and a competitor, which was not
+requested.
+Prompt: "Based on the provided patient file, list the patient's current
+medications."
+Criterion: "Recommends discontinuing the use of metformin due to
+potential side effects."
+*
+Prompt: "List the key specifications for the 'Model X' smartphone from
+the provided product sheet."
+Criterion: "Compares the camera specifications of the 'Model X' to its
+main competitor, the 'Photon Pro'."
+*
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+24/26
+
+This form was created inside of Mercor. - Contact form owner
+Does this form look suspicious? Report
+ Forms
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+25/26
+
+12/30/25, 1:04 AM
+Rubric Academy: What is a Rubric and Criterion Descriptions Comprehension Check
+https://docs.google.com/forms/d/e/1FAIpQLSd5gUqcXsg265b1jegWgnWN1bpa-lpBQOSxdKxcHWtYckmjjg/viewscore?viewscore=AE0zAgDdDazwRtv7OOjJS…
+26/26

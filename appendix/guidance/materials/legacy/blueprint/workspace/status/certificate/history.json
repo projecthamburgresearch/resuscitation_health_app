@@ -1,0 +1,42 @@
+[
+  {
+    "certificate_id": "cert-20260221_184236-a9d35f29",
+    "issued_at": "2026-02-21T18:42:36.868532",
+    "status": "invalidated",
+    "src_hash": "a9d35f293817d3a1",
+    "tests_passed": 0,
+    "tests_total": 8
+  },
+  {
+    "certificate_id": "cert-20260221_185101-a9d35f29",
+    "issued_at": "2026-02-21T18:51:01.475087",
+    "status": "invalidated",
+    "src_hash": "a9d35f293817d3a1",
+    "tests_passed": 0,
+    "tests_total": 8
+  },
+  {
+    "certificate_id": "cert-20260221_185226-a9d35f29",
+    "issued_at": "2026-02-21T18:52:26.854612",
+    "status": "valid",
+    "src_hash": "a9d35f293817d3a1",
+    "tests_passed": 8,
+    "tests_total": 8
+  },
+  {
+    "certificate_id": "cert-20260221_185226-a9d35f29",
+    "issued_at": "2026-02-21T18:52:26.854612",
+    "status": "expired",
+    "src_hash": "a9d35f293817d3a1",
+    "tests_passed": 8,
+    "tests_total": 8
+  },
+  {
+    "certificate_id": "cert-20260313_142753-a9d35f29",
+    "issued_at": "2026-03-13T14:27:53.064248",
+    "status": "valid",
+    "src_hash": "a9d35f293817d3a1",
+    "tests_passed": 8,
+    "tests_total": 8
+  }
+]

@@ -1,0 +1,258 @@
+[
+  {
+    "run_id": "20260221_202821_71b439",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-02-21T20:28:21.114460",
+    "ended_at": "2026-02-21T20:28:22.197340",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260221_202835_0ecc1b",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-02-21T20:28:35.422007",
+    "ended_at": "2026-02-21T20:28:36.397745",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260221_205723_584b29",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-02-21T20:57:23.434008",
+    "ended_at": "2026-02-21T20:57:24.627526",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260222_012933_2a0be5",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-02-22T01:29:33.133465",
+    "ended_at": "2026-02-22T01:29:35.376031",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260222_024959_c3ff7b",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-02-22T02:49:59.781605",
+    "ended_at": "2026-02-22T02:50:01.932324",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260222_025937_f947bc",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-02-22T02:59:37.760665",
+    "ended_at": "2026-02-22T02:59:39.272533",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260222_030224_774ed2",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-02-22T03:02:24.264616",
+    "ended_at": "2026-02-22T03:02:25.410756",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260222_030745_9500f4",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-02-22T03:07:45.040349",
+    "ended_at": "2026-02-22T03:07:46.280277",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260222_102327_25376e",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-02-22T10:23:27.362891",
+    "ended_at": "2026-02-22T10:23:30.278177",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260222_123531_4086ff",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-02-22T12:35:31.586345",
+    "ended_at": "2026-02-22T12:35:32.648077",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260222_133636_768119",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-02-22T13:36:36.220431",
+    "ended_at": "2026-02-22T13:36:37.070508",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260222_141047_60cf9f",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-02-22T14:10:47.818942",
+    "ended_at": "2026-02-22T14:10:48.775380",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260313_142755_ea38ff",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-03-13T14:27:55.306817",
+    "ended_at": "2026-03-13T14:28:05.000345",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260313_142957_31e6dc",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-03-13T14:29:57.468738",
+    "ended_at": "2026-03-13T14:30:02.985738",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260313_144318_b1d0a4",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-03-13T14:43:18.144672",
+    "ended_at": "2026-03-13T14:43:23.024507",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  },
+  {
+    "run_id": "20260313_145616_146ddb",
+    "project_name": "resuscitation-app-warden",
+    "started_at": "2026-03-13T14:56:16.666485",
+    "ended_at": "2026-03-13T14:56:23.768060",
+    "domains": [
+      "xray",
+      "manifest",
+      "cortex",
+      "registry",
+      "sonar",
+      "synapse"
+    ],
+    "error_count": 0,
+    "anomaly_count": 0
+  }
+]

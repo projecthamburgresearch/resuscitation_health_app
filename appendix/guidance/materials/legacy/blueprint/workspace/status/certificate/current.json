@@ -1,0 +1,67 @@
+{
+  "certificate_id": "cert-20260313_142753-a9d35f29",
+  "issued_at": "2026-03-13T14:27:53.064248",
+  "expires_at": "2026-03-14T14:27:53.064248",
+  "src_hash": "a9d35f293817d3a1",
+  "test_results": [
+    {
+      "test_name": "mimic_boot/test_boot_process.py",
+      "passed": true,
+      "duration_ms": 2618.72,
+      "output": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.6.0 -- /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint/.venv/bin/python3\ncachedir: .pytest_cache\nrootdir: /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint\nconfigfile: pyproject.toml\nplugins: cov-7.0.0\ncollecting ... collected 7 items\n\nplayground/mimic_boot/test_boot_proc",
+      "error": ""
+    },
+    {
+      "test_name": "mimic_bundle/test_bundle_process.py",
+      "passed": true,
+      "duration_ms": 1017.26,
+      "output": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.6.0 -- /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint/.venv/bin/python3\ncachedir: .pytest_cache\nrootdir: /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint\nconfigfile: pyproject.toml\nplugins: cov-7.0.0\ncollecting ... collected 12 items\n\nplayground/mimic_bundle/test_bundle",
+      "error": ""
+    },
+    {
+      "test_name": "mimic_certificate/test_certificate_process.py",
+      "passed": true,
+      "duration_ms": 3606.95,
+      "output": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.6.0 -- /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint/.venv/bin/python3\ncachedir: .pytest_cache\nrootdir: /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint\nconfigfile: pyproject.toml\nplugins: cov-7.0.0\ncollecting ... collected 16 items\n\nplayground/mimic_certificate/test_c",
+      "error": ""
+    },
+    {
+      "test_name": "mimic_intra/test_intra_process.py",
+      "passed": true,
+      "duration_ms": 2197.22,
+      "output": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.6.0 -- /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint/.venv/bin/python3\ncachedir: .pytest_cache\nrootdir: /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint\nconfigfile: pyproject.toml\nplugins: cov-7.0.0\ncollecting ... collected 12 items\n\nplayground/mimic_intra/test_intra_p",
+      "error": ""
+    },
+    {
+      "test_name": "mimic_project/test_project_process.py",
+      "passed": true,
+      "duration_ms": 1595.68,
+      "output": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.6.0 -- /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint/.venv/bin/python3\ncachedir: .pytest_cache\nrootdir: /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint\nconfigfile: pyproject.toml\nplugins: cov-7.0.0\ncollecting ... collected 12 items\n\nplayground/mimic_project/test_proje",
+      "error": ""
+    },
+    {
+      "test_name": "mimic_run/test_run_process.py",
+      "passed": true,
+      "duration_ms": 1035.95,
+      "output": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.6.0 -- /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint/.venv/bin/python3\ncachedir: .pytest_cache\nrootdir: /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint\nconfigfile: pyproject.toml\nplugins: cov-7.0.0\ncollecting ... collected 9 items\n\nplayground/mimic_run/test_run_proces",
+      "error": ""
+    },
+    {
+      "test_name": "mimic_sync/test_sync_process.py",
+      "passed": true,
+      "duration_ms": 1697.25,
+      "output": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.6.0 -- /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint/.venv/bin/python3\ncachedir: .pytest_cache\nrootdir: /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint\nconfigfile: pyproject.toml\nplugins: cov-7.0.0\ncollecting ... collected 9 items\n\nplayground/mimic_sync/test_sync_proc",
+      "error": ""
+    },
+    {
+      "test_name": "mimic_warden/test_warden_process.py",
+      "passed": true,
+      "duration_ms": 2396.02,
+      "output": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.7, pytest-9.0.2, pluggy-1.6.0 -- /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint/.venv/bin/python3\ncachedir: .pytest_cache\nrootdir: /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/blueprint\nconfigfile: pyproject.toml\nplugins: cov-7.0.0\ncollecting ... collected 17 items\n\nplayground/mimic_warden/test_warden",
+      "error": ""
+    }
+  ],
+  "issuer": "mimic_runner",
+  "status": "valid",
+  "revocation_reason": null
+}

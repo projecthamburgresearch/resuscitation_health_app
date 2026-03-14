@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-03-13T14:27:28",
+  "package": "access",
+  "version": 1,
+  "source_projects": [
+    {
+      "label": "resuscitation_health_app",
+      "path": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app",
+      "exists": true,
+      "env_key_count": 0,
+      "provider_records_found": 0
+    }
+  ],
+  "summary": {
+    "provider_count": 0,
+    "env_key_count": 0,
+    "sector_count": 0,
+    "model_set_count": 0
+  },
+  "sectors": {},
+  "providers": [],
+  "env_dictionary": {},
+  "models": []
+}

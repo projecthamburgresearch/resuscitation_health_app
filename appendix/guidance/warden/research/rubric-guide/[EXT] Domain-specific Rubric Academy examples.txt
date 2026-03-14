@@ -1,0 +1,1189 @@
+﻿Finance
+Finance 
+Prompt
+Our Client, is a private equity firm in the US, and looking to acquire a publicly listed supermarket company (for confidentiality purposes codenamed the “Target Company”) using a leveraged-buy out transaction. The Client is considering acquiring the Target Company on a standalone basis, using a 100% cash deal structure. In this scenario, the Client has asked us to analyze what would be the highest price that they can offer to acquire the shares of the Target Company assuming the following:
+
+
+* A transaction closing date as of 31 December 2025.
+* The Client is seeking to achieve a 30% IRR on its investment.
+* The Client will leverage the target’s balance sheet in-line with the average Debt/EBITDA ratio of publicly listed peers (refer to the ‘Supermarket Trading Peers Comps.csv’ source file, and round to the nearest 10th of a decimal).
+* The Client is seeking to completely exit (i.e. re-sell the Target Company) in 2028.
+* The Client can exit the Target Company at the same currently trading 2025 EV/EBITDA multiple of publicly listed peers (refer to the ‘Supermarket Trading Peers Comps.csv’ source file, and round to the nearest 10th of a decimal).
+* An interest rate of 8.5% is incurred annually on the beginning outstanding debt balance of each year.
+* An effective corporate tax rate of 21.0% is applied throughout the years.
+* The latest Target Company Share Price is $30.0 with a total corresponding 500,000 shares outstanding (on a fully diluted basis).
+
+
+Refer to the ‘Target Company Business Plan’ source file for the Target Company’s summary financial forecasts. As long as the annual beginning outstanding debt balance has not been fully repaid, assume an annual cash-sweep for the debt repayment by always ensuring to keep a minimum cash balance of $1 million in the Target Company. For avoidance of doubt, if no cash is available to be distributed for debt repayment without breaching the $1 million threshold, then do not repay any debt during that year and limit the repayment to whatever cash is available until you reach the $1 million threshold. Also, if excess cash remains after fully repaying the totality of the outstanding debt balance, do not assume any dividend distributions, and keep the cash accumulating within the Target Company.
+
+
+Return the output of your analysis on an offer price per share basis and imply the % premium or discount to the target’s latest share price accordingly (round to the nearest 10th of a decimal).
+
+
+
+
+
+
+Sources
+* Supermarket Trading Peers Comps.csv
+* Target Company Business Plan.csv
+Rubric
+Criterion 1: Calculates the average Debt/EBITDA ratio of publicly listed peers as 3.5
+Sources: Supermarket Trading Peers Comps.csv
+Justification/Rationale: From the ‘Supermarket Trading Peers Comps’ source file, listed peers are trading at 1.4, 4.7, 2.4, 2.2, 1.7, 4.8 and 7.4 Debt/EBITDA ratios respectively. As such the average of these numbers is (1.4+4.7+2.4+2.2+1.7+4.8+7.4)/7 = 3.5 (rounded to the nearest 10th decimal).
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: none
+
+
+Criterion 2: Determines the EBITDA of the Target Company by year-end 2025 to be $2,400,000
+Sources: Target Company Business Plan.csv
+Justification/Rationale: From the ‘Target Company Business Plan.csv’ source file, the expected EBITDA for the Target Company by end of 31 December 2025 is $2,400.0 thousand.
+Weight: Not primary objective
+Criterion Type: Extraction
+Dependent Criteria: none
+
+
+Criterion 3: Calculates the maximum total leverage amount to be $8,400,000
+Sources: Prompt
+Justification/Rationale: The prompt indicates that the Client will leverage the Target Company in-line with the average Debt/EBITDA ratio of listed peers. The latter has been previously calculated as 3.5 and the expected 2025 EBITDA is $2,400,000. As such the total allowable leverage is $2,400,000 x 3.5 = $8,400,000.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 1, 2
+
+
+Criterion 4: Calculates the interest expense to be incurred in 2026 as $714,000
+Sources: Prompt
+Justification/Rationale: It was previously calculated that the total debt drawdown is $8,400,000 by 31 December 2025, which is equivalent to the beginning outstanding debt balance of 2026. The prompt indicates a yearly interest rate of 8.5% to be applied on the yearly beginning outstanding debt balance. As such, the interest expense for 2026 is $8,400,000 x 8.5% = $564,060.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 3
+
+
+Criterion 5: Calculates the net interest expense impact on the cash for 2026 as $564,060
+Sources: Prompt
+Justification/Rationale: It was previously calculated that the interest expense for 2026 is $714,000. As such, the net interest expense for 2026 after accounting for the tax shield using the effective corporate tax rate of 21.0% (as indicated by the prompt) is $714,000 x (1 – 21.0%) = $564,060.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 4
+
+
+Criterion 6: Determines the ending Cash Available in 2026 as $2,686,200
+Sources: Target Company Business Plan.csv
+Justification/Rationale: From the ‘Target Company Business Plan.csv’ source file, the Ending Cash Available is $2,686.2 thousand.
+Weight: Not primary objective
+Criterion Type: Extraction
+Dependent Criteria: none
+
+
+Criterion 7: Calculates the allowable cash-sweep for debt repayment in 2026 as $1,122,100
+Sources: Prompt
+Justification/Rationale: It was previously extracted that the Ending Cash Available in 2026 is $2,686,200. It was also previously calculated that the net interest expense impact on the cash for 2026 is $564,100. Also, the prompt indicates to assume an annual cash-sweep while keeping at least $1 million of cash balance in the company. As such, the allowable cash-sweep for debt repayment in 2026 is $2,686,200 - $564,100 - $1,000,000 = $1,122,100.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 5, 6
+
+
+Criterion 8: Verifies that the allowable cash-sweep for debt repayment in 2026 of $1,122,100 remains less than the beginning outstanding debt balance of $8,400,000
+Sources: Prompt
+Justification/Rationale: The prompt indicates to assume an annual cash-sweep as long as the beginning outstanding debt repayment has not been repaid. The prompt indicates if the cash-sweep balance is higher than the remaining beginning outstanding debt balance then the excess amount should be kept in the company and not extracted outside the company as dividend. As such $1,122,100 $8,400,000 (i.e. the logic is verified).
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 3, 7
+
+
+Criterion 9: Calculates the ending 2026 outstanding debt balance as $7,277,900
+Sources: none
+Justification/Rationale: Previously it was calculated that the beginning outstanding debt balance for 2026 is $8,400,000. It was also previously calculated that the cash-sweep for the 2026 year was $1,122,100. As such the outstanding debt balance for 2026 by year end is $8,400,000 - $1,122,100 = $7,277,900.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 3, 8
+
+
+Criterion 10: Calculates the beginning cash balance of 2027 as $1,000,000
+Sources: none
+Justification/Rationale: It was previously extracted that the cash available before debt servicing was $2,686,200. Also, it was previously calculated that $1,122,100 of the cash was used to repay the debt for 2026 and that $564,100 was used to service the net interest expense. As such the beginning cash balance of 2027 (which is also equivalent to the ending cash balance for 2026) is $2,686,200 - $ 564,100 - $1,122,100 = $1,000,000.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 5, 6, 8
+
+
+Criterion 11: Determines the EBITDA (proxy to cash from operations) for 2027 as $3,074,600
+Sources: Target Company Business Plan.csv
+Justification/Rationale: From the ‘Target Company Business Plan.csv’ source file, the expected EBITDA for the Target Company by end of 31 December 2027 is $3,074.6 thousand.
+Weight: Not primary objective
+Criterion Type: Extraction
+Dependent Criteria: none
+
+
+Criterion 12: Determines the CAPEX for 2027 as $750,000
+Sources: Target Company Business Plan.csv
+Justification/Rationale: From the ‘Target Company Business Plan.csv’ source file, the expected CAPEX for the Target Company by the end of 31 December 2027 is $750.0 thousand.
+Weight: Not primary objective
+Criterion Type: Extraction
+Dependent Criteria: none
+
+
+Criterion 13: Calculates the Cash Available for Debt Servicing in 2027 as $3,324,600
+Sources: none
+Justification/Rationale: It was previously calculated that the beginning cash balance for 2027 is $1,000,000. Throughout the year, it was extracted from the ‘Target Company Business Plan.csv’ source file that the Target Company has achieved $3,074,600 in EBITDA and incurred $750,000 in CAPEX for the year. As such the Cash Available for Debt Servicing in 2027 is $1,000,000 + $3,074,600 - $750,000 = $3,324,600.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 10, 11, 12
+
+
+Criterion 14: Calculates the interest expense to be incurred in 2027 as $618,618
+Sources: Prompt
+Justification/Rationale: It was previously calculated that the ending outstanding debt balance in 2026 (which is equivalent to the beginning outstanding debt balance in 2027) is $7,277,900. The prompt indicates a yearly interest rate of 8.5% to be applied on the yearly beginning outstanding debt balance. As such, the interest expense for 2027 is $7,277,900 x 8.5% = $618,618.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 9
+
+
+Criterion 15: Calculates the net interest expense impact on the cash for 2027 as $488,700
+Sources: Prompt
+Justification/Rationale: The interest expense for 2027 is $618,618. As such, the net interest expense for 2027 after accounting for the tax shield using the effective corporate tax rate of 21.0% (as indicated by the prompt) is $618,618 x (1 – 21.0%) = $488,700.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 14
+
+
+Criterion 16: Calculates the allowable cash-sweep for debt repayment in 2027 as $1,835,900
+Sources: Prompt
+Justification/Rationale: It was previously calculated that the Cash Available for Debt Servicing in 2027 is $3,324,600. It was also previously calculated that the net interest expense impact on the cash for 2027 is $488,700. Also, the prompt indicates to assume an annual cash-sweep while keeping at least $1 million of cash balance in the company. As such, the allowable cash-sweep for debt repayment in 2027 is $3,324,600 - $488,700 - $1,000,000 = $1,835,900.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 13, 15
+
+
+Criterion 17: Verifies that the allowable cash-sweep for debt repayment in 2027 of $1,835,900 remains less than the beginning outstanding debt balance of $7,277,900
+Sources: none
+Justification/Rationale: The prompt indicates to assume an annual cash-sweep as long as the beginning outstanding debt repayment has not been repaid. The prompt indicates if the cash-sweep balance is higher than the remaining beginning outstanding debt balance than the excess amount should be kept in the company and not extracted outside the company as dividend. As such $1,835,900 $7,277,900 (i.e. the logic is verified).
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 9, 16
+
+
+Criterion 18: Calculates the ending 2027 outstanding debt balance as $5,442,000
+Sources: none
+Justification/Rationale: Previously it was calculated that the beginning outstanding debt balance for 2027 is $7,277,900. The allowable cash-sweep for the year is $1,835,900. As such the outstanding debt balance for 2027 by year end is $7,277,900 - $1,835,900 = $5,442,000.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 9, 17
+
+
+Criterion 19: Calculates the beginning cash balance of 2028 as $1,000,000
+Sources: none
+Justification/Rationale: It was previously calculated that the cash available before debt servicing was $3,324,600. Also, it was previously calculated that $1,835,900 of the cash was used to repay the debt for 2027 and that $488,700 was used to service the net interest expense. As such the beginning cash balance of 2028 (which is equivalent to the ending cash balance for 2027) is $3,324,600 - $488,700 - $1,835,900 = $1,000,000.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 13, 15, 17
+
+
+Criterion 20: Determines the EBITDA (proxy to cash from operations) for 2028 as $3,513,800
+Sources: Target Company Business Plan.csv
+Justification/Rationale: From the ‘Target Company Business Plan.csv’ source file, the expected EBITDA for the Target Company by end of 31 December 2028 is $3,513.8 thousand.
+Weight: Not primary objective
+Criterion Type: Extraction
+Dependent Criteria: none
+
+
+Criterion 21: Determines the CAPEX for 2028 as $600,000
+Sources: Target Company Business Plan.csv
+Justification/Rationale: From the ‘Target Company Business Plan.csv’ source file, the expected CAPEX for the Target Company by the end of 31 December 2028 is $600.0 thousand.
+Weight: Not primary objective
+Criterion Type: Extraction
+Dependent Criteria: none
+
+
+Criterion 22: Calculates the Cash Available for Debt Servicing in 2028 as $3,913,800
+Sources: none
+Justification/Rationale: It was previously calculated that the beginning cash balance for 2028 is $1,000,000. Throughout the year, it was extracted from the ‘Target Company Business Plan.csv’ source file that the Target Company has achieved $3,513,800 in EBITDA and incurred $600,000 in CAPEX for the year. As such the Cash Available for Debt Servicing in 2028 is $1,000,000 + $3,513,800 - $600,000 = $3,913,800.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 19, 20, 21
+
+
+Criterion 23: Calculates the interest expense to be incurred in 2028 as $462,566
+Sources: Prompt
+Justification/Rationale: It was previously calculated that the ending outstanding debt balance in 2027 (which is equivalent to the beginning outstanding debt balance in 2028) is $5,442,000. The prompt indicates a yearly interest rate of 8.5% to be applied on the yearly beginning outstanding debt balance. As such, the interest expense for 2028 is $5,442,000 x 8.5% = $462,566.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 18
+
+
+Criterion 24: Calculates the net interest expense impact on the cash for 2028 as $365,400
+Sources: Prompt
+Justification/Rationale: The interest expense for 2028 is $365,400. As such, the net interest expense for 2028 after accounting for the tax shield using the effective corporate tax rate of 21.0% (as indicated by the prompt) is $462,566 x (1 – 21.0%) = $365,400.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 23
+
+
+Criterion 25: Calculates the allowable cash-sweep for debt repayment in 2028 as $2,548,400
+Sources: Prompt
+Justification/Rationale: It was previously calculated that the Cash Available for Debt Servicing in 2028 is $3,913,800. It was also previously calculated that the net interest expense impact on the cash for 2028 is $365,400. Also, the prompt indicates to assume an annual cash-sweep while keeping at least $1 million of cash balance in the company. As such, the allowable cash-sweep for debt repayment in 2027 is $3,913,800 - $365,400 - $1,000,000 = $2,548,400.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 22, 24
+
+
+Criterion 26: Verifies that the allowable cash-sweep for debt repayment in 2028 of $2,548,400 remains less than the beginning outstanding debt balance of $5,442,000
+Sources: none
+Justification/Rationale: The prompt indicates to assume an annual cash-sweep as long as the beginning outstanding debt repayment has not been repaid. The prompt indicates if the cash-sweep balance is higher than the remaining beginning outstanding debt balance then the excess amount should be kept in the company and not extracted outside the company as dividend. As such $2,548,400 $5,442,000 (i.e. the logic is verified).
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 18, 25
+
+
+Criterion 27: Calculates the ending 2028 outstanding debt balance as $2,893,500
+Sources: none
+Justification/Rationale: Previously it was calculated that the beginning outstanding debt balance for 2028 is $5,442,000. The allowable cash-sweep for the year is $2,548,400. As such the outstanding debt balance for 2028 by year end is $5,442,000 - $2,248,400 = $2,893,500.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 18, 26
+
+
+Criterion 28: Calculates the ending cash balance of 2028 as $1,000,000
+Sources: none
+Justification/Rationale: It was also previously calculated that the cash available before debt servicing was $3,913,800. Also, it was previously calculated that $2,548,400 of the cash was used to repay the debt for 2028 and that $365,400 was used to service the net interest expense. As such the ending cash balance of 2028 is $3,913,800 - $365,400 - $2,548,400 = $1,000,000.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 22, 24, 26
+
+
+Criterion 29: Calculates the average 2025 EV/EBITDA ratio of publicly listed peers as 9.8
+Sources: Supermarket Trading Peers Comps.csv
+Justification/Rationale: From the ‘Supermarket Trading Peers Comps.csv’ source file, listed peers are trading at 21.1, 6.1, 8.4, 10.6, 9.8, 5.6, and 6.9 EV/EBITDA ratios respectively. As such the average of these numbers is (21.1+6.1+8.4+10.6+9.8+5.6+6.9)/7 = 9.8 (rounded to the nearest 10th decimal).
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: none
+
+
+Criterion 30: Calculates the Enterprise Value of the Target Company at exit year of 2028 as $34,435,600
+Sources: Prompt
+Justification/Rationale: It was previously determined that the 2028 EBITDA of the Target Company is $3,513,800. The prompt states to assume that the Client can exit the Target Company at the same currently trading 2025 EV/EBITDA multiple of publicly listed peers. As such, the Enterprise Value of the Target Company at exit year of 2028 is $3,513,800 x 9.8 = $34,435,600.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 20
+
+
+Criterion 31: Calculates the Equity Value of the Target Company at exit year of 2028 as $32,542,100
+Sources: none
+Justification/Rationale: It was previously determined that the Enterprise Value at exit year of 2028 is $34,435,600. It was also previously determined that the ending outstanding debt balance and cash balance of that year were $2,893,500 and $1,000,000 respectively. As such the Equity Value of the Target Company at end of 2028 is $34,435,600 - $2,893,500 + $1,000,000 = $32,542,100.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 27, 28, 30
+
+
+Criterion 32: Calculates the maximum amount the Client can invest through Equity as $14,812,100
+Sources: Prompt
+Justification/Rationale: It was previously determined that the Equity Value at exit year of 2028 is $32,542,100. The prompt indicated that the Client is seeking to achieve a 30.0% IRR on its investment. As such the Equity Value of the Target Company to be paid as of end of 2025 to be able to achieve the 30% IRR over the 2025-2028 period is $32,542,100 / ((1+30.0%)^(2028-2025)) = $14,812,100.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 31
+
+
+Criterion 33: Determines the highest total price the Client can offer for the Target Company as $23,212,100
+Sources: none
+Justification/Rationale: It was previously determined that the maximum contributable Equity Value by the Client is $14,812,100 and the maximum total leverage amount to be $8,400,000. As such the highest total price the Client can offer is $14,812,100 + $8,400,000 = $23,212,100.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 3, 31
+
+
+Criterion 34: Calculates the highest offer price the Client can pay per share to be $46.4
+Sources: Prompt
+Justification/Rationale: It was previously determined that the highest total price the Client can offer for the Target Company is $23,212,100. The prompt indicates that the Target Company currently has 500,000 shares outstanding (on a fully diluted basis). As such the highest offer price per share is $23,212,100 / 500,000 = $46.4.
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 33
+
+
+Criterion 35: Calculates the implied premium to the Target Company’s latest Share Price to be 54.7%
+Sources: Prompt
+Justification/Rationale: It was previously determined that the highest offer price per share the Client can pay is $46.4. The prompt indicates that the Target Company currently trades at $30.0 per share. As such the implied premium to the latest share price is ($46.4 -$30.0) / $30.0 = 54.7%.
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 34
+Business
+Business
+Prompt
+Our client is Grubspot, a third party delivery service based in the United States. Grubspot recently acquired a small Canadian third party delivery service and is considering entering the Canadian market with its main Grubspot brand. It has identified Toronto or Calgary as its top candidate cities to enter first. It will enter only one city for the time being. It wants to determine which city to enter first based on Grubspot total Year 1+2 expected profit (primary criteria) and total Year 1+2 expected net revenue (secondary criteria, to be used as a tiebreak).
+
+
+1. Determine the total addressable population for third party delivery services in Toronto and Calgary, defined as the total adult population with internet access. Use Demographics.csv. Round to the nearest 0.01M.
+2. Calculate the Year 1 Grubspot expected net revenue in Toronto and Calgary. Net revenue is defined as total income received by Grubspot through commissions charged to restaurants. Use "Use of 3rd Party Delivery.csv" and necessary output from prior steps. Round to the nearest $0.1M.
+3. Assume the fixed costs associated with Grubspot operating in the Toronto and Calgary markets are $4M in the first year and $2M in the second year, and assume Grubspot variable costs are 40% of Grubspot net revenue in both markets and both years. Assume Year 2 Grubspot net revenue is equal to Year 1 Grubspot net revenue in both markets and both years. Calculate the Year 1 and Year 2 expected profit in Toronto and Calgary. Round to the nearest $0.1M.
+4. Recommend which market to enter first based on the decisioning criteria in the prompt and your calculations. If tied, assess total expected revenue in Toronto and Calgary across Year 1 and Year 2, and recommend the market with highest Year 1 + 2 expected net revenue.
+Sources
+* Demographics.csv
+* Use of 3rd Party Delivery.csv
+
+
+
+
+
+
+Rubric
+Criteria 1: Calculates the total addressable population in Toronto to be 1.82M people
+Sources: Demographics.csv
+Justification/Rationale: From Demographics.csv, there are 2.5M people in Toronto, 75% of people are adults, and 97% have access to the internet. Since the total addressable population is defined as adults with access to the internet, the total addressable population in Toronto is 2.5M * 75% * 97% = 1.82M.
+Weight: Primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: none
+
+
+Criteria 2: Calculates the total addressable market in Calgary to be 1.20M people
+Sources: Demographics.csv
+Justification/Rationale: From Demographics.csv, there are 1.6M people in Calgary, 76% of people are adults, and 98% have access to the internet. Since the total addressable population is defined as adults with access to the internet, the TAM in Toronto is 1.6M * 76% * 98% = 1.20M.
+Weight: Primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: none
+
+
+Criteria 3: Calculates the Year 1 expected net revenue in Toronto to be $8.7M
+Sources: Use of 3rd Party Delivery.csv
+Justification/Rationale: From Criteria (1) the total addressable population in Toronto is 1.82M. From “Use of 3rd Party Delivery.csv”, in Toronto, third party delivery service penetration is 30%, order frequency is 3.33 per month, average order volume is $20, Grubspot expected share is 10%, and Grubspot commission is 20%. Therefore, the monthly expected net revenue is 1.82M * 30% * 3.33 * $20 * 10% * 20% = $0.727M. The Year 1 expected net revenue is the monthly revenue opportunity multiplied by 12, or $0.727 * 12 = $8.7M.
+Weight: Primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 1
+
+
+Criteria 4: Calculates the Year 1 expected net revenue in Calgary to be $9.3M
+Sources: Use of 3rd Party Delivery.csv
+Justification/Rationale: From Criteria (1) the total addressable population in Calgary is 1.20M. From “Use of 3rd Party Delivery.csv”, in Calgary, third party delivery service penetration is 25%, order frequency is 3.0 per month, average order volume is $24, Grubspot expected share is 18%, and Grubspot commission is 20%. Therefore, the monthly expected net revenue is 1.20 * 25% * 3.0 * $24 * 18% * 20% = $0.778M. The Year 1 expected net revenue is the monthly expected net revenue multiplied by 12, or $0.778 * 12 = $9.3M.
+Weight: Primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 2
+
+
+Criteria 5: Calculates the Year 1 costs in Toronto to be $7.5M
+Sources: Prompt
+Justification/Rationale: From the prompt, Year 1 fixed costs in Toronto are $4M and variable costs are 40% of expected net revenue. Total costs are fixed costs plus variable costs, where variable costs are the variable cost % multiplied by expected net revenue. Therefore, total Year 1 costs in Toronto are $4M + 40% * $8.7M = $7.5M.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 3
+
+
+Criteria 6: Calculates the Year 2 costs in Toronto to be $5.5M
+Sources: Prompt
+Justification/Rationale: From the prompt, Year 2 fixed costs in Toronto are $2M, variable costs are 40% of expected net revenue, and Year 2 expected net revenue is equal to Year 1 expected net revenue. Total costs are fixed costs plus variable costs, where variable costs are the variable cost % multiplied by expected net revenue. Therefore, total Year 2 costs in Toronto are $2M + 40% * $8.7M = $5.5M.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 3
+
+
+Criteria 7: Calculates the Year 1 profit in Toronto to be $1.2M
+Sources: none
+Justification/Rationale: Year 1 expected profit is Year 1 expected net revenue minus Year 1 costs. Criteria (3) determined that Year 1 expected net revenue is $8.7M in Toronto. Using the calculations in Criteria (5) for Year 1 costs in Toronto, we determine that Year 1 expected profit in Toronto is $8.7M - $7.5M = $1.2M.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 3,5
+
+
+Criteria 8: Calculates the Year 2 expected profit in Toronto to be $3.2M
+Sources: none
+Justification/Rationale: Year 2 expected profit is Year 2 expected net revenue minus Year 2 costs. From the prompt, we can assume that Year 2 expected net revenue is equal to Year 1 expected net revenue, which was calculated in Criteria (3) to be $8.7M in Toronto. Using the calculations in Criteria (6) for Year 2 costs in Toronto, we determine that Year 2 expected profit in Toronto is $8.7M - $5.5M = $3.2M.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 3,6
+
+
+Criteria 9: Calculates the Year 1 costs in Calgary to be $7.7M
+Sources: Prompt
+Justification/Rationale: From the prompt, Year 1 fixed costs in Calgary are $4M and variable costs are 40% of expected net revenue. Total costs are fixed costs plus variable costs, where variable costs are the variable cost % multiplied by expected net revenue. Therefore, total Year 1 costs in Calgary are $4M + 40% * $9.3M = $7.7M.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 4
+
+
+Criteria 10: Calculates the Year 2 costs in Calgary to be $5.7M
+Sources: Prompt
+Justification/Rationale: From the prompt, Year 1 fixed costs in Calgary are $4M and variable costs are 40% of expected net revenue. Total costs are fixed costs plus variable costs, where variable costs are the variable cost % multiplied by expected net revenue. Therefore, total Year 1 costs in Calgary are $2M + 40% * $9.3M = $5.7M.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 4
+
+
+Criteria 11: Calculates the Year 1 expected profit in Calgary to be $1.6M
+Sources: none
+Justification/Rationale: Year 1 expected profit is Year 1 expected net revenue minus Year 1 costs. Criteria (4) determined that Year 1 expected net revenue is $9.3M in Calgary. Using the calculations in Criteria (9) for Year 1 costs in Calgary, we determine that Year 1 expected profit in Calgary is $9.3M - $7.7M = $1.6M.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 4,9
+
+
+Criteria 12: Calculates the Year 2 profit in Calgary to be $3.6M
+Sources: none
+Justification/Rationale: Year 2 expected profit is Year 2 expected net revenue minus Year 2 costs. From the prompt, we can assume that Year 2 expected net revenue is equal to Year 1 revenue, which was calculated in Criteria (4) to be $9.3M in Calgary. Using the calculations in Criteria (10) for Year 2 costs in Calgary, we determine that Year 2 expected profit in Calgary is $9.3M - $5.7M = $3.6M.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 4,10
+
+
+Criteria 13: Calculates the Year 1 + 2 expected profit in Toronto to be $4.4M
+Sources: none
+Justification/Rationale: From Criteria (7), Year 1 expected profit in Toronto is $1.2M. From Criteria (8), Year 2 expected profit in Toronto is $3.2M. Therefore, Year 1 + 2 expected profit in Toronto is $4.4M.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 7,8
+
+
+Criteria 14: Calculates the Year 1+2 expected profit in Calgary to be $5.2M
+Sources: none
+Justification/Rationale: From Criteria (11), Year 1 expected profit in Calgary is $1.6M. From Criteria (12), Year 2 expected profit in Calgary is $3.6M. Therefore, Year 1 + 2 expected profit in Calgary is $5.2M.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 11,12
+
+
+Criteria 15: Recommends to enter Calgary first
+Sources: Prompt
+Justification/Rationale: based on the decisioning criteria in the prompt, we should recommend entering the market with the highest Year 1 + 2 expected profit. From Criteria (13), Calgary’s Year 1 + 2 expected profit is $5.2M. From Criteria (14), Toronto’s Year 1 + 2 expected profit is $4.4M. Calgary’s $5.2M Year 1 + 2 expected profit is higher than Toronto’s $4.4M Year 1 + 2 expected profit, so we should recommend entering Calgary first.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 13,14
+
+
+
+
+Psychology
+Psychology
+Prompt
+A 62-year-old female patient with no children or medical background of chronic diseases comes to us for a psychological evaluation. The patient tells us that she recently went to the doctor to check on her broken leg where, during the appointment, the doctor decided to recommend her for psychological treatment. During the session, the patient explained that she’s been feeling depressed for a long time. When asked to specify a time span, the patient clarifies that she has been feeling like this for more than 3 years, almost every day, explaining that she has seen herself as useless and a burden to her family, has difficulty on maintaining good alimentation due to a lack of appetite and also expressing ideas such as “I’ll never get better”, “there’s no future left for me”, and “I’m just not going to achieve anything” which translates into a feeling of hopelessness. The patient also states that, during more days than not, she feels tense, adding that she also feels afraid with the idea of something bad happening without a clear subject in mind. When questioned if there’s been a time when the symptoms were not present, she states that 2 years ago there was one month when she felt better about herself without reaching too high level of energy or self-esteem but rather a small sense of peace, never reaching a hypomanic or manic symptoms, but after a month, her symptoms resumed. On the other hand, when asked if there’s been a time when the symptoms have had increased intensity or if more symptoms have occurred, she claims that they have not. When asked about symptoms related to hallucinations or delusions, the patients denied having experienced them. The patient presents no medical conditions (other than her broken leg), substance abuse or medication that could generate the symptoms. The patient explains that the symptoms have made her social life and work significantly more difficult and distressing, but never to the point of making her unable to manage them. When closing the session, the patient expresses that they are worried about being able to attend sessions, due to her broken leg, but mentions that she’ll do her best and that there may be times when she cannot attend, asking for alternatives. 
+
+
+What is the psychological disorder diagnosis that best explains the patient’s symptoms? Be sure to name the diagnosis, indicate how each of the symptoms that the patient presents correlates with each of the respective necessary criteria of said diagnosis, which specifiers apply to this case and the current severity of the disorder, all of this according to the DSM-5 standard (DSM-5 - Depressive Disorders.pdf). Then, explain which psychotherapy method is recommended for this case, taking the symptoms and their duration in time as a crucial factor, and which alternatives could be used to maintain treatment despite the difficulty on mobility of the patient (Depression disorder - Validated treatment and future challenges.pdf).
+
+
+
+
+Sources
+* DSM-5 - Depressive Disorders.pdf
+* Depressive disorder - Validated treatments and future challenges.pdf
+
+
+Rubric
+Criterion 1: Relates depressed mood of the patient to Criteria A of Persistent Depressive Disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt.
+Justification/Rationale: The patient has presented depressed mood for over 2 years, which is part of the Criteria A of the persistent Depressive disorder (DSM-5 - Depressive Disorders.pdf, page 14).
+Weight: Not primary objective
+Criterion Criterion Type: Extraction, Reasoning
+Dependent Criteria: none
+
+
+Criterion 2: Relates poor appetite to Criteria B of Persistent Depressive Disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: The patient indicates that has presented low appetite which is a symptom of the Criteria B of Persistent Depressive Disorder (DSM-5 - Depressive Disorders.pdf, page 14).
+Weight: Not primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 1
+
+
+Criterion 3: Relates low self-esteem to Criteria B of Persistent Depressive Disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: The patient mentions to feel “useless” and “as a burden to her family” which is part of the low self-esteem symptom presented in Criteria B of Persistent Depressive Disorder (DSM-5 - Depressive Disorders.pdf, page 14)
+Weight: Not primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 1
+
+
+Criterion 4: Relates feelings of hopelessness to Criteria B of Persistent Depressive Disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: Patient states that she holds beliefs such as “I’ll never get better” and “there’s no future left for me, I’m just not going to achieve anything” which is one of the possible symptoms of Criteria B of Persistent Depressive Disorder (DSM-5 - Depressive Disorders.pdf, page 14).
+Weight: Not primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 1
+
+
+Criterion 5: Relates the lack of space in time where symptoms were not present that surpasses the two months to Criteria C of Persistent Depressive Disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: The patient states that there was one month when she felt better, but then her symptoms resumed before reaching the two months, which is part of the Criteria C of Persistent Depressive Disorder (DSM-5 - Depressive Disorders.pdf, page 14).
+Weight: Not primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 1
+
+
+Criterion 6: Relates the lack of criteria for major depressive disorder as acceptable for Persistent Depressive Disorder as presented in Criteria D
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: Criteria D or the Persistent Depressive Disorder states that a patient may present criteria for major depressive disorder, but not necessarily (DSM-5 - Depressive Disorders.pdf, page 14).
+Weight: Not primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 1
+
+
+Criterion 7: Relates the lack of hypomanic or manic episodes to Criteria E of Persistent Depressive Disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: The lack of hypomanic or manic episodes is necessary to discard bipolar disorders, and since the patient hasn’t presented either, it checks out with the Criteria E of the Persistent Depressive Disorder (DSM-5 - Depressive Disorders.pdf, page 14).
+Weight: Not primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 1
+
+
+Criterion 8: Relates the lack of delusions or hallucinations to Criteria F of Persistent Depressive Disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: The lack of delusions or hallucinations discards a number of disorders (such as schizoaffective, schizophrenic and other disorders), and since the patient hasn’t presented such symptoms, it relates to Persistent Depressive Disorder (DSM-5 - Depressive Disorders.pdf, page 14).
+Weight: Not primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 1
+
+
+Criterion 9: Relates the lack of substance use or medical conditions with Criteria G of Persistent Depressive disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: The patient’s story doesn’t indicate the presence of any substance or medical condition that could create the symptoms; therefore, it relates to Criteria G of Persistent Depressive Disorder (DSM-5 - Depressive Disorders.pdf, page 14).
+Weight: Not primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 1
+
+
+Criterion 10: Relates the patient’s difficulty in carrying out her social and work life with the Criteria of H of Persistent Depressive Disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: The patient’s significant difficulty in areas of her life such her social life and her work life are an indicator of Criteria H of the Persistent Depressive Disorder (DSM-5 - Depressive Disorders.pdf, page 14).
+Weight: Not primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 1
+
+
+Criterion 11: Decides that the diagnostic is “Persistent depressive disorder”
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: When comparing the symptoms that the patient presents (Prompt) with the criteria of the different depressive disorders, given in the source “DSM-5 - Depressive Disorders”, Persistent Depressive disorder is the only diagnosis that fits all the necessary criteria (from criteria A to H) while taking into the account the time span of said symptoms (DSM-5 - Depressive Disorders.pdf, page 14).
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 1,2,3,4,5,6,7,8,9,10
+
+
+Criterion 12: Relates the patient feeling tense to the “With anxious distress” specifier in the patient’s disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: Feeling tense is one of the anxious symptoms related to an anxious distress specifier (DSM-5 - Depressive Disorders.pdf, page 30).
+Weight: Not primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 11
+
+
+Criterion 13: Relates the patient's fear of something bad happening to the “With anxious distress” specifier in the patient’s disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: Fear of something bad happening is one of the symptoms related to an anxious distress specifier (DSM-5 - Depressive Disorders.pdf, page 30).
+Weight: Not primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 11
+
+
+Criterion 14: Mentions “With anxious distress” as a specifier in the patient’s disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: The patient explains that she has presented symptoms of anxiety such as “feeling tense” and being “afraid of something bad happening” which indicates anxious distress specifier (DSM-5 - Depressive Disorders.pdf, page 30).
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 12,13
+
+
+Criterion 15: Indicates the severity of “With anxious distress” specifier as “Mild”
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: The patient only presents two anxiety symptoms which indicates a “Mild” level of severity on this specifier (DSM-5 - Depressive Disorders.pdf, page 30).
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 12,13
+
+
+Criterion 16: Mentions “Late onset” as a specifier in the patient's disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: The patient is 62 years old, with the symptoms first appearing three years ago and since the “Late onset” specifier applies when the disorder appears after 21 years old, the patient qualifies for it (DSM-5 - Depressive Disorders.pdf, page 15).
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 11
+
+
+Criterion 17: Mentions “With pure dysthymic syndrome” as a specifier in the patient’s disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: The patient claims that no more symptoms have appeared apart from the ones initially mentioned, which makes a major depression criteria not appliable in this case, therefore, the “With pure dysthymic syndrome” applies in this case (DSM-5 - Depressive Disorders.pdf, page 15).
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 11
+
+
+Criterion 18: Mentions “Mild” as the severity of the patient's disorder
+Sources: DSM-5 - Depressive Disorders.pdf, Prompt
+Justification/Rationale: The patient only presents 3 of the 6 symptoms that can be presented on Criteria B, which counts as few, but more importantly, the patient states that although her disorder has made a negative impact on her social and work life, it’s still manageable, which indicates a “Mild” severity (DSM-5 - Depressive Disorders.pdf, page 14).
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 2,3,4,10,11
+
+
+Criterion 19: Recommends the usage of “Cognitive Behavioral Analysis System of Psychotherapy (CBASP)” to treat the patient’s disorder
+Sources: Depressive disorder - Validated treatments and future challenges.pdf, Prompt
+Justification/Rationale: Given the time span in which the symptoms have been present in the patient’s life, as part of her Persistent Depressive Disorder diagnosis, it falls under the category of “chronic depression” were CBASP is the recommended treatment for this kind of depression (Depressive disorder - Validated treatments and future challenges.pdf, page 6).
+Weight: Primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 11
+
+
+Criterion 20: Recommends the usage of “computerized CBT (CCBT)” or “online CCBT” as alternatives that could be used to deal with patient’s problems with mobility
+Sources: Depressive disorder - Validated treatments and future challenges.pdf, Prompt
+Justification/Rationale: Given the broken leg of the patient, the suggested remote and video options recommended by the source are viable alternatives for treatment when she is unable to assist in face-to-face manner. (Depressive disorder - Validated treatments and future challenges.pdf, page 7).
+Weight: Primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 11
+
+
+Creative Arts
+Creative Arts
+Prompt
+I am a producer at a film service studio in Canada. My client, a small Canadian studio, has sent me the script of their film along with a shot breakdown (Script.VFX breakdown.pdf), asking if I can provide a time and cost estimate only for the visual effects (VFX) that I can handle using all the VFX departments I have available (only doing VFX), as listed in my services table (Our services.pdf). Each department costs $20,000 CAD to complete a high-complexity VFX shot in 3 weeks, $10,000 CAD to complete a medium-demand VFX shot in 2 weeks, and $5,000 CAD to complete a low-demand VFX shot in 1 week. This includes revisions and finalization. Different departments can work simultaneously. How much time and money should I estimate for the completion of the film if the company profit margin is 7%?
+
+
+Sources
+* Script.VFX breakdown.pdf
+* Our services.pdf
+
+
+Rubric
+Criterion 1: Identifies that 20 VFX shots are considered as light VFX shots
+Sources: Script.VFX breakdown.pdf
+Justification/Rationale: From the source Script.VFX breakdown.pdf it is extracted that there are 20 light VFX shots.
+Weight: Not primary objective
+Criterion Criterion Type: Extraction, Reasoning
+Dependent Criteria: none
+
+
+Criterion 2: Identifies that 10 VFX shots are considered as medium VFX shots
+Sources: Script.VFX breakdown.pdf
+Justification/Rationale: From Script.VFX breakdown.pdf it is extracted that there are 10 medium VFX shots.
+Weight: Not primary objective
+Criterion Criterion Type: Extraction, Reasoning
+Dependent Criteria: none
+
+
+Criterion 3: Identifies that 5 VFX shots are considered as high-complexity VFX shots
+Sources: Script.VFX breakdown.pdf
+Justification/Rationale: From the source Script.VFX breakdown.pdf it is extracted that there are 5 high-complexity VFX shots.
+Weight: Not primary objective
+Criterion Criterion Type: Extraction, Reasoning
+Dependent Criteria: none
+
+
+Criterion 4: Identifies that the Compositors department will be involved in the VFX production
+Sources: Our services.pdf, Prompt
+Justification/Rationale: From the source Our services.pdf extract the Compositors department from the VFX available departments.
+Weight: Not primary objective
+Criterion Criterion Type: Extraction
+Dependent Criteria: None
+
+
+Criterion 5: Identifies that the Roto/Paint department will be involved in the VFX production
+Sources: Our services.pdf, Prompt
+Justification/Rationale: From Our services.pdf extract the Roto/Paint department from the VFX available departments.
+Weight: Not primary objective
+Criterion Criterion Type: Extraction
+Dependent Criteria: None
+
+
+Criterion 6: Identify that the Matte Painters department will be involved in the VFX production
+Sources: Our services.pdf, Prompt
+Justification/Rationale: From Our services.pdf extract the Matte Painters department from the VFX available departments.
+Weight: Not primary objective
+Criterion Criterion Type: Extraction
+Dependent Criteria: None
+
+
+Criterion 7: Identify that in total 3 departments will be involved in the VFX production
+Sources: none
+Justification/Rationale: The sum of the Matte Painters department, Roto/Paint department and Compositors department is 3.
+Weight: Not primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 4, 5, 6
+
+
+Criterion 8: Calculates that all high-complexity shots will take 15 weeks (for one department)
+Sources: Prompt
+Justification/Rationale: The prompt states that high-complexity VFX shots take 3 weeks per department.
+There are 5 shots. 5 shots × 3 weeks = 15 weeks.
+Weight: Not primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 3
+
+
+Criterion 9: Calculates that all medium VFX shots will take 20 weeks (per department)
+Sources: Prompt
+Justification/Rationale: The prompt states that medium VFX shots take 2 weeks per department.
+There are 10 medium shots. 10 shots × 2 weeks = 20 weeks.
+Weight: Not primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 2
+
+
+Criterion 10: Calculates that all light VFX shots will take 20 weeks (per department)
+Sources: Prompt
+Justification/Rationale: The prompt states that light VFX shots take 1 week per department.
+There are 20 light VFX shots. 20 shots × 1 week = 20 weeks.
+Weight: Not primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 1
+
+
+Criterion 11: States that all the VFX shots will take 55 weeks for one department
+Sources: none
+Justification/Rationale: For all the shots, one department will take 20 weeks + 20 weeks + 15 weeks = 55 weeks.
+Weight: Not primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 8, 9, 10
+
+
+Criterion 12: States that all the VFX shots will take 55 weeks for all the departments
+Sources: none
+Justification/Rationale: The prompt states that different departments can work simultaneously.
+Weight: Primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 11
+
+
+Criterion 13: Calculates the cost of all high-complexity shots for a department as $100,000 CAD
+Sources: Prompt
+Justification/Rationale: The prompt states that high-complexity VFX shots cost $20,000 CAD (per department).
+We have 5 high-complexity VFX shots. 5 shots × $20,000 CAD = $100,000 CAD.
+Weight: Not primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 3
+
+
+Criterion 14: Calculates the cost of all medium shots for a department as $100,000 CAD
+Sources: Prompt
+Justification/Rationale: The prompt states that medium VFX shots cost $10,000 CAD per department.
+We have 10 medium shots. 10 shots × $10,000 CAD = $100,000 CAD.
+Weight: Not primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 2
+
+
+Criterion 15: Calculates the cost of all light shots for a department as $100,000 CAD
+Sources: Prompt
+Justification/Rationale: The prompt states that light VFX shots cost $5,000 CAD per department.
+We have 20 light shots. 20 shots × $5,000 CAD = $100,000 CAD.
+Weight: Not primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 1
+
+
+Criterion 16: Calculates the cost of all VFX shots for a department as $300,000 CAD
+Sources: none
+Justification/Rationale: All the light VFX shots cost $100,000 CAD, all the medium shots cost $100,000 CAD, and all the high-complexity shots cost $100,000 CAD (per department).
+$100,000 CAD + $100,000 CAD + $100,000 CAD = $300,000 CAD.
+Weight: Not primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 13, 14, 15
+
+
+Criterion 17: Calculates that all VFX shots for all departments cost $900,000 CAD
+Sources: none
+Justification/Rationale: There are 3 departments and the cost is $300,000 CAD per department.
+$300,000 CAD × 3 = $900,000 CAD.
+Weight: Not primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 7, 16
+
+
+Criterion 18: Calculates the company profit margin as $63,000 CAD
+Sources: Prompt
+Justification/Rationale: The company profit margin is 7%. The total cost of the departments is $900,000 CAD.
+As such, 7% of $900,000 CAD = $63,000 CAD.
+Weight: Not primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 17
+
+
+Criterion 19: Calculates the total price with company profit margin as $963,000 CAD
+Sources: none
+Justification/Rationale: The cost is $900,000 CAD. The company profit margin = $63,000 CAD.
+$900,000 + $63,000 = $963,000 CAD.
+Weight: Primary objective
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 17, 18
+
+
+
+
+Computer Science
+Computer Science
+Prompt
+There is an application that stores resources and needs to be synced to its source, which occurs when the user performs a resync. Resyncs are of 2 types:
+1. 1. Full Resync: Where the resources stored in the cache are cleared, and all the resources are fetched.
+2. Partial Resync: Where the resources in the source are compared with the stored cache, and then the changes are published.
+
+
+For doing a full resync, we send a key 'full' as 'true' in the query parameters.
+
+
+But while doing a full resync, a partial resync is triggered. The logs in the Source2.pdf file indicate "No Changes to the resource identified", which should not be the case, as we know there are 13 resources in the application. During a full resync, the cache should have been cleared, including all 13 resources currently in the app cache. Thus, changes should have been there.
+
+
+Given is Source1.pdf that contains a code snippet to perform a full resync in the application from the source. Source2.pdf gives the logs for the full resync. Find out what is wrong in the Code Snippet that is causing the full resync to not work.
+
+
+Use the following assumptions for the task:
+1. The functions 'clear_resource_cache' and 'cache_resource_hashes' are correct and work as intended.
+
+
+Sources
+* Source1.pdf
+* Source2.pdf
+
+
+Rubric
+Criterion 1: Identifies the Full resync logs that are having issues as ‘No Changes to the resource identified from previous published messages for device_id: ’
+Sources: Source2.pdf, Prompt
+Justification/Rationale: We get the error from the logs so that we can look for the potential issues in the code.
+Weight: Not Primary objective
+Criterion Type: Extraction
+Dependent Criteria: none
+
+
+Criterion 2: Locates the flawed full resync logs in the Code Snippet that are also in the‘process’ method
+Sources: Source1.pdf
+Justification/Rationale: We locate the logs for the resync in the Code Snippet to investigate the root cause of the Issue.
+Weight: Not primary objective
+Criterion Type: Extraction, Reasoning
+Dependent Criteria: 1
+
+
+Criterion 3: Figures out the value of Modified to be a ‘falsey’ value
+Sources: Source1.pdf
+Justification/Rationale: The logging command is enclosed by the conditional statement which expects ‘modified’ to a falsey value so that “not modified” becomes true.
+Weight: Not Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 2
+
+
+Criterion 4: Finds out the values of created, updated and terminated to be either ‘False’ or 0
+Sources: Source1.pdf
+Justification/Rationale: Given that modified is a false value, as per the statement modified = any((created, updated, terminated)), for ‘modified’ to be false, all of the created, updated and terminated must also be false values.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: none
+
+
+Criterion 5: Figure outs that the values created, updated and terminated are actually determined by the function ‘cache_resource_hashes’
+Sources: Source1.pdf
+Justification/Rationale: ‘cache_resource_hashes’ returns a tuple of 3 values, which are accepted by created, updated and terminated variables.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: none
+
+
+Criterion 6: Figures out that no value has been created since the latest cache state
+Sources: Source1.pdf
+Justification/Rationale: Since ‘created’ is a false value and as per the ‘cache_resource_hashes’ method, It is a list that stores all the new resources created which are not stored in the cache, that means, no new resources were created.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 4
+
+
+Criterion 7: Figures out that no value has been updated since the latest cache state
+Sources: Source1.pdf
+Justification/Rationale: Since ‘updated’ is a falsey value and as per the ‘cache_resource_hashes’ method, It is a list of all the resources stored in the cache that were updated, that means, no resources were updated.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 4
+
+
+Criterion 8: Figures out that no value has been terminated since the latest cache state
+Sources: Source1.pdf
+Justification/Rationale: Since ‘terminated’ is a false value and as per the ‘cache_resource_hashes’ method, It is a list of all the resources that were terminated, that means, no resources were terminated.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 4
+
+
+Criterion 9: Figures out that no changes to the cache were done in the current call
+Sources: Source1.pdf, Prompt
+Justification/Rationale: Given that there are currently 13 resources in the cache, and there were no new resources created, no resources updated and no resources terminated, thus, cache was not changed in the current call.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 6,7,8
+
+
+Criterion 10: Figures out that Full resync is not working due to failure to clear the cache
+Sources: Prompt
+Justification/Rationale: Given that we are doing “Full resync”, And as per the Prompt, Full resync should have cleared the cache, But, It is observed that no changes were made to the cache.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 9
+
+
+Criterion 11: Figures out that the method ‘clear_resource_cache’ is responsible for clearing the cache
+Sources: Source1.pdf
+Justification: As per the code snippet, the method ‘clear_resource_cache’ has docstring which specify the role of the function, that is to ‘Clears the resource_cache for given device ID’
+Weight: Not Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: none
+
+
+Criterion 12: Figures out that ‘is_full_resync’ is a falsey value
+Sources: Prompt, Source1.pdf
+Justification: Given that the method ‘clear_resource_cache’ is correct and work as intended, thus, It should have cleared the cache, but, given that the cache was not changed, that means that the method was never called. Thus, Either resources_by_device_id.items() is empty or ‘is_full_resync’ is a falsey value. Since, we know that there are 13 resources in the application, so resources_by_device_id.items() cannot be empty, thus, ‘is_full_resync’ is a falsey value.
+Weight: Not Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 9
+
+
+Criterion 13: Finds out that ‘full’ query parameter is either false or is not present in the Query parameters
+Sources: Prompt, Source1.pdf
+Justification: Given that ‘is_full_resync’ is a false value, and ‘is_full_resync’ directly takes the value of ‘full’ from the Query parameters, thus, it can be false only if either the full Query Parameter is False, or It is not present in the Query Parameters altogether.
+Weight:Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 12
+Programming
+Programming
+Prompt
+I am trying to solve a competitive programming task that can be described as follows:
+
+
+You receive a tree with n<=1000 nodes, and weighted edges with each weight smaller than 1000 and bigger than 1. Then, you will receive q<=1000 queries, each containing two nodes a, b. Let d be the distance from a to b in the tree. You should output "Yes" if and only if there are two not necessarily distinct edges with sizes \(d_i, d_j\) in the path from a to b such that \(2^{d_i + d_j} - 1\) is a multiple of d. Otherwise, output "No".
+
+
+I created the code in c++, and you can see it in "Source1.pdf". However, the output is not always correct. In "Source2.pdf", you can see the outputs for 3 different inputs.
+
+
+Identify in which general cases my code will fail, and the part of the code where it fails. Then, based on that, determine for each of the queries with wrong output in "Source2.pdf" the reason of the error.
+
+
+Use the following assumption for the task:
+The codes inside the functions dfs and main are already correct.
+Sources
+Source1.pdf
+Source2.pdf
+Rubric
+Criterion 1: Identifies that the modPow function will return a wrong value if we send a negative exponent to it.
+Sources: Source1.pdf
+Justification/Rationale: We identify that if we send a negative exponent in the input, we may generate wrong final answers, since the function is not prepared to deal with negative exponents.
+Weight: Not primary objective
+Criterion Type: Reasoning
+Dependent Criteria: none
+
+
+Criterion 2: Identifies that if one of the edges is bigger than the euler's totient function value for the path size, then the exponent used as input in modPow might be negative.
+Sources: Source1.pdf, Prompt
+Justification/Rationale: In the code, we will calculate the exponent of the modPow as (phi - d_i)%phi, where d_i is an edge size. If d_i > phi, this value can be negative. This part needs to force the exponent to the range (0, phi)
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: none
+
+
+Criterion 3: Identifies that if the euler's totient function value is 0, then a division by zero will happen and break the code.
+Sources: Source1.pdf, Prompt
+Justification/Rationale: The part of the code that calls the modPow function for the inverses takes the input exponent modulo phi. When phi is zero, a division by zero error happens.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: none
+
+
+Criterion 4: Identifies that the primeDivisor function will add 1 as a prime when the biggest prime that divides d has an exponent bigger than 1 in the factorization of d.
+Sources: Source1.pdf, Prompt
+Justification/Rationale: When this happens, this prime will be detected inside the for loop in the function. Then, when the last value is added, it will actually be 1, not a prime.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: none
+
+
+Criterion 5: Identifies that if 1 is in the output set of the primeDivisor function, then the value of the totient function in the query will be 0.
+Sources: Source1.pdf
+Justification/Rationale: This is a direct consequence of the fact that the totient function is calculated by doing n = n*(p_i-1)/p_i for all primes p_i that divide n. If we wrongfully consider 1 as a prime, we are multiplicating it by p_i - 1 = 0.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: none
+
+
+Criterion 6: Identifies that when the sizeOfPath is even, the code should output that the query answer is negative.
+Sources: Source1.pdf, Prompt
+Justification/Rationale: The code is checking if sizeOfPath is even, but currently the output in this case is wrong. This is a direct consequence of the fact that no even number can divide 2^x - 1 for a positive integer x.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: none
+
+
+Criterion 7: Identifies that the last query in the second input is wrong because the sizeOfPath is even.
+Sources: Source2.pdf
+Justification/Rationale: For this last query, the path size is simply 2. Since it is even, the code will return a wrong output according to the criterion 6.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 6
+
+
+Criterion 8: Identifies that code breaks in the third input because it tries to calculate a number modulo zero.
+Sources: Source2.pdf
+Justification/Rationale: In this input the code fails because of a division by zero error, that happens because the euler's totient function value here is zero, and this happens because 1 is wrongfully considered a divisor.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 3, 4 and 5
+Teaching
+Teaching
+Prompt
+You teach a 9th-grade Earth and Environmental Class in North Carolina. Create a 4-day unit plan for goal ESS.EES.2.2 of the North Carolina Earth and Environmental (Source 1). Identify what students will be able to do to demonstrate proficiency of this goal (Source 2). Using the goal as a guide, group the list of things that students must do in order to demonstrate proficiency into four groups of related items (Sources 1 and 2). Create four essential questions, one for each day of the unit plan, using each group of related items once each. Using the following sources (Sources 3, 4, 5, 6, 7, 8, 9), assign each source to the day/essential question it answers best. Using the information obtained, complete the “Basic Unit Plan Template”.
+Sources
+Source 1.pdf (NORTH CAROLINA STANDARD COURSE OF STUDY K-12 Science, Earth and Environmental Science.pdf)
+Source 2.pdf (Earth/Environmental Science: 2023 Support Document.pdf)
+Source 3.pdf (The San Andreas Fault.pdf)
+Source 4.pdf (Plate Tectonic Map.pdf)
+Source 5.pdf (Stress in Earth’s Crust.pdf)
+Source 6.pdf (Can Earthquakes be Predicted.pdf)
+Source 7.pdf (Earthquakes Living Lab - FAQs to P waves S waves.pdf)
+Source 8.pdf (Earthquake FAQ.pdf)
+Source 9.pdf (Plate Tectonic Post Lab.pdf)
+Basic Unit Plan Template.pdf
+Rubric
+Criterion 1: Identifies Goal ESS.EES.2.2 as ‘Analyze and interpret data to predict locations of volcanoes and earthquakes based on plate boundaries.’
+Sources: Source 1.pdf
+Justification/Rationale: From the source Source 1, Goal ESS.EES.2.2 is listed as ‘Analyze and interpret data to predict locations of volcanoes and earthquakes based on plate boundaries.’.
+Weight: Not primary objective 
+Criterion Type: Extraction
+Dependent Criteria: none
+
+
+Criterion 2: Identifies that students will be able to demonstrate all of the following to demonstrate proficiency of this goal: “By using a map of plate tectonics, students can locate and predict the locations of volcanoes and earthquakes. Students analyze a data chart or graph to predict the location of volcanoes and earthquakes. Students compare the process of tectonic plates to locate earthquakes and volcanoes. Students correlate locations of earthquakes and volcanoes to plate boundaries (convergent, divergent, transform). Students explain how the release of energy of various types of earthquakes relate to magnitude, P and S waves. Students interpret seismographs to triangulate the location of an earthquake.”
+Sources: Source 2.pdf
+Justification/Rationale: From the source Source 2, page 25, under the subheading ‘What does it look like to demonstrate proficiency?” It lists: ‘By using a map of plate tectonics, students can locate and predict the locations of volcanoes and earthquakes. Students analyze a data chart or graph to predict the location of volcanoes and earthquakes. Students compare the process of tectonic plates to locate earthquakes and volcanoes. Students correlate locations of earthquakes and volcanoes to plate boundaries (convergent, divergent, transform). Students explain how the release of energy of various types of earthquakes relate to magnitude, P and S waves. Students interpret seismographs to triangulate the location of an earthquake.’.
+Weight: Not primary objective 
+Criterion Type: Extraction
+Dependent Criteria: 1
+
+
+Criterion 3: Identifies that students will be able to locate and predict the locations of volcanoes and earthquakes by using the “based on plate boundaries” place item in the map of plate tectonics
+Sources: Source 1.pdf, Source 2.pdf
+Justification/Rationale: When breaking goal ESS.EES.2.2 into its four parts, each of the items that demonstrate proficiency will be grouped with the part of the goal that it relates to.
+Weight: Not primary objective 
+Criterion Criterion Type: Reasoning
+Dependent Criteria: 1,2
+
+
+Criterion 4: Identifies that students will be able to compare the process of tectonic plates to locate earthquakes and volcanoes by correlating locations of earthquakes and volcanoes to plate boundaries (convergent, divergent, transform) using the “analyze data of volcanoes and earthquakes” as a place item
+Sources: Source 1.pdf, Source 2.pdf
+Justification/Rationale: When breaking goal ESS.EES.2.2 into it’s four parts, each of the items that demonstrate proficiency will be grouped with the part of the goal that it relates to.
+Weight: Not primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 1,2
+
+
+Criterion 5: Identifies that students will be able to explain how the release of energy of various types of earthquakes relate to magnitude, P and S waves by interpreting seismographs to triangulate the location of an earthquake using “interpret data of volcanoes and earthquakes” as a place item
+Sources: Source 1.pdf, Source 2.pdf
+Justification/Rationale: When breaking goal ESS.EES.2.2 into it’s four parts, each of the items that demonstrate proficiency will be grouped with the part of the goal that it relates to.
+Weight: Not primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 1,2
+
+
+Criterion 6: Identifies that students will be able to analyze a data chart or graph to predict the location of volcanoes and earthquakes by using “predict locations of volcanoes and earthquakes” as a place item
+Sources: Source 1.pdf, Source 2.pdf
+Justification/Rationale: When breaking goal ESS.EES.2.2 into it’s four parts, each of the items that demonstrate proficiency will be grouped with the part of the goal that it relates to.
+Weight: Not primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 1,2
+
+
+Criterion 7: Defines essential question 1 (day 1) as identifying and locating the major tectonic plates
+Sources: Source 2.pdf
+Justification/Rationale: This essential question is derived from criterion 3.
+Weight: Primary objective
+Criterion Type: Reasoning
+Dependent Criteria: 3
+
+
+Criterion 8: Defines essential question 2 (day 2) as types of tectonic boundaries and how they move regarding volcanoes and earthquakes.
+Sources: Source 2.pdf
+Justification/Rationale: This essential question is derived from criterion 4.
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 4
+
+
+Criterion 9: Defines essential question 2 (day 2) as types of tectonic boundaries 
+Sources: Source 2.pdf
+Justification/Rationale: This essential question is derived from criterion 4.
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 4
+
+
+Criterion 10: Includes how types of tectonic boundaries move regarding volcanoes and earthquakes in essential question 2 (day 2)
+Sources: Source 2.pdf
+Justification/Rationale: This essential question is derived from criterion 4.
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 4
+
+
+Criterion 11: Defines essential question 3 (day 3) as the location of tectonic plates regarding volcanoes and earthquakes
+Sources: Source 2.pdf
+Justification/Rationale: This essential question is derived from criterion 5
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 5
+
+
+Criterion 12: Defines essential question 4 (day 4) as ways to predict future locations of earthquakes
+Sources: Source 2.pdf
+Justification/Rationale: This essential question is derived from criterion 6
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 6
+
+
+Criterion 13: Source 3 is assigned to essential question 1
+Sources: Source 3.pdf
+Justification/Rationale: The information contained in the source answers the essential question #1 - identifying and locating the major tectonic plates.
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 7
+
+
+Criterion 14: Source 4 is assigned to essential question 1
+Sources: Source 4.pdf
+Justification/Rationale: The information contained in the source answers the essential question #1 - identifying and locating the major tectonic plates.
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 7
+
+
+Criterion 15: Source 5 is assigned to essential question 2
+Sources: Source 5.pdf
+Justification/Rationale: The information contained in the source answers the essential question #2 - types of tectonic boundaries and how they move regarding volcanoes and earthquakes.
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 8
+
+
+Criterion 16: Source 6 is assigned to essential question 3
+Sources: Source 6.pdf
+Justification/Rationale: The information contained in the source answers the essential question #3 - the location of tectonic plates regarding volcanoes and earthquakes.
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 9
+
+
+Criterion 17: Source 7 is assigned to essential question 3
+Sources: Source 7.pdf
+Justification/Rationale: The information contained in the source answers the essential question #3 - the location of tectonic plates regarding volcanoes and earthquakes.
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 9
+
+
+Criterion 18: Source 8 is assigned to essential question 3
+Sources: Source 8.pdf
+Justification/Rationale: The information contained in the source answers the essential question #3 - the location of tectonic plates regarding volcanoes and earthquakes.
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 9
+
+
+Criterion 19: Source 9 is assigned to essential question 4
+Sources: Source 9.pdf
+Justification/Rationale: The information contained in the source answers the essential question #4 - ways to predict future locations of earthquakes.
+Weight: Primary objective 
+Criterion Type: Reasoning
+Dependent Criteria: 10
+
+
+Criterion 20: Fills in the Basic Unit Plan Template using information obtained
+Sources: Sources 1 - 8 and Basic Unit Plan Template.pdf
+Justification/Rationale: The output includes a completed template that summarizes criteria 1, 2, and 7-19. The model follows the request to complete a basic unit plan template in the prompt.
+Weight: Primary objective 
+Criterion Type: Style
+Dependent Criteria: 1-2, 7-19

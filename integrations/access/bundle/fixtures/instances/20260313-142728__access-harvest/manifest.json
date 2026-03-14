@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-03-13T14:27:28",
+  "instance_id": "20260313-142728__access-harvest",
+  "outputs": {
+    "aws": "fixtures/bundle/resources/aws.json",
+    "gcloud": "fixtures/bundle/resources/gcloud.json",
+    "api": "fixtures/bundle/resources/api.json",
+    "all_in_one": "fixtures/bundle/data/access-all-in-one.json",
+    "dictionary": "fixtures/bundle/data/access-dictionary.json",
+    "models": "fixtures/bundle/models/model-catalog.yaml"
+  },
+  "sources": [
+    {
+      "label": "resuscitation_health_app",
+      "path": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app",
+      "exists": true,
+      "env_key_count": 0,
+      "provider_records_found": 0
+    }
+  ]
+}

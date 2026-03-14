@@ -1,0 +1,94 @@
+{
+  "generatedAt": "2026-02-22T00:44:54.845Z",
+  "source": {
+    "scanRunDir": "appendix/scans_outputs/runs/20260221-190802",
+    "scanFile": "appendix/scans_outputs/runs/20260221-190802/home-scan.json",
+    "page": "home",
+    "splitCategory": "dynamic",
+    "viewport": "1440x900",
+    "screenshotBounds": {
+      "pageWidth": 1440,
+      "pageHeight": 1020
+    }
+  },
+  "plan": {
+    "clusterSummary": [],
+    "regionCount": 3,
+    "pageSizeFromScan": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "summary": {
+    "extracted": 3,
+    "failed": 0
+  },
+  "regions": [
+    {
+      "id": "header",
+      "type": "header",
+      "label": "header",
+      "parentId": null,
+      "sourceIndex": 1,
+      "geometry": {
+        "x": 527,
+        "y": 30,
+        "width": 386,
+        "height": 50
+      },
+      "clippedGeometry": {
+        "x": 527,
+        "y": 30,
+        "width": 386,
+        "height": 50
+      },
+      "file": "appendix/guidance/warden/design/runs/20260221-194446__bp-20260221-190758-warden__scan-20260221-190802/splits/dynamic/main/home-1440x900-edge-001-card-00-start-to-card-01-unresponsive/images/header.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "content",
+      "type": "content",
+      "label": "content-region",
+      "parentId": null,
+      "sourceIndex": null,
+      "geometry": {
+        "x": 0,
+        "y": 80,
+        "width": 1440,
+        "height": 690
+      },
+      "clippedGeometry": {
+        "x": 0,
+        "y": 80,
+        "width": 1440,
+        "height": 690
+      },
+      "file": "appendix/guidance/warden/design/runs/20260221-194446__bp-20260221-190758-warden__scan-20260221-190802/splits/dynamic/main/home-1440x900-edge-001-card-00-start-to-card-01-unresponsive/images/content.png",
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "label": "footer",
+      "parentId": null,
+      "sourceIndex": 22,
+      "geometry": {
+        "x": 527,
+        "y": 770,
+        "width": 386,
+        "height": 100
+      },
+      "clippedGeometry": {
+        "x": 527,
+        "y": 770,
+        "width": 386,
+        "height": 100
+      },
+      "file": "appendix/guidance/warden/design/runs/20260221-194446__bp-20260221-190758-warden__scan-20260221-190802/splits/dynamic/main/home-1440x900-edge-001-card-00-start-to-card-01-unresponsive/images/footer.png",
+      "ok": true,
+      "error": null
+    }
+  ]
+}

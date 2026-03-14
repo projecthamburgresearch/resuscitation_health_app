@@ -1,0 +1,25 @@
+{
+  "run_id": "2026-02-21_202457",
+  "project_name": "resus-test-local",
+  "snapshot_id": "resus-test-local-2026-02-21_202457",
+  "source_path": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app",
+  "domains_run": [
+    "xray",
+    "manifest",
+    "cortex",
+    "registry",
+    "sonar",
+    "synapse"
+  ],
+  "preset": "quick",
+  "duration_seconds": 1.166,
+  "blueprint_version": "0.2.0",
+  "bpignore_patterns": [
+    "dev-mode/"
+  ],
+  "files_scanned": 10,
+  "entities_found": 23,
+  "edges_found": 13,
+  "errors": [],
+  "is_intra_run": false
+}

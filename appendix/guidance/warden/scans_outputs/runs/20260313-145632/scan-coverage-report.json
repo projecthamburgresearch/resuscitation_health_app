@@ -1,0 +1,48 @@
+{
+  "generatedAt": "2026-03-13T18:56:41.690Z",
+  "baseUrl": "http://localhost:3000",
+  "runStamp": "20260313-145632",
+  "runDir": "appendix/guidance/warden/scans_outputs/runs/20260313-145632",
+  "currentDir": "appendix/guidance/warden/scans_outputs/current",
+  "summary": {
+    "runStamp": "20260313-145632",
+    "scans": 1,
+    "cappedScans": 0,
+    "totalScannedElements": 35,
+    "totalIncludeableElements": 35,
+    "totalUniqueCandidates": 47,
+    "scannedRatioOfIncludeable": 1,
+    "scannedRatioOfUnique": 0.745
+  },
+  "notes": [
+    "Coverage is measured against selector-filtered candidates, not the entire DOM.",
+    "If capped=true, increase MAX_SCAN_ELEMENTS or narrow selector scope."
+  ],
+  "scans": [
+    {
+      "page": "home",
+      "viewport": "390x844",
+      "scanFile": "home-390x844-scan.json",
+      "coverage": {
+        "mode": "devmode-overlay",
+        "selectorCandidateCount": 47,
+        "uniqueCandidateCount": 47,
+        "includeableCount": 35,
+        "scannedCount": 35,
+        "scanCap": 450,
+        "capped": false,
+        "dropped": {
+          "too-small": 12,
+          "hidden": 0,
+          "offscreen": 0,
+          "no-signal": 0,
+          "cap-reached": 0
+        },
+        "scannedRatioOfUnique": 0.745,
+        "scannedRatioOfIncludeable": 1
+      },
+      "attempts": 1,
+      "attemptErrors": []
+    }
+  ]
+}

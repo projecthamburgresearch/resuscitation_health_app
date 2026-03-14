@@ -1,0 +1,664 @@
+{
+  "scope": {
+    "domain": "xray",
+    "version": "2.0.0",
+    "root": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app"
+  },
+  "stats": {
+    "files_scanned": 3,
+    "files_parsed": 2,
+    "files_skipped": 0,
+    "entity_count": 37,
+    "edge_count": 34,
+    "entity_types": {
+      "file": 3,
+      "variable": 28,
+      "table": 6
+    },
+    "elapsed_seconds": 0.044,
+    "error_count": 0
+  },
+  "nodes": [
+    {
+      "id": "FILE::.DS_Store",
+      "type": "file",
+      "name": ".DS_Store"
+    },
+    {
+      "id": "FILE::Resuscitation_App_Complete.html",
+      "type": "file",
+      "name": "Resuscitation_App_Complete.html",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 1,
+      "meta": {
+        "css_classes": [
+          "${i",
+          "''}",
+          "'active'",
+          ":",
+          "===",
+          "?",
+          "app-title",
+          "card-body",
+          "card-header",
+          "card-icon",
+          "card-title",
+          "carousel-dots",
+          "cover-content",
+          "cover-subtitle",
+          "cover-title",
+          "decision-indicator",
+          "dot",
+          "footer-label",
+          "footer-row",
+          "header-icon",
+          "header-icons",
+          "icon-bl",
+          "icon-tr",
+          "modal-close",
+          "modal-content",
+          "modal-title",
+          "option-badge",
+          "overflow-btn",
+          "small",
+          "state.carouselIndex"
+        ]
+      }
+    },
+    {
+      "id": "FILE::index.html",
+      "type": "file",
+      "name": "index.html",
+      "file": "index.html",
+      "line": 1,
+      "meta": {
+        "css_classes": [
+          "${i",
+          "''}",
+          "'active'",
+          ":",
+          "===",
+          "?",
+          "app-title",
+          "card-body",
+          "card-header",
+          "card-icon",
+          "card-title",
+          "carousel-dots",
+          "cover-content",
+          "cover-subtitle",
+          "cover-title",
+          "decision-indicator",
+          "dot",
+          "footer-label",
+          "footer-row",
+          "header-icon",
+          "header-icons",
+          "icon-bl",
+          "icon-tr",
+          "modal-close",
+          "modal-content",
+          "modal-title",
+          "option-badge",
+          "overflow-btn",
+          "small",
+          "state.carouselIndex"
+        ]
+      }
+    },
+    {
+      "id": "TABLE::Resuscitation_App_Complete.html::a",
+      "type": "table",
+      "name": "a",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 895,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::index.html::a",
+      "type": "table",
+      "name": "a",
+      "file": "index.html",
+      "line": 895,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::Resuscitation_App_Complete.html::visibility",
+      "type": "table",
+      "name": "visibility",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 1074,
+      "meta": {
+        "operation": "UPDATE"
+      }
+    },
+    {
+      "id": "TABLE::index.html::visibility",
+      "type": "table",
+      "name": "visibility",
+      "file": "index.html",
+      "line": 1074,
+      "meta": {
+        "operation": "UPDATE"
+      }
+    },
+    {
+      "id": "TABLE::Resuscitation_App_Complete.html::your",
+      "type": "table",
+      "name": "your",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 488,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::index.html::your",
+      "type": "table",
+      "name": "your",
+      "file": "index.html",
+      "line": 488,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#active-card",
+      "type": "variable",
+      "name": "#active-card",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 441,
+      "meta": {
+        "html_id": "active-card"
+      }
+    },
+    {
+      "id": "VAR::index.html::#active-card",
+      "type": "variable",
+      "name": "#active-card",
+      "file": "index.html",
+      "line": 441,
+      "meta": {
+        "html_id": "active-card"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#app",
+      "type": "variable",
+      "name": "#app",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 422,
+      "meta": {
+        "html_id": "app"
+      }
+    },
+    {
+      "id": "VAR::index.html::#app",
+      "type": "variable",
+      "name": "#app",
+      "file": "index.html",
+      "line": 422,
+      "meta": {
+        "html_id": "app"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#checklist-area",
+      "type": "variable",
+      "name": "#checklist-area",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 451,
+      "meta": {
+        "html_id": "checklist-area"
+      }
+    },
+    {
+      "id": "VAR::index.html::#checklist-area",
+      "type": "variable",
+      "name": "#checklist-area",
+      "file": "index.html",
+      "line": 451,
+      "meta": {
+        "html_id": "checklist-area"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#icon-decision",
+      "type": "variable",
+      "name": "#icon-decision",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 479,
+      "meta": {
+        "html_id": "icon-decision"
+      }
+    },
+    {
+      "id": "VAR::index.html::#icon-decision",
+      "type": "variable",
+      "name": "#icon-decision",
+      "file": "index.html",
+      "line": 479,
+      "meta": {
+        "html_id": "icon-decision"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#icon-fullscreen",
+      "type": "variable",
+      "name": "#icon-fullscreen",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 471,
+      "meta": {
+        "html_id": "icon-fullscreen"
+      }
+    },
+    {
+      "id": "VAR::index.html::#icon-fullscreen",
+      "type": "variable",
+      "name": "#icon-fullscreen",
+      "file": "index.html",
+      "line": 471,
+      "meta": {
+        "html_id": "icon-fullscreen"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#icon-toolbox",
+      "type": "variable",
+      "name": "#icon-toolbox",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 474,
+      "meta": {
+        "html_id": "icon-toolbox"
+      }
+    },
+    {
+      "id": "VAR::index.html::#icon-toolbox",
+      "type": "variable",
+      "name": "#icon-toolbox",
+      "file": "index.html",
+      "line": 474,
+      "meta": {
+        "html_id": "icon-toolbox"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#knob",
+      "type": "variable",
+      "name": "#knob",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 442,
+      "meta": {
+        "html_id": "knob"
+      }
+    },
+    {
+      "id": "VAR::index.html::#knob",
+      "type": "variable",
+      "name": "#knob",
+      "file": "index.html",
+      "line": 442,
+      "meta": {
+        "html_id": "knob"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#modal-overlay",
+      "type": "variable",
+      "name": "#modal-overlay",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 458,
+      "meta": {
+        "html_id": "modal-overlay"
+      }
+    },
+    {
+      "id": "VAR::index.html::#modal-overlay",
+      "type": "variable",
+      "name": "#modal-overlay",
+      "file": "index.html",
+      "line": 458,
+      "meta": {
+        "html_id": "modal-overlay"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#stage",
+      "type": "variable",
+      "name": "#stage",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 437,
+      "meta": {
+        "html_id": "stage"
+      }
+    },
+    {
+      "id": "VAR::index.html::#stage",
+      "type": "variable",
+      "name": "#stage",
+      "file": "index.html",
+      "line": 437,
+      "meta": {
+        "html_id": "stage"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#timer",
+      "type": "variable",
+      "name": "#timer",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 453,
+      "meta": {
+        "html_id": "timer"
+      }
+    },
+    {
+      "id": "VAR::index.html::#timer",
+      "type": "variable",
+      "name": "#timer",
+      "file": "index.html",
+      "line": 453,
+      "meta": {
+        "html_id": "timer"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#wheel",
+      "type": "variable",
+      "name": "#wheel",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 440,
+      "meta": {
+        "html_id": "wheel"
+      }
+    },
+    {
+      "id": "VAR::index.html::#wheel",
+      "type": "variable",
+      "name": "#wheel",
+      "file": "index.html",
+      "line": 440,
+      "meta": {
+        "html_id": "wheel"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#zone-bottom",
+      "type": "variable",
+      "name": "#zone-bottom",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 444,
+      "meta": {
+        "html_id": "zone-bottom"
+      }
+    },
+    {
+      "id": "VAR::index.html::#zone-bottom",
+      "type": "variable",
+      "name": "#zone-bottom",
+      "file": "index.html",
+      "line": 444,
+      "meta": {
+        "html_id": "zone-bottom"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#zone-middle",
+      "type": "variable",
+      "name": "#zone-middle",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 439,
+      "meta": {
+        "html_id": "zone-middle"
+      }
+    },
+    {
+      "id": "VAR::index.html::#zone-middle",
+      "type": "variable",
+      "name": "#zone-middle",
+      "file": "index.html",
+      "line": 439,
+      "meta": {
+        "html_id": "zone-middle"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#zone-top",
+      "type": "variable",
+      "name": "#zone-top",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 438,
+      "meta": {
+        "html_id": "zone-top"
+      }
+    },
+    {
+      "id": "VAR::index.html::#zone-top",
+      "type": "variable",
+      "name": "#zone-top",
+      "file": "index.html",
+      "line": 438,
+      "meta": {
+        "html_id": "zone-top"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#app",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#stage",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#zone-top",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#zone-middle",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#wheel",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#active-card",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#knob",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#zone-bottom",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#checklist-area",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#timer",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#modal-overlay",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#icon-fullscreen",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#icon-toolbox",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#icon-decision",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "TABLE::Resuscitation_App_Complete.html::your",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "Resuscitation_App_Complete.html",
+          "line": 488,
+          "snip": "From your"
+        }
+      ]
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "TABLE::Resuscitation_App_Complete.html::a",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "Resuscitation_App_Complete.html",
+          "line": 895,
+          "snip": "FROM a"
+        }
+      ]
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "TABLE::Resuscitation_App_Complete.html::visibility",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "Resuscitation_App_Complete.html",
+          "line": 1074,
+          "snip": "update visibility"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#app",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#stage",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#zone-top",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#zone-middle",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#wheel",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#active-card",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#knob",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#zone-bottom",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#checklist-area",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#timer",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#modal-overlay",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#icon-fullscreen",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#icon-toolbox",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#icon-decision",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "TABLE::index.html::your",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 488,
+          "snip": "From your"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "TABLE::index.html::a",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 895,
+          "snip": "FROM a"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "TABLE::index.html::visibility",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 1074,
+          "snip": "update visibility"
+        }
+      ]
+    }
+  ]
+}

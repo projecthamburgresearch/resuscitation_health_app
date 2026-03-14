@@ -1,0 +1,138 @@
+{
+  "version": "2.0",
+  "generated_for": "warden-research-resuscitation-health-app",
+  "model": "mobile-light-dynamic-state-analysis",
+  "questions": [
+    {
+      "id": "state_identity",
+      "question": "Does each dynamic transition move from the correct source card to the correct target card?",
+      "sources": [
+        "design_bundle.screenshots_dynamic.transition",
+        "design_bundle.screenshots_dynamic.beforeSnapshot",
+        "design_bundle.screenshots_dynamic.afterSnapshot"
+      ],
+      "outputs": [
+        "transition_truth_table",
+        "mismatch_list"
+      ]
+    },
+    {
+      "id": "wheel_phase",
+      "question": "Does the wheel/angle behavior align with expected phase progression for each state?",
+      "sources": [
+        "design_bundle.screenshots_dynamic.beforeSnapshot.wheel",
+        "design_bundle.screenshots_dynamic.afterSnapshot.wheel",
+        "state_model_json"
+      ],
+      "outputs": [
+        "angle_delta_report",
+        "phase_consistency_result"
+      ]
+    },
+    {
+      "id": "zone_contract",
+      "question": "Do incoming/current/previous zones remain semantically correct per transition?",
+      "sources": [
+        "design_bundle.splits_dynamic.regions_map",
+        "design_bundle.screenshots_dynamic",
+        "scan.geometry"
+      ],
+      "outputs": [
+        "zone_contract_pass_fail",
+        "zone_violation_examples"
+      ]
+    },
+    {
+      "id": "reverse_navigation",
+      "question": "Can clinicians navigate backward without state corruption?",
+      "sources": [
+        "design_bundle.screenshots_dynamic.before_after_pairs",
+        "state_model_json",
+        "scan.run_manifest"
+      ],
+      "outputs": [
+        "back_navigation_matrix",
+        "state_corruption_findings"
+      ]
+    },
+    {
+      "id": "safety_continuity",
+      "question": "Do timer, checklist, and notes-related surfaces remain stable across transitions?",
+      "sources": [
+        "design_bundle.splits_dynamic.timer",
+        "design_bundle.splits_dynamic.checklist",
+        "scan.elements"
+      ],
+      "outputs": [
+        "continuity_status",
+        "safety_regression_watchlist"
+      ]
+    },
+    {
+      "id": "visual_clarity",
+      "question": "Is the mobile portrait UI visually legible and uncluttered in each major phase?",
+      "sources": [
+        "design_bundle.screenshots_static",
+        "design_bundle.screenshots_dynamic",
+        "scan.typography"
+      ],
+      "outputs": [
+        "phase_visual_findings",
+        "readability_adjustment_candidates"
+      ]
+    },
+    {
+      "id": "light_mode_integrity",
+      "question": "Does the rendered output remain consistent with light-mode-only expectations?",
+      "sources": [
+        "scan.meta.theme",
+        "scan.color_physics",
+        "design_bundle.screenshots_static"
+      ],
+      "outputs": [
+        "light_mode_assertion",
+        "theme_drift_findings"
+      ]
+    },
+    {
+      "id": "code_location",
+      "question": "Where should the fix be implemented in code, and what is the smallest safe edit surface?",
+      "sources": [
+        "blueprint.xray",
+        "blueprint.synapse",
+        "split.region_map.sourceIndex",
+        "repository_search"
+      ],
+      "outputs": [
+        "target_files",
+        "safe_edit_boundary"
+      ]
+    },
+    {
+      "id": "shared_impact",
+      "question": "What secondary behaviors or artifacts may regress if this area changes?",
+      "sources": [
+        "blueprint.graph",
+        "blueprint.hotspots",
+        "design_bundle.bundle_manifest"
+      ],
+      "outputs": [
+        "impact_surface_map",
+        "regression_test_list"
+      ]
+    },
+    {
+      "id": "capture_stability",
+      "question": "Was capture stable enough to trust the findings?",
+      "sources": [
+        "design_bundle.bundle_manifest.capture",
+        "design_bundle.screenshots.attempts",
+        "scan.run_manifest.scans.attempts"
+      ],
+      "outputs": [
+        "stability_score",
+        "rerun_requirement"
+      ]
+    }
+  ]
+}

@@ -1,7 +1,27 @@
-appendix/
-!appendix/css-web-ui-demos/
-.DS_Store
+# Resuscitation Health App Gitignore
+
+# 1. Broad Ignores
+appendix/*
 node_modules/
 .claude/
-
+.DS_Store
 app/dist/
+prototype/*.txt
+
+# 2. Authority Stack Exclusions (Canonical)
+!appendix/guidance/
+!appendix/guidance/**
+
+# 3. Design Reference Exclusions (Canonical)
+!appendix/css-web-ui-demos/
+!appendix/css-web-ui-demos/**
+
+# 3b. Finder Noise Re-Ignores
+**/.DS_Store
+
+# 4. Legacy Bulk / Ephemeral Runtime
+appendix/guidance/materials/legacy/**/archive/
+appendix/guidance/materials/legacy/**/runs/
+**/.venv/
+**/.pytest_cache/
+**/__pycache__/

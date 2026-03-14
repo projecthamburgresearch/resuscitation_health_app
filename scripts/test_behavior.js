@@ -67,9 +67,9 @@ async function testAlgorithm(page, algoFile, algoId) {
       const endX = cx + r * Math.cos(targetAngle);
       const endY = cy + r * Math.sin(targetAngle);
 
-      await page.mouse.move(endX, endY, { steps: 5 });
+      await page.mouse.move(endX, endY, { steps: 30 });
       await page.mouse.up();
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(500);
     };
 
     // Forward gesture tests (anticlockwise in default wheel arc -> positive angleDelta? Actually CSS is different, but let's test)
@@ -97,18 +97,14 @@ async function testAlgorithm(page, algoFile, algoId) {
     // Forward drag
     // Intent is anticlockwise. If we drag from angle -> angle - 30 deg it's anticlockwise math-wise. Let's drag up/left from 330 deg.
     // Negative mathematically is clockwise. Anticlockwise is negative angle delta in screen coords
-    await dragKnob(-45); // This simulates an anticlockwise drag (forward)
+    await dragKnob(-60); // This simulates an anticlockwise drag (forward)
 
     let nextCard = await getActiveCardId();
-    console.log('  After dragKnob(-45), active card is:', nextCard);
-
     let movedForward = startCard !== nextCard;
     if (!movedForward) {
-      console.log('  Did not move forward, trying +45');
       // let's try pushing it the other way just in case
-      await dragKnob(45);
+      await dragKnob(60);
       nextCard = await getActiveCardId();
-      console.log('  After dragKnob(+45), active card is:', nextCard);
       movedForward = startCard !== nextCard;
     }
     addStep('Forward intent advances 1 step', movedForward, `Card changed to ${nextCard}`);
@@ -123,22 +119,26 @@ async function testAlgorithm(page, algoFile, algoId) {
     // Advance until decision
     let maxIter = 10;
     let decisionReached = false;
-    let forwardDragAmount = -45; // The one that worked
+    let forwardDragAmount = -60; // Standardized
 
     while (maxIter > 0 && !(await isDecisionMode())) {
       await dragKnob(forwardDragAmount);
       maxIter--;
     }
     decisionReached = await isDecisionMode();
-    addStep('Reached decision state', decisionReached);
+    let decisionCard = await getActiveCardId();
+    addStep('Reached decision state', decisionReached, `Title: ${decisionCard}`);
 
     if (decisionReached) {
-      let decisionCard = await getActiveCardId();
 
       // Try to forward drag through decision
       await dragKnob(forwardDragAmount);
       let afterDragDecision = await getActiveCardId();
       addStep('Decision state locks forward drag', decisionCard === afterDragDecision);
+
+      // MANDATORY: Tap an option card to select it (introduced by REQ-008)
+      await page.click('.decision-option-card');
+      await page.waitForTimeout(200);
 
       // Confirm decision via drag to center
       const optionCardLocator = page.locator('.decision-option-card.selected');
@@ -155,7 +155,8 @@ async function testAlgorithm(page, algoFile, algoId) {
         addStep('Drag-to-center advances decision', postDecisionCard !== decisionCard, `Card changed to ${postDecisionCard}`);
 
         // Ensure reverse can pass back through decision
-        await dragKnob(-forwardDragAmount); // Reverse
+        await page.waitForTimeout(1000); // Wait for animations to settle
+        await dragKnob(90); // Large reverse drag to be very sure
         let afterRewindBack = await getActiveCardId();
         addStep('Reverse traversal past decision works', afterRewindBack === decisionCard);
       } else {

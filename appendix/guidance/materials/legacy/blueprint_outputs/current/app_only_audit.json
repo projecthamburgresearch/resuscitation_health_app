@@ -1,0 +1,105 @@
+{
+  "generatedAt": "2026-02-22T18:33:52.490Z",
+  "blueprintDir": "appendix/blueprint_outputs/current",
+  "outputDir": "appendix/blueprint_outputs/current",
+  "runMeta": null,
+  "totals": {
+    "entities": 176,
+    "uniqueEntityFiles": 9,
+    "llmNodes": 176,
+    "llmEdges": 273,
+    "sonarFindings": 2,
+    "synapseHotspots": 0,
+    "masterIndexZones": 2,
+    "masterIndexEntries": 176
+  },
+  "entityTypes": {
+    "variable": 148,
+    "table": 15,
+    "file": 11,
+    "network_request": 2
+  },
+  "topEntityFiles": [
+    {
+      "key": "algorithms/algo_newborn_ls.json",
+      "value": 31
+    },
+    {
+      "key": "algorithms/algo_anaphylaxis.json",
+      "value": 28
+    },
+    {
+      "key": "index.html",
+      "value": 25
+    },
+    {
+      "key": "algorithms/algo_paed_fbao.json",
+      "value": 23
+    },
+    {
+      "key": "algorithms/algo_paed_bls_in.json",
+      "value": 22
+    },
+    {
+      "key": "algorithms/algo_paed_bls_out.json",
+      "value": 22
+    },
+    {
+      "key": "Resuscitation_App_Complete.html",
+      "value": 18
+    },
+    {
+      "key": "algorithms/index.json",
+      "value": 3
+    },
+    {
+      "key": ".bpignore",
+      "value": 1
+    }
+  ],
+  "topFunctionHotspots": [],
+  "llmNodeTypes": {
+    "variable": 148,
+    "table": 15,
+    "file": 11,
+    "network_request": 2
+  },
+  "llmEdgeTypes": {
+    "contains": 256,
+    "touches_table": 15,
+    "contains_request": 2
+  },
+  "sonar": {
+    "byCategory": {
+      "naming": 2
+    },
+    "byLevel": {
+      "warning": 2
+    },
+    "topFindings": [
+      {
+        "finding_id": "naming-f5c1ba1b",
+        "category": "naming",
+        "level": "warning",
+        "message": "Single-character name 'a' is not descriptive.",
+        "file_path": "Resuscitation_App_Complete.html",
+        "line": 895,
+        "entity_id": "TABLE::Resuscitation_App_Complete.html::a",
+        "suggestion": "Use a more descriptive name that conveys intent."
+      },
+      {
+        "finding_id": "naming-657dc110",
+        "category": "naming",
+        "level": "warning",
+        "message": "Single-character name 'a' is not descriptive.",
+        "file_path": "index.html",
+        "line": 1131,
+        "entity_id": "TABLE::index.html::a",
+        "suggestion": "Use a more descriptive name that conveys intent."
+      }
+    ]
+  },
+  "synapse": {
+    "topHotspots": []
+  }
+}

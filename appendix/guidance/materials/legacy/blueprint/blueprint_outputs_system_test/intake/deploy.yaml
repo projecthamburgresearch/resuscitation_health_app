@@ -1,0 +1,31 @@
+version: "1.0"
+purpose: "Resuscitation app structural and quality analysis via Blueprint workspace snapshot mode"
+
+targets:
+  - type: local
+    name: "resus-test-local"
+    path: "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app"
+    bpignore: true
+
+domains:
+  - xray
+  - manifest
+  - cortex
+  - registry
+  - sonar
+  - synapse
+
+preset: "quick"
+
+output:
+  formats:
+    - json
+    - markdown
+  manifest_format: "yaml"
+  git_analysis: false
+
+warden:
+  auto_recover: true
+  checkpoint_before_changes: true
+  sync_after_run: true
+  max_retries: 3

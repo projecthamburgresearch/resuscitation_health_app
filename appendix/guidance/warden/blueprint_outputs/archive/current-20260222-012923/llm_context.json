@@ -1,0 +1,3205 @@
+{
+  "scope": {
+    "domain": "xray",
+    "version": "2.0.0",
+    "root": "/Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/app"
+  },
+  "stats": {
+    "files_scanned": 10,
+    "files_parsed": 8,
+    "files_skipped": 0,
+    "entity_count": 171,
+    "edge_count": 269,
+    "entity_types": {
+      "file": 10,
+      "table": 10,
+      "variable": 148,
+      "network_request": 2,
+      "chunk": 1
+    },
+    "elapsed_seconds": 0.133,
+    "error_count": 0
+  },
+  "nodes": [
+    {
+      "id": "REF::index.html::file:/algorithms/index.json",
+      "type": "chunk",
+      "name": "/algorithms/index.json",
+      "file": "index.html",
+      "line": 892,
+      "meta": {
+        "ref_type": "file_path",
+        "value": "/algorithms/index.json"
+      }
+    },
+    {
+      "id": "FILE::.DS_Store",
+      "type": "file",
+      "name": ".DS_Store"
+    },
+    {
+      "id": "FILE::.bpignore",
+      "type": "file",
+      "name": ".bpignore"
+    },
+    {
+      "id": "FILE::Resuscitation_App_Complete.html",
+      "type": "file",
+      "name": "Resuscitation_App_Complete.html",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 1,
+      "meta": {
+        "css_classes": [
+          "${i",
+          "''}",
+          "'active'",
+          ":",
+          "===",
+          "?",
+          "app-title",
+          "card-body",
+          "card-header",
+          "card-icon",
+          "card-title",
+          "carousel-dots",
+          "cover-content",
+          "cover-subtitle",
+          "cover-title",
+          "decision-indicator",
+          "dot",
+          "footer-label",
+          "footer-row",
+          "header-icon",
+          "header-icons",
+          "icon-bl",
+          "icon-tr",
+          "modal-close",
+          "modal-content",
+          "modal-title",
+          "option-badge",
+          "overflow-btn",
+          "small",
+          "state.carouselIndex"
+        ]
+      }
+    },
+    {
+      "id": "FILE::algorithms/algo_anaphylaxis.json",
+      "type": "file",
+      "name": "algo_anaphylaxis.json",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1
+    },
+    {
+      "id": "FILE::algorithms/algo_newborn_ls.json",
+      "type": "file",
+      "name": "algo_newborn_ls.json",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1
+    },
+    {
+      "id": "FILE::algorithms/algo_paed_bls_in.json",
+      "type": "file",
+      "name": "algo_paed_bls_in.json",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1
+    },
+    {
+      "id": "FILE::algorithms/algo_paed_bls_out.json",
+      "type": "file",
+      "name": "algo_paed_bls_out.json",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1
+    },
+    {
+      "id": "FILE::algorithms/algo_paed_fbao.json",
+      "type": "file",
+      "name": "algo_paed_fbao.json",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1
+    },
+    {
+      "id": "FILE::index.html",
+      "type": "file",
+      "name": "index.html",
+      "file": "index.html",
+      "line": 1,
+      "meta": {
+        "css_classes": [
+          "${i",
+          "''}",
+          "'active'",
+          ":",
+          "===",
+          "?",
+          "app-title",
+          "card-body",
+          "card-header",
+          "card-icon",
+          "card-title",
+          "carousel-dots",
+          "cover-content",
+          "cover-subtitle",
+          "cover-title",
+          "decision-indicator",
+          "dot",
+          "footer-label",
+          "footer-row",
+          "header-icon",
+          "header-icons",
+          "icon-bl",
+          "icon-tr",
+          "modal-close",
+          "modal-content",
+          "modal-title",
+          "option-badge",
+          "overflow-btn",
+          "small",
+          "state.carouselIndex"
+        ]
+      }
+    },
+    {
+      "id": "FILE::algorithms/index.json",
+      "type": "file",
+      "name": "index.json",
+      "file": "algorithms/index.json",
+      "line": 1
+    },
+    {
+      "id": "REQ::index.html::GET:/algorithms/${safe}",
+      "type": "network_request",
+      "name": "GET /algorithms/${safe}",
+      "file": "index.html",
+      "line": 909,
+      "meta": {
+        "method": "GET",
+        "url": "/algorithms/${safe}",
+        "library": "fetch"
+      }
+    },
+    {
+      "id": "REQ::index.html::GET:/algorithms/index.json",
+      "type": "network_request",
+      "name": "GET /algorithms/index.json",
+      "file": "index.html",
+      "line": 892,
+      "meta": {
+        "method": "GET",
+        "url": "/algorithms/index.json",
+        "library": "fetch"
+      }
+    },
+    {
+      "id": "TABLE::.bpignore::Blueprint",
+      "type": "table",
+      "name": "Blueprint",
+      "file": ".bpignore",
+      "line": 1,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::Resuscitation_App_Complete.html::a",
+      "type": "table",
+      "name": "a",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 895,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::index.html::a",
+      "type": "table",
+      "name": "a",
+      "file": "index.html",
+      "line": 1192,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::algorithms/algo_anaphylaxis.json::anterolateral",
+      "type": "table",
+      "name": "anterolateral",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 283,
+      "meta": {
+        "operation": "INTO"
+      }
+    },
+    {
+      "id": "TABLE::algorithms/algo_newborn_ls.json::parents",
+      "type": "table",
+      "name": "parents",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 800,
+      "meta": {
+        "operation": "UPDATE"
+      }
+    },
+    {
+      "id": "TABLE::algorithms/algo_paed_fbao.json::signs",
+      "type": "table",
+      "name": "signs",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 318,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::Resuscitation_App_Complete.html::visibility",
+      "type": "table",
+      "name": "visibility",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 1074,
+      "meta": {
+        "operation": "UPDATE"
+      }
+    },
+    {
+      "id": "TABLE::index.html::visibility",
+      "type": "table",
+      "name": "visibility",
+      "file": "index.html",
+      "line": 1371,
+      "meta": {
+        "operation": "UPDATE"
+      }
+    },
+    {
+      "id": "TABLE::Resuscitation_App_Complete.html::your",
+      "type": "table",
+      "name": "your",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 488,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "TABLE::index.html::your",
+      "type": "table",
+      "name": "your",
+      "file": "index.html",
+      "line": 488,
+      "meta": {
+        "operation": "FROM"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#active-card",
+      "type": "variable",
+      "name": "#active-card",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 441,
+      "meta": {
+        "html_id": "active-card"
+      }
+    },
+    {
+      "id": "VAR::index.html::#active-card",
+      "type": "variable",
+      "name": "#active-card",
+      "file": "index.html",
+      "line": 441,
+      "meta": {
+        "html_id": "active-card"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#app",
+      "type": "variable",
+      "name": "#app",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 422,
+      "meta": {
+        "html_id": "app"
+      }
+    },
+    {
+      "id": "VAR::index.html::#app",
+      "type": "variable",
+      "name": "#app",
+      "file": "index.html",
+      "line": 422,
+      "meta": {
+        "html_id": "app"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#checklist-area",
+      "type": "variable",
+      "name": "#checklist-area",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 451,
+      "meta": {
+        "html_id": "checklist-area"
+      }
+    },
+    {
+      "id": "VAR::index.html::#checklist-area",
+      "type": "variable",
+      "name": "#checklist-area",
+      "file": "index.html",
+      "line": 451,
+      "meta": {
+        "html_id": "checklist-area"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#icon-decision",
+      "type": "variable",
+      "name": "#icon-decision",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 479,
+      "meta": {
+        "html_id": "icon-decision"
+      }
+    },
+    {
+      "id": "VAR::index.html::#icon-decision",
+      "type": "variable",
+      "name": "#icon-decision",
+      "file": "index.html",
+      "line": 479,
+      "meta": {
+        "html_id": "icon-decision"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#icon-fullscreen",
+      "type": "variable",
+      "name": "#icon-fullscreen",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 471,
+      "meta": {
+        "html_id": "icon-fullscreen"
+      }
+    },
+    {
+      "id": "VAR::index.html::#icon-fullscreen",
+      "type": "variable",
+      "name": "#icon-fullscreen",
+      "file": "index.html",
+      "line": 471,
+      "meta": {
+        "html_id": "icon-fullscreen"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#icon-toolbox",
+      "type": "variable",
+      "name": "#icon-toolbox",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 474,
+      "meta": {
+        "html_id": "icon-toolbox"
+      }
+    },
+    {
+      "id": "VAR::index.html::#icon-toolbox",
+      "type": "variable",
+      "name": "#icon-toolbox",
+      "file": "index.html",
+      "line": 474,
+      "meta": {
+        "html_id": "icon-toolbox"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#knob",
+      "type": "variable",
+      "name": "#knob",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 442,
+      "meta": {
+        "html_id": "knob"
+      }
+    },
+    {
+      "id": "VAR::index.html::#knob",
+      "type": "variable",
+      "name": "#knob",
+      "file": "index.html",
+      "line": 442,
+      "meta": {
+        "html_id": "knob"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#modal-overlay",
+      "type": "variable",
+      "name": "#modal-overlay",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 458,
+      "meta": {
+        "html_id": "modal-overlay"
+      }
+    },
+    {
+      "id": "VAR::index.html::#modal-overlay",
+      "type": "variable",
+      "name": "#modal-overlay",
+      "file": "index.html",
+      "line": 458,
+      "meta": {
+        "html_id": "modal-overlay"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#stage",
+      "type": "variable",
+      "name": "#stage",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 437,
+      "meta": {
+        "html_id": "stage"
+      }
+    },
+    {
+      "id": "VAR::index.html::#stage",
+      "type": "variable",
+      "name": "#stage",
+      "file": "index.html",
+      "line": 437,
+      "meta": {
+        "html_id": "stage"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#timer",
+      "type": "variable",
+      "name": "#timer",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 453,
+      "meta": {
+        "html_id": "timer"
+      }
+    },
+    {
+      "id": "VAR::index.html::#timer",
+      "type": "variable",
+      "name": "#timer",
+      "file": "index.html",
+      "line": 453,
+      "meta": {
+        "html_id": "timer"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#wheel",
+      "type": "variable",
+      "name": "#wheel",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 440,
+      "meta": {
+        "html_id": "wheel"
+      }
+    },
+    {
+      "id": "VAR::index.html::#wheel",
+      "type": "variable",
+      "name": "#wheel",
+      "file": "index.html",
+      "line": 440,
+      "meta": {
+        "html_id": "wheel"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#zone-bottom",
+      "type": "variable",
+      "name": "#zone-bottom",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 444,
+      "meta": {
+        "html_id": "zone-bottom"
+      }
+    },
+    {
+      "id": "VAR::index.html::#zone-bottom",
+      "type": "variable",
+      "name": "#zone-bottom",
+      "file": "index.html",
+      "line": 444,
+      "meta": {
+        "html_id": "zone-bottom"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#zone-middle",
+      "type": "variable",
+      "name": "#zone-middle",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 439,
+      "meta": {
+        "html_id": "zone-middle"
+      }
+    },
+    {
+      "id": "VAR::index.html::#zone-middle",
+      "type": "variable",
+      "name": "#zone-middle",
+      "file": "index.html",
+      "line": 439,
+      "meta": {
+        "html_id": "zone-middle"
+      }
+    },
+    {
+      "id": "VAR::Resuscitation_App_Complete.html::#zone-top",
+      "type": "variable",
+      "name": "#zone-top",
+      "file": "Resuscitation_App_Complete.html",
+      "line": 438,
+      "meta": {
+        "html_id": "zone-top"
+      }
+    },
+    {
+      "id": "VAR::index.html::#zone-top",
+      "type": "variable",
+      "name": "#zone-top",
+      "file": "index.html",
+      "line": 438,
+      "meta": {
+        "html_id": "zone-top"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.action",
+      "type": "variable",
+      "name": "action",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "#5d6d7e"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.action",
+      "type": "variable",
+      "name": "action",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "#7f8c8d"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme.action",
+      "type": "variable",
+      "name": "action",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "#7f8c8d"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme.action",
+      "type": "variable",
+      "name": "action",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "#7f8c8d"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.action",
+      "type": "variable",
+      "name": "action",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "#7f8c8d"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "type": "variable",
+      "name": "algorithm_meta",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 12 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "type": "variable",
+      "name": "algorithm_meta",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 14 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "type": "variable",
+      "name": "algorithm_meta",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 11 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "type": "variable",
+      "name": "algorithm_meta",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 11 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta",
+      "type": "variable",
+      "name": "algorithm_meta",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 10 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/index.json::algorithms",
+      "type": "variable",
+      "name": "algorithms",
+      "file": "algorithms/index.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 5 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer.auto_start_on_card",
+      "type": "variable",
+      "name": "auto_start_on_card",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "CARD_01_DIAGNOSIS"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer.auto_start_on_card",
+      "type": "variable",
+      "name": "auto_start_on_card",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "CARD_02_BIRTH"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer.auto_start_on_card",
+      "type": "variable",
+      "name": "auto_start_on_card",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "CARD_01_UNRESPONSIVE"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer.auto_start_on_card",
+      "type": "variable",
+      "name": "auto_start_on_card",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "CARD_01_UNRESPONSIVE"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer.auto_start_on_card",
+      "type": "variable",
+      "name": "auto_start_on_card",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "CARD_01_SUSPECT"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme",
+      "type": "variable",
+      "name": "color_theme",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 5 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme",
+      "type": "variable",
+      "name": "color_theme",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 5 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme",
+      "type": "variable",
+      "name": "color_theme",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 4 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme",
+      "type": "variable",
+      "name": "color_theme",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 4 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme",
+      "type": "variable",
+      "name": "color_theme",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 5 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.conditional_modifiers",
+      "type": "variable",
+      "name": "conditional_modifiers",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 1 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.context",
+      "type": "variable",
+      "name": "context",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "universal"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.context",
+      "type": "variable",
+      "name": "context",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "delivery-suite"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.context",
+      "type": "variable",
+      "name": "context",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "in-hospital"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.context",
+      "type": "variable",
+      "name": "context",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "out-of-hospital"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.context",
+      "type": "variable",
+      "name": "context",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "universal"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.cpr_ratio",
+      "type": "variable",
+      "name": "cpr_ratio",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "15:2"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.cpr_ratio",
+      "type": "variable",
+      "name": "cpr_ratio",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "30:2"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.decision",
+      "type": "variable",
+      "name": "decision",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "#922b21"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.decision",
+      "type": "variable",
+      "name": "decision",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "#922b21"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme.decision",
+      "type": "variable",
+      "name": "decision",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "#c0392b"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme.decision",
+      "type": "variable",
+      "name": "decision",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "#c0392b"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.decision",
+      "type": "variable",
+      "name": "decision",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "#c0392b"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::deck",
+      "type": "variable",
+      "name": "deck",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 12 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::deck",
+      "type": "variable",
+      "name": "deck",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 18 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::deck",
+      "type": "variable",
+      "name": "deck",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 12 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::deck",
+      "type": "variable",
+      "name": "deck",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 12 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::deck",
+      "type": "variable",
+      "name": "deck",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 13 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer.enabled",
+      "type": "variable",
+      "name": "enabled",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": true
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer.enabled",
+      "type": "variable",
+      "name": "enabled",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": true
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer.enabled",
+      "type": "variable",
+      "name": "enabled",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": true
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer.enabled",
+      "type": "variable",
+      "name": "enabled",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": true
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer.enabled",
+      "type": "variable",
+      "name": "enabled",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": true
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.footer_disclaimer",
+      "type": "variable",
+      "name": "footer_disclaimer",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "Those trained only in 'adult' BLS (may include healthcare providers and lay rescuers) who have no specific knowledge of paediatric resuscitation, should use the adult sequence they are familiar with, including paediatric modifications."
+      }
+    },
+    {
+      "id": "VAR::algorithms/index.json::generatedAt",
+      "type": "variable",
+      "name": "generatedAt",
+      "file": "algorithms/index.json",
+      "line": 1,
+      "meta": {
+        "value": "2026-02-22T00:58:54.962Z"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer",
+      "type": "variable",
+      "name": "global_timer",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 4 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer",
+      "type": "variable",
+      "name": "global_timer",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 4 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer",
+      "type": "variable",
+      "name": "global_timer",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 4 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer",
+      "type": "variable",
+      "name": "global_timer",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 4 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer",
+      "type": "variable",
+      "name": "global_timer",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 4 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.header_reference",
+      "type": "variable",
+      "name": "header_reference",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 2 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.id",
+      "type": "variable",
+      "name": "id",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "algo_anaphylaxis_001"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.id",
+      "type": "variable",
+      "name": "id",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "algo_newborn_ls_001"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.id",
+      "type": "variable",
+      "name": "id",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "algo_paed_bls_in_001"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.id",
+      "type": "variable",
+      "name": "id",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "algo_paed_bls_out_001"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.id",
+      "type": "variable",
+      "name": "id",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "algo_paed_fbao_001"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.header_reference.items",
+      "type": "variable",
+      "name": "items",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 5 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.sidebar_reminders.items",
+      "type": "variable",
+      "name": "items",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 2 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer.label",
+      "type": "variable",
+      "name": "label",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "Time Since Recognition"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer.label",
+      "type": "variable",
+      "name": "label",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "Time Since Birth"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer.label",
+      "type": "variable",
+      "name": "label",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "Total Time"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer.label",
+      "type": "variable",
+      "name": "label",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "Total Time"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer.label",
+      "type": "variable",
+      "name": "label",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "Total Time"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.linked_algorithms",
+      "type": "variable",
+      "name": "linked_algorithms",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 1 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.linked_algorithms",
+      "type": "variable",
+      "name": "linked_algorithms",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 0 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.linked_algorithms",
+      "type": "variable",
+      "name": "linked_algorithms",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 1 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.linked_algorithms",
+      "type": "variable",
+      "name": "linked_algorithms",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 1 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.conditional_modifiers.modifiers",
+      "type": "variable",
+      "name": "modifiers",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 1 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.page_ref",
+      "type": "variable",
+      "name": "page_ref",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "Page 7 of 40"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.page_ref",
+      "type": "variable",
+      "name": "page_ref",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "Page 6 of 40"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.page_ref",
+      "type": "variable",
+      "name": "page_ref",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "Page 4 of 40"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.page_ref",
+      "type": "variable",
+      "name": "page_ref",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "Page 3 of 40"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.page_ref",
+      "type": "variable",
+      "name": "page_ref",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "Page 5 of 40"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.reference_panels.panels",
+      "type": "variable",
+      "name": "panels",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 2 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.reference_panels.panels",
+      "type": "variable",
+      "name": "panels",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 2 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.primary",
+      "type": "variable",
+      "name": "primary",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "#117a65"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.primary",
+      "type": "variable",
+      "name": "primary",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "#1a5276"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme.primary",
+      "type": "variable",
+      "name": "primary",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "#1a5276"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme.primary",
+      "type": "variable",
+      "name": "primary",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "#1a5276"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.primary",
+      "type": "variable",
+      "name": "primary",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "#1a5276"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.reference_panels",
+      "type": "variable",
+      "name": "reference_panels",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 1 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.reference_panels",
+      "type": "variable",
+      "name": "reference_panels",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 1 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.time_targets.sequences",
+      "type": "variable",
+      "name": "sequences",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<list with 1 items>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.sidebar_reminders",
+      "type": "variable",
+      "name": "sidebar_reminders",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 1 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.source",
+      "type": "variable",
+      "name": "source",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "Resuscitation Council UK (2021)"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.source",
+      "type": "variable",
+      "name": "source",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "Resuscitation Council UK (2021)"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.source",
+      "type": "variable",
+      "name": "source",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "Resuscitation Council UK (2021)"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.source",
+      "type": "variable",
+      "name": "source",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "Resuscitation Council UK (2021)"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.source",
+      "type": "variable",
+      "name": "source",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "Resuscitation Council UK (2021)"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.subtitle",
+      "type": "variable",
+      "name": "subtitle",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "Emergency Treatment"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.subtitle",
+      "type": "variable",
+      "name": "subtitle",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "At Birth Only"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.subtitle",
+      "type": "variable",
+      "name": "subtitle",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "In-Hospital Algorithm"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.subtitle",
+      "type": "variable",
+      "name": "subtitle",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "Out-of-Hospital Algorithm"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.subtitle",
+      "type": "variable",
+      "name": "subtitle",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "Choking Algorithm"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.terminal",
+      "type": "variable",
+      "name": "terminal",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "#1e8449"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.terminal",
+      "type": "variable",
+      "name": "terminal",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "#1e8449"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme.terminal",
+      "type": "variable",
+      "name": "terminal",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "#27ae60"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme.terminal",
+      "type": "variable",
+      "name": "terminal",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "#27ae60"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.terminal",
+      "type": "variable",
+      "name": "terminal",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "#27ae60"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.time_targets",
+      "type": "variable",
+      "name": "time_targets",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "<dict with 1 keys>"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.title",
+      "type": "variable",
+      "name": "title",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "Anaphylaxis"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.title",
+      "type": "variable",
+      "name": "title",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "Newborn Life Support"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.title",
+      "type": "variable",
+      "name": "title",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "Paediatric Basic Life Support"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.title",
+      "type": "variable",
+      "name": "title",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "Paediatric Basic Life Support"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.title",
+      "type": "variable",
+      "name": "title",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "Paediatric Foreign Body Airway Obstruction"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer.type",
+      "type": "variable",
+      "name": "type",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "count_up"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.header_reference.type",
+      "type": "variable",
+      "name": "type",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "letter_bar"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer.type",
+      "type": "variable",
+      "name": "type",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "count_up"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer.type",
+      "type": "variable",
+      "name": "type",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "count_up"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer.type",
+      "type": "variable",
+      "name": "type",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "count_up"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer.type",
+      "type": "variable",
+      "name": "type",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "count_up"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.version",
+      "type": "variable",
+      "name": "version",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "1.0.0"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.version",
+      "type": "variable",
+      "name": "version",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "1.0.0"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.version",
+      "type": "variable",
+      "name": "version",
+      "file": "algorithms/algo_paed_bls_in.json",
+      "line": 1,
+      "meta": {
+        "value": "1.0.0"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.version",
+      "type": "variable",
+      "name": "version",
+      "file": "algorithms/algo_paed_bls_out.json",
+      "line": 1,
+      "meta": {
+        "value": "2.0.0"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.version",
+      "type": "variable",
+      "name": "version",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "1.0.0"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.warning",
+      "type": "variable",
+      "name": "warning",
+      "file": "algorithms/algo_anaphylaxis.json",
+      "line": 1,
+      "meta": {
+        "value": "#c0392b"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.warning",
+      "type": "variable",
+      "name": "warning",
+      "file": "algorithms/algo_newborn_ls.json",
+      "line": 1,
+      "meta": {
+        "value": "#c0392b"
+      }
+    },
+    {
+      "id": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.warning",
+      "type": "variable",
+      "name": "warning",
+      "file": "algorithms/algo_paed_fbao.json",
+      "line": 1,
+      "meta": {
+        "value": "#e74c3c"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "FILE::.bpignore",
+      "tgt": "TABLE::.bpignore::Blueprint",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": ".bpignore",
+          "line": 1,
+          "snip": "from Blueprint"
+        }
+      ]
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#app",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#stage",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#zone-top",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#zone-middle",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#wheel",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#active-card",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#knob",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#zone-bottom",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#checklist-area",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#timer",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#modal-overlay",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#icon-fullscreen",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#icon-toolbox",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "VAR::Resuscitation_App_Complete.html::#icon-decision",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "TABLE::Resuscitation_App_Complete.html::your",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "Resuscitation_App_Complete.html",
+          "line": 488,
+          "snip": "From your"
+        }
+      ]
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "TABLE::Resuscitation_App_Complete.html::a",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "Resuscitation_App_Complete.html",
+          "line": 895,
+          "snip": "FROM a"
+        }
+      ]
+    },
+    {
+      "src": "FILE::Resuscitation_App_Complete.html",
+      "tgt": "TABLE::Resuscitation_App_Complete.html::visibility",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "Resuscitation_App_Complete.html",
+          "line": 1074,
+          "snip": "update visibility"
+        }
+      ]
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.id",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.title",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.subtitle",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.source",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.context",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.version",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.page_ref",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.primary",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.decision",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.action",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.terminal",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.warning",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer.enabled",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer.label",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer.type",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer.auto_start_on_card",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.header_reference",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.header_reference",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.header_reference.type",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.header_reference",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.header_reference.items",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.reference_panels",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.reference_panels",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.reference_panels.panels",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.linked_algorithms",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.id",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.title",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.subtitle",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.source",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.context",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.version",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.page_ref",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.primary",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.decision",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.action",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.terminal",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.color_theme.warning",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer.enabled",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer.label",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer.type",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.global_timer.auto_start_on_card",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.header_reference",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.header_reference.type",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.header_reference.items",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.reference_panels",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.reference_panels.panels",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::algorithm_meta.linked_algorithms",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "VAR::algorithms/algo_anaphylaxis.json::deck",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_anaphylaxis.json",
+      "tgt": "TABLE::algorithms/algo_anaphylaxis.json::anterolateral",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "algorithms/algo_anaphylaxis.json",
+          "line": 283,
+          "snip": "into anterolateral"
+        }
+      ]
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.id",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.title",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.subtitle",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.source",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.context",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.version",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.page_ref",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.primary",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.decision",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.action",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.terminal",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.warning",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer.enabled",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer.label",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer.type",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer.auto_start_on_card",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.time_targets",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.time_targets",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.time_targets.sequences",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.sidebar_reminders",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.sidebar_reminders",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.sidebar_reminders.items",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.conditional_modifiers",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.conditional_modifiers",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.conditional_modifiers.modifiers",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.reference_panels",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.reference_panels",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.reference_panels.panels",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.linked_algorithms",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.id",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.title",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.subtitle",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.source",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.context",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.version",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.page_ref",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.primary",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.decision",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.action",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.terminal",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.color_theme.warning",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer.enabled",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer.label",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer.type",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.global_timer.auto_start_on_card",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.time_targets",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.time_targets.sequences",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.sidebar_reminders",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.sidebar_reminders.items",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.conditional_modifiers",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.conditional_modifiers.modifiers",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.reference_panels",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.reference_panels.panels",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::algorithm_meta.linked_algorithms",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "VAR::algorithms/algo_newborn_ls.json::deck",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_newborn_ls.json",
+      "tgt": "TABLE::algorithms/algo_newborn_ls.json::parents",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "algorithms/algo_newborn_ls.json",
+          "line": 800,
+          "snip": "Update parents"
+        }
+      ]
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.id",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.title",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.subtitle",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.source",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.context",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.version",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.page_ref",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme.primary",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme.decision",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme.action",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme.terminal",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer.enabled",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer.label",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer.type",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer.auto_start_on_card",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.cpr_ratio",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.linked_algorithms",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.id",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.title",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.subtitle",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.source",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.context",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.version",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.page_ref",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme.primary",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme.decision",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme.action",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.color_theme.terminal",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer.enabled",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer.label",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer.type",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.global_timer.auto_start_on_card",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.cpr_ratio",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::algorithm_meta.linked_algorithms",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_in.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_in.json::deck",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.id",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.title",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.subtitle",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.source",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.context",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.version",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.page_ref",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme.primary",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme.decision",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme.action",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme.terminal",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer.enabled",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer.label",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer.type",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer.auto_start_on_card",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.cpr_ratio",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.footer_disclaimer",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.id",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.title",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.subtitle",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.source",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.context",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.version",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.page_ref",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme.primary",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme.decision",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme.action",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.color_theme.terminal",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer.enabled",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer.label",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer.type",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.global_timer.auto_start_on_card",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.cpr_ratio",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::algorithm_meta.footer_disclaimer",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_bls_out.json",
+      "tgt": "VAR::algorithms/algo_paed_bls_out.json::deck",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.id",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.title",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.subtitle",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.source",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.context",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.version",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.page_ref",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.primary",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.decision",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.action",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.terminal",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.warning",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer.enabled",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer.label",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer.type",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer.auto_start_on_card",
+      "rel": "contains"
+    },
+    {
+      "src": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.linked_algorithms",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.id",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.title",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.subtitle",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.source",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.context",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.version",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.page_ref",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.primary",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.decision",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.action",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.terminal",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.color_theme.warning",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer.enabled",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer.label",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer.type",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.global_timer.auto_start_on_card",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::algorithm_meta.linked_algorithms",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "VAR::algorithms/algo_paed_fbao.json::deck",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/algo_paed_fbao.json",
+      "tgt": "TABLE::algorithms/algo_paed_fbao.json::signs",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "algorithms/algo_paed_fbao.json",
+          "line": 318,
+          "snip": "from signs"
+        }
+      ]
+    },
+    {
+      "src": "FILE::algorithms/index.json",
+      "tgt": "VAR::algorithms/index.json::generatedAt",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::algorithms/index.json",
+      "tgt": "VAR::algorithms/index.json::algorithms",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#app",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#stage",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#zone-top",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#zone-middle",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#wheel",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#active-card",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#knob",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#zone-bottom",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#checklist-area",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#timer",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#modal-overlay",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#icon-fullscreen",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#icon-toolbox",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "VAR::index.html::#icon-decision",
+      "rel": "contains"
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "REQ::index.html::GET:/algorithms/index.json",
+      "rel": "contains_request",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 892,
+          "snip": "fetch('/algorithms/index.json'"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "REQ::index.html::GET:/algorithms/${safe}",
+      "rel": "contains_request",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 909,
+          "snip": "fetch(`/algorithms/${safe}`"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "TABLE::index.html::your",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 488,
+          "snip": "From your"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "TABLE::index.html::a",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 1192,
+          "snip": "FROM a"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "TABLE::index.html::visibility",
+      "rel": "touches_table",
+      "ev": [
+        {
+          "file": "index.html",
+          "line": 1371,
+          "snip": "update visibility"
+        }
+      ]
+    },
+    {
+      "src": "FILE::index.html",
+      "tgt": "REF::index.html::file:/algorithms/index.json",
+      "rel": "links_to_file"
+    }
+  ]
+}
