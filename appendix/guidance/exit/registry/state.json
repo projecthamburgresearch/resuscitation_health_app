@@ -1,9 +1,9 @@
 {
   "created_at": "2026-03-13T18:26:22.606Z",
-  "last_updated_at": "2026-03-14T04:38:18.425Z",
-  "last_reviewed_at": "2026-03-14T04:38:18.425Z",
+  "last_updated_at": "2026-03-14T05:26:27.231Z",
+  "last_reviewed_at": "2026-03-14T05:26:27.231Z",
   "last_reviewed_by": "Steward",
-  "latest_commit": "5da8a6e8f82df769ed01516518db86ef32485929",
+  "latest_commit": "2c2add703e9878d72166c54709c13c4949e0e871",
   "worktree_clean": false,
   "latest_log": {
     "name": "202602221025-terminal-saved-output-health-app-logs.txt",
@@ -16,31 +16,29 @@
   "warden_work_report_path": "appendix/guidance/warden/report/latest_analysis.md",
   "warden_cycle_report_path": "appendix/guidance/warden/report/latest_analysis.md",
   "switchboard": {
-    "inbox": [
-      "MSG-20260314-REQ017-WARDEN-DEFERRED-DIRT-RECONCILIATION.md"
-    ],
+    "inbox": [],
     "active": [],
     "outbox": []
   },
   "open_headmaster_tickets": [],
   "next_priority": {
-    "ticket_id": "REQ-017-DEFERRED-DIRT-RECONCILIATION",
-    "message_id": "MSG-20260314-REQ017-WARDEN-DEFERRED-DIRT-RECONCILIATION",
-    "path": "appendix/guidance/switchboard/inbox/MSG-20260314-REQ017-WARDEN-DEFERRED-DIRT-RECONCILIATION.md",
-    "role": "warden",
-    "reason": "Switchboard queue prioritizes `MSG-20260314-REQ017-WARDEN-DEFERRED-DIRT-RECONCILIATION` as the next unclaimed warden lane."
+    "ticket_id": "none",
+    "message_id": "",
+    "path": "",
+    "role": "Steward",
+    "reason": "no open Headmaster ticket currently recorded"
   },
   "latest_prompt_path": "appendix/guidance/exit/prompts/LATEST_SESSION_REENTRY.md",
   "calibration": {
     "packet_path": "appendix/guidance/exit/prompts/LATEST_SESSION_CALIBRATION.md",
     "registry_path": "appendix/guidance/exit/registry/calibration.json",
     "question_count": 14,
-    "default_role": "Warden",
+    "default_role": "Steward",
     "items": [
       {
         "id": "CAL-001",
         "question": "What role am I in for this session?",
-        "default_answer": "Default next-session role is `Warden` because the current queued lane is `REQ-017-DEFERRED-DIRT-RECONCILIATION`.",
+        "default_answer": "Default next-session role is `Steward` because the current queued lane is `none`.",
         "basis": [
           "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md",
           "appendix/guidance/exit/prompts/LATEST_SESSION_REENTRY.md"
@@ -51,10 +49,10 @@
       {
         "id": "CAL-002",
         "question": "What is the real priority order right now?",
-        "default_answer": "Current default priority is `REQ-017-DEFERRED-DIRT-RECONCILIATION`, because Exit records it as the next bounded lane from the live cycle state. After that, choose the next bounded lane from the refreshed backlog rather than stale chat memory.",
+        "default_answer": "There is no currently recorded bounded next priority. The next session should refresh the queue and cycle log before choosing a lane.",
         "basis": [
           "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md",
-          "appendix/guidance/switchboard/inbox/MSG-20260314-REQ017-WARDEN-DEFERRED-DIRT-RECONCILIATION.md"
+          "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md"
         ],
         "override_rule": "If the operator reprioritizes explicitly, that override wins.",
         "answer_status": "default-until-overridden"
@@ -193,7 +191,7 @@
       }
     ]
   },
-  "snapshot_path": "appendix/guidance/exit/snapshots/20260314T043818-continuity.md",
+  "snapshot_path": "appendix/guidance/exit/snapshots/20260314T052627-continuity.md",
   "live_state_guard": {
     "rule": "If live HEAD, worktree state, or Switchboard queue differs from this continuity packet, trust the live repo state and refresh Exit as soon as practical.",
     "checked_at_refresh": true

@@ -15,11 +15,11 @@
 2. The project had no durable continuity system if a session was lost.
 
 ## Current Recommendation
-Treat the bootstrap, atlas refresh, and architecture refinement as accepted Headmaster baseline work, then run `REQ-013` to normalize runtime versus prototype algorithm sources without destabilizing the clinician state machine.
+Treat Cycle 001 bootstrap work as complete through `REQ-017`. The upgraded authority stack is established, the baseline and deferred-dirt cleanup have both landed, and the next lane should be chosen explicitly as the start of a new cycle rather than inferred from bootstrap carryover.
 
 ## Validation Note
 The upgraded authority stack is in place and the Warden pipeline now runs through parity, blueprint, scan, and design capture successfully. The remaining failing stage is the existing behavior-contract validator, which currently times out waiting for `.decision-option-card.selected` across all five sampled algorithms. That appears to be a pre-existing product behavior issue, not a bootstrap authority failure.
 
 
 ## Next Bounded Headmaster Lane
-- `HREQ-005-CANONICAL-ROOTS-AND-STAGING-PLAN` should classify the current repo surfaces and define the first accepted staging boundary for the upgraded authority stack.
+- none currently queued; select the next Headmaster or Warden lane explicitly from current product priorities

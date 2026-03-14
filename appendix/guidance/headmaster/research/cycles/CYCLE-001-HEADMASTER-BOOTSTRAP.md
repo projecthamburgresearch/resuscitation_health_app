@@ -48,10 +48,21 @@
 - clarified the canonical-vs-legacy split in the repo root and `.gitignore`
 - prepared the repo for a deliberate baseline-commit curation pass instead of a blind sweep
 
+4. `REQ-016-BASELINE-COMMIT-EXECUTION`
+- executed the first accepted baseline commit for the upgraded authority stack
+- locked in the new Headmaster/Warden/Switchboard/Exit baseline at commit `5da8a6e`
+- preserved deferred dirt as an explicit bounded cleanup concern instead of folding it into the baseline blindly
+
+5. `REQ-017-DEFERRED-DIRT-RECONCILIATION`
+- reconciled the deferred `.DS_Store` Finder noise in the demo corpus by untracking it from the index
+- preserved the useful `.specstory` transcript signal instead of discarding it blindly
+- removed the last unexplained dirt left outside the accepted bootstrap baseline
+
 ## Current Next Lane
-1. `REQ-016-BASELINE-COMMIT-EXECUTION` (Warden)
-- execute the curated staging and first accepted baseline commit
+1. `none`
+- Cycle 001 bootstrap work is complete. Choose the next product, research, or cleanup lane explicitly as the start of the next cycle.
 
 ## Notes
 1. Warden remains the strongest existing authority and should still be treated as the main source of current-state truth.
 2. This repo deliberately preserves its existing Warden topology instead of force-copying another project's later evidence layout.
+3. The authority-stack bootstrap is now complete through `REQ-017`; future work should start as a new bounded cycle rather than reopening bootstrap work by default.

@@ -15,7 +15,7 @@ You are resuming Resuscitation Health App with a continuity-first mindset. Read 
 7. `appendix/guidance/exit/CHECKLIST.md`
 8. `appendix/guidance/exit/prompts/LATEST_SESSION_REENTRY.md`
 9. `appendix/guidance/exit/prompts/LATEST_SESSION_CALIBRATION.md`
-10. `appendix/guidance/exit/snapshots/20260314T043818-continuity.md`
+10. `appendix/guidance/exit/snapshots/20260314T052627-continuity.md`
 11. `appendix/guidance/exit/logs/raw/202602221025-terminal-saved-output-health-app-logs.txt`
 12. `appendix/guidance/headmaster/README.md`
 13. `appendix/guidance/warden/README.md`
@@ -25,12 +25,12 @@ You are resuming Resuscitation Health App with a continuity-first mindset. Read 
 17. `appendix/guidance/warden/report/latest_analysis.md`
 
 ## Current State Summary
-- latest commit: `5da8a6e8f82df769ed01516518db86ef32485929`
+- latest commit: `2c2add703e9878d72166c54709c13c4949e0e871`
 - worktree clean: `false`
 - latest raw log: `appendix/guidance/exit/logs/raw/202602221025-terminal-saved-output-health-app-logs.txt`
-- last continuity refresh: `2026-03-14T04:38:18.425Z`
+- last continuity refresh: `2026-03-14T05:26:27.231Z`
 - reviewer: `Steward`
-- default session role: `Warden`
+- default session role: `Steward`
 - calibration packet: `appendix/guidance/exit/prompts/LATEST_SESSION_CALIBRATION.md`
 
 ## Live-State Guard
@@ -48,7 +48,7 @@ If live state differs from the recorded continuity packet, trust:
 Then run `npm run exit:refresh -- --reviewer "Steward"` as soon as practical to refresh continuity metadata.
 
 ## Current Queue
-- `MSG-20260314-REQ017-WARDEN-DEFERRED-DIRT-RECONCILIATION.md`
+- none
 
 ## Open Headmaster Tickets
 - none
@@ -67,7 +67,7 @@ Default rule:
 - Steward handles review, fixes, archive, and final acceptance normalization
 
 ## Recommended Next Lane
-`REQ-017-DEFERRED-DIRT-RECONCILIATION` — Switchboard queue prioritizes `MSG-20260314-REQ017-WARDEN-DEFERRED-DIRT-RECONCILIATION` as the next unclaimed warden lane.
+`none` — no open Headmaster ticket currently recorded
 
 ## Rule
 Do not treat chat memory as the source of truth. The source of truth is the documented cycle, the Warden evidence, the Switchboard queue, and the latest raw log named above.

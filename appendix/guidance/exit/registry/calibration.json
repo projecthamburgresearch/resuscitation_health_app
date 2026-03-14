@@ -2,12 +2,12 @@
   "packet_path": "appendix/guidance/exit/prompts/LATEST_SESSION_CALIBRATION.md",
   "registry_path": "appendix/guidance/exit/registry/calibration.json",
   "question_count": 14,
-  "default_role": "Warden",
+  "default_role": "Steward",
   "items": [
     {
       "id": "CAL-001",
       "question": "What role am I in for this session?",
-      "default_answer": "Default next-session role is `Warden` because the current queued lane is `REQ-017-DEFERRED-DIRT-RECONCILIATION`.",
+      "default_answer": "Default next-session role is `Steward` because the current queued lane is `none`.",
       "basis": [
         "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md",
         "appendix/guidance/exit/prompts/LATEST_SESSION_REENTRY.md"
@@ -18,10 +18,10 @@
     {
       "id": "CAL-002",
       "question": "What is the real priority order right now?",
-      "default_answer": "Current default priority is `REQ-017-DEFERRED-DIRT-RECONCILIATION`, because Exit records it as the next bounded lane from the live cycle state. After that, choose the next bounded lane from the refreshed backlog rather than stale chat memory.",
+      "default_answer": "There is no currently recorded bounded next priority. The next session should refresh the queue and cycle log before choosing a lane.",
       "basis": [
         "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md",
-        "appendix/guidance/switchboard/inbox/MSG-20260314-REQ017-WARDEN-DEFERRED-DIRT-RECONCILIATION.md"
+        "appendix/guidance/headmaster/research/cycles/CYCLE-001-HEADMASTER-BOOTSTRAP.md"
       ],
       "override_rule": "If the operator reprioritizes explicitly, that override wins.",
       "answer_status": "default-until-overridden"

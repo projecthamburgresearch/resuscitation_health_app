@@ -4288,3 +4288,120 @@ why dont I see the scan overlay and copy option?
 
 ---
 
+_**Agent (model default, mode Agent)**_
+
+<think><details><summary>Thought Process</summary>
+The user says they can't see the scan overlay and copy option. From the headless test, everything works - 35 live boxes, HUD with "SCAN & COPY". But the user doesn't see it in their browser. Let me think about what could cause this:
+
+1. The HUD has `aria-hidden="true"` - but that's for accessibility, not visibility
+2. The HUD is positioned `fixed` at `top: 12px; left: 12px` with `z-index: 30` - so it should be visible
+3. Could the iframe be covering it? The iframe has `z-index: 1`, overlay layer has `z-index: 20`, HUD has `z-index: 30` - should be fine
+
+
+4. Wait, I'm wondering if they're actually looking at the wrong route - maybe they're on the main app at `localhost:3000/` instead of the dev mode page where the scan overlay is supposed to appear.</details></think>
+
+---
+
+The scan overlay and "SCAN & COPY" button only appear on the **dev-mode** page, not the main app page. Make sure you're opening:
+
+**http://localhost:3000/dev-mode/**
+
+Not `http://localhost:3000/` (which is the plain main app without any overlay).
+
+The two pages are:
+- `localhost:3000/` — the main app only, no HUD, no overlay, no scan
+- `localhost:3000/dev-mode/` — the same app inside an iframe **plus** the dark "DEV MODE" HUD (top-left corner) with "SCAN & COPY", live overlay boxes, and element count
+
+If you **are** on `/dev-mode/` and still don't see it, try `Cmd + Shift + R` to hard-refresh (bypasses browser cache). The HUD sits in the top-left corner as a small dark panel with cyan "DEV MODE" text.
+
+---
+
+_**User**_
+
+can you push this /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/appendix/css-web-ui-demos
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app && git check-ignore -v appendix/css-web-ui-demos/ 2>/dev/null; echo "---"; ls appendix/css-web-ui-demos/ 2>/dev/null | head -20</summary>
+
+```bash
+cd /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app && git check-ignore -v appendix/css-web-ui-demos/ 2>/dev/null; echo "---"; ls appendix/css-web-ui-demos/ 2>/dev/null | head -20
+```
+
+```
+.gitignore:1:appendix/	appendix/css-web-ui-demos/
+---
+CONTRIBUTING
+LICENSE
+README.md
+anchor-tool
+carousel-configurator
+carousels-gallery
+has-ua-visual-transition
+
+```
+</details>
+</tool-use>
+
+---
+
+That directory is inside `appendix/`, which is **gitignored** (line 1 of `.gitignore`: `appendix/`). Git won't track anything under it.
+
+To push it, we have two options:
+
+1. **Add a specific exception** in `.gitignore` for just `appendix/css-web-ui-demos/` (keeps the rest of `appendix/` ignored)
+2. **Move it** outside `appendix/` to somewhere that isn't ignored
+
+Want me to go with option 1 -- add a gitignore exception so only `css-web-ui-demos` gets tracked while the rest of `appendix/` stays ignored?
+
+---
+
+_**User**_
+
+option 1
+
+---
+
+_**Agent (model default, mode Agent)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/.gitignore</summary>
+
+</details>
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app/.gitignore</summary>
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app && git add .gitignore appendix/css-web-ui-demos/ && git status</summary>
+
+```bash
+cd /Users/mordecaimachazire/Documents/local-projects/resuscitation_health_app && git add .gitignore appendix/css-web-ui-demos/ && git status
+```
+
+```
+The following paths are ignored by one of your .gitignore files:
+appendix
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+
+```
+</details>
+</tool-use>
+
+---
+

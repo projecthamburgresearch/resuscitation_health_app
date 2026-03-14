@@ -1,6 +1,6 @@
 ticket_id: "REQ-017-DEFERRED-DIRT-RECONCILIATION"
 date: "2026-03-14"
-status: "OPEN"
+status: "RESOLVED"
 ticket_type: "STRUCTURE"
 title: "Reconcile the deferred dirt left outside the first accepted baseline commit"
 
@@ -59,20 +59,30 @@ deliverables:
 acceptance_gates:
   - id: "AG-01"
     gate: "Tracked .DS_Store files under appendix/css-web-ui-demos are reconciled and no longer remain as unexplained tracked dirt."
-    result: "PENDING"
+    result: "PASS"
   - id: "AG-02"
     gate: "The modified .specstory history file is either preserved intentionally with rationale or restored cleanly."
-    result: "PENDING"
+    result: "PASS"
   - id: "AG-03"
     gate: "The lane records exactly what was preserved, ignored, restored, or removed so the next operator is not guessing."
-    result: "PENDING"
+    result: "PASS"
 
-acceptance_results: []
-checklist_outcome: "PENDING"
-checklist_notes: "Run after implementation."
-rubric_outcome: "OPEN"
-research_session: ""
-artifacts_updated: []
-recommended_warden_scope: "Remove or normalize the remaining deferred dirt without disturbing the accepted baseline commit."
+acceptance_results:
+  - id: "RES-01"
+    result: "Untracked all .DS_Store files under `appendix/css-web-ui-demos/` using `git rm --cached`. These are now correctly ignored by `.gitignore`."
+  - id: "RES-02"
+    result: "Staged the modified `.specstory/history/2026-03-10_21-10Z-dev-mode-functionality-comparison.md` to preserve the useful historical signal regarding the `css-web-ui-demos` gitignore logic."
+  - id: "RES-03"
+    result: "Verified that no other unexplained dirt remains in the worktree."
+
+checklist_outcome: "PASS"
+checklist_notes: "Deferred dirt categories were reconciled cleanly and staged for the final cleanup closure commit."
+rubric_outcome: "RESOLVED"
+research_session: "appendix/guidance/switchboard/outbox/MSG-20260314-REQ017-WARDEN-DEFERRED-DIRT-RECONCILIATION-EXIT.md"
+artifacts_updated:
+  - "appendix/guidance/warden/research/tickets/REQ-017-DEFERRED-DIRT-RECONCILIATION.yaml"
+  - "appendix/guidance/switchboard/outbox/MSG-20260314-REQ017-WARDEN-DEFERRED-DIRT-RECONCILIATION-EXIT.md"
+recommended_warden_scope: "Execute the final cleanup closure commit to lock in the reconciled state."
 acceptance_gates_for_warden: []
-
+closed_date: "2026-03-14"
+closed_reason: "Deferred dirt reconciled: .DS_Store files untracked and speculative history preserved."
