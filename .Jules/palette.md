@@ -1,0 +1,3 @@
+## 2024-03-21 - [A11y: Semantic Buttons with CSS Resets]
+**Learning:** This app heavily relies on `<svg>` and `<div>` elements for core interactions (like header menus and card toolbox/fullscreen toggles) without semantic `<button>` wrappers or `aria-label` attributes. This breaks screen reader accessibility and keyboard navigation.
+**Action:** Always wrap interactive SVGs and icon divs in `<button>` tags with descriptive `aria-label`s. Because the app uses strict fixed sizing/positioning, apply a comprehensive CSS reset to these new buttons (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) to perfectly preserve the existing layout and visual hierarchy.
