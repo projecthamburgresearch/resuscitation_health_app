@@ -1,0 +1,6 @@
+
+> resuscitation_health_app@0.1.0 dev:legacy /app
+> node scripts/dev_server.js
+
+Static server running at http://127.0.0.1:3000
+Serving: app
