@@ -1,0 +1,3 @@
+## 2025-02-17 - Wrapping Icon SVGs into Semantic Buttons
+**Learning:** In this UI, many standalone actionable icons (like search, menu, or overflow options) are simply `svg` or `div` elements, lacking semantic roles, keyboard accessibility, and screen reader announcements.
+**Action:** Always wrap interactive SVGs and plain text icons inside semantic `<button>` elements equipped with an appropriate `aria-label`. Apply a generic CSS reset (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) to the button class to flawlessly preserve the original design hierarchy without adding unwanted custom button aesthetics.
