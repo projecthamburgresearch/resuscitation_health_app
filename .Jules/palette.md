@@ -1,0 +1,3 @@
+## 2023-10-24 - Semantic Button Conversions with CSS Resets
+**Learning:** When converting `<div>` or `<svg>` icons to semantic `<button>` elements in this app to fix accessibility (ARIA labels, keyboard support), they often break the precise existing design system constraints. Using a comprehensive CSS reset on the button (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) allows adding a11y support without introducing visual regressions.
+**Action:** Always apply this specific CSS reset pattern whenever changing div-based UI controls to semantic buttons in this repo.
