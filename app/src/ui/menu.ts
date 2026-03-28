@@ -12,7 +12,7 @@ function createMenuElement(): HTMLElement {
   el.innerHTML = `
     <div class="menu-header">
       <span class="menu-title">Menu</span>
-      <button class="menu-close-btn" data-action="close-menu">&times;</button>
+      <button class="menu-close-btn" data-action="close-menu" aria-label="Close menu">&times;</button>
     </div>
     <div class="menu-items">
       <button class="menu-item" data-action="select-protocol">
