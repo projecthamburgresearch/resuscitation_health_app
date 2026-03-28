@@ -205,7 +205,16 @@
             gap: 6px;
             align-content: flex-start;
         }
-        .overflow-btn { font-size: 20px; font-weight: bold; cursor: pointer; padding: 0 5px; }
+        .overflow-btn {
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 0 5px;
+            background: transparent;
+            border: none;
+            color: inherit;
+            font-family: inherit;
+        }
         #timer { 
             font-family: 'SF Mono', Monaco, monospace; 
             font-size: 13px; 
@@ -477,7 +486,7 @@
         <div class="footer-label">Check List</div>
         <div class="footer-row">
             <div id="checklist-area"></div>
-            <div class="overflow-btn">⋮</div>
+            <button class="overflow-btn" aria-label="More options">⋮</button>
             <div id="timer">00:00:00</div>
         </div>
     </footer>
