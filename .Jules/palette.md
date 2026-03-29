@@ -1,0 +1,3 @@
+## 2025-02-18 - Convert div/svg icons to semantic buttons
+**Learning:** Icon-only SVG elements and divs acting as interactive buttons across the application frequently lack keyboard focusability and screen reader support (ARIA labels). Replacing these with semantic `<button>` tags natively improves accessibility while allowing us to preserve visual layout using a standard CSS reset.
+**Action:** Always wrap interactive icon SVGs in `<button>` tags with `aria-label` attributes and apply the `background: transparent; border: none; padding: 0; display: inline-flex; justify-content: center; align-items: center;` CSS reset to maintain existing visual UI while ensuring full a11y compliance.
