@@ -1,0 +1,3 @@
+## 2024-05-24 - Semantic Button Conversions and CSS Resets
+**Learning:** When converting legacy `div` or `svg` based icon buttons to semantic HTML `<button>` elements to improve accessibility, default button styling (borders, background, padding, inline display) will break the existing layout and visual hierarchy.
+**Action:** Always apply a comprehensive CSS reset (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) to the newly semantic buttons to perfectly preserve the visual design while gaining the accessibility benefits.
