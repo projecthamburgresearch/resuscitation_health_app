@@ -1,0 +1,3 @@
+## 2025-02-13 - Semantic Elements for Interactive Icons
+**Learning:** Found a pattern where `<div>` elements were used for interactive text/icon buttons (like the `.overflow-btn` menu trigger). Using semantic `<button>` elements with `aria-label` improves screen reader and keyboard accessibility, but requires a CSS reset (`background: transparent; border: none; color: inherit; display: inline-flex; align-items: center; justify-content: center; padding: 0;`) to avoid breaking the existing design layout.
+**Action:** When auditing or adding interactive elements that trigger actions, ensure they use semantic `<button>` tags with `aria-label`s, applying a comprehensive CSS reset to maintain the original look and feel.
