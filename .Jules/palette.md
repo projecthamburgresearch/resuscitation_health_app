@@ -1,0 +1,3 @@
+## 2024-03-22 - Semantic Button CSS Resets
+**Learning:** Replacing `<div>` or `<svg>` based interactive elements with semantic `<button>` tags is crucial for accessibility (keyboard navigation, screen readers), but often breaks existing layouts because browsers apply default styling to buttons (borders, backgrounds, padding).
+**Action:** Always apply a comprehensive CSS reset to newly introduced button elements that replace divs/svgs in established UI. Use `background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;` to perfectly preserve the original visual hierarchy while gaining full accessibility benefits.
