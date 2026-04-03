@@ -1,0 +1,3 @@
+## 2025-02-23 - Replaced div-based icons with semantic buttons
+**Learning:** Legacy div-based icons used as click targets break keyboard navigation and screen reader support. Converting them to `<button>` with a comprehensive CSS reset (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) perfectly preserves the visual layout while making the UI accessible. Additionally, SVG icons should be configured to scale within the button (`width: 100%; height: 100%;`).
+**Action:** Always wrap interactive SVGs in semantic buttons with aria-labels and use CSS resets rather than complex custom styling to maintain layout fidelity while improving a11y.
