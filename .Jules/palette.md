@@ -1,0 +1,3 @@
+## 2024-05-24 - [Converting div/svg icons to semantic buttons]
+**Learning:** In a heavily custom-styled canvas or DOM-based state machine, standard semantic HTML `<button>` elements are crucial for screen reader and keyboard accessibility, but they can easily disrupt visual layout if unstyled.
+**Action:** Always pair semantic `<button>` conversions with a comprehensive CSS reset (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) to preserve pixel-perfect parity with previous `<div>` or `<svg>` implementations while gaining built-in focus management and ARIA support.
