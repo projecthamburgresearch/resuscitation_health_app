@@ -1,0 +1,3 @@
+## 2025-02-23 - Converting div-based icons to semantic buttons
+**Learning:** Converting div-based icons (and `<svg>` elements used as icons) directly into semantic `<button>` elements improves accessibility and keyboard navigation. Using a comprehensive CSS reset on the button prevents unwanted styling artifacts from browsers, allowing seamless integration of the buttons without visual disruption.
+**Action:** Always apply a CSS reset (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) to icon buttons and ensure child `<svg>` elements are sized properly (e.g., `width: 100%; height: 100%;`) to perfectly preserve the existing layout and visual hierarchy.
