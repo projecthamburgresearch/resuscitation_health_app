@@ -87,7 +87,21 @@
 }
 
 /* === CARD ICONS === */
-.card-icon { position: absolute; width: 16px; height: 16px; opacity: 0.6; }
+.card-icon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.card-icon svg { width: 100%; height: 100%; }
 .icon-tl { top: 6px; left: 6px; }
 .icon-tr { top: 6px; right: 6px; cursor: pointer; }
 .icon-bl { bottom: 6px; left: 6px; cursor: pointer; }
