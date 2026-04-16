@@ -1,0 +1,3 @@
+## 2026-04-16 - Semantic Icon Buttons Pattern
+**Learning:** In this application, replacing div-based icons with semantic `<button>` elements requires applying a comprehensive CSS reset (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) and setting child `<svg>` styles to `width: 100%; height: 100%;` to perfectly preserve the existing layout and visual hierarchy.
+**Action:** When updating generic containers with semantic buttons in legacy CSS bases, always apply this full reset block to ensure layout parity across `display: flex` contexts and absolutely positioned elements.
