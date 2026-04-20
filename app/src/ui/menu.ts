@@ -43,7 +43,7 @@ export function initMenu(): void {
   document.getElementById('app')!.appendChild(menuEl);
 
   // Wire menu button
-  const menuBtn = document.querySelector('.header-icon:last-child');
+  const menuBtn = document.querySelector('button[aria-label="Menu"]') || document.querySelector('.header-icon:last-child');
   if (menuBtn) {
     menuBtn.addEventListener('click', toggleMenu);
   }
