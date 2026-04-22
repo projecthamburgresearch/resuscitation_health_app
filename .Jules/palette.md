@@ -1,0 +1,3 @@
+## 2025-02-28 - Refactored SVG Icons to Semantic Buttons
+**Learning:** In projects where non-semantic elements (`div`, `svg`) are used for interactive elements, it's crucial to refactor them to semantic `<button>` elements and apply `aria-label` attributes to ensure they are accessible to screen readers, while preserving the original layout structure through strict CSS resets (`background: transparent; border: none; padding: 0; display: inline-flex`).
+**Action:** When migrating purely visual DOM elements into interactive icons in the future, always default to a wrapper `<button>` to inherit native keyboard and screen reader accessibility, applying `width: 100%; height: 100%;` to the child `svg` to maintain pixel-perfect legacy layout metrics.
