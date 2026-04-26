@@ -1,0 +1,5 @@
+## 2025-04-25 - Semantic Wrappers for Interactive Icons
+
+**Learning:** When converting non-semantic interactive elements (like raw `<svg>` or `<div>` icons) to semantic `<button>` wrappers for accessibility, structural CSS selectors (e.g., `:last-child`) and delegated event listeners (e.g., `document.querySelector('.header-icon:last-child')`) can break if the new wrapper changes the element hierarchy or drops functional classes/data-attributes.
+
+**Action:** Always migrate existing functional classes (e.g., `.header-icon`, `.card-icon`, `.overflow-btn`) and data attributes directly to the new parent `<button>` element. Apply a comprehensive CSS reset (`background: transparent; border: none; padding: 0; color: inherit;`) to the button, and ensure child `<svg>` elements inherit dimensions (e.g., `width: 100%; height: 100%;`) to perfectly preserve the existing layout and event delegation logic while improving accessibility.
