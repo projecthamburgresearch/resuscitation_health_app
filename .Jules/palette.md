@@ -1,0 +1,3 @@
+## 2026-04-28 - Upgrade Div/SVG Icons to Semantic Buttons
+**Learning:** When converting <div> or <svg> icons to semantic <button> elements in this codebase, event delegation (e.g., in menu.ts) or inline event handlers rely on the correct target. A comprehensive CSS reset (background: transparent, border: none, etc.) and explicitly sizing child <svg> tags to 100% is necessary to avoid breaking existing layout structures while granting keyboard and screen reader accessibility.
+**Action:** Future icon conversions must apply consistent CSS resets along with structural markup changes to ensure seamless visual parity and functional stability.
