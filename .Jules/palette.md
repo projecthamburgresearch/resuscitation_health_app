@@ -1,0 +1,3 @@
+## 2024-04-30 - Semantic Wrappers for Icon and Overflow Divs
+**Learning:** Replacing `<div>` or `<svg>` based interactive elements with `<button>` elements requires strict attention to resetting default button styles (like background, border, padding, and text color) and adding comprehensive ARIA labels to maintain precise layout and accessibility.
+**Action:** When migrating non-semantic icons or menu triggers to `<button>` elements across the Resuscitation Health App, systematically apply a CSS reset (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) and set explicit width/height (100%) on the wrapped `svg` to ensure they render visually identical to the original implementation.
