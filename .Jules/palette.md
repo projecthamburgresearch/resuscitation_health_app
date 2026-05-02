@@ -1,0 +1,3 @@
+## 2024-05-18 - Semantic Wrapper Buttons
+**Learning:** In projects that have custom visual styles for interactive components like `.header-icon` and `.overflow-btn`, wrapping the original svgs/text in semantic `<button>` elements with `aria-label`s greatly improves accessibility for screen readers and keyboard navigation, but requires careful CSS reset (e.g. `background: transparent; border: none; padding: 0; display: inline-flex`) to maintain identical visual footprint.
+**Action:** Always apply comprehensive CSS resets to custom button elements, especially when migrating away from `<div>` or `<svg>` tags handling click actions, to avoid layout shifts or broken UI due to native browser button styles.
