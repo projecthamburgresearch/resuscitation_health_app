@@ -1,0 +1,3 @@
+## 2024-05-04 - Semantic Button Conversion for Icons
+**Learning:** When converting non-semantic interactive icons (e.g., SVG/div elements) into semantic `<button>` wrappers for accessibility, the change can inadvertently break layout or event delegation logic (like `data-action`).
+**Action:** Always apply a comprehensive CSS reset (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) to the new `<button>` wrapper and ensure child `<svg>` elements are sized properly (`width: 100%; height: 100%;`). Furthermore, functional data attributes should be migrated to the parent `<button>` to preserve event handling.
