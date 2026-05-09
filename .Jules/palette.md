@@ -1,0 +1,3 @@
+## 2024-05-08 - Semantic Wrappers and Structural Selectors
+**Learning:** When converting non-semantic UI elements (like `<svg>`) to semantic wrappers (like `<button>`), structural CSS selectors (such as `.header-icon:last-child` used in `app/src/ui/menu.ts`) will break if the classes and DOM structure are not preserved carefully.
+**Action:** Always transfer existing classes to the new semantic wrapper element rather than keeping them on the inner child element, and ensure a full CSS reset (`background: transparent; border: none; padding: 0; etc.`) is applied so visual layout and JS event delegation continue functioning exactly as before.
