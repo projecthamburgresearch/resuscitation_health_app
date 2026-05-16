@@ -1,0 +1,3 @@
+## 2024-05-16 - CSS Resets for Semantic Buttons
+**Learning:** When converting non-semantic interactive components (like divs or svgs with class `header-icon` or `overflow-btn`) to semantic `<button>` wrappers to improve accessibility, the app's existing layout patterns require specific CSS resets (`background: transparent; border: none; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) on the new button elements to maintain their visual design and prevent default button styles from disrupting the UI. Child SVGs must also be explicitly set to `width: 100%; height: 100%;`.
+**Action:** Always include this CSS reset pattern when upgrading structural divs/svgs to buttons in this repository.
