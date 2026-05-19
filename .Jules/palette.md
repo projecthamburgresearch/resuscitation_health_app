@@ -1,0 +1,5 @@
+## 2026-05-19 - Semantic Button Migration for Header Icons
+
+**Learning:** When converting non-semantic visual interactive elements (like generic `div` or `svg` icons) to semantic `<button>` tags for improved accessibility (including screen-reader support via `aria-label`), applying a CSS reset is crucial to prevent user-agent button styles from disrupting the existing UI layout. Furthermore, maintaining the exact structural DOM relationships (e.g., preserving classes and node order like `.header-icon:last-child`) ensures that existing event delegation and CSS targeting continue to function correctly.
+
+**Action:** Whenever introducing semantic HTML wrappers like `<button>` to replace interactive `div`s or inline SVGs, always apply a comprehensive CSS reset (`background: transparent; border: none; padding: 0; display: inline-flex; align-items: center; justify-content: center; color: inherit;`) to the new button class, strictly retain the old class names to preserve event binding logic, and verify that child elements (e.g., SVG icons) are explicitly sized (e.g., `width: 100%; height: 100%;`) to fill their new button containers seamlessly.
