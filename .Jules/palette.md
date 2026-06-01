@@ -1,0 +1,3 @@
+## 2025-02-27 - Converting Non-Semantic Icons to Semantic Buttons
+**Learning:** When converting div/svg-based icons to semantic `<button>` elements to improve accessibility, the previous layout is often disrupted because `<button>` elements come with default browser styles (borders, backgrounds, padding) and layout behavior differences.
+**Action:** Always apply a comprehensive CSS reset (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) to the new `<button>` class and ensure child `<svg>` elements are sized properly (e.g., `width: 100%; height: 100%;`) to perfectly preserve the existing layout and visual hierarchy while improving accessibility.
