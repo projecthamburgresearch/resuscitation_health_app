@@ -1,0 +1,3 @@
+## 2024-06-01 - Accessible semantic buttons for layout elements
+**Learning:** Interactive structural divs and inline SVGs often lack keyboard focusability and ARIA accessibility; converting to `<button>` with a comprehensive CSS reset fixes a11y regressions without breaking visual layouts or event delegation.
+**Action:** When adding aria-labels to structurally interactive icons, always convert them to standard `<button>` tags with thorough visual resets (`background: transparent; border: none; padding: 0; display: inline-flex;` etc.) instead of hacking `div` or `svg` elements, ensuring robust keyboard compatibility out of the box.
