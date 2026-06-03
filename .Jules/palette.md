@@ -1,0 +1,3 @@
+## 2024-06-02 - Upgrading SVG icons to semantic buttons
+**Learning:** Upgrading non-semantic SVG icons to `<button>` elements requires maintaining existing CSS class footprints (e.g. `.header-icon`) so event listeners via structural querySelectors continue to work. A comprehensive CSS reset is needed for the new button (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`), and child SVGs must be updated to inherit size (`width: 100%; height: 100%;`) to prevent layout shifts.
+**Action:** When adding accessibility wrappers, ensure class selectors remain on the outermost element, apply a strict semantic CSS reset, and explicitly delegate 100% sizing to inner child elements.
