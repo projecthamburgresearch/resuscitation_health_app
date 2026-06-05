@@ -262,7 +262,8 @@
         }
 
         /* Card Icons */
-        .card-icon { position: absolute; width: 16px; height: 16px; opacity: 0.6; }
+        .card-icon { position: absolute; width: 16px; height: 16px; opacity: 0.6; background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+        .card-icon > svg { pointer-events: none; }
         .icon-tl { top: 6px; left: 6px; }
         .icon-tr { top: 6px; right: 6px; cursor: pointer; }
         .icon-bl { bottom: 6px; left: 6px; cursor: pointer; }
@@ -817,8 +818,13 @@ function renderActiveCard(card) {
         const hasSlides = card.content.slides && card.content.slides.length > 1;
         
         html = `
-            <svg class="card-icon icon-tr" onclick="openFullscreen()"><use href="#icon-fullscreen"/></svg>
-            ${hasToolbox ? '<svg class="card-icon icon-bl" onclick="openToolbox()"><use href="#icon-toolbox"/></svg>' : ''}
+            <button class="card-icon icon-tr" onclick="openFullscreen()" aria-label="Fullscreen">
+                <svg style="width: 100%; height: 100%;"><use href="#icon-fullscreen"/></svg>
+            </button>
+            ${hasToolbox ? `
+            <button class="card-icon icon-bl" onclick="openToolbox()" aria-label="Toolbox">
+                <svg style="width: 100%; height: 100%;"><use href="#icon-toolbox"/></svg>
+            </button>` : ''}
             
             <div class="card-header">${card.type.replace('_', ' ')}</div>
             <div class="card-title">${card.content.title}</div>

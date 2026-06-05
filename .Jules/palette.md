@@ -1,0 +1,3 @@
+## 2024-06-05 - Semantic Interactive SVG Wrapper for Card Icons
+**Learning:** This app frequently relies on `<svg>` tags acting as interactive buttons directly, often coupled with position absolute. Changing layout or switching tags casually will break layout. Applying a CSS reset (`background: transparent; border: none; padding: 0; display: inline-flex;`) and sizing the inner `<svg>` properly (`width: 100%; height: 100%;`) enables semantic `<button>` wrappers without affecting visual styling.
+**Action:** When converting custom UI interactive graphics like SVGs into accessible buttons, explicitly zero out button defaults to maintain exact visual parity in this codebase.
