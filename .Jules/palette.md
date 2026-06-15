@@ -1,0 +1,3 @@
+## 2023-10-27 - Converting div/svg icons to semantic buttons
+**Learning:** Wrapping complex interactive icons in semantic `<button>` elements requires maintaining original structural CSS selectors (like `.header-icon:last-child` for event delegation) and adding comprehensive CSS resets (`background: transparent; border: none; padding: 0; color: inherit;`) along with `pointer-events: none` on child elements (like SVGs).
+**Action:** When updating non-semantic interactive icons to buttons, always inspect the DOM/CSS for structural reliance (like `:last-child` or `class`) and carry those classes strictly over to the new semantic `<button>`, applying CSS resets to preserve exact visual layouts while vastly improving keyboard and screen reader accessibility.
