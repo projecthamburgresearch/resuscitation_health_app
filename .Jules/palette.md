@@ -1,0 +1,3 @@
+## 2024-05-24 - Convert div-based overflow button to semantic button
+**Learning:** When converting div-based icons/buttons (like `.overflow-btn` or `.card-icon`) to semantic `<button>` elements in this project, it is essential to apply a comprehensive CSS reset (`background: transparent; border: none; color: inherit; padding: 0; display: inline-flex; align-items: center; justify-content: center;`) to prevent standard OS button styling from breaking the layout.
+**Action:** Always include the necessary button reset CSS when converting non-semantic elements to semantic `<button>` elements to maintain visual parity.
