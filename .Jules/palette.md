@@ -1,0 +1,3 @@
+## 2024-05-19 - Semantic Button Migration for SVG Icons
+**Learning:** When migrating raw `<svg>` elements to semantic `<button>` wrappers for accessibility, applying `pointer-events: none` to the nested `<svg>` is critical for maintaining correct DOM event delegation. This ensures that global click listeners relying on `event.target` (e.g., in `app/src/ui/menu.ts`) correctly receive the `<button>` element with its associated `data-action` attributes, rather than the internal SVG path data.
+**Action:** Always include `style="pointer-events: none; width: 100%; height: 100%;"` on child SVGs when wrapping existing icon elements in new `<button>` tags within this codebase.
