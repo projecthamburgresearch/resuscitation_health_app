@@ -1,0 +1,9 @@
+
+> resuscitation-health-app@0.2.0 dev /app/app
+> vite --port 3000
+
+
+  VITE v6.4.3  ready in 234 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: use --host to expose
