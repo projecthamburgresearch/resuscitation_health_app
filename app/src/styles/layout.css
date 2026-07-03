@@ -23,6 +23,18 @@ body {
     overflow: hidden;
 }
 
+/* === BUTTON RESETS === */
+
+.header-icon, .overflow-btn {
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* === HEADER === */
 header {
     height: var(--header-h);
