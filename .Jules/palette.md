@@ -1,0 +1,3 @@
+## 2025-03-01 - Semantic Button Wrappers for SVGs
+**Learning:** When wrapping existing `.header-icon` SVGs into semantic `<button>` elements, standard reset CSS (`background: transparent; border: none; padding: 0; color: inherit;`) is necessary. Furthermore, adding `pointer-events: none` to the child `<svg>` guarantees that click event delegation bound to the button elements works without being intercepted by SVG paths.
+**Action:** Always include comprehensive button resets and set child SVG pointer events to none when converting non-semantic SVG icons to semantic buttons within this design system.
