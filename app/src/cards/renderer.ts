@@ -73,8 +73,10 @@ function renderActiveCard(card: Card): void {
     const hasSlides = card.content.slides && card.content.slides.length > 1;
 
     html = `
-      <svg class="card-icon icon-tr" data-action="fullscreen"><use href="#icon-fullscreen"/></svg>
-      ${hasToolbox ? '<svg class="card-icon icon-bl" data-action="toolbox"><use href="#icon-toolbox"/></svg>' : ''}
+      <button class="card-icon icon-tr" aria-label="Fullscreen" data-action="fullscreen">
+        <svg style="pointer-events: none;"><use href="#icon-fullscreen"/></svg>
+      </button>
+      ${hasToolbox ? '<button class="card-icon icon-bl" aria-label="Toolbox" data-action="toolbox"><svg style="pointer-events: none;"><use href="#icon-toolbox"/></svg></button>' : ''}
 
       <div class="card-header">${card.type.replace('_', ' ')}</div>
       <div class="card-title">${card.content.title}</div>
