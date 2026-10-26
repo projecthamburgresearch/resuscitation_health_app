@@ -1,0 +1,3 @@
+## 2024-10-26 - Improved header and overflow button accessibility
+**Learning:** In a single page app where interactivity is primarily driven by JS and pointer events, ensuring semantic HTML is used for custom widgets (like SVGs functioning as buttons) is critical. Adding `pointer-events: none;` to inner SVGs is a crucial trick to maintain event delegation relying on `e.target` without breaking existing `app/src/ui/menu.ts` logic.
+**Action:** Always wrap unsemantic interactive elements with `<button>` and assign descriptive `aria-label` attributes. Maintain visual stability via CSS resets and use `pointer-events: none` on child decorative elements to preserve JS event delegation targets.
