@@ -93,6 +93,22 @@
         .header-icons { display: flex; gap: 10px; align-items: center; }
         .header-icon { width: 22px; height: 22px; cursor: pointer; }
 
+        /* Resets for semantic buttons replacing divs/svgs */
+        button.header-icon, button.overflow-btn {
+            background: transparent;
+            border: none;
+            padding: 0;
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button.header-icon svg {
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
         /* === STAGE (Main Area) === */
         #stage {
             flex: 1;
@@ -452,12 +468,16 @@
     <header>
         <div class="app-title">Resuscitation Handbook</div>
         <div class="header-icons">
-            <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-            </svg>
-            <svg class="header-icon" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/>
-            </svg>
+            <button class="header-icon" aria-label="Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                </svg>
+            </button>
+            <button class="header-icon" aria-label="Menu">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/>
+                </svg>
+            </button>
         </div>
     </header>
 
@@ -477,7 +497,7 @@
         <div class="footer-label">Check List</div>
         <div class="footer-row">
             <div id="checklist-area"></div>
-            <div class="overflow-btn">⋮</div>
+            <button class="overflow-btn" aria-label="More options">⋮</button>
             <div id="timer">00:00:00</div>
         </div>
     </footer>
